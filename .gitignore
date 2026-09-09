@@ -1,0 +1,37 @@
+# Generated extension installers and source bundles
+*.vsix
+/*-Auto-Setup.zip
+/Unreal-Project-Tools.zip
+
+# JavaScript dependencies, test output, and extension-host downloads
+node_modules/
+coverage/
+.nyc_output/
+.vscode-test/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Python packaging-script caches and virtual environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Local environment configuration (keep shareable examples)
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Local IDE state; shared VS Code launch/tasks settings remain trackable
+.idea/
+.vs/
+*.code-workspace
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini

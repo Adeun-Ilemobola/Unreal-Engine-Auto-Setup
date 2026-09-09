@@ -1,0 +1,97 @@
+{
+  "name": "unreal-project-tools",
+  "displayName": "Unreal Engine Auto Setup",
+  "description": "Initialize Unreal projects, install companion extensions, and build or open Unreal Editor from VS Code.",
+  "version": "0.3.0",
+  "publisher": "local-tools",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Other",
+    "Extension Packs"
+  ],
+  "main": "./extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "extensionKind": [
+    "workspace"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": false,
+      "description": "Writes project configuration and activates UnrealBuildTool integration only in trusted folders."
+    },
+    "virtualWorkspaces": {
+      "supported": false
+    }
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "unrealSetup.setup",
+        "title": "Unreal: Set Up This Project"
+      },
+      {
+        "command": "unrealSetup.build",
+        "title": "Unreal: Build Project"
+      },
+      {
+        "command": "unrealSetup.buildAndRun",
+        "title": "Unreal: Build and Open Editor"
+      },
+      {
+        "command": "unrealSetup.installExtensions",
+        "title": "Unreal: Install Required Extensions"
+      },
+      {
+        "command": "unrealSetup.openEditor",
+        "title": "Unreal: Open Editor"
+      },
+      {
+        "command": "unrealSetup.selectTarget",
+        "title": "Unreal: Select Target"
+      },
+      {
+        "command": "unrealSetup.selectPlatform",
+        "title": "Unreal: Select Platform"
+      },
+      {
+        "command": "unrealSetup.selectConfiguration",
+        "title": "Unreal: Select Configuration"
+      },
+      {
+        "command": "unrealSetup.selectBuild",
+        "title": "Unreal: Select Build Settings"
+      },
+      {
+        "command": "unrealSetup.diagnose",
+        "title": "Unreal: Diagnose Project"
+      },
+      {
+        "command": "unrealSetup.openLatestLog",
+        "title": "Unreal: Open Latest Project Log"
+      }
+    ],
+    "configuration": {
+      "title": "Unreal Engine Auto Setup",
+      "properties": {
+        "unrealSetup.autoSetup": {
+          "type": "boolean",
+          "default": true,
+          "scope": "window",
+          "description": "Automatically initialize local Unreal project folders."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  },
+  "extensionPack": [
+    "ms-vscode.cpptools",
+    "skyboxlabs.unrealengine-tools"
+  ]
+}
