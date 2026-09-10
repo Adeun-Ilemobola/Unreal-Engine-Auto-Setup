@@ -1,0 +1,23 @@
+"use strict";
+function rows(snapshot={}) {
+  const {project,selected={},session={},editor={},engine={},module}=snapshot;
+  const action=(label,id)=>({label,command:{command:'unrealSetup.'+id,title:label}});
+  const value=(label,description,id)=>({...action(label,id),description:String(description ?? 'Unknown'),...(id?{}:{command:undefined})});
+  if(!project) return [{label:snapshot.error || 'Open one trusted Unreal project folder',description:'No active project'}];
+  return [
+    {label:'Project',children:[value('Project',project.name),{...value('Path',project.root),tooltip:project.root},value('Engine',engine.version?[engine.version.MajorVersion,engine.version.MinorVersion,engine.version.PatchVersion || 0].join('.'):project.descriptor.EngineAssociation+' (not resolved)'),value('Module',module?.name || 'Choose when creating/navigating')]},
+    {label:'Build Configuration',children:[value('Target',selected.target || 'Select target','selectTarget'),value('Platform',selected.platform,'selectPlatform'),value('Configuration',selected.configuration,'selectConfiguration')]},
+    {label:'Runtime',children:[value('Editor',editor.state || 'Unknown'),value('PID',editor.matches?.map(item=>item.pid).join(', ') || 'None'),value('Last build',session.lastBuild?.status || 'No build this session'),value('Metadata',session.stale?'Refresh recommended':'No changes observed')]},
+    {label:'Actions',children:[action('Build','build'),action('Run','run'),action('Open Editor','openEditor'),action('Build and Open Editor','buildAndRun'),action('Attach Debugger','attachDebugger'),action('Regenerate Project Files','regenerate'),action('Diagnose Project','diagnose'),action('Open Latest Log','openLatestLog')]},
+    {label:'Creation',children:[action('New C++ Class','newClass'),action('New Module','newModule'),action('New Plugin','newPlugin')]},
+    {label:'Navigation',children:[action('Open Project Descriptor','openProjectDescriptor'),action('Open Module Build.cs','openModuleRules'),action('Open Target Rules','openTargetRules'),action('Open Plugin Descriptor','openPluginDescriptor')]}
+  ];
+}
+function create(vscode,context) {
+  const emitter=new vscode.EventEmitter();let snapshot={};
+  const provider={onDidChangeTreeData:emitter.event,getChildren:element=>element?.children || rows(snapshot),getTreeItem:element=>({...element,collapsibleState:element.children?1:0})};
+  context.subscriptions.push(emitter);
+  if(vscode.window.createTreeView) context.subscriptions.push(vscode.window.createTreeView('unrealSetup.controlCenter',{treeDataProvider:provider,showCollapseAll:true}));
+  return {provider,update(value){snapshot=value;emitter.fire(undefined);}};
+}
+module.exports={rows,create};

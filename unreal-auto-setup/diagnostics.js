@@ -3,10 +3,14 @@ const fs=require('node:fs/promises');
 const path=require('node:path');
 const projects=require('./project');
 const engine=require('./engine');
+const processApi=require('./processes');
+const generation=require('./generation');
+const modules=require('./modules');
+const core=require('./core');
 async function present(filename) { try { await fs.stat(filename); return true; } catch { return false; } }
 
 // Structured findings keep reporting separate from any future repair actions.
-async function collect(vscode,context,{discover=engine.candidates}={}) {
+async function collect(vscode,context,{discover=engine.candidates,processes=processApi.createService(),state}={}) {
   const findings=[];
   const add=(section,label,value,ok=true)=>findings.push({section,label,value,ok});
   add('VS Code','Workspace trust',vscode.workspace.isTrusted,vscode.workspace.isTrusted);
@@ -45,10 +49,47 @@ async function collect(vscode,context,{discover=engine.candidates}={}) {
   add('Project','Selected target',selected.target || 'Unresolved',!!project?.targets.some(item=>item.name===selected.target));
   for(const field of ['target','platform','configuration']) add('Build configuration',field,selected[field] || 'Unresolved',!!selected[field]);
   if(project) {try {projects.validateSelection(project,selected);} catch(error) {add('Build configuration','Validation',error.message,false);} }
+  const editor=project ? await processes.get(project.filename,{fresh:true}) : {state:'Unknown',matches:[]};
+  const refreshInterval=require('./runtimeWatcher').interval(config.get('unrealSetup.runtimeRefreshInterval'));
+  add('Runtime watcher','Enabled',refreshInterval!==0);
+  add('Runtime watcher','Interval seconds',refreshInterval);
+  add('Auto Build','State','Not implemented; no automatic builds');
+  add('Runtime','Editor state',editor.state,editor.state!=='Unknown');
+  add('Runtime','Matching PIDs',editor.matches.map(item=>item.pid).join(', ') || 'None');
+  add('Runtime','Matching executable',editor.matches.map(item=>item.executable || 'Unavailable').join(', ') || 'None');
+  if(editor.error) add('Runtime','Detection error',editor.error,false);
+  const cpp=!!vscode.extensions.getExtension('ms-vscode.cpptools');
+  add('Debugger','Microsoft C/C++ available',cpp,cpp);
+  add('Debugger','Attach target available',editor.matches.length>0);
+  const debug=vscode.debug?.activeDebugSession;
+  add('Debugger','Active debug session',debug ? debug.name+' ('+debug.type+')' : 'None');
+  const latest=project && (state?.peek ? state.peek(project.filename) : state?.get(project.filename));
+  add('Build','Latest extension build',latest?.lastBuild ? JSON.stringify(latest.lastBuild) : 'No build this session');
+  add('Build','Project metadata',latest?.stale ? 'Project Files May Need Refresh' : 'No metadata changes observed this session',!latest?.stale);
+  const generator=await generation.tool(info.path);
+  add('Project generation','UnrealBuildTool',generator || 'Not found',!!generator);
+  add('Project generation','Regeneration available',!!generator && info.compatible,!!generator && info.compatible);
+  const moduleList=project ? await modules.discover(project.root) : [];
+  add('Modules','Modules discovered',moduleList.length,moduleList.length>0);
+  const preferred=project && modules.recent(context,project,moduleList);
+  add('Modules','Selected/default module',preferred?.name || 'Choose a module');
+  for(const module of moduleList) add('Modules',module.name,path.relative(project.root,module.buildFile)+' | '+module.layout+' | '+module.api+' | '+module.origin+' | '+(module.type || project.descriptor.Modules?.find(item=>item.Name===module.name)?.Type || 'Undeclared/unknown'));
+  const numeric=project && /^(\d+)\.(\d+)(?:\.\d+)?$/.exec(String(project.descriptor.EngineAssociation));
+  const canCreate=!!project && moduleList.length>0 && vscode.workspace.isTrusted && (project.config.get('unrealEngine.enginePath') ? info.compatible : numeric ? core.supportedVersion(+numeric[1],+numeric[2]) : info.compatible);
+  add('Class generation','Available',canCreate,canCreate);
+  const canStructure=!!project && vscode.workspace.isTrusted && (project.config.get('unrealEngine.enginePath') ? info.compatible : numeric ? core.supportedVersion(+numeric[1],+numeric[2]) : info.compatible);
+  add('Module creation','Available',canStructure,canStructure);
+  add('Plugin creation','Available',canStructure,canStructure);
+  if(project) for(const plugin of await modules.plugins(project.root)) {
+    const reference=project.descriptor.Plugins?.find(item=>item.Name===plugin.name);
+    const enabled=reference?.Enabled ?? (plugin.descriptor.EnabledByDefault!==false);
+    add('Plugins',plugin.name,path.relative(project.root,plugin.filename)+' | Modules: '+(plugin.descriptor.Modules?.length || 0)+' | Discoverable: Yes | Enabled by descriptor: '+enabled+' (target/platform restrictions may apply)');
+  }
+  if(latest?.lastCreatedClass) add('Class generation','Last created this session',latest.lastCreatedClass.name+' (source files added; regeneration optional)');
   return findings;
 }
 function format(findings) {
-  return ['Unreal Engine Auto Setup — Project diagnostics',...findings.map(item=>'['+(item.ok?'OK':'CHECK')+'] '+item.section+' / '+item.label+': '+item.value)].join('\n');
+  return ['Unreal Engine Auto Setup â€” Project diagnostics',...findings.map(item=>'['+(item.ok?'OK':'CHECK')+'] '+item.section+' / '+item.label+': '+item.value)].join('\n');
 }
 async function latestLog(root) {
   const directory=path.join(root,'Saved','Logs');
@@ -62,9 +103,9 @@ async function latestLog(root) {
   logs.sort((a,b)=>b.mtime-a.mtime || a.filename.localeCompare(b.filename));
   return logs[0]?.filename;
 }
-function register(vscode,context,output) {
+function register(vscode,context,output,services={}) {
   context.subscriptions.push(vscode.commands.registerCommand('unrealSetup.diagnose',async()=>{
-    try {const findings=await collect(vscode,context);output.appendLine(format(findings));output.show(true);}
+    try {const findings=await collect(vscode,context,services);output.appendLine(format(findings));output.show(true);}
     catch(error) {output.appendLine('Diagnostics failed: '+error.message);output.show(true);}
   }));
   context.subscriptions.push(vscode.commands.registerCommand('unrealSetup.openLatestLog',async()=>{

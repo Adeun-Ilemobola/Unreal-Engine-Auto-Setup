@@ -1,0 +1,62 @@
+"use strict";
+const projects=require('./project'),modules=require('./modules'),engines=require('./engine');
+function interval(value) {return value===0?0:typeof value==='number' && Number.isFinite(value) && value>=10 && value<=3600?Math.floor(value):30;}
+// Serial refresh loop, event coalescing, timer reconciliation and epoch-based stale-result rejection.
+function scheduler({collect,publish,seconds=()=>30,setTimer=setInterval,clearTimer=clearInterval,onError=()=>{}}) {
+  let timer,period,active=false,disposed=false,flight,pending=false,epoch=0;
+  function schedule(enabled) {
+    const next=enabled?interval(seconds()):0;
+    if(period===next) return; if(timer!==undefined) clearTimer(timer);timer=undefined;period=next;
+    if(next) {timer=setTimer(()=>{if(!flight) void refresh();},next*1000);timer?.unref?.();}
+  }
+  function refresh() {
+    if(disposed) return Promise.resolve();
+    pending=true;if(flight) return flight;
+    flight=(async()=>{
+      while(pending && !disposed) {
+        pending=false;const start=epoch;
+        try {const value=await collect();if(disposed || start!==epoch) continue;active=!!value?.project;schedule(active);publish(value);}
+        catch(error) {if(!disposed && start===epoch){schedule(active);onError(error);}}
+      }
+    })().finally(()=>{flight=undefined;});return flight;
+  }
+  return {refresh,reset(){epoch++;active=false;schedule(false);return refresh();},configure(){schedule(active);return refresh();},dispose(){disposed=true;epoch++;pending=false;schedule(false);},get busy(){return !!flight;},get enabled(){return !!period;}};
+}
+function create(vscode,context,services,publish) {
+  let snapshot={},scopeWatcher,fingerprint=new Map(),fingerprintProject;
+  const fs=require('node:fs/promises'),path=require('node:path');
+  const collect=async()=>{
+    if(!vscode.workspace.isTrusted || process.platform!=='win32') return {};
+    const project=await projects.readProject(vscode,{interactive:false});if(!project) return {};
+    const [editor,moduleList,plugins,engine]=await Promise.all([services.processes.get(project.filename,{fresh:true}),modules.discover(project.root),modules.plugins(project.root),engines.inspect(project.config.get('unrealEngine.enginePath'),project.descriptor.EngineAssociation)]);
+    const next=new Map();
+    for(const file of [project.filename,...project.targets.map(t=>path.join(project.root,'Source',t.file)),...moduleList.map(m=>m.buildFile),...plugins.map(p=>p.filename)]) {
+      try {const stat=await fs.stat(file);next.set(file,stat.mtimeMs+':'+stat.size);} catch {}
+    }
+    if(fingerprintProject===project.filename) for(const file of new Set([...next.keys(),...fingerprint.keys()])) if(next.get(file)!==fingerprint.get(file)) services.state.mark(project,file);
+    fingerprintProject=project.filename;fingerprint=next;
+    const folders=await require('./explorerClass').locations(moduleList,vscode);
+    return {folders,project,editor,modules:moduleList,plugins,engine,selected:projects.selection(context,project),session:services.state.get(project.filename),module:modules.recent(context,project,moduleList)};
+  };
+  const controller=scheduler({collect,seconds:()=>services.poll===false?0:vscode.workspace.getConfiguration().get('unrealSetup.runtimeRefreshInterval'),publish:value=>{snapshot=value;publish(value);void vscode.commands.executeCommand('setContext','unrealSetup.projectActive',!!value.project);void vscode.commands.executeCommand('setContext','unrealSetup.classFolders',value.folders || []);},onError:error=>{snapshot={error:error.message};publish(snapshot);void vscode.commands.executeCommand('setContext','unrealSetup.projectActive',false);void vscode.commands.executeCommand('setContext','unrealSetup.classFolders',[]);}});
+  function metadata(uri) {
+    if(uri.fsPath.split(/[\\/]/).some(part=>['binaries','intermediate','saved','deriveddatacache'].includes(part.toLowerCase()))) return;
+    if(snapshot.project) services.state.mark(snapshot.project,uri.fsPath);
+    void controller.refresh();
+  }
+  function watch() {
+    scopeWatcher?.dispose();
+    const root=vscode.workspace.workspaceFolders?.[0];
+    if(root) {
+      scopeWatcher=vscode.workspace.createFileSystemWatcher(vscode.RelativePattern?new vscode.RelativePattern(root,'**/*.{Build.cs,Target.cs,uproject,uplugin}'):'**/*.{Build.cs,Target.cs,uproject,uplugin}');
+      const listeners=[scopeWatcher.onDidCreate(metadata),scopeWatcher.onDidChange(metadata),scopeWatcher.onDidDelete(metadata)],watcher=scopeWatcher;
+      scopeWatcher={dispose(){for(const item of listeners) item.dispose();watcher.dispose();}};
+    } else scopeWatcher=undefined;
+  }
+  watch();
+  context.subscriptions.push({dispose(){controller.dispose();scopeWatcher?.dispose();}},vscode.workspace.onDidChangeWorkspaceFolders(()=>{watch();void controller.reset();}),vscode.workspace.onDidChangeConfiguration(()=>{watch();void controller.reset();}),vscode.workspace.onDidGrantWorkspaceTrust(()=>{void controller.refresh();}));
+  if(vscode.window.onDidChangeWindowState) context.subscriptions.push(vscode.window.onDidChangeWindowState(event=>{if(event.focused) void controller.refresh();}));
+  if(vscode.debug?.onDidStartDebugSession) context.subscriptions.push(vscode.debug.onDidStartDebugSession(()=>controller.refresh()),vscode.debug.onDidTerminateDebugSession(()=>controller.refresh()));
+  return {...controller,refresh:controller.refresh,snapshot:()=>snapshot};
+}
+module.exports={interval,scheduler,create};

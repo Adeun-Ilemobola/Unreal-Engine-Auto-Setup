@@ -43,70 +43,39 @@ test('real PowerShell build script gates launch on exit status and quotes paths'
   } finally { await fs.rm(root,{recursive:true,force:true}); }
 });
 
-test('buttons launch one dedicated terminal, preserve build/run mode, and respect trust',async()=>{
-  const root=await fs.mkdtemp(path.join(os.tmpdir(),'unreal-runner-'));
+
+// v0.4 replaces the old fire-and-forget build terminal with an awaited managed build.
+test('controls preserve selected builds and trust while preventing duplicate Editor launches',async()=>{
+  const {fixture}=require('./helpers');
+  const f=await fixture();
   try {
-    await fs.mkdir(path.join(root,'Source'));
-    await fs.writeFile(path.join(root,'Test.uproject'),'{"EngineAssociation":"5.8"}');
-    await fs.writeFile(path.join(root,'Source','TestEditor.Target.cs'),'Type = TargetType.Editor;');
-    await fs.writeFile(path.join(root,'Source','Test.Target.cs'),'Type = TargetType.Game;');
-    const engine=path.join(root,'UE');
-    await fs.mkdir(path.join(engine,'Engine','Build','BatchFiles'),{recursive:true});
-    await fs.mkdir(path.join(engine,'Engine','Binaries','Win64'),{recursive:true});
-    await fs.writeFile(path.join(engine,'Engine','Build','Build.version'),'{"MajorVersion":5,"MinorVersion":8}');
-    await fs.writeFile(path.join(engine,'Engine','Build','BatchFiles','Build.bat'),'');
-    await fs.writeFile(path.join(engine,'Engine','Binaries','Win64','UnrealEditor.exe'),'');
-    const commands=new Map(),terminals=[],buttons=[],errors=[],picks=[]; let closed; let saves=0;
-    const disposable={dispose(){}};
-    const vscode={
-      StatusBarAlignment:{Left:1}, ConfigurationTarget:{Workspace:2},
-      workspace:{isTrusted:true,workspaceFolders:[{uri:{scheme:'file',fsPath:root}}],saveAll:async()=>{saves++;return true;},
-        getConfiguration:()=>({get:key=>key==='unrealEngine.enginePath'?engine:undefined}),
-        onDidChangeWorkspaceFolders:()=>disposable,onDidGrantWorkspaceTrust:()=>disposable,
-        createFileSystemWatcher:()=>({dispose(){},onDidCreate:()=>disposable,onDidDelete:()=>disposable})},
-      commands:{registerCommand:(key,fn)=>{commands.set(key,fn);return disposable;}},
-      window:{onDidCloseTerminal:fn=>{closed=fn;return disposable;},
-        createStatusBarItem:()=>{const b={show(){this.visible=true;},hide(){this.visible=false;},dispose(){}};buttons.push(b);return b;},
-        createTerminal:options=>{const t={options,show(){},dispose(){}};terminals.push(t);return t;},
-        showQuickPick:async()=>picks.shift(),showInformationMessage(){},showErrorMessage:text=>errors.push(text)}
-    };
-    const state=new Map();
-    const context={subscriptions:[],workspaceState:{get:key=>state.get(key),update:async(key,value)=>state.set(key,value)}};
-    await register(vscode,context,()=>{});
-    assert.equal(buttons[0].visible,process.platform==='win32');
-    if (process.platform!=='win32') return;
-    await commands.get('unrealSetup.build')();
-    assert.equal(terminals.length,1);
-    const decode=t=>Buffer.from(t.options.shellArgs.at(-1),'base64').toString('utf16le');
-    assert.ok(!decode(terminals[0]).includes('UnrealEditor.exe'));
-    await commands.get('unrealSetup.buildAndRun')();
-    assert.equal(terminals.length,1);
-    closed(terminals[0]);
-    await commands.get('unrealSetup.buildAndRun')();
-    assert.equal(terminals.length,2);
-    assert.ok(decode(terminals[1]).includes('UnrealEditor.exe'));
-    assert.equal(terminals[1].options.cwd,root);
-    closed(terminals[1]);
-    picks.push({label:'Test'},'Shipping');
-    await commands.get('unrealSetup.selectTarget')();
-    await commands.get('unrealSetup.selectConfiguration')();
-    assert.equal(buttons[2].text,'Test | Win64 | Shipping');
-    await commands.get('unrealSetup.build')();
-    assert.ok(decode(terminals[2]).includes("'Test' Win64 Shipping"));
-    closed(terminals[2]);
-    const before=saves;
-    await fs.unlink(path.join(engine,'Engine','Build','BatchFiles','Build.bat'));
-    await commands.get('unrealSetup.openEditor')();
-    assert.equal(terminals.length,4);
-    assert.equal(saves,before,'Open Editor must not save or compile');
-    assert.ok(!decode(terminals[3]).includes('Build.bat'));
-    assert.ok(decode(terminals[3]).includes('UnrealEditor.exe'));
-    assert.ok(!decode(terminals[3]).includes('-game'));
-    closed(terminals[3]);
-    vscode.workspace.isTrusted=false;
-    await commands.get('unrealSetup.build')();
-    await commands.get('unrealSetup.openEditor')();
-    assert.equal(terminals.length,4);
-    assert.deepEqual(errors,[]);
-  } finally {await fs.rm(root,{recursive:true,force:true});}
+    const specs=[];let matches=[],buildSuccess=true;
+    const services={poll:false,processes:{get:async()=>({state:matches.length?'Running':'Stopped',matches})},builds:{run:spec=>{specs.push(spec);return {done:Promise.resolve({success:buildSuccess,status:buildSuccess?'Succeeded':'Failed'})};}}};
+    await register(f.vscode,f.context,()=>{},services);
+    assert.equal(f.buttons[0].visible,process.platform==='win32');if(process.platform!=='win32') return;
+    await f.commands.get('unrealSetup.build')();assert.equal(specs[0].target,'GameEditor');assert.equal(specs[0].configuration,'Development');
+    matches=[{pid:10,commandLine:'Game.uproject'}];
+    await f.commands.get('unrealSetup.openEditor')();assert.equal(f.terminals.length,0);assert.match(f.infos.at(-1),/PID 10/);
+    await f.commands.get('unrealSetup.buildAndRun')();assert.equal(specs.length,2);assert.equal(f.terminals.length,0);
+    matches=[];buildSuccess=false;
+    await f.commands.get('unrealSetup.buildAndRun')();assert.equal(f.terminals.length,0);
+    buildSuccess=true;await f.commands.get('unrealSetup.buildAndRun')();assert.equal(f.terminals.length,1);
+    f.picks.push({label:'Game'},'Shipping');await f.commands.get('unrealSetup.selectTarget')();await f.commands.get('unrealSetup.selectConfiguration')();
+    await f.commands.get('unrealSetup.build')();assert.equal(specs.at(-1).configuration,'Shipping');assert.equal(f.buttons.length,2);assert.match(f.buttons[0].tooltip,/Game \| Win64 \| Shipping/);
+    await f.commands.get('unrealSetup.openEditor')();assert.equal(f.terminals.length,1,'pending launch must not duplicate');
+    services.state.get(path.join(f.root,'Game.uproject')).launchRequested=0;
+    const before=f.saves(),count=specs.length;
+    await fs.unlink(path.join(f.root,'Engine','Build','BatchFiles','Build.bat'));
+    await f.commands.get('unrealSetup.openEditor')();assert.equal(f.saves(),before);assert.equal(specs.length,count);assert.equal(f.terminals.length,2);
+    const script=Buffer.from(f.terminals.at(-1).options.shellArgs.at(-1),'base64').toString('utf16le');assert.ok(script.includes('UnrealEditor.exe'));assert.ok(!script.includes('Build.bat'));assert.ok(!script.includes('-game'));
+    f.vscode.workspace.isTrusted=false;await f.commands.get('unrealSetup.openEditor')();await f.commands.get('unrealSetup.build')();assert.equal(f.terminals.length,2);assert.equal(specs.length,count);
+    assert.deepEqual(f.errors,[]);
+  } finally {await f.cleanup();}
+});
+test('unknown process state refuses automatic Editor launch',async()=>{
+  const {fixture}=require('./helpers');const f=await fixture();
+  try {
+    await register(f.vscode,f.context,()=>{},{poll:false,processes:{get:async()=>({state:'Unknown',matches:[],error:'query denied'})},builds:{}});
+    await f.commands.get('unrealSetup.openEditor')();assert.equal(f.terminals.length,0);assert.match(f.errors.at(-1),/detection is unavailable/);
+  } finally {await f.cleanup();}
 });

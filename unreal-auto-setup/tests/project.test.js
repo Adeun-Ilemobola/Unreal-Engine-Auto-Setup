@@ -26,7 +26,7 @@ test('discovers all targets, defaults to Editor and preserves project-specific s
     for(const field of ['target','configuration','platform']) await projects.select(vscode,context(),project,field);
     const selected=projects.selection(context(),project);
     assert.deepEqual(selected,{target:'Game',platform:'Win64',configuration:'Shipping'});
-    assert.match(buildScript(root,project.filename,selected.target,false,selected.platform,selected.configuration),/'Game' Win64 Shipping/);
+    assert.match(buildScript(root,project.filename,selected.target,false,selected.platform,selected.configuration),/'Game' 'Win64' 'Shipping'/);
     assert.equal(projects.selection(context(),{...project,filename:path.join(root,'Second.uproject')}).configuration,'Development');
     await projects.select(vscode,context(),project,'configuration'); // cancellation preserves choice
     assert.deepEqual(projects.selection(context(),project),selected);
@@ -39,7 +39,7 @@ test('discovers all targets, defaults to Editor and preserves project-specific s
 });
 
 test('build script supports all five configurations without falling back to Development',()=>{
-  for(const configuration of projects.configurations) assert.ok(buildScript('C:\\UE','C:\\Game.uproject','Game',false,'Win64',configuration).includes('Win64 '+configuration));
+  for(const configuration of projects.configurations) assert.ok(buildScript('C:\\UE','C:\\Game.uproject','Game',false,'Win64',configuration).includes("'Win64' '"+configuration+"'"));
 });
 
 test('engine settings protection rejects dirty settings before writing',async()=>{

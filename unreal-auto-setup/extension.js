@@ -7,6 +7,11 @@ const runner = require('./runner');
 const projectsApi = require('./project');
 const engines = require('./engine');
 const diagnostics = require('./diagnostics');
+const buildApi = require('./build');
+const runtime = require('./runtime');
+const processes = require('./processes');
+const classWizard = require('./classWizard');
+const structureWizard = require('./structureWizard');
 const requiredExtensions = ['ms-vscode.cpptools', 'skyboxlabs.unrealengine-tools'];
 const provider = 'skyboxlabs.unrealengine-tools';
 let running = false;
@@ -34,8 +39,11 @@ function activate(context) {
     try { if (await installExtensions()) vscode.window.showInformationMessage('Required Unreal extensions are installed.'); }
     catch (error) { report(String(error)); vscode.window.showErrorMessage('Extension installation failed: ' + error.message); }
   }));
-  runner.register(vscode, context, report).catch(error=>report(String(error)));
-  diagnostics.register(vscode,context,output);
+  const services={state:runtime.createState(),processes:processes.createService()};
+  const runtimeReady=runner.register(vscode, context, report,services).catch(error=>report(String(error)));
+  diagnostics.register(vscode,context,output,services);
+  classWizard.register(vscode,context,services,report);
+  structureWizard.register(vscode,context,services,report);
 
   async function setup(manual = false) {
     if (running || !vscode.workspace.isTrusted) return;
@@ -114,7 +122,7 @@ function activate(context) {
         const label = 'Unreal: '+target+' '+selected.platform+' '+selected.configuration;
         if (!original.some(task=>task.label === label || (task.type === 'UnrealBuildTool' && task.args?.mode === 'Build' && task.args?.target === target && task.args?.platform === selected.platform && task.args?.configuration === selected.configuration))) {
           const hasDefault = original.some(task=>task.group && typeof task.group === 'object' && task.group.kind === 'build' && task.group.isDefault);
-          const task = {label,type:'UnrealBuildTool',args:{mode:'Build',target,platform:selected.platform,configuration:selected.configuration},group:hasDefault?'build':{kind:'build',isDefault:true}};
+          const task = {label,type:'UnrealBuildTool',args:buildApi.skyboxArguments(selected),group:hasDefault?'build':{kind:'build',isDefault:true}};
           const version = taskConfig.inspect('version');
           if (!(version?.workspaceFolderValue ?? version?.workspaceValue)) await taskConfig.update('version','2.0.0',vscode.ConfigurationTarget.Workspace);
           await taskConfig.update('tasks',[...original,task],vscode.ConfigurationTarget.Workspace);
@@ -129,10 +137,10 @@ function activate(context) {
       const command = commands.find(item => typeof item.title === 'string' && /Select Build Configuration/i.test(item.title));
       report('Setup complete. Skybox requires its own interactive IntelliSense target selection.');
       if (command) {
-        vscode.window.showInformationMessage('Project defaults ready. Choose your IntelliSense configuration in Skybox. Build selections are managed separately in the status bar.');
+        vscode.window.showInformationMessage('Project defaults ready. Choose your IntelliSense configuration in Skybox. Build selections are managed separately in the Unreal sidebar.');
         await vscode.commands.executeCommand(command.command);
       } else {
-        vscode.window.showInformationMessage('Project defaults ready. Run Unreal (C++): Select Build Configuration... for IntelliSense. Build selections are managed separately in the status bar.');
+        vscode.window.showInformationMessage('Project defaults ready. Run Unreal (C++): Select Build Configuration... for IntelliSense. Build selections are managed separately in the Unreal sidebar.');
       }
     } catch (error) {
       report(error.stack || String(error));
@@ -144,6 +152,6 @@ function activate(context) {
   context.subscriptions.push(vscode.workspace.onDidGrantWorkspaceTrust(()=>setup()));
   const watcher = vscode.workspace.createFileSystemWatcher('*.uproject');
   context.subscriptions.push(watcher,watcher.onDidCreate(()=>setup()));
-  return setup();
+  return Promise.all([setup(),runtimeReady]).then(()=>({refresh:services.refresh,snapshot:()=>services.watcher?.snapshot()}));
 }
 module.exports = {activate};

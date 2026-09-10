@@ -1,8 +1,8 @@
 {
   "name": "unreal-project-tools",
   "displayName": "Unreal Engine Auto Setup",
-  "description": "Initialize Unreal projects, install companion extensions, and build or open Unreal Editor from VS Code.",
-  "version": "0.3.0",
+  "description": "Set up Unreal Engine projects, create C++ classes, modules and project plugins, build and open the Editor from VS Code.",
+  "version": "0.6.5",
   "publisher": "local-tools",
   "license": "MIT",
   "engines": {
@@ -73,6 +73,55 @@
       {
         "command": "unrealSetup.openLatestLog",
         "title": "Unreal: Open Latest Project Log"
+      },
+      {
+        "command": "unrealSetup.attachDebugger",
+        "title": "Unreal: Attach Debugger to Editor"
+      },
+      {
+        "command": "unrealSetup.regenerate",
+        "title": "Unreal: Regenerate Project Files"
+      },
+      {
+        "command": "unrealSetup.newClass",
+        "title": "Unreal: New C++ Class"
+      },
+      {
+        "command": "unrealSetup.openModuleRules",
+        "title": "Unreal: Open Module Build.cs"
+      },
+      {
+        "command": "unrealSetup.openProjectDescriptor",
+        "title": "Unreal: Open Project Descriptor"
+      },
+      {
+        "command": "unrealSetup.openTargetRules",
+        "title": "Unreal: Open Target Rules"
+      },
+      {
+        "command": "unrealSetup.newModule",
+        "title": "Unreal: New Module"
+      },
+      {
+        "command": "unrealSetup.newPlugin",
+        "title": "Unreal: New Plugin"
+      },
+      {
+        "command": "unrealSetup.openPluginDescriptor",
+        "title": "Unreal: Open Plugin Descriptor"
+      },
+      {
+        "command": "unrealSetup.run",
+        "title": "Unreal: Run"
+      },
+      {
+        "command": "unrealSetup.refresh",
+        "title": "Unreal: Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "unrealSetup.createClassHere",
+        "title": "Unreal: Create Class Here"
       }
     ],
     "configuration": {
@@ -83,9 +132,57 @@
           "default": true,
           "scope": "window",
           "description": "Automatically initialize local Unreal project folders."
+        },
+        "unrealSetup.runtimeRefreshInterval": {
+          "type": "number",
+          "default": 30,
+          "minimum": 0,
+          "maximum": 3600,
+          "description": "Lightweight runtime refresh interval in seconds: 0 disables polling; use 10–3600. Values between 0 and 10 fall back to 30. Does not build or regenerate."
         }
       }
-    }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "unrealSetup",
+          "title": "Unreal",
+          "icon": "media/unreal.svg"
+        }
+      ]
+    },
+    "views": {
+      "unrealSetup": [
+        {
+          "id": "unrealSetup.controlCenter",
+          "name": "Unreal",
+          "type": "tree"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "unrealSetup.refresh",
+          "when": "view == unrealSetup.controlCenter",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "unrealSetup.createClassHere",
+          "when": "unrealSetup.projectActive && isWorkspaceTrusted && explorerResourceIsFolder && resourcePath in unrealSetup.classFolders",
+          "group": "unreal@1"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "unrealSetup.newClass",
+        "key": "ctrl+k ctrl+alt+n",
+        "when": "unrealSetup.projectActive && isWorkspaceTrusted"
+      }
+    ]
   },
   "scripts": {
     "test": "node --test tests/*.test.js"
