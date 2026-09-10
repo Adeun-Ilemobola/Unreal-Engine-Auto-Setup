@@ -1,3 +1,63 @@
+# v0.7.0 dependency validation
+
+## Automated tests
+
+239 tests pass: all 185 prior tests and 54 dependency cases. The expanded sidebar and menu expectations are intentional; the old setup mock now models all filesystem watcher events. New suites are `tests/dependencies.test.js` and `tests/dependencyUI.test.js`.
+
+Coverage includes literal Add/AddRange/collection expressions; LF/CRLF and tabs/spaces; comments and false matches; malformed delimiters; conditional/helper/variable/computed/loop/alias refusals; duplicates and self-dependencies; add/remove/move/empty-list edits; unsaved documents and linked paths; rejected WorkspaceEdit preserving the original; native diff Apply/Cancel; explicit downgrade with exposed-header evidence; graph cycles and relationship warnings; project/plugin exact header keys and ambiguity; session cache reuse/invalidation; no engine scan on project refresh; informational diagnostics; recommended Public/Private Quick Fixes; and generated-module/class integration.
+
+## Real UE 5.8.1 source/index checks
+
+A full async engine scan indexed **69,932 headers** in approximately **9.98 seconds** on this machine. A second request returned Ready (cached). Representative exact ownership checks:
+
+| Include | Owner |
+| --- | --- |
+| CoreMinimal.h | Core |
+| UObject/Object.h | CoreUObject |
+| Components/ActorComponent.h | Engine |
+| Widgets/SWidget.h | SlateCore |
+| Widgets/SCompoundWidget.h | SlateCore |
+| Widgets/Input/SButton.h | Slate |
+| Components/Widget.h | UMG |
+
+Core.Build.cs uses AddRange collection expressions (`[...]`); the focused parser supports this literal form, while the complete complex Core rules remain a read-only engine candidate. Existing engine module/plugin boundaries were read only. No engine source files were edited.
+
+## Real dependency edits and UBT/UHT compilation
+
+Fresh disposable fixture: `%TEMP%/UnrealAutoSetup-v06-B5ZdmO/AutoSetupValidation.uproject` (the existing harness retains its v06 folder prefix).
+
+The shared v0.7 mutation engine added **Projects as Private** and **SlateCore as Public** to the newly created ValidationRuntime.Build.cs. Its module source included Interfaces/IPluginManager.h and Widgets/SWidget.h. These changes were written only into the fresh fixture by the opt-in harness; the shipping command uses WorkspaceEdit and leaves the editor dirty.
+
+| Stage | Result |
+| --- | --- |
+| VS Code project-file generation | Exit 0, 5.62 seconds |
+| Editor Development Win64 compile/link with modified Build.cs and nine class templates | Exit 0, 40.02 seconds |
+| Second Editor build after adding the blank plugin | Exit 0, 9.38 seconds |
+
+Toolchain: UE 5.8.1, Visual Studio MSVC 14.50.35717 installation / toolchain 14.50.35737, Windows SDK 10.0.22621.0. Reflection-generated source and all nine class source files compiled. No production project was modified, and no compile failure occurred in this v0.7 run. Logs and validation-results.json remain in the fixture.
+
+Repeat with a fresh disposable fixture: `node tests/real-unreal-validation.js "C:/Program Files/Epic Games/UE_5.8" dependencies`.
+
+## Real VS Code integration
+
+`tests/vscode-dependency-smoke.js` ran in an isolated Windows Extension Development Host using `%TEMP%/UnrealUXSmoke-05da420b3f3e407cbc2719b155ea56b1`.
+
+- Activated the seven-section native Unreal sidebar and refreshed the real engine index.
+- Applied a real Build.cs WorkspaceEdit, verified dirty editor contents, then executed VS Code Undo and verified the original text was restored.
+- Opened a Public header with an Engine include absent from the source module's direct dependency list.
+- Observed one **Unreal Dependencies** informational diagnostic and both Public and Private Quick Fix registrations via VS Code's Code Action API.
+- `vscode-dependency-result.json` records success, engine header count, Undo, advisory message and Quick Fix labels.
+
+Diff confirmation/Quick Fix mutation is covered by shared-engine mocked UI tests; the live host did not automate clicking Apply on a modal. A Windows directory junction is used for linked-path refusal tests because unprivileged file-symlink creation is unavailable in the default test environment.
+
+## Deliberate limitations
+
+Only recognized conventional constructors are editable. Conditional/complex files remain inspectable but read-only. No persistent cache is written, so there is no corrupt disk-cache load path; restart discards the session cache. Exact include matching does not implement C++ preprocessing, arbitrary include search paths, or complete transitive dependency semantics. Informational direct-declaration advisories are not compiler errors. Graph warnings/cycles cover known project/plugin edges, not all engine internals. Cross-plugin descriptors are not rewritten. No automatic builds, source-reference deletion, engine edits, cooking or packaging of Unreal projects are implemented.
+
+The following sections retain prior-release evidence and their original test counts.
+
+---
+
 # v0.6.5 UX/runtime validation
 
 185 unit/integration tests pass. All 155 v0.6 tests remain; only the assertion for the removed third status item was updated to verify the Build tooltip instead. Thirty new cases cover interval validation, serialization/coalescing, reset/disposal/error recovery, native sidebar sections/commands, Run success/failure/reuse, Build/Run/regeneration locking, scoped Explorer folders, Public/Private and flat mapping, cancellation/collision behavior, keybinding/menu metadata and structural reconciliation.

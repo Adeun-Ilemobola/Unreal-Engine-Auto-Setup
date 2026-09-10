@@ -13,7 +13,7 @@ content_types='''<?xml version="1.0" encoding="utf-8"?><Types xmlns="http://sche
 with zipfile.ZipFile(root/name,'w',zipfile.ZIP_DEFLATED) as z:
     z.writestr('extension.vsixmanifest',manifest)
     z.writestr('[Content_Types].xml',content_types)
-    for filename in ['package.json','extension.js','core.js','runner.js','project.js','engine.js','diagnostics.js','processes.js','debugger.js','build.js','problemParser.js','runtime.js','generation.js','modules.js','classTemplates.js','classFiles.js','classWizard.js','descriptors.js','moduleTemplates.js','creation.js','structureWizard.js','runtimeWatcher.js','sidebar.js','explorerClass.js','media/unreal.svg','CAPABILITIES.md','VALIDATION.md','README.md','LICENSE']:
+    for filename in ['package.json','extension.js','core.js','runner.js','project.js','engine.js','diagnostics.js','processes.js','debugger.js','build.js','problemParser.js','runtime.js','generation.js','modules.js','classTemplates.js','classFiles.js','classWizard.js','descriptors.js','moduleTemplates.js','creation.js','structureWizard.js','buildCsParser.js','dependencyModel.js','dependencyEditor.js','dependencyIndex.js','dependencyDiagnostics.js','dependencyActions.js','runtimeWatcher.js','sidebar.js','explorerClass.js','media/unreal.svg','CAPABILITIES.md','VALIDATION.md','README.md','LICENSE']:
         z.write(source/filename, 'extension/'+filename)
 with zipfile.ZipFile(root/name) as z:
     assert z.testzip() is None

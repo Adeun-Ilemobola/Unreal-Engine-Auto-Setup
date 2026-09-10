@@ -21,7 +21,7 @@ test('sidebar groups configuration, runtime and callable actions; changes fire T
   const f=await classFixture();try {
     const data={project:f.project,selected:{target:'GameEditor',platform:'Win64',configuration:'DebugGame'},editor:{state:'Running',matches:[{pid:9}]},session:{stale:true,lastBuild:{status:'Succeeded'}}};
     const view=sidebar(f.vscode,f.context);let events=0;view.provider.onDidChangeTreeData(()=>events++);view.update(data);assert.equal(events,1);
-    const sections=view.provider.getChildren();assert.deepEqual(sections.map(x=>x.label),['Project','Build Configuration','Runtime','Actions','Creation','Navigation']);
+    const sections=view.provider.getChildren();assert.deepEqual(sections.map(x=>x.label),['Project','Build Configuration','Runtime','Actions','Creation','Dependencies','Navigation']);
     assert.equal(sections[1].children[2].description,'DebugGame');assert.equal(sections[1].children[0].command.command,'unrealSetup.selectTarget');assert.equal(sections[3].children[1].command.command,'unrealSetup.run');
     assert.equal(sections[2].children[1].description,'9');assert.equal(rows({})[0].description,'No active project');
   } finally {await f.cleanup();}
@@ -74,7 +74,7 @@ test('package contributions use scoped Explorer action, native view and checked 
   const p=require('../package.json'),c=p.contributes;
   assert.equal(c.keybindings[0].key,'ctrl+k ctrl+alt+n');assert.equal(c.keybindings[0].command,'unrealSetup.newClass');
   assert.ok(c.commands.some(item=>item.command==='unrealSetup.newClass'));assert.ok(c.views.unrealSetup.some(item=>item.id==='unrealSetup.controlCenter'));
-  const menu=c.menus['explorer/context'];assert.equal(menu.length,1);assert.match(menu[0].when,/explorerResourceIsFolder.*resourcePath in unrealSetup.classFolders/);
+  const menu=c.menus['explorer/context'];assert.equal(menu.length,2);assert.match(menu[0].when,/explorerResourceIsFolder.*resourcePath in unrealSetup.classFolders/);
   assert.equal(c.configuration.properties['unrealSetup.runtimeRefreshInterval'].default,30);assert.equal(c.configuration.properties['unrealSetup.autoBuild'],undefined);
 });
 test('watcher reconciles structural changes and refreshes process state without builds',async()=>{

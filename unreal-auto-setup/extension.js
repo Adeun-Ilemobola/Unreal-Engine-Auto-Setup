@@ -40,6 +40,7 @@ function activate(context) {
     catch (error) { report(String(error)); vscode.window.showErrorMessage('Extension installation failed: ' + error.message); }
   }));
   const services={state:runtime.createState(),processes:processes.createService()};
+  services.dependencies=require('./dependencyActions').create(vscode,context,services);
   const runtimeReady=runner.register(vscode, context, report,services).catch(error=>report(String(error)));
   diagnostics.register(vscode,context,output,services);
   classWizard.register(vscode,context,services,report);

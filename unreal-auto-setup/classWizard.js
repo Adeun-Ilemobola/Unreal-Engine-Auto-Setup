@@ -26,7 +26,7 @@ async function input(vscode,options,validate) {
   }
 }
 function preview(plan) {
-  return ['Project: '+plan.project.name,'Module: '+plan.module.name+' ('+plan.module.origin+')','Type: '+plan.type.label,'Class: '+plan.name.className+(plan.name.interfaceName?' / '+plan.name.interfaceName:''),'API macro: '+plan.api,'Header: '+plan.files[0].path,'Source: '+plan.files[1].path,'Blueprint exposure: '+templates.exposureModes[plan.exposure].label,...(plan.missing.length?['Dependency advisory: Build.cs may need '+plan.missing.join(', ')+'. Rules are not edited or fully interpreted.']:[])].join('\n');
+  return ['Project: '+plan.project.name,'Module: '+plan.module.name+' ('+plan.module.origin+')','Type: '+plan.type.label,'Class: '+plan.name.className+(plan.name.interfaceName?' / '+plan.name.interfaceName:''),'API macro: '+plan.api,'Header: '+plan.files[0].path,'Source: '+plan.files[1].path,'Blueprint exposure: '+templates.exposureModes[plan.exposure].label,...(plan.dependencyStatus || []).map(item=>'Required '+item.name+': '+item.status),...(plan.missing.length?['Dependency advisory: Build.cs may need '+plan.missing.join(', ')+'. Rules are not edited or fully interpreted.']:[])].join('\n');
 }
 async function open(vscode,filename,options={preview:false}) {
   await fs.access(filename);await vscode.window.showTextDocument(await vscode.workspace.openTextDocument(vscode.Uri.file(filename)),options);
@@ -56,8 +56,9 @@ async function wizard(vscode,context,services={},options={}) {
   if(services.state) services.state.get(project.filename).lastCreatedClass={name:plan.name.className,files:plan.files.map(file=>file.path),createdAt:new Date().toISOString()};
   await services.refresh?.();
   await open(vscode,plan.files[0].path);
-  const next=await vscode.window.showInformationMessage('Created '+plan.name.className+'. Regeneration is optional if your project index needs it.','Open Source Beside Header','Regenerate Project Files');
+  const next=await vscode.window.showInformationMessage('Created '+plan.name.className+'. Regeneration is optional if your project index needs it.','Open Source Beside Header','Regenerate Project Files',...(plan.missing.length?['Manage Dependencies']:[]));
   if(next==='Open Source Beside Header') await open(vscode,plan.files[1].path,{preview:false,viewColumn:vscode.ViewColumn.Beside,preserveFocus:true});
+  else if(next==='Manage Dependencies') await vscode.commands.executeCommand('unrealSetup.manageDependencies',vscode.Uri.file(plan.module.buildFile));
   else if(next==='Regenerate Project Files') await vscode.commands.executeCommand('unrealSetup.regenerate');
   return plan;
 }

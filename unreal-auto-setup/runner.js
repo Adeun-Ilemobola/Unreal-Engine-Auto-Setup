@@ -31,7 +31,9 @@ async function register(vscode,context,report,services={}) {
   services.refresh=refresh;
   const builds=services.builds ||= buildApi.createService(vscode,context,state,{changed:()=>{void refresh();}});
   services.watcher=watcherApi.create(vscode,context,services,snapshot=>{
+    snapshot.dependencies=services.dependencies?.snapshot(snapshot.module);
     sidebar.update(snapshot);
+    void services.dependencies?.sync(snapshot).catch(error=>report('Dependency state: '+error.message));
     if(!snapshot.project) {buttons.forEach(button=>button.hide());return;}
     const {selected,session,editor}=snapshot,last=session.lastBuild;
     buttons[0].text=(last?.status==='Running'?'$(sync~spin)':last?.success===false?'$(error)':last?.success?'$(check)':'$(tools)')+' Build';

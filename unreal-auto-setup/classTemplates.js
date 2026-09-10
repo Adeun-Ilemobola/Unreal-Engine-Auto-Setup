@@ -1,6 +1,6 @@
 'use strict';
 const path=require('node:path');
-const {apiMacro,stripComments}=require('./modules');
+const {apiMacro}=require('./modules');
 const exposureModes={native:{label:'Native only',description:'Adds no Blueprint exposure; base-class inherited flags may remain.'},type:{label:'Blueprint Type',description:'Allows values of this type in Blueprint.'},blueprintable:{label:'Blueprintable',description:'Allows Blueprint subclasses and Blueprint values.'}};
 const registry=[
   {id:'object',label:'UObject',prefix:'U',base:'UObject',include:'UObject/Object.h',exposures:['native','type','blueprintable'],dependencies:['Core','CoreUObject']},
@@ -12,7 +12,7 @@ const registry=[
   {id:'worldSubsystem',label:'World Subsystem',prefix:'U',base:'UWorldSubsystem',include:'Subsystems/WorldSubsystem.h',exposures:['native','type']},
   {id:'engineSubsystem',label:'Engine Subsystem',prefix:'U',base:'UEngineSubsystem',include:'Subsystems/EngineSubsystem.h',exposures:['native','type']},
   {id:'localPlayerSubsystem',label:'Local Player Subsystem',prefix:'U',base:'ULocalPlayerSubsystem',include:'Subsystems/LocalPlayerSubsystem.h',exposures:['native','type']}
-].map(type=>({constructor:undefined,cpp:true,dependencies:['Core','CoreUObject','Engine'],...type}));
+].map(type=>({constructor:undefined,cpp:true,dependencies:['Core','CoreUObject','Engine'],...type})).map(type=>({...type,requiredDependencies:type.dependencies.map(name=>({name,preferredVisibility:'Public'}))}));
 const keywords=new Set(('alignas alignof and and_eq asm atomic_cancel atomic_commit atomic_noexcept auto bitand bitor bool break case catch char char8_t char16_t char32_t class compl concept const consteval constexpr constinit const_cast continue co_await co_return co_yield decltype default delete do double dynamic_cast else enum explicit export extern false float for friend goto if inline int long mutable namespace new noexcept not not_eq nullptr operator or or_eq private protected public reflexpr register reinterpret_cast requires return short signed sizeof static static_assert static_cast struct switch synchronized template this thread_local throw true try typedef typeid typename union unsigned using virtual void volatile wchar_t while xor xor_eq').split(' '));
 const deviceName=value=>/^(?:con|prn|aux|nul|com[1-9]|lpt[1-9])$/i.test(value);
 function names(input,type) {
@@ -57,8 +57,8 @@ function plan(project,module,typeId,input,folder='',exposure='native') {
   // Flat modules may disable Unreal's legacy module-root include search. A colocated header is always resolvable.
   const includePath=module.publicPath || module.privatePath ? [logical,name.header].filter(Boolean).join('/') : name.header;
   const text=render(type,name,api,includePath,exposure);
-  const rules=stripComments(module.ruleText);
-  const missing=type.dependencies.filter(dependency=>!new RegExp('"'+dependency+'"').test(rules));
-  return {project,module,type,name,api,exposure,logical,includePath,missing,files:[{path:headerPath,text:text.header},{path:sourcePath,text:text.source}]};
+  const dependencyStatus=require('./dependencyModel').required(require('./buildCsParser').parse(module.ruleText,module.name),type.requiredDependencies);
+  const missing=dependencyStatus.filter(item=>item.status!=='Present').map(item=>item.name);
+  return {project,module,type,name,api,exposure,logical,includePath,missing,dependencyStatus,files:[{path:headerPath,text:text.header},{path:sourcePath,text:text.source}]};
 }
 module.exports={keywords,deviceName,registry,exposureModes,names,subfolder,render,plan};

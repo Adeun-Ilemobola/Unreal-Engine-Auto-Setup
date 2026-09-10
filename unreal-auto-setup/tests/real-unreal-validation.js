@@ -22,6 +22,13 @@ async function run(exe,args,cwd,log) {
   const vscode={workspace:{isTrusted:true,workspaceFolders:[{uri:{fsPath:root}}],textDocuments:[]}};
   await creation.commit(await creation.plan(project,{name:'ValidationRuntime'}),vscode);
   const module=(await modules.discover(root)).find(m=>m.name==='ValidationRuntime');
+  if(process.argv[3]==='dependencies') {
+    const editor=require('../dependencyEditor');let text=await fs.readFile(module.buildFile,'utf8');
+    for(const [name,visibility] of [['Projects','Private'],['SlateCore','Public']]) text=editor.mutate(text,module.name,{name,visibility}).proposed;
+    await fs.writeFile(module.buildFile,text);module.ruleText=text;
+    await fs.appendFile(path.join(module.root,'Private','ValidationRuntime.cpp'),'\n#include "Interfaces/IPluginManager.h"\n#include "Widgets/SWidget.h"\n');
+    console.log('v0.7 dependency engine added Projects (Private) and SlateCore (Public) in the fresh fixture.');
+  }
   for(const type of classes.registry) await classFiles.create(classes.plan(project,module,type.id,'Validation'+type.label.replace(/ /g,''),'',type.exposures.includes('blueprintable')?'blueprintable':'type'),vscode);
   const ubt=path.join(engine,'Engine','Binaries','DotNET','UnrealBuildTool','UnrealBuildTool.exe');
   const results={root,engine,classes:classes.registry.map(t=>t.label)};

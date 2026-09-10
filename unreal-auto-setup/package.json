@@ -1,8 +1,8 @@
 {
   "name": "unreal-project-tools",
   "displayName": "Unreal Engine Auto Setup",
-  "description": "Set up Unreal Engine projects, create C++ classes, modules and project plugins, build and open the Editor from VS Code.",
-  "version": "0.6.5",
+  "description": "Unreal project setup, native Build/Run controls, C++ generation and safe module dependency tools for VS Code.",
+  "version": "0.7.0",
   "publisher": "local-tools",
   "license": "MIT",
   "engines": {
@@ -122,6 +122,34 @@
       {
         "command": "unrealSetup.createClassHere",
         "title": "Unreal: Create Class Here"
+      },
+      {
+        "command": "unrealSetup.inspectDependencies",
+        "title": "Unreal: Inspect Module Dependencies"
+      },
+      {
+        "command": "unrealSetup.addDependency",
+        "title": "Unreal: Add Module Dependency"
+      },
+      {
+        "command": "unrealSetup.removeDependency",
+        "title": "Unreal: Remove Module Dependency"
+      },
+      {
+        "command": "unrealSetup.changeDependencyVisibility",
+        "title": "Unreal: Change Dependency Visibility"
+      },
+      {
+        "command": "unrealSetup.findModuleForInclude",
+        "title": "Unreal: Find Module for Include"
+      },
+      {
+        "command": "unrealSetup.refreshDependencyIndex",
+        "title": "Unreal: Refresh Dependency Index"
+      },
+      {
+        "command": "unrealSetup.manageDependencies",
+        "title": "Unreal: Manage Module Dependencies"
       }
     ],
     "configuration": {
@@ -172,6 +200,18 @@
         {
           "command": "unrealSetup.createClassHere",
           "when": "unrealSetup.projectActive && isWorkspaceTrusted && explorerResourceIsFolder && resourcePath in unrealSetup.classFolders",
+          "group": "unreal@1"
+        },
+        {
+          "command": "unrealSetup.manageDependencies",
+          "when": "unrealSetup.projectActive && isWorkspaceTrusted && resourcePath in unrealSetup.moduleRules",
+          "group": "unreal@2"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "unrealSetup.findModuleForInclude",
+          "when": "unrealSetup.projectActive && isWorkspaceTrusted && editorLangId == cpp && unrealSetup.includeContext",
           "group": "unreal@1"
         }
       ]

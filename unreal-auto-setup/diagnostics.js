@@ -10,7 +10,7 @@ const core=require('./core');
 async function present(filename) { try { await fs.stat(filename); return true; } catch { return false; } }
 
 // Structured findings keep reporting separate from any future repair actions.
-async function collect(vscode,context,{discover=engine.candidates,processes=processApi.createService(),state}={}) {
+async function collect(vscode,context,{discover=engine.candidates,processes=processApi.createService(),state,dependencies}={}) {
   const findings=[];
   const add=(section,label,value,ok=true)=>findings.push({section,label,value,ok});
   add('VS Code','Workspace trust',vscode.workspace.isTrusted,vscode.workspace.isTrusted);
@@ -86,6 +86,14 @@ async function collect(vscode,context,{discover=engine.candidates,processes=proc
     add('Plugins',plugin.name,path.relative(project.root,plugin.filename)+' | Modules: '+(plugin.descriptor.Modules?.length || 0)+' | Discoverable: Yes | Enabled by descriptor: '+enabled+' (target/platform restrictions may apply)');
   }
   if(latest?.lastCreatedClass) add('Class generation','Last created this session',latest.lastCreatedClass.name+' (source files added; regeneration optional)');
+  const dependencyModels=new Map();
+  for(const module of moduleList) {
+    const parsed=dependencies?await dependencies.parsed(module):require('./buildCsParser').parse(module.ruleText,module.name);dependencyModels.set(module.buildFile,parsed);
+    add('Dependencies',module.name,parsed.status+' | '+['Public','Private'].map(v=>v+': '+parsed.dependencies.filter(d=>d.visibility===v).map(d=>d.name).join(', ')).join(' | ')+(parsed.reasons.length?' | '+parsed.reasons.join(' '):''));
+  }
+  add('Dependency Index','State',dependencies?JSON.stringify(dependencies.info()):'Not indexed (explicit refresh available)');
+  const graph=require('./dependencyModel').graph(moduleList.map(m=>({...m,type:m.type || project?.descriptor.Modules?.find(d=>d.Name===m.name)?.Type})),dependencyModels,dependencies?.index.allModules().length?dependencies.index.allModules():moduleList);
+  for(const warning of graph.warnings) add('Dependency relationships','Review',warning);
   return findings;
 }
 function format(findings) {

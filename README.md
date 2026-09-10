@@ -2,13 +2,13 @@
 
 Initialize Unreal projects, create C++ classes, modules and project plugins, build with compiler Problems, monitor project Editors, attach the C++ debugger, and regenerate project files from VS Code.
 
-**Release:** 0.6.5 · **Platform:** Windows / Win64 · **Unreal Engine:** 5.8+ · **VS Code:** 1.100.0+ · **License:** MIT
+**Release:** 0.7.0 · **Platform:** Windows / Win64 · **Unreal Engine:** 5.8+ · **VS Code:** 1.100.0+ · **License:** MIT
 
 Future Unreal Engine releases may require compatibility updates. This is a locally packaged extension with experimental build/editor controls. Its stable extension ID remains `local-tools.unreal-project-tools` so earlier installations can upgrade normally.
 
 ## Install and get started
 
-1. In the VS Code profile you use for Unreal, select **Extensions > ... > Install from VSIX...** and install `unreal-project-tools-0.6.5.vsix`.
+1. In the VS Code profile you use for Unreal, select **Extensions > ... > Install from VSIX...** and install `unreal-project-tools-0.7.0.vsix`.
 2. Reload VS Code if prompted. Open the single folder directly containing your `.uproject` and trust the workspace.
 3. Automatic initialization adds missing configuration. If prompted, choose an engine installation and complete Skybox's IntelliSense selection.
 4. Use **Build** to compile the active selection or **Run** to get the project ready in Unreal Editor. Open the **Unreal** sidebar for configuration and tools.
@@ -31,6 +31,7 @@ Open **Unreal** in the Activity Bar for the native control center:
 | Project | Project name/path, detected engine version or unresolved association, recent module |
 | Build Configuration | Clickable Target, Platform and Configuration selectors |
 | Runtime | Editor state/PIDs, last build result, metadata freshness |
+| Dependencies | Selected module dependencies, edit safety, relationship warnings and index tools |
 | Actions | Build, Run, Open Editor, Build and Open Editor, Attach Debugger, regeneration, Doctor and logs |
 | Creation | Full New C++ Class, New Module and New Plugin wizards |
 | Navigation | Project descriptor, module rules, target rules and plugin descriptor |
@@ -52,6 +53,65 @@ Right-click a discovered module folder and choose **Unreal: Create Class Here**.
 A Public/Inventory or Private/Inventory selection maps to Public/Inventory for the header and Private/Inventory for the source. The module root maps to its default layout; flat modules retain colocated files. Only known safe module directories appear in the Explorer menu. Binaries, Intermediate, Saved, DerivedDataCache, symlinks and unrelated folders are rejected again at invocation. New folders may need the next event/poll or explicit sidebar Refresh before the menu appears. Module/plugin Explorer entries are deferred; use the sidebar for those operations.
 
 The full **Unreal: New C++ Class** wizard remains available with all nine types. Its default Windows shortcut is **Ctrl+K, then Ctrl+Alt+N**, active in a trusted Unreal project. It was checked against the installed Windows default keybindings in a real VS Code host; users and other extensions can override it. Ctrl+Shift+T remains untouched.
+
+## Module dependency tools
+
+v0.7 adds **safely editable recognized Build.cs dependency patterns**. The status bar remains Build / Run. The Unreal sidebar adds a collapsed **Dependencies** section for the selected/default module, with Public/Private lists, edit support, index status, relationship warnings and management actions.
+
+| Command | Purpose |
+| --- | --- |
+| Unreal: Inspect Module Dependencies | Show categories, source lines and edit support |
+| Unreal: Add Module Dependency | Choose a discovered module, choose visibility, preview and confirm |
+| Unreal: Remove Module Dependency | Remove an unambiguous literal declaration after a source-usage warning |
+| Unreal: Change Dependency Visibility | Explicit Public/Private move, with downgrade warnings |
+| Unreal: Find Module for Include | Resolve the active include and offer an appropriate dependency action |
+| Unreal: Refresh Dependency Index | Explicitly rebuild project and engine header ownership data |
+| Unreal: Manage Module Dependencies | Compact management picker, also available on discovered Build.cs files in Explorer |
+
+A source file or recognized Build.cs reliably identifies its containing project/plugin module. Global operations otherwise use the existing module picker. Engine modules are search candidates, never write targets. Project/plugin candidates remain usable before optional engine indexing; choose **Index engine modules...** in the Add picker or Refresh Dependency Index to load engine candidates.
+
+### Recognized syntax and refusal behavior
+
+The tokenizer skips comments and strings, records token offsets, checks delimiter balance and recognizes the conventional `class Name : ModuleRules` and its `public Name(ReadOnlyTargetRules Target) : base(Target)` constructor. Supported literal declarations include:
+
+```csharp
+PublicDependencyModuleNames.AddRange(new string[] { "Core", "Engine" });
+PrivateDependencyModuleNames.AddRange(new[] { "Slate", "SlateCore" });
+PrivateDependencyModuleNames.AddRange(["Projects"]);
+PrivateDependencyModuleNames.Add("UMG");
+```
+
+Multiline lists, trailing commas, `this.` receivers, tabs/spaces, LF/CRLF and empty arrays are supported. Collection-expression AddRange syntax was verified in the installed UE 5.8.1 Core.Build.cs. The generated module/plugin templates are recognized immediately. A missing dependency declaration is inserted only inside a recognized safe constructor. The known explicit/shared PCH assignment is allowed alongside dependency statements.
+
+The parser deliberately refuses a constructor containing other statements it cannot establish as safe. Conditionals, loops, variables/helper-generated lists, computed strings, assignments to dependency lists, additional methods/fields, using aliases, unsupported class structure, and duplicate/contradictory Public/Private entries are **Complex / Read Only**. Broken tokenization or delimiters are **Malformed**. Readable literal entries can still be inspected, but the entire file remains read-only for automatic edits. This is not a general C# parser, evaluator or refactoring engine; even valid hand-written Build.cs code may require manual editing.
+
+DynamicallyLoadedModuleNames, PublicIncludePathModuleNames and PrivateIncludePathModuleNames are shown separately and never rewritten. They do not count as link dependencies.
+
+### Preview, visibility and edit safety
+
+Every command and Quick Fix uses the same mutation engine, native virtual-document diff and explicit **Apply/Cancel** confirmation. No preview file is written under Source. Minimal token-range edits retain comments, unrelated statements, indentation and line endings; no formatter runs.
+
+Build.cs must be clean before the operation. Trust, the current workspace, discovered module ownership, path containment, symlinks, hard links and content changes since preview are checked again before applying. The result is an **undoable, unsaved WorkspaceEdit** in VS Code. Save it when ready; Build's existing save step also saves it. A rejected WorkspaceEdit leaves the original unchanged. There is no direct disk overwrite or silent save behind a dirty editor buffer.
+
+Duplicate insertion is refused. Existing Public visibility is not downgraded by Add. Private-to-Public promotion is explicit; Public-to-Private movement warns that consumers may break and scans known exposed/flat headers for direct include evidence. Removal never claims a dependency is unused or deletes source references. Failed safety checks require manual review rather than guessed C# edits.
+
+Public headers recommend **Public**; cpp files and Private headers recommend **Private**. Flat headers or unknown API boundaries conservatively recommend Public and explain the uncertainty. Manual visibility override remains available. Self-dependencies and unconditional Runtime/unknown-host-to-Editor relationships are blocked. Ambiguous module names across roots are rejected. Cross-plugin/project relationships warn that plugin descriptor configuration may also be needed; neither `.uplugin` nor `.uproject` is modified by dependency tools.
+
+### Header ownership, cache and diagnostics
+
+The async index uses module Build.cs directory boundaries and exact include-relative paths across project modules, project plugins, Engine/Source and engine-distributed plugins. Public/Classes paths are mapped to normal Unreal include paths. Private header ownership is retained but does not produce cross-module add suggestions. Duplicate matches remain ambiguous; there is no basename-only fallback.
+
+Engine indexing is **on demand**, separate from the runtime timer. The in-memory cache is keyed by normalized engine path and Build.version content. Engine identity changes invalidate it; explicit Refresh rebuilds it. It is session-only: restarting the extension rebuilds on the next request, and there is no disk cache to corrupt or migrate. Project/header events refresh the smaller project portion. Existing local dependency parses are cached by text; the 30-second watcher never scans engine source or runs dependency analysis across all project source files. Build and Run do not wait for indexing.
+
+**Find Module for Include** works on the active include line. Once ownership is indexed and unambiguous, the same command appears in the C++ editor context menu. It reports the owning module and direct dependency status, offering add or promotion where safe. Macro includes, unresolved paths, duplicate matches and arbitrary C++ preprocessing semantics are not inferred.
+
+Open C++ documents receive informational **Unreal Dependencies** diagnostics only when ownership is unique and the source Build.cs is safely understood. Existing direct dependencies, own-module headers, private target headers and unresolved/system includes are excluded. Known UnrealBuildTool diagnostics on the same line suppress duplicate advisory output. The advisory checks direct declarations; it is not a compiler verdict or proof about transitive visibility. Public/Private Quick Fixes are ordered by context and still require the same diff confirmation. Build.cs/editor/index changes refresh diagnostics; the extension does not continuously parse all C++ files.
+
+The project/plugin graph records directed Public/Private edges. Doctor and the sidebar report duplicates, self-dependencies, names absent from the current index, suspicious Runtime/Editor relationships and detectable local cycles. Conditional/complex rules and unknown engine modules limit completeness. Cycles are reported, never automatically repaired. Engine-internal cycle analysis is out of scope.
+
+Class templates now declare required modules and preferred visibility through the shared dependency model. The class preview reports Present, Missing or Unknown for complex rules, and offers **Manage Dependencies** after creation when review is needed. Class creation itself never silently edits Build.cs. Newly generated modules/plugins use this same parser and become manageable without restarting.
+
+**No automatic build** follows an edit, save, index refresh or timer. Save Build.cs and explicitly Build or regenerate when needed. Dependency edits mark structural metadata stale; unsaved editor changes must be saved before regeneration.
 
 ## Required companion extensions
 
@@ -184,7 +244,7 @@ UObject, Actor and component templates offer Native only, Blueprint Type and Blu
 
 The wizard checks trust, workspace identity, module rules/layout, unsaved destination/rule/descriptor documents, path containment, symlinks and both destination collisions. It creates new files exclusively and never overwrites existing sources. A second-file failure triggers best-effort rollback of files and empty directories created by that operation. Files changed by another actor are retained and reported. This is not a crash-proof filesystem transaction or a global class-name collision check.
 
-Build.cs and Target.cs are never edited. The preview advises about apparently missing Core/CoreUObject/Engine dependencies; this is a conservative text check, not C# dependency evaluation. Save needed rule changes yourself before compiling.
+Class creation does not edit Build.cs or Target.cs. Its preview uses the shared dependency parser to report required modules as Present, Missing or Unknown. Manage Dependencies is an explicit follow-up using the same preview-and-confirm editing workflow.
 
 The header opens after creation. The success notification offers **Open Source Beside Header** or **Regenerate Project Files**. Regeneration is optional: creating source files alone does not mark Build.cs/Target.cs metadata stale. Existing stale state remains intact. Modules are discovered afresh on each command.
 
@@ -223,11 +283,11 @@ New plugin descriptors use FileVersion 3, Version 1, VersionName 1.0, the entere
 
 ### Creation safety
 
-Names must be safe C++/C# identifiers and API macros; keywords, reserved filenames, invalid paths and case-insensitive collisions are rejected. Existing discovered modules, plugin names, descriptor declarations and destination directories are checked. Trust, workspace identity, descriptor changes, unsaved documents, symlinks and descriptor hard links are checked before creation. All new files use exclusive writes. Existing arbitrary Build.cs and Target.cs files are never edited.
+Names must be safe C++/C# identifiers and API macros; keywords, reserved filenames, invalid paths and case-insensitive collisions are rejected. Existing discovered modules, plugin names, descriptor declarations and destination directories are checked. Trust, workspace identity, descriptor changes, unsaved documents, symlinks and descriptor hard links are checked before creation. All new files use exclusive writes. Module/plugin creation does not edit other existing Build.cs or Target.cs files. Dependency management is a separate explicitly confirmed operation.
 
 Creation tracks its own files and directories. A failure rolls them back only while their identities and contents still match; pre-existing files and concurrent user edits are preserved. Project descriptor changes use a flushed temporary sibling file and rename, with an original-content comparison before replacement. If a later failure occurs, restoration uses the same comparison strategy. Incomplete rollback identifies remaining files for inspection. This is best-effort transactional creation, not a crash-proof multi-file transaction or protection against every external filesystem race.
 
-Successful structural creation marks metadata stale, remembers the module and opens its Build.cs. Regenerate Project Files is offered once and runs only when selected. Source-only class creation retains its different behavior: no false structural-stale marker. No generic dependency editing, module/plugin delete/rename/move, engine-wide plugin installation, specialized plugin templates or Marketplace tooling is included. A Blueprint-only project may still need target rules/toolchain setup to build; this wizard does not create or edit targets.
+Successful structural creation marks metadata stale, remembers the module and opens its Build.cs. Regenerate Project Files is offered once and runs only when selected. Source-only class creation retains its different behavior: no false structural-stale marker. Module/plugin creation does not alter other modules’ dependencies. No module/plugin delete/rename/move, engine-wide plugin installation, specialized plugin templates or Marketplace tooling is included. A Blueprint-only project may still need target rules/toolchain setup to build; this wizard does not create or edit targets.
 
 ## Engine detection
 
@@ -249,6 +309,9 @@ The version check requires 5.8+ and matches numeric associations by major/minor.
 
 | Symptom | Action |
 | --- | --- |
+| Dependency edit refused | Inspect the reported unsupported pattern and edit Build.cs manually; arbitrary C# is deliberately read-only |
+| Dependency candidate/header missing | Run Refresh Dependency Index with a valid engine path; ambiguous includes are never guessed |
+| Dependency change not on disk | Save the undoable Build.cs editor change before regeneration; Build saves files first |
 | Sidebar stale or new Explorer folder missing | Click Refresh in the Unreal sidebar; inspect runtimeRefreshInterval and Diagnose Project |
 | Run reuses Editor without rebuilding | Use Build or Build and Open Editor explicitly when an external rebuild is intended |
 | Shortcut unavailable | Open a trusted Unreal project and check user/extension keybinding overrides |
@@ -277,15 +340,15 @@ The version check requires 5.8+ and matches numeric associations by major/minor.
 
 One local Windows project root only; no multi-root or virtual workspace support. The extension does not activate in Restricted Mode. Discovery does not execute C# or recursively inspect nested targets. Build controls need a C++ target; Blueprint-only projects can use Open Editor. Some configurations require source engines or additional engine components. Paths containing quotes, percent signs, exclamation marks, or certain control characters are rejected by terminal generation.
 
-No module/plugin deletion or renaming, engine plugin creation, Blueprint asset creation, automatic Build.cs/Target.cs editing, additional class-template families, cooking/packaging/deployment, custom debugger backend, custom IntelliSense engine, Live Coding control, Insights, multiplayer orchestration, automatic repair, or real-time log tailing is included. Compiler parsing covers common source diagnostics, not every Unreal message. Process matching cannot reliably identify Editors launched with relative-only project arguments or hidden command lines.
+No module/plugin deletion or renaming, engine plugin creation, Blueprint asset creation, arbitrary C# Build.cs refactoring or automatic Target.cs editing, additional class-template families, cooking/packaging/deployment, custom debugger backend, custom IntelliSense engine, Live Coding control, Insights, multiplayer orchestration, automatic repair, or real-time log tailing is included. Compiler parsing covers common source diagnostics, not every Unreal message. Process matching cannot reliably identify Editors launched with relative-only project arguments or hidden command lines.
 
 ## Development and capability report
 
 See [CAPABILITIES.md](CAPABILITIES.md) for the implementation inventory, command IDs, state/files, and validation scope.
 
-Run `node --test tests/*.test.js` from the extension source directory. From the repository root, run `python build_bundle.py` to produce `unreal-project-tools-0.6.5.vsix` and `Unreal-Engine-Auto-Setup.zip`. No npm runtime dependencies are used.
+Run `node --test tests/*.test.js` from the extension source directory. From the repository root, run `python build_bundle.py` to produce `unreal-project-tools-0.7.0.vsix` and `Unreal-Engine-Auto-Setup.zip`. No npm runtime dependencies are used.
 
-The v0.6.5 suite has **185 passing tests**: all 155 previous tests remain (the intentionally replaced third-status-item assertion was updated), with 30 new UX/runtime cases covering the sidebar, Build/Run behavior, operation locking, refresh scheduling/disposal, Explorer mapping, metadata reconciliation and contribution metadata. Mocked VS Code APIs and disposable filesystem fixtures verify UI and failure paths. Existing real PowerShell build/diagnostic tests also pass.
+The v0.7.0 suite has **239 passing tests**: all 185 prior regressions remain, with 54 new dependency cases. Intentionally expanded sidebar/menu expectations and the filesystem-watcher mock were updated. New coverage includes parser/refusal cases, minimal edits, file/editor safety, diff confirmation, graph/cycles, ownership/cache behavior, diagnostics, Quick Fixes and generator integration. Mocked VS Code APIs and disposable filesystem fixtures verify UI and failure paths. Existing real PowerShell build/diagnostic tests also pass.
 
 **Prior v0.6 UE 5.8.1 compilation validation succeeded.** A fresh disposable project generated a Runtime module in Public/Private layout, regenerated VS Code project files, compiled all nine v0.5 class types through Unreal's reflection/build pipeline, and linked the Editor target. A blank Runtime plugin in Flat layout was then generated and discovered without `.uproject` plugin enablement changes; the Editor target compiled and linked again. Target rules were created only in the disposable test fixture. No production project source was changed.
 
@@ -295,4 +358,5 @@ Implementation references: [VS Code C++ attach configuration](https://code.visua
 
 Native UI implementation references: [Tree View API](https://code.visualstudio.com/api/extension-guides/tree-view), [when-clause contexts](https://code.visualstudio.com/api/references/when-clause-contexts).
 
-Live v0.6.5 VS Code validation opened the native Unreal view, executed Refresh and Open Project Descriptor, verified the six sidebar sections and scoped folder data, and checked the Windows shortcut. A real process query reported Editor Stopped. Running/duplicate/failure behavior was exercised with mocks and existing PowerShell tests; no Unreal Editor was launched or new Unreal compile performed for this UI patch. See [VALIDATION.md](VALIDATION.md).
+
+Current v0.7 validation includes real UE 5.8.1 ownership checks, a native VS Code WorkspaceEdit/Undo and Quick Fix check, and successful UBT Editor compilation after adding both Public and Private dependencies in a disposable project. See [VALIDATION.md](VALIDATION.md) for exact evidence and limits.

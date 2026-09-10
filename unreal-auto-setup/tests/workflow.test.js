@@ -25,7 +25,7 @@ async function fixture(trusted=true, missingExtensions=false) {
   });
   const vscode={
     ConfigurationTarget:{Global:1,Workspace:2,WorkspaceFolder:3},
-    workspace:{isTrusted:trusted,workspaceFolders:[{uri:{scheme:'file',fsPath:root,toString:()=>root}}],textDocuments:[],getConfiguration:config,onDidChangeWorkspaceFolders:()=>disposable,onDidGrantWorkspaceTrust:()=>disposable,createFileSystemWatcher:()=>({dispose(){},onDidCreate:()=>disposable})},
+    workspace:{isTrusted:trusted,workspaceFolders:[{uri:{scheme:'file',fsPath:root,toString:()=>root}}],textDocuments:[],getConfiguration:config,onDidChangeWorkspaceFolders:()=>disposable,onDidGrantWorkspaceTrust:()=>disposable,createFileSystemWatcher:()=>({dispose(){},onDidCreate:()=>disposable,onDidChange:()=>disposable,onDidDelete:()=>disposable})},
     window:{createOutputChannel:()=>({appendLine(){},dispose(){}}),showInformationMessage(){},showErrorMessage(text){errors.push(text);},showQuickPick:async()=>undefined},
     extensions:{getExtension:id=>installed.has(id)?({activate:async()=>{},packageJSON:{contributes:{commands:[{title:'Select Build Configuration...',command:'verified-from-manifest'}]}}}):undefined},
     commands:{registerCommand(name,fn){registered.set(name,fn);return disposable;},async executeCommand(name,id){invoked.push(name);if(name==='workbench.extensions.installExtension') installed.add(id);}}

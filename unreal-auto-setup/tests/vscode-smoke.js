@@ -18,7 +18,7 @@ exports.run=async()=>{
     await vscode.commands.executeCommand('unrealSetup.refresh');
     await vscode.commands.executeCommand('unrealSetup.openProjectDescriptor');
     assert.equal(vscode.window.activeTextEditor.document.uri.fsPath,path.join(root,'Smoke.uproject'));
-    const rows=require('../sidebar').rows(api.snapshot());assert.equal(rows.length,6);result.sections=rows.map(row=>row.label);
+    const rows=require('../sidebar').rows(api.snapshot());assert.equal(rows.length,7);result.sections=rows.map(row=>row.label);
     assert.ok(api.snapshot().folders.some(folder=>folder.endsWith('Public')));
     result.success=true;
   } catch(error) {result.error=error.stack;throw error;}
