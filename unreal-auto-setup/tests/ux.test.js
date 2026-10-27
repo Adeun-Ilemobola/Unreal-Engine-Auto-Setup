@@ -21,7 +21,7 @@ test('sidebar groups configuration, runtime and callable actions; changes fire T
   const f=await classFixture();try {
     const data={project:f.project,selected:{target:'GameEditor',platform:'Win64',configuration:'DebugGame'},editor:{state:'Running',matches:[{pid:9}]},session:{stale:true,lastBuild:{status:'Succeeded'}}};
     const view=sidebar(f.vscode,f.context);let events=0;view.provider.onDidChangeTreeData(()=>events++);view.update(data);assert.equal(events,1);
-    const sections=view.provider.getChildren();assert.deepEqual(sections.map(x=>x.label),['Project','Build Configuration','Runtime','Actions','Creation','Dependencies','Navigation']);
+    const sections=view.provider.getChildren();assert.deepEqual(sections.map(x=>x.label),['Project','Build Configuration','Runtime','Actions','Creation','Dependencies','Automation','Navigation']);
     assert.equal(sections[1].children[2].description,'DebugGame');assert.equal(sections[1].children[0].command.command,'unrealSetup.selectTarget');assert.equal(sections[3].children[1].command.command,'unrealSetup.run');
     assert.equal(sections[2].children[1].description,'9');assert.equal(rows({})[0].description,'No active project');
   } finally {await f.cleanup();}

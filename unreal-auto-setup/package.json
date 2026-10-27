@@ -1,8 +1,8 @@
 {
   "name": "unreal-project-tools",
   "displayName": "Unreal Engine Auto Setup",
-  "description": "Unreal project setup, native Build/Run controls, C++ generation and safe module dependency tools for VS Code.",
-  "version": "0.7.0",
+  "description": "Unreal project setup, safe build automation, Editor controls, C++ generation and module dependency tools for VS Code.",
+  "version": "0.8.0",
   "publisher": "local-tools",
   "license": "MIT",
   "engines": {
@@ -150,6 +150,31 @@
       {
         "command": "unrealSetup.manageDependencies",
         "title": "Unreal: Manage Module Dependencies"
+      },
+      {
+        "command": "unrealSetup.automationMode",
+        "title": "Set Automation Mode",
+        "category": "Unreal"
+      },
+      {
+        "command": "unrealSetup.autoBuildDelay",
+        "title": "Set Auto Build Delay",
+        "category": "Unreal"
+      },
+      {
+        "command": "unrealSetup.runtimeInterval",
+        "title": "Set Runtime Refresh Interval",
+        "category": "Unreal"
+      },
+      {
+        "command": "unrealSetup.cancelPendingAutomaticBuild",
+        "title": "Cancel Pending Automatic Build",
+        "category": "Unreal"
+      },
+      {
+        "command": "unrealSetup.cancelBuild",
+        "title": "Cancel Build",
+        "category": "Unreal"
       }
     ],
     "configuration": {
@@ -166,7 +191,39 @@
           "default": 30,
           "minimum": 0,
           "maximum": 3600,
-          "description": "Lightweight runtime refresh interval in seconds: 0 disables polling; use 10–3600. Values between 0 and 10 fall back to 30. Does not build or regenerate."
+          "description": "Runtime reconciliation interval in seconds: 0 disables polling; use 10–3600. Invalid values fall back to 30. Checks pending changes; never an unconditional build timer."
+        },
+        "unrealSetup.automationMode": {
+          "type": "string",
+          "enum": [
+            "off",
+            "watch",
+            "autoBuild",
+            "autoBuildAndRegenerate"
+          ],
+          "enumDescriptions": [
+            "No automatic work",
+            "Track changes without compiling (recommended)",
+            "Build saved source after debounce; stale structure blocks builds",
+            "Regenerate stale structure, then build after debounce"
+          ],
+          "default": "watch",
+          "scope": "resource",
+          "description": "Project automation mode. Compilation is opt-in."
+        },
+        "unrealSetup.autoBuildDelay": {
+          "type": "number",
+          "default": 30,
+          "minimum": 5,
+          "maximum": 300,
+          "scope": "resource",
+          "description": "Seconds after the last relevant saved change before automatic work."
+        },
+        "unrealSetup.verboseRuntimeLogging": {
+          "type": "boolean",
+          "default": false,
+          "scope": "resource",
+          "description": "Log runtime reconciliation details."
         }
       }
     },

@@ -31,7 +31,8 @@ function createService(vscode,context,state,{spawnProcess=spawn,stopProcess=pid=
   execFile(path.join(process.env.SystemRoot || 'C:\\Windows','System32','taskkill.exe'),['/PID',String(pid),'/T','/F'],{windowsHide:true},()=>{});
 },changed=()=>{}}={}) {
   const diagnostics=vscode.languages.createDiagnosticCollection('unreal-build');
-  const owned=new Map();let activeTerminal;
+  const output=vscode.window.createOutputChannel?.('Unreal Build History');if(output) context.subscriptions.push(output);
+  const owned=new Map();let activeTerminal,activeCancel;
   context.subscriptions.push(diagnostics);
   function run(spec) {
     const write=new vscode.EventEmitter(),close=new vscode.EventEmitter();
@@ -45,6 +46,7 @@ function createService(vscode,context,state,{spawnProcess=spawn,stopProcess=pid=
       owned.set(spec.project,new Set());
       state.get(spec.project).lastBuild=result;
     }
+    output?.appendLine('['+result.startTime+'] '+(spec.automatic?'Auto ':'Manual ')+spec.kind+' '+(spec.target || ''));
     changed();
     function line(text) {
       if(spec.kind!=='build') return;
@@ -60,7 +62,7 @@ function createService(vscode,context,state,{spawnProcess=spawn,stopProcess=pid=
       diagnostics.set(vscode.Uri.file(parsed.file),entries);
     }
     function chunk(stream,data) {
-      const text=String(data);
+      const text=String(data);output?.append(text);
       write.fire(text.replace(/\r?\n/g,'\r\n'));
       pending[stream]+=text;
       const lines=pending[stream].split(/\r?\n/);pending[stream]=lines.pop();
@@ -91,9 +93,9 @@ function createService(vscode,context,state,{spawnProcess=spawn,stopProcess=pid=
     },close() {if(finished) return;cancelled=true;if(child?.pid) stopProcess(child.pid);else finish(null);}};
     const terminal=vscode.window.createTerminal({name:spec.kind==='build'?'Unreal: Build':'Unreal: Project Files',pty,isTransient:true});
     context.subscriptions.push(terminal,write,close);
-    activeTerminal=terminal;terminal.show();
+    activeTerminal?.dispose();activeTerminal=terminal;activeCancel=()=>pty.close();terminal.show(!!spec.automatic);
     return {done,terminal,cancel:()=>pty.close()};
   }
-  return {run,diagnostics,reveal:()=>activeTerminal?.show()};
+  return {run,diagnostics,cancel:()=>activeCancel?.(),reveal:()=>activeTerminal?.show()};
 }
 module.exports={quote,specification,skyboxArguments,script,editorScript,createService};

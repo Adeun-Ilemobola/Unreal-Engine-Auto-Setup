@@ -51,13 +51,13 @@ async function restore(saved) {
     if(!current?.equals(content)) await fs.writeFile(filename,content);
   }
 }
-async function run(project,engine,vscode,state,builds) {
+async function run(project,engine,vscode,state,builds,{automatic=false}={}) {
   if(!vscode.workspace.isTrusted) throw new Error('Trust the workspace before project generation.');
   const spec=await specification(engine,project);
   const saved=await snapshot(project,vscode,engine);
   const revision=state.get(project.filename).revision;
   let result;
-  try {result=await builds.run(spec).done;}
+  try {result=await builds.run({...spec,automatic}).done;}
   finally {await restore(saved);}
   state.generated(project.filename,revision,result.success);
   return result;

@@ -53,7 +53,8 @@ async function collect(vscode,context,{discover=engine.candidates,processes=proc
   const refreshInterval=require('./runtimeWatcher').interval(config.get('unrealSetup.runtimeRefreshInterval'));
   add('Runtime watcher','Enabled',refreshInterval!==0);
   add('Runtime watcher','Interval seconds',refreshInterval);
-  add('Auto Build','State','Not implemented; no automatic builds');
+  const automation=state?.peek?.(project?.filename)?.automation;
+  for(const [label,value] of Object.entries({Mode:automation?.mode || require('./runtimeCoordinator').mode(config.get('unrealSetup.automationMode')),Delay:require('./runtimeCoordinator').delay(config.get('unrealSetup.autoBuildDelay')),Reconciliation:refreshInterval,Pending:automation?.state || 'Idle',Blocked:automation?.blocked || 'No',SourceDirty:automation?.dirty?.filter(d=>d.kind!=='Structure').length || 0,StructuralDirty:automation?.dirty?.filter(d=>d.kind==='Structure').length || 0,Trigger:automation?.reason || 'None',LastAutomatic:JSON.stringify(automation?.lastAutomatic || 'None'),Strategy:require('./liveCoding').resolve(editor,automation?.dirty).name,LiveCoding:JSON.stringify(await require('./liveCoding').inspect(editor))})) add('Automation',label,value);
   add('Runtime','Editor state',editor.state,editor.state!=='Unknown');
   add('Runtime','Matching PIDs',editor.matches.map(item=>item.pid).join(', ') || 'None');
   add('Runtime','Matching executable',editor.matches.map(item=>item.executable || 'Unavailable').join(', ') || 'None');

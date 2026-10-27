@@ -23,11 +23,11 @@ function scheduler({collect,publish,seconds=()=>30,setTimer=setInterval,clearTim
   return {refresh,reset(){epoch++;active=false;schedule(false);return refresh();},configure(){schedule(active);return refresh();},dispose(){disposed=true;epoch++;pending=false;schedule(false);},get busy(){return !!flight;},get enabled(){return !!period;}};
 }
 function create(vscode,context,services,publish) {
-  let snapshot={},scopeWatcher,fingerprint=new Map(),fingerprintProject;
+  let snapshot={},scopeWatcher,fingerprint=new Map(),fingerprintProject,sourceFingerprint=new Map(),sourceProject,previousModules=[];
   const fs=require('node:fs/promises'),path=require('node:path');
   const collect=async()=>{
-    if(!vscode.workspace.isTrusted || process.platform!=='win32') return {};
-    const project=await projects.readProject(vscode,{interactive:false});if(!project) return {};
+    if(!vscode.workspace.isTrusted || process.platform!=='win32') {services.coordinator?.switchProject(undefined);return {};}
+    const project=await projects.readProject(vscode,{interactive:false});if(!project) {services.coordinator?.switchProject(undefined);return {};}
     const [editor,moduleList,plugins,engine]=await Promise.all([services.processes.get(project.filename,{fresh:true}),modules.discover(project.root),modules.plugins(project.root),engines.inspect(project.config.get('unrealEngine.enginePath'),project.descriptor.EngineAssociation)]);
     const next=new Map();
     for(const file of [project.filename,...project.targets.map(t=>path.join(project.root,'Source',t.file)),...moduleList.map(m=>m.buildFile),...plugins.map(p=>p.filename)]) {
@@ -35,6 +35,16 @@ function create(vscode,context,services,publish) {
     }
     if(fingerprintProject===project.filename) for(const file of new Set([...next.keys(),...fingerprint.keys()])) if(next.get(file)!==fingerprint.get(file)) services.state.mark(project,file);
     fingerprintProject=project.filename;fingerprint=next;
+    const coordinator=services.coordinator;
+    if(coordinator) {
+      coordinator.switchProject(project.filename);
+      coordinator.configure({mode:project.config.get('unrealSetup.automationMode'),delay:project.config.get('unrealSetup.autoBuildDelay')});
+      const nextSources=await require('./dirtyTracker').files(project,moduleList);
+      if(sourceProject===project.filename) for(const file of new Set([...sourceFingerprint.keys(),...nextSources.keys()])) if(sourceFingerprint.get(file)!==nextSources.get(file)) coordinator.mark(file,require('./dirtyTracker').classify(project,[...moduleList,...previousModules],file));
+      sourceFingerprint=nextSources;sourceProject=project.filename;previousModules=moduleList;
+      if(project.config.get('unrealSetup.verboseRuntimeLogging')) services.runtimeLog?.('[Runtime] Reconciled '+nextSources.size+' local files; '+coordinator.snapshot().state);
+      coordinator.reconcile();
+    }
     const folders=await require('./explorerClass').locations(moduleList,vscode);
     return {folders,project,editor,modules:moduleList,plugins,engine,selected:projects.selection(context,project),session:services.state.get(project.filename),module:modules.recent(context,project,moduleList)};
   };
@@ -48,13 +58,14 @@ function create(vscode,context,services,publish) {
     scopeWatcher?.dispose();
     const root=vscode.workspace.workspaceFolders?.[0];
     if(root) {
-      scopeWatcher=vscode.workspace.createFileSystemWatcher(vscode.RelativePattern?new vscode.RelativePattern(root,'**/*.{Build.cs,Target.cs,uproject,uplugin}'):'**/*.{Build.cs,Target.cs,uproject,uplugin}');
+      scopeWatcher=vscode.workspace.createFileSystemWatcher(vscode.RelativePattern?new vscode.RelativePattern(root,'**/*.{cpp,h,inl,ipp,Build.cs,Target.cs,uproject,uplugin}'):'**/*.{cpp,h,inl,ipp,Build.cs,Target.cs,uproject,uplugin}');
       const listeners=[scopeWatcher.onDidCreate(metadata),scopeWatcher.onDidChange(metadata),scopeWatcher.onDidDelete(metadata)],watcher=scopeWatcher;
       scopeWatcher={dispose(){for(const item of listeners) item.dispose();watcher.dispose();}};
     } else scopeWatcher=undefined;
   }
+  if(vscode.workspace.onDidSaveTextDocument) context.subscriptions.push(vscode.workspace.onDidSaveTextDocument(doc=>metadata(doc.uri)));
   watch();
-  context.subscriptions.push({dispose(){controller.dispose();scopeWatcher?.dispose();}},vscode.workspace.onDidChangeWorkspaceFolders(()=>{watch();void controller.reset();}),vscode.workspace.onDidChangeConfiguration(()=>{watch();void controller.reset();}),vscode.workspace.onDidGrantWorkspaceTrust(()=>{void controller.refresh();}));
+  context.subscriptions.push({dispose(){controller.dispose();scopeWatcher?.dispose();}},vscode.workspace.onDidChangeWorkspaceFolders(()=>{services.coordinator?.switchProject(undefined);sourceProject=undefined;watch();void controller.reset();}),vscode.workspace.onDidChangeConfiguration(()=>{watch();void controller.reset();}),vscode.workspace.onDidGrantWorkspaceTrust(()=>{void controller.refresh();}));
   if(vscode.window.onDidChangeWindowState) context.subscriptions.push(vscode.window.onDidChangeWindowState(event=>{if(event.focused) void controller.refresh();}));
   if(vscode.debug?.onDidStartDebugSession) context.subscriptions.push(vscode.debug.onDidStartDebugSession(()=>controller.refresh()),vscode.debug.onDidTerminateDebugSession(()=>controller.refresh()));
   return {...controller,refresh:controller.refresh,snapshot:()=>snapshot};

@@ -2,13 +2,48 @@
 
 Initialize Unreal projects, create C++ classes, modules and project plugins, build with compiler Problems, monitor project Editors, attach the C++ debugger, and regenerate project files from VS Code.
 
-**Release:** 0.7.0 · **Platform:** Windows / Win64 · **Unreal Engine:** 5.8+ · **VS Code:** 1.100.0+ · **License:** MIT
+**Release:** 0.8.0 · **Platform:** Windows / Win64 · **Unreal Engine:** 5.8+ · **VS Code:** 1.100.0+ · **License:** MIT
 
 Future Unreal Engine releases may require compatibility updates. This is a locally packaged extension with experimental build/editor controls. Its stable extension ID remains `local-tools.unreal-project-tools` so earlier installations can upgrade normally.
 
+
+## v0.8 runtime automation
+
+Automation is opt-in. Existing and new projects default to **Watch**.
+
+| Mode (`unrealSetup.automationMode`) | Behavior |
+| --- | --- |
+| `off` | No automatic operations; manual controls and change state remain available. |
+| `watch` | Track saved source and structure; never automatically compile or regenerate. Default. |
+| `autoBuild` | Debounce saved source changes, then build. Stale structure blocks automatic compilation until regeneration. |
+| `autoBuildAndRegenerate` | Debounce changes, regenerate stale structure, then build only after regeneration succeeds. |
+
+`unrealSetup.autoBuildDelay` defaults to **30 seconds**, range **5–300**. Each relevant saved change restarts the delay. `unrealSetup.runtimeRefreshInterval` remains **30 seconds**, with **0** disabling periodic reconciliation and **10–3600** supported. A timer checks state; an unchanged project never compiles because an interval elapsed. Filesystem events still work at interval 0. Changes to these settings take effect immediately.
+
+Only discovered local project/plugin module `.cpp`, `.h`, `.inl` and `.ipp` files count as source. Headers/inlines are conservative UHT-sensitive changes, not proof of a reflected-layout edit. Build.cs, Target.cs and project/plugin descriptors track structure separately. Generated output, logs, engine source, symlinks and unrelated workspace files are excluded. Reconciliation compares local file timestamps/sizes and directory entries, without hashing source or indexing the engine. Initial discovery establishes a clean baseline; offline changes before activation cannot be reconstructed.
+
+The native **Runtime** group shows automation mode, dirty files under an expandable node, metadata state, blocked reason and an event-updated countdown. **Automation** provides mode, interval and delay controls, pending/active cancellation and the last ten operations. **Build** and **Run** remain the only permanent status-bar controls.
+
+`runtimeCoordinator.js` owns the operation gate, debounce, revision snapshots, failure suppression and bounded session history. `dirtyTracker.js` classifies and reconciles files. The existing build service executes both manual and automatic work with the same Problems diagnostics. No wizard or dependency action starts a separate automation pipeline. Dependency edits remain unsaved native edits; save them before automation can proceed. Local dependency models and graphs continue refreshing independently.
+
+Manual Build and Run consume pending debounce. Changes newer than an operation's snapshot remain pending for one follow-up. Concurrent operations reveal the active terminal rather than overlap. Run regenerates stale metadata before its Editor build and launches only after success. A clean matching Editor is reused; pending changes with an open Editor require closing it first. Manual regeneration satisfies the covered metadata revision, while retaining a build requirement for those structural changes. Workspace changes discard pending work; an already-running process stays associated with its original project until completion.
+
+**Cancel Pending Automatic Build** keeps dirty files and suppresses scheduling until another relevant change, explicit mode/delay change or manual retry. It never kills active work. **Cancel Build** cancels only the extension-owned wrapper process tree and reports Cancelled. Failed builds preserve dirty state and wait for a new relevant change or manual retry. Failed regeneration waits for a structural change or deliberate retry; ordinary cpp saves do not create regeneration retry loops. Automatic work never saves unsaved buffers. A blocked unsaved-source build resumes after a relevant save/change or manual retry.
+
+Completed terminals are replaced to limit clutter. Complete streamed output across operations remains in **Output → Unreal Build History**. Automatic success uses state/output rather than success popups. Failures and safety blocks explain the required action. **Diagnose Project** includes mode, delay, reconciliation interval, dirty counts, pending/blocked state, trigger reason, last automatic operation, build strategy and Live Coding capability. `unrealSetup.verboseRuntimeLogging` defaults to false; enable it for reconciliation details. Normal logs record meaningful changes and scheduling only.
+
+### Live Coding limits and troubleshooting
+
+UE 5.8.1's installed `ILiveCodingModule.h` exposes in-process Compile calls. `LiveCodingModule.cpp` registers in-Editor `LiveCoding.Compile`/`LiveCoding.CompileSync` commands. UBT's `HotReload.cs` checks an executable-derived `Global\LiveCoding_…` mutex and rejects conflicting external builds. These are not a validated project-addressable external compile endpoint.
+
+v0.8 implements **awareness only**, with no `preferLiveCoding` setting and no external trigger. A read-only mutex probe can report Available, Unavailable or Unknown; the mutex is engine-executable scoped, not proof of a project's current settings. No mutex does not establish loaded-module rebuild safety. The shared strategy uses external UBT only when the matching project Editor is stopped. Running/Unknown states block Build, dirty Run and Auto Build with an explanation. Close Editor and retry, or use Live Coding inside Editor yourself. No synthetic keys, mouse input, UI automation or undocumented trigger protocol is used.
+
+Header and structural changes are handled conservatively; the extension does not parse C++ reflection layouts. It does not build engine source as an automation workflow. Unsupported multi-root projects remain unsupported. A timestamp change can conservatively schedule work even when content is unchanged. Dirty state and history are session-local, and compilation coverage is the selected project target, not every possible configuration.
+
+
 ## Install and get started
 
-1. In the VS Code profile you use for Unreal, select **Extensions > ... > Install from VSIX...** and install `unreal-project-tools-0.7.0.vsix`.
+1. In the VS Code profile you use for Unreal, select **Extensions > ... > Install from VSIX...** and install `unreal-project-tools-0.8.0.vsix`.
 2. Reload VS Code if prompted. Open the single folder directly containing your `.uproject` and trust the workspace.
 3. Automatic initialization adds missing configuration. If prompted, choose an engine installation and complete Skybox's IntelliSense selection.
 4. Use **Build** to compile the active selection or **Run** to get the project ready in Unreal Editor. Open the **Unreal** sidebar for configuration and tools.
@@ -20,9 +55,9 @@ The extension runs in profiles where it is installed/enabled. It does not switch
 
 The status bar contains exactly two permanent actions from this extension: **Build** and **Run**. Build compiles the persistent Target/Platform/Configuration selection using the existing managed pipeline, saves files first, retains terminal output, updates Problems and records its result. Its icon indicates activity or the last result; configuration details remain in the tooltip.
 
-**Run** checks the active project's Editor first. If it is already running, Run reuses it without rebuilding or starting another process. If no matching Editor exists, Run builds an Editor target and launches only after success. If the current selection is a Game/Program target, Run selects the sole Editor target or asks among available Editor targets; Shipping/Test requires an explicit compatible configuration choice. Those choices are saved through the existing selection system. Without an Editor target, use Open Editor for a Blueprint-only project. Unknown process detection blocks launching to avoid duplicates. No automatic PIE/Play is triggered.
+**Run** checks the active project's Editor first. If it is already running and no changes are pending, Run reuses it. Pending changes require a safe build strategy before reuse. If no matching Editor exists, Run builds an Editor target and launches only after success. If the current selection is a Game/Program target, Run selects the sole Editor target or asks among available Editor targets; Shipping/Test requires an explicit compatible configuration choice. Those choices are saved through the existing selection system. Without an Editor target, use Open Editor for a Blueprint-only project. Unknown process detection blocks launching to avoid duplicates. No automatic PIE/Play is triggered.
 
-Build, Run, Build and Open Editor, and regeneration share one operation lock. A second request reveals the active build terminal where available and reports that work is already active. The advanced **Build and Open Editor** command still builds even when an Editor is already running, preserving existing behavior and Live Coding warnings.
+Build, Run, Build and Open Editor, and regeneration share one operation lock. A second request reveals the active build terminal where available and reports that work is already active. Build, dirty Run and Build and Open Editor require the matching Editor to be stopped before external compilation.
 
 Open **Unreal** in the Activity Bar for the native control center:
 
@@ -36,7 +71,7 @@ Open **Unreal** in the Activity Bar for the native control center:
 | Creation | Full New C++ Class, New Module and New Plugin wizards |
 | Navigation | Project descriptor, module rules, target rules and plugin descriptor |
 
-The view's Refresh icon updates state only. It never builds or regenerates. Advanced commands remain in the Command Palette, including Select Build Settings. The sidebar updates after operations, creation, configuration, structural metadata events, debug/focus events and periodic reconciliation. This native TreeView uses VS Code's existing UI, with no webview.
+The view's Refresh icon reconciles state; any newly discovered saved changes follow the configured automation mode and debounce. Advanced commands remain in the Command Palette, including Select Build Settings. The sidebar updates after operations, creation, configuration, structural metadata events, debug/focus events and periodic reconciliation. This native TreeView uses VS Code's existing UI, with no webview.
 
 ### Runtime refresh setting
 
@@ -111,7 +146,7 @@ The project/plugin graph records directed Public/Private edges. Doctor and the s
 
 Class templates now declare required modules and preferred visibility through the shared dependency model. The class preview reports Present, Missing or Unknown for complex rules, and offers **Manage Dependencies** after creation when review is needed. Class creation itself never silently edits Build.cs. Newly generated modules/plugins use this same parser and become manageable without restarting.
 
-**No automatic build** follows an edit, save, index refresh or timer. Save Build.cs and explicitly Build or regenerate when needed. Dependency edits mark structural metadata stale; unsaved editor changes must be saved before regeneration.
+Dependency edits mark structural metadata stale. Saved changes follow the project automation mode; Watch performs no automatic compilation. Index refresh alone does not trigger a build. Unsaved editor changes must be saved before regeneration.
 
 ## Required companion extensions
 
@@ -313,7 +348,7 @@ The version check requires 5.8+ and matches numeric associations by major/minor.
 | Dependency candidate/header missing | Run Refresh Dependency Index with a valid engine path; ambiguous includes are never guessed |
 | Dependency change not on disk | Save the undoable Build.cs editor change before regeneration; Build saves files first |
 | Sidebar stale or new Explorer folder missing | Click Refresh in the Unreal sidebar; inspect runtimeRefreshInterval and Diagnose Project |
-| Run reuses Editor without rebuilding | Use Build or Build and Open Editor explicitly when an external rebuild is intended |
+| Run reuses Editor without rebuilding | Close Editor before Build or dirty Run; clean Run reuses the existing Editor |
 | Shortcut unavailable | Open a trusted Unreal project and check user/extension keybinding overrides |
 | Buttons absent | Reload VS Code and check the profile, workspace trust, and directly opened project folder |
 | Engine unresolved | Run a build/open command to select the installation, or set `unrealEngine.enginePath` |
@@ -346,9 +381,9 @@ No module/plugin deletion or renaming, engine plugin creation, Blueprint asset c
 
 See [CAPABILITIES.md](CAPABILITIES.md) for the implementation inventory, command IDs, state/files, and validation scope.
 
-Run `node --test tests/*.test.js` from the extension source directory. From the repository root, run `python build_bundle.py` to produce `unreal-project-tools-0.7.0.vsix` and `Unreal-Engine-Auto-Setup.zip`. No npm runtime dependencies are used.
+Run `node --test tests/*.test.js` from the extension source directory. From the repository root, run `python build_bundle.py` to produce `unreal-project-tools-0.8.0.vsix` and `Unreal-Engine-Auto-Setup.zip`. No npm runtime dependencies are used.
 
-The v0.7.0 suite has **239 passing tests**: all 185 prior regressions remain, with 54 new dependency cases. Intentionally expanded sidebar/menu expectations and the filesystem-watcher mock were updated. New coverage includes parser/refusal cases, minimal edits, file/editor safety, diff confirmation, graph/cycles, ownership/cache behavior, diagnostics, Quick Fixes and generator integration. Mocked VS Code APIs and disposable filesystem fixtures verify UI and failure paths. Existing real PowerShell build/diagnostic tests also pass.
+The v0.8.0 suite has **301 passing tests**, including 62 new automation cases. Existing regressions pass; sidebar expectations and the intentional refusal to build against an open Editor were updated. See VALIDATION.md for live VS Code and UE 5.8.1 results.
 
 **Prior v0.6 UE 5.8.1 compilation validation succeeded.** A fresh disposable project generated a Runtime module in Public/Private layout, regenerated VS Code project files, compiled all nine v0.5 class types through Unreal's reflection/build pipeline, and linked the Editor target. A blank Runtime plugin in Flat layout was then generated and discovered without `.uproject` plugin enablement changes; the Editor target compiled and linked again. Target rules were created only in the disposable test fixture. No production project source was changed.
 
@@ -359,4 +394,4 @@ Implementation references: [VS Code C++ attach configuration](https://code.visua
 Native UI implementation references: [Tree View API](https://code.visualstudio.com/api/extension-guides/tree-view), [when-clause contexts](https://code.visualstudio.com/api/references/when-clause-contexts).
 
 
-Current v0.7 validation includes real UE 5.8.1 ownership checks, a native VS Code WorkspaceEdit/Undo and Quick Fix check, and successful UBT Editor compilation after adding both Public and Private dependencies in a disposable project. See [VALIDATION.md](VALIDATION.md) for exact evidence and limits.
+Prior v0.7 validation includes real UE 5.8.1 ownership checks, a native VS Code WorkspaceEdit/Undo and Quick Fix check, and successful UBT Editor compilation after adding both Public and Private dependencies in a disposable project. See [VALIDATION.md](VALIDATION.md) for exact evidence and limits.

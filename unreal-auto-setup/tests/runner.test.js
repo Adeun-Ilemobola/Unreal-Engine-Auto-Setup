@@ -56,7 +56,7 @@ test('controls preserve selected builds and trust while preventing duplicate Edi
     await f.commands.get('unrealSetup.build')();assert.equal(specs[0].target,'GameEditor');assert.equal(specs[0].configuration,'Development');
     matches=[{pid:10,commandLine:'Game.uproject'}];
     await f.commands.get('unrealSetup.openEditor')();assert.equal(f.terminals.length,0);assert.match(f.infos.at(-1),/PID 10/);
-    await f.commands.get('unrealSetup.buildAndRun')();assert.equal(specs.length,2);assert.equal(f.terminals.length,0);
+    await f.commands.get('unrealSetup.buildAndRun')();assert.equal(specs.length,1);assert.equal(f.terminals.length,0);assert.match(f.errors.pop(),/Close this project/);
     matches=[];buildSuccess=false;
     await f.commands.get('unrealSetup.buildAndRun')();assert.equal(f.terminals.length,0);
     buildSuccess=true;await f.commands.get('unrealSetup.buildAndRun')();assert.equal(f.terminals.length,1);

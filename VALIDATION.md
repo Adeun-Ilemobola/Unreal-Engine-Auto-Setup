@@ -1,3 +1,46 @@
+# v0.8.0 automation validation
+
+## Automated regression suite
+
+**301 passed, 0 failed, 0 skipped.** The 239-test baseline remains covered, with 62 new cases in `tests/automation.test.js`. Two sidebar expectations now include Automation; the old build-against-running-Editor expectation was intentionally replaced with a safety refusal.
+
+New coverage includes all four modes/defaults, delay validation, restartable debounce, no-op timers, manual Build/Run priority, pending cancellation during idle and active work, failed/cancelled operation suppression, source changes during builds, structural retry rules, manual regeneration followed by one build, revision preservation, workspace switching, disposal, bounded history, all requested source/metadata extensions, generated/unrelated exclusion, plugin source, disk create/delete reconciliation, shared automatic build/regeneration execution, unsaved buffers, read-only Live Coding capability probes, owned-PID cancellation, sidebar state and Doctor findings. Existing tests cover the common Problems pipeline, real PowerShell subprocess output, runtime intervals, dependency editing and project generation.
+
+## Live VS Code and real UE 5.8.1
+
+Harness: `tests/vscode-automation-smoke.js`, launched with a separate user-data directory, extension directory and Extension Development Host. The fixture is `%TEMP%/UnrealAutoSetup-v06-B5ZdmO/AutoSetupValidation.uproject`, retained from the prior disposable validation. The harness refuses a root without that disposable prefix and restores the touched cpp and Build.cs files in `finally`. No production project was modified.
+
+Verified against the installed UE **5.8.1**, target **AutoSetupValidationEditor / Win64 / Development**:
+
+- Native command registration, eight sidebar groups, live settings updates, dirty state and Watch mode without builds.
+- Pending automatic cancellation retains dirty state and starts no process.
+- Three cpp changes spaced within the five-second debounce produce **one** successful automatic UBT build. No duplicate follows; dirty state clears.
+- Build.cs change in Auto Build + Regenerate performs real project generation, then a successful UBT build. Metadata becomes current and dirty state clears.
+- A temporary `#error` causes build exit **6**, a current UnrealBuildTool Problem and blocked automation. No retry occurs after another debounce window.
+- Restoring/saving the cpp file permits one successful recovery build and clears dirty state.
+- Manual Build consumes pending automation without a duplicate.
+- Run consumes pending automation, builds and launches the disposable Editor. A second clean Run reuses it.
+- A dirty Build while that Editor is running is refused without spawning UBT, and the dirty state remains.
+- Only the test-launched Editor is closed afterward by its captured PID. This cleanup is test code, not production Editor control.
+
+Machine-readable outcomes are written to `vscode-automation-result.json` inside the disposable fixture. The live harness uses actual VS Code terminals, filesystem events, settings and diagnostics, not injected build mocks. The detailed unit tests cover regeneration failure, unsaved-buffer refusal, workspace races and process cancellation; the live harness deliberately induces a compiler failure but not a real generation-tool failure.
+
+## Live Coding evidence and limits
+
+Read the local UE 5.8.1 sources:
+
+- `Engine/Source/Developer/Windows/LiveCoding/Public/ILiveCodingModule.h`: Compile methods execute within the loaded module.
+- `Engine/Source/Developer/Windows/LiveCoding/Private/LiveCodingModule.cpp`: registers in-Editor Compile and CompileSync console commands.
+- `Engine/Source/Programs/UnrealBuildTool/System/HotReload.cs`: lines 270–315 check the executable-derived Live Coding mutex and reject incompatible external builds.
+
+No stable project-addressable external compile trigger was established. **External triggering is not implemented.** The read-only mutex probe reported **Unavailable** (no active mutex observed) during the disposable Editor session. This is not proof that loaded modules can be rebuilt safely, so the strategy still refused an external build. Available/Unknown and denied-probe cases are tested with controlled probes. No keys, mouse input, synthetic input or undocumented protocol are used. No claim is made that the session performed a Live Coding patch.
+
+## Packaging
+
+Runtime JavaScript syntax, repository whitespace, VSIX XML/ZIP integrity, version/command uniqueness and packaged source bytes are checked. Both root documentation copies match their extension-source counterparts. The v0.7 VSIX is retained. The final artifacts are `unreal-project-tools-0.8.0.vsix` and `Unreal-Engine-Auto-Setup.zip`.
+
+---
+
 # v0.7.0 dependency validation
 
 ## Automated tests
