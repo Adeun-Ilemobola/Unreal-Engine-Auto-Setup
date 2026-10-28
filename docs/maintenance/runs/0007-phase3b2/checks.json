@@ -1,0 +1,22 @@
+{
+  "syntaxFiles": 91,
+  "syntax": "pass",
+  "publicCommands": 35,
+  "settings": 5,
+  "manifestUnchanged": true,
+  "existingExportNamesUnchanged": true,
+  "P11TestUnchanged": true,
+  "packaging": "46 inputs / 40 modules / 3 mirrors",
+  "whitespace": "pass",
+  "engine": {
+    "MajorVersion": 5,
+    "MinorVersion": 8,
+    "PatchVersion": 4,
+    "Changelist": 58902052,
+    "CompatibleChangelist": 55116800,
+    "IsLicenseeVersion": 0,
+    "IsPromotedBuild": 1,
+    "BranchName": "++UE5+Release-5.8"
+  },
+  "maintenanceLinks": 61
+}

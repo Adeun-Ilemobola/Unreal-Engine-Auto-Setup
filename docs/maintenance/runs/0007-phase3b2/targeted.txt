@@ -1,0 +1,47 @@
+✔ completed operations retain a bounded subscription count and release emitters/listeners (4.1804ms)
+✔ terminal creation failure releases the operation gate and emitters (0.2814ms)
+✔ unacknowledged cancellation blocks build until process exit (0.7657ms)
+✔ unacknowledged cancellation blocks generation until process exit (0.294ms)
+✔ failed termination is reported, repeated cancellation is idempotent, later exit releases gate (0.2892ms)
+✔ normal cancellation confirms exit and already completed operations do not kill a PID (0.1987ms)
+✔ service disposal requests termination and prohibits subsequent operations (0.2382ms)
+✔ coordinator remains busy after cancellation timeout and recovers only on child close (3.4919ms)
+✖ real Windows cancellation stops only the disposable owned PowerShell tree (5582.5529ms)
+✔ managed build streams output, publishes Problems, records failure and clears old diagnostics on retry (4.7833ms)
+✔ cancelled and failed-to-start builds complete with an explicit result (0.4288ms)
+✔ Skybox and direct builds use the same target/platform/configuration specification (0.4696ms)
+✔ real managed PowerShell build streams a source error and returns its exit code (328.2032ms)
+✔ reload before spawn retains intent and blocks a second window (19.0065ms)
+✔ only the original owner can release positively unspawned work (16.4735ms)
+✔ wrapper exit, cancellation and old age never certify tree completion (22.8102ms)
+✔ corrupt, missing and partial intent fail closed; unrelated projects remain clear (26.0414ms)
+✔ concurrent claim acquisition has one winner without sleeps (11.3275ms)
+✔ identity requires all evidence and never treats absence as completion (0.2489ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 18
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 30710.1228
+
+✖ failing tests:
+
+test at unreal-auto-setup\tests\build-lifecycle.test.js:67:1
+✖ real Windows cancellation stops only the disposable owned PowerShell tree (5582.5529ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'Failed' !== 'Exited'
+  
+      at TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\build-lifecycle.test.js:75:29)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Failed',
+    expected: 'Exited',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

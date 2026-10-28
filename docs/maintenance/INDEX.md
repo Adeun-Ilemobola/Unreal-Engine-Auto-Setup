@@ -13,3 +13,5 @@
 Decisions: [0001 regeneration preservation blocker](decisions/0001-generation-preservation-blocker.md); [0002 cancellation and inference boundaries](decisions/0002-cancellation-and-inference-boundaries.md).
 
 Phase 2 decision: [0003 incremental service boundaries and release inputs](decisions/0003-phase2-service-boundaries.md).
+
+- [0007  - Phase 3B.2 process quarantine, partial](runs/0007-phase3b2/RESULT.md): durable intent and real reload blocking; full-tree release and cancellation recovery remain open. [Prompt](prompts/0007-phase3b2-v1.md), [validation](runs/0007-phase3b2/VALIDATION.md), [ownership contract](runs/0007-phase3b2/PROCESS_OWNERSHIP_CONTRACT.md).

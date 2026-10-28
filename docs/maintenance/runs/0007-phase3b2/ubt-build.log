@@ -1,0 +1,13 @@
+Log file: C:\Users\Owner\AppData\Local\UnrealBuildTool\Log.txt
+Determining max actions to execute in parallel (20 physical cores, 28 logical cores)
+  Executing up to 20 processes, one per physical core
+  Requested 1.5 GB memory per action, 15.73 GB available: limiting max parallel actions to 10
+UbaServer - Listening on 0.0.0.0:1345
+Target is up to date
+Using Unreal Build Accelerator local executor to run 0 action(s)
+Total time in Unreal Build Accelerator local executor: 0.15 seconds
+Output binary: C:\Program Files\Epic Games\UE_5.8\Engine\Binaries\Win64\UnrealEditor.exe
+
+Result: Succeeded
+Total execution time: 1.53 seconds
+Trace written to file C:\Users\Owner\AppData\Local\UnrealBuildTool\Trace.uba with size 2.8kb

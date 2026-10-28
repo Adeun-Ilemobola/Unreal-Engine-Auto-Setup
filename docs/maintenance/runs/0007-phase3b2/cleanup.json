@@ -1,0 +1,8 @@
+{
+  "testChildPid": 77416,
+  "testChildPresent": false,
+  "taskProfileProcesses": [],
+  "forcedTermination": false,
+  "editorTest": "not launched; survival with a live Editor unverified",
+  "scope": "Point-in-time targeted process check; no complete arbitrary tree proof"
+}

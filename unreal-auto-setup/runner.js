@@ -48,7 +48,9 @@ async function register(vscode, context, report, services = {}) {
   const updateView = runtimeView.create(vscode, context, services, coordinator, report);
   const refresh = () => services.watcher?.refresh() || Promise.resolve();
   services.refresh = refresh;
+  const ownership = (services.ownership ||= context.globalStorageUri && require('./operationOwnership').create(require('node:path').join(context.globalStorageUri.fsPath,'operations-v1')));
   const builds = (services.builds ||= buildApi.createService(vscode, context, state, {
+    ownership,
     changed: () => {
       void refresh();
     }
@@ -124,6 +126,10 @@ async function register(vscode, context, report, services = {}) {
       if (process.platform !== 'win32') throw new Error('Unreal controls require Windows.');
       const project = await projects.readProject(vscode, { interactive: !automatic });
       if (!project) return;
+      if(mode!=='open' && ownership) {
+        const recovered=await ownership.inspect(project.filename,{probe:true});
+        if(recovered.state!=='Clear') throw new Error(recovered.reason);
+      }
       if (operation.project && project.filename !== operation.project)
         throw new Error('Project changed; operation cancelled.');
       if (mode === 'open' && !(await mayLaunch(project))) return { success: true, status: 'Reused' };

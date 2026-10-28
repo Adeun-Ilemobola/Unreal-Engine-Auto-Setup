@@ -127,6 +127,7 @@ function create(vscode, context, services, publish) {
       modules.plugins(project.root),
       engines.inspect(project.config.get('unrealEngine.enginePath'), project.descriptor.EngineAssociation)
     ]);
+    const recovery=await services.ownership?.inspect(project.filename);
     const next = new Map();
     for (const file of [
       project.filename,
@@ -184,6 +185,7 @@ function create(vscode, context, services, publish) {
       plugins,
       engine,
       selected: projects.selection(context, project),
+      recovery,
       session: services.state.get(project.filename),
       module: modules.recent(context, project, moduleList)
     };

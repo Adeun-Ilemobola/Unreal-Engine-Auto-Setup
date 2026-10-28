@@ -1,0 +1,12 @@
+ M docs/DEVELOPMENT.md
+ M docs/maintenance/INDEX.md
+ M unreal-auto-setup/build.js
+ M unreal-auto-setup/runner.js
+ M unreal-auto-setup/runtimeCommands.js
+ M unreal-auto-setup/runtimeView.js
+ M unreal-auto-setup/runtimeWatcher.js
+?? docs/maintenance/prompts/0007-phase3b2-v1.md
+?? docs/maintenance/runs/0007-phase3b2/
+?? tools/phase3b2/
+?? unreal-auto-setup/operationOwnership.js
+?? unreal-auto-setup/tests/operation-ownership.test.js

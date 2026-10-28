@@ -1,0 +1,18 @@
+✔ reload before spawn retains intent and blocks a second window (20.1228ms)
+✔ only the original owner can release positively unspawned work (20.4228ms)
+✔ wrapper exit, cancellation and old age never certify tree completion (16.1698ms)
+✔ corrupt, missing and partial intent fail closed; unrelated projects remain clear (14.8385ms)
+✔ concurrent claim acquisition has one winner without sleeps (10.2775ms)
+✔ identity requires all evidence and never treats absence as completion (0.2217ms)
+✔ bounded repeated unspawned operations clean up without accumulating history (135.9709ms)
+✔ active identity is observation only; recovered process is never granted termination authority (12.1928ms)
+✔ oversized records and inaccessible identity do not unblock operations (9.4595ms)
+✔ managed adapter persists intent before spawn and retains quarantine after root close (56.2745ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 839.1063

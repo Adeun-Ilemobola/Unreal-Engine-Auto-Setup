@@ -1,0 +1,755 @@
+
+> unreal-project-tools@0.8.0 test
+> node --test tests/*.test.js
+
+✔ automation mode undefined (2.0477ms)
+✔ automation mode bad (0.1585ms)
+✔ automation mode off (0.0593ms)
+✔ automation mode watch (0.0578ms)
+✔ automation mode autoBuild (0.9045ms)
+✔ automation mode autoBuildAndRegenerate (0.0934ms)
+✔ debounce config undefined (0.0999ms)
+✔ debounce config 4 (0.0464ms)
+✔ debounce config 5 (0.0662ms)
+✔ debounce config 300 (0.0997ms)
+✔ debounce config 301 (0.0725ms)
+✔ debounce config NaN (0.0418ms)
+✔ debounce config 5 (0.0319ms)
+✔ mode scheduling off (6.5775ms)
+✔ mode scheduling watch (0.6403ms)
+✔ mode scheduling autoBuild (3.2626ms)
+✔ mode scheduling autoBuildAndRegenerate (0.8043ms)
+✔ repeated saves debounce once and no-op reconciliation never builds (1.3361ms)
+✔ manual build consumes debounce (0.3041ms)
+✔ manual run consumes debounce (0.183ms)
+✔ manual buildAndOpen consumes debounce (0.1643ms)
+✔ pending cancellation retains dirty and new save re-arms (0.3531ms)
+✔ change during build follow-up false (2.9611ms)
+✔ change during build follow-up true (0.6983ms)
+✔ Failed retains dirty and suppresses retry (0.5839ms)
+✔ Cancelled retains dirty and suppresses retry (0.1994ms)
+✔ failed regeneration needs structural change, not cpp saves (0.344ms)
+✔ manual generation consumes only structure and queues source build (0.4127ms)
+✔ workspace switch invalidates pending work and isolates active completion (0.4471ms)
+✔ live configuration replaces debounce timer and dispose removes it (0.3506ms)
+✔ track Source/Game/A.cpp (0.6173ms)
+✔ track Source/Game/A.h (0.1919ms)
+✔ track Source/Game/A.inl (0.1188ms)
+✔ track Source/Game/A.ipp (0.0821ms)
+✔ track Source/Game/Game.Build.cs (0.1114ms)
+✔ track Source/GameEditor.Target.cs (0.1456ms)
+✔ track Game.uproject (0.1848ms)
+✔ track Plugins/P/P.uplugin (0.2378ms)
+✔ track Plugins/P/Source/P/A.cpp (0.2328ms)
+✔ track Saved/A.cpp (0.1272ms)
+✔ track Source/Game/Intermediate/A.h (0.1318ms)
+✔ track README.md (0.4381ms)
+✔ track Source/Other/A.cpp (0.1587ms)
+✔ build strategy Stopped (0.1796ms)
+✔ build strategy Running (0.0688ms)
+✔ build strategy Unknown (0.0288ms)
+✔ disk tracker ignores unsaved documents and notices creates/deletes without events (73.3381ms)
+✔ history is bounded and captures reason, origin and result (0.7994ms)
+✔ shared automatic pipeline source (679.9318ms)
+✔ shared automatic pipeline unsaved (82.2968ms)
+✔ shared automatic pipeline staleBlocked (89.4277ms)
+✔ shared automatic pipeline regenerate (325.4497ms)
+✔ shared automatic pipeline regenerateFails (226.5805ms)
+✔ shared automatic pipeline editorRunning (65.0282ms)
+✔ shared automatic pipeline editorUnknown (55.0785ms)
+✔ active cancellation kills only owned PID; replacement does not kill completed process (2.4385ms)
+✔ sidebar and Doctor share compact automation state (40.7035ms)
+✔ read-only Live Coding mutex Available (0.3055ms)
+✔ read-only Live Coding mutex Unavailable (0.0444ms)
+✔ read-only Live Coding mutex Unknown (0.05ms)
+✔ newer structure survives successful regeneration and build snapshot (0.1196ms)
+✔ cancel pending during active build prevents the follow-up without stopping active work (0.5972ms)
+✔ completed operations retain a bounded subscription count and release emitters/listeners (7.0647ms)
+✔ terminal creation failure releases the operation gate and emitters (0.5548ms)
+✔ unacknowledged cancellation blocks build until process exit (1.5738ms)
+✔ unacknowledged cancellation blocks generation until process exit (0.568ms)
+✔ failed termination is reported, repeated cancellation is idempotent, later exit releases gate (0.366ms)
+✔ normal cancellation confirms exit and already completed operations do not kill a PID (0.2342ms)
+✔ service disposal requests termination and prohibits subsequent operations (0.4661ms)
+✔ coordinator remains busy after cancellation timeout and recovers only on child close (5.0211ms)
+✖ real Windows cancellation stops only the disposable owned PowerShell tree (6119.6068ms)
+✔ managed build streams output, publishes Problems, records failure and clears old diagnostics on retry (7.1446ms)
+✔ cancelled and failed-to-start builds complete with an explicit result (0.5702ms)
+✔ Skybox and direct builds use the same target/platform/configuration specification (0.6645ms)
+✔ real managed PowerShell build streams a source error and returns its exit code (661.766ms)
+✔ creates both files exclusively and leaves module rules unchanged (128.7143ms)
+✔ header collision leaves both destinations untouched (58.2924ms)
+✔ source collision leaves both destinations untouched (66.7048ms)
+✔ second write failure rolls back the owned header, source and newly created folders (142.0943ms)
+✖ symlink, traversal, dirty documents and lost trust block class creation (85.355ms)
+✔ post-preview module changes and case-insensitive conflicts are rejected (131.0976ms)
+✔ a file appearing during creation is retained while the owned header is rolled back (142.0849ms)
+✔ class naming object / InventoryItem (1.3416ms)
+✔ class naming object / UInventoryItem (0.1925ms)
+✔ class naming actor / PickupActor (0.0833ms)
+✔ class naming actor / APickupActor (0.0771ms)
+✔ class naming actorComponent / InventoryComponent (0.0916ms)
+✔ class naming interface / IInteractable (0.0819ms)
+✔ class naming interface / Interactable (0.0669ms)
+✔ class naming worldSubsystem / SpawnSubsystem (0.0524ms)
+✔ class naming object / UserProfile (0.0764ms)
+✔ class naming object / UUIWidget (0.1587ms)
+✔ invalid identifiers, keywords and path traversal are rejected (0.6442ms)
+✔ minimal UHT template for UObject (0.3224ms)
+✔ minimal UHT template for Actor (0.1131ms)
+✔ minimal UHT template for Actor Component (1.293ms)
+✔ minimal UHT template for Scene Component (0.1085ms)
+✔ minimal UHT template for Unreal Interface (0.4065ms)
+✔ minimal UHT template for Game Instance Subsystem (0.0906ms)
+✔ minimal UHT template for World Subsystem (0.0948ms)
+✔ minimal UHT template for Engine Subsystem (0.0844ms)
+✔ minimal UHT template for Local Player Subsystem (0.0848ms)
+✔ exposure registry generates only allowed Blueprint metadata (0.423ms)
+✔ output layout and includes: flat (58.6516ms)
+✔ output layout and includes: Public/Private (40.2136ms)
+✔ missing dependencies are advisory and do not edit Build.cs (39.56ms)
+✔ constructor-free templates never emit inherited JavaScript Object constructor (0.4406ms)
+✔ wizard cancellation at project creates no source files (56.7375ms)
+✔ wizard cancellation at module creates no source files (84.3099ms)
+✔ wizard cancellation at type creates no source files (51.8145ms)
+✔ wizard cancellation at name creates no source files (63.2912ms)
+✔ wizard cancellation at exposure creates no source files (66.6169ms)
+✔ wizard cancellation at folder creates no source files (68.7714ms)
+✔ wizard cancellation at confirmation creates no source files (164.0859ms)
+✔ successful wizard previews, creates, remembers module and optionally opens a split without marking metadata stale (190.8414ms)
+✔ multi-module wizard uses the selected module, and invalid names can be corrected (136.3782ms)
+✔ navigation opens module rules, descriptor and picked target rules; missing/ambiguous cases are handled (165.707ms)
+✔ untrusted and unsupported-engine projects cannot generate classes (48.99ms)
+✔ keeps existing false, numbers, arrays and nested values (1.3799ms)
+✔ UE 5.8 minimum (0.1642ms)
+✔ does not guess among ambiguous Editor targets (0.1831ms)
+✔ file creation is repeatable and never overwrites project rules (16.7097ms)
+✔ one matching Editor starts a dynamic cppvsdbg attach session (1.7779ms)
+✔ attach reports no Editor and unavailable C/C++ clearly (1.3943ms)
+✔ multiple Editors use a PID picker and cancelled selection does not attach (0.5199ms)
+✔ attach rejects disappeared processes, failed queries and refused debug sessions (0.5786ms)
+✔ parser literal form PublicDependencyModuleNames.AddRange(new string[] { "Core", "Engine" }); (4.0181ms)
+✔ parser literal form PublicDependencyModuleNames.AddRange(new[] { "Core", "Engine", }); (1.2215ms)
+✔ parser literal form PublicDependencyModuleNames.AddRange(["Core", "Engine"]); (0.2676ms)
+✔ parser literal form PublicDependencyModuleNames.Add("Core"); PrivateDependencyModuleNames.Add("Engine"); (0.2438ms)
+✔ parser literal form this.PublicDependencyModuleNames.Add("Core"); PrivateDependencyModuleNames.Add("Engine"); (0.235ms)
+✔ preserve comments/format ["\n","  "] (1.2082ms)
+✔ preserve comments/format ["\n","\t"] (0.4666ms)
+✔ preserve comments/format ["\r\n","  "] (0.3975ms)
+✔ preserve comments/format ["\r\n","\t"] (0.3712ms)
+✔ comments and dependency-looking strings do not create dependencies (0.5597ms)
+✔ refuses complex if (Target.bBuildEditor) { PrivateDependencyModuleNames.Add("UnrealEd"); } (0.7412ms)
+✔ refuses complex var names = new[] { "Core" }; PublicDependencyModuleNames.AddRange(names); (0.3319ms)
+✔ refuses complex PrivateDependencyModuleNames.Add(GetName()); (0.2361ms)
+✔ refuses complex for(int i=0;i<3;i++) PrivateDependencyModuleNames.Add("Core"); (0.1781ms)
+✔ refuses complex PrivateDependencyModuleNames.Add("Slate" + "Core"); (0.157ms)
+✔ refuses complex Helper(); (0.1806ms)
+✔ refuses complex PrivateDependencyModuleNames = names; (0.1841ms)
+✔ refuses complex PublicDependencyModuleNames.Add("Core"); PrivateDependencyModuleNames.Add("Core"); (0.1637ms)
+✔ malformed delimiters and strings refused (0.3198ms)
+✔ using aliases and unsupported class structure are read only (0.1907ms)
+✔ add/remove/move Public (1.386ms)
+✔ add/remove/move Private (1.464ms)
+✔ remove from AddRange "Core" (0.1918ms)
+✔ remove from AddRange "Core", (0.1002ms)
+✔ remove from AddRange "Core", "Engine" (0.1067ms)
+✔ remove from AddRange "Engine", /* comment */ "Core" (0.1038ms)
+✔ read-only categories remain distinct and untouched (0.2963ms)
+✔ self dependency insertion blocked (0.1799ms)
+✔ visibility recommendation Public/Foo.h (0.199ms)
+✔ visibility recommendation Private/Foo.h (0.1451ms)
+✔ visibility recommendation Foo.cpp (0.0763ms)
+✔ visibility recommendation Foo.h (0.0838ms)
+✔ graph handles cycles, missing modules, duplicates and Runtime to Editor (0.5927ms)
+✔ exact header index avoids basename guessing and caches engine identity (66.1129ms)
+✔ dependency diagnostics are confident, context-aware and clear when declaration exists (1.1688ms)
+✖ file edit safety rejects dirty, changed and linked Build.cs (79.0503ms)
+✔ graph cycle/missing A to B (2.696ms)
+✔ graph cycle/missing A to A (0.3394ms)
+✔ graph cycle/missing A to Unknown (0.2606ms)
+✔ graph preserves visibility and warns on duplicate edges (0.2798ms)
+✔ header ownership includes project plugin and refuses ambiguous exact keys (256.9539ms)
+✔ engine cache is not touched by targeted project refresh and no disk cache can be corrupted (87.8879ms)
+✔ class requirements use dependency parser instead of dependency-looking comments (63.1553ms)
+✔ WorkspaceEdit uses minimal edits, leaves disk unchanged and supports editor-owned undo state (64.1943ms)
+✔ rejected WorkspaceEdit leaves editor and disk unchanged (63.0327ms)
+✔ shared action native diff then cancellation (110.1279ms)
+✔ shared action native diff then confirmed edit (183.7227ms)
+✔ dependency diagnostic Quick Fix support true (78.3624ms)
+✔ dependency diagnostic Quick Fix support false (84.7241ms)
+✖ generated project and plugin module Build.cs are editable immediately (203.2965ms)
+✔ dependency sidebar groups warnings, visibility and module-targeted commands (3.7114ms)
+✔ raw strings and ambiguous include ownership do not produce diagnostics (1.209ms)
+✔ Public to Private action warns about known exposed-header usage and confirms the move (194.4281ms)
+✔ dependency preview rechecks project/module relationship changes before applying (78.3192ms)
+✔ configured capability requirements false/false (36.8863ms)
+✔ configured capability requirements false/true (28.6854ms)
+✔ configured capability requirements true/false (29.6636ms)
+✔ configured capability requirements true/true (29.3905ms)
+✔ discovered capability requirements false/false (26.1255ms)
+✔ discovered capability requirements false/true (35.2785ms)
+✔ discovered capability requirements true/false (30.3704ms)
+✔ discovered capability requirements true/true (28.8465ms)
+✔ picked capability requirements false/false (32.4321ms)
+✔ picked capability requirements false/true (58.5869ms)
+✔ picked capability requirements true/false (57.1137ms)
+✔ picked capability requirements true/true (54.6622ms)
+✔ target inference "Type = TargetType.Editor;" (14.7087ms)
+✔ target inference "Type = TargetType.Game;" (17.2173ms)
+✔ target inference "Type = TargetType.Client;" (17.4327ms)
+✔ target inference "Type = TargetType.Server;" (29.1745ms)
+✔ target inference "Type = TargetType.Program;" (14.8987ms)
+✔ target inference "this.Type = TargetType.Editor;" (16.3721ms)
+✔ target inference "Type\n= TargetType\n. Editor\n;" (14.2241ms)
+✔ target inference "/* Type=TargetType.Game; */ Type=TargetType.Editor; // Type=TargetType.Client;" (10.0136ms)
+✔ target inference "string Note=\"Type = TargetType.Editor;\";" (11.7011ms)
+✔ target inference "string Note=@\"Type = TargetType.Editor;\";" (9.7459ms)
+✔ target inference "string Note=\"\"\"Type = TargetType.Editor;\"\"\";" (11.3655ms)
+✔ target inference "char c='\\''; Type=TargetType.Game;" (15.5339ms)
+✔ target inference "string Note=\"escaped \\\"; Type=TargetType.Editor;" (9.4883ms)
+✔ target inference "string Note=$\"{Get(\"Type=TargetType.Editor;\")}\";" (9.5557ms)
+✔ target inference "if (b) Type=TargetType.Editor;" (12.3999ms)
+✔ target inference "#if EDITOR\nType=TargetType.Editor;\n#endif" (12.5606ms)
+✔ target inference "Type=TargetType.Editor; Type=TargetType.Game;" (14.9164ms)
+✔ target inference "other . Type=TargetType.Editor;" (14.4452ms)
+✔ target inference "Type=GetType();" (10.2457ms)
+✔ target inference "Type=TargetType.Future;" (11.4374ms)
+✔ target inference "/* unfinished" (7.9319ms)
+✔ target inference "public class GameTarget : TargetRules { public GameTarget(TargetInfo Target) : base(Target) { Type = TargetType.Game; } }" (9.3937ms)
+✔ target inference "public class GameTarget : TargetRules { void Helper() { Type = TargetType.Editor; } }" (9.6015ms)
+✔ Project Doctor reports healthy and broken states without settings or state writes (655.5073ms)
+✔ latest project log chooses modification time and handles absent logs (17.5956ms)
+✖ Project Doctor reports created module types and plugin enablement without mutation (243.1154ms)
+✔ engine discovery reads Epic manifest and exact-version registry information (2.1088ms)
+✔ auto-detection validates candidates, falls back to picker, and preserves explicit paths (44.2059ms)
+✔ P1.1: regeneration must preserve a newer saved descriptor edit (315.734ms)
+✔ metadata-only touch needs no restoration and must not invent a content conflict (321.3529ms)
+✔ unresolved prior conflict cannot be silently completed by an unchanged retry (311.1244ms)
+✔ filesystem observations are bounded hints, never a writer identity (289.7205ms)
+✔ repeated unchanged operations use new journals without modifying previous evidence (347.2925ms)
+✔ completed successful journal does not bypass the existing storage quota (193.9717ms)
+✔ corrupt prior result blocks rather than silently discarding a conflict (175.5735ms)
+✔ mismatched operation identity in recovery result is blocked (147.7768ms)
+✔ recovery read permission failure blocks launch and preserves retained artifacts (136.2885ms)
+✔ project-only conflict does not block an unrelated project on the same engine (147.4958ms)
+✔ shared-engine configuration conflicts block only projects using that engine (85.1728ms)
+✔ filesystem event quota remains bounded and reports dropped observations (105.0511ms)
+✔ watcher failure is explicit incomplete telemetry, never permission to restore (112.4441ms)
+✔ filesystem evidence persistence failure cannot report full success (106.7006ms)
+✔ same-length changed bytes with baseline timestamps remain a content conflict (108.3568ms)
+✔ contradictory unchanged result with unresolved conflicts is not accepted (140.4434ms)
+✔ Failed execution with unchanged protected bytes permits an ordinary retry (187.5914ms)
+✔ Cancelled execution with unchanged protected bytes permits an ordinary retry (179.6126ms)
+✔ ordinary unchanged generation preserves all protected bytes and clears stale (344.7811ms)
+✔ ambiguous generator rewrite keeps current bytes and both recoverable versions (274.4216ms)
+✔ originally absent paths have explicit absence records (290.892ms)
+✔ created protected file is retained and reported, never deleted as rollback (205.4119ms)
+✔ new workspace file is discovered without scanning project content (182.6516ms)
+✔ multiple changed protected files retain independent baseline and current copies (205.8646ms)
+✔ saved VS Code edits persist as labeled document observations (169.343ms)
+✔ unsaved VS Code edits persist as labeled document observations (144.2555ms)
+✔ multiple successive document versions survive even when final disk returns to baseline (135.3086ms)
+✔ pre-launch edit aborts without starting UBT and retains changed content (138.1179ms)
+✔ post-UBT/pre-finalization edit is not overwritten (118.5567ms)
+✔ deletion has a recovery tombstone and does not recreate the file (112.7617ms)
+✖ replacement with equal bytes still reports changed identity (114.0599ms)
+✔ symlink replacement refuses dereference or restoration (98.3056ms)
+✖ hard-link replacement is unreadable/unsafe and never written through (116.4645ms)
+✔ unexpected directory at protected file location is never replaced (134.8657ms)
+✔ permission failure before launch refuses UBT (32.9272ms)
+✔ partial protected read before launch fails closed (33.1663ms)
+✔ recovery baseline write failure aborts before UBT and preserves live file (78.573ms)
+✔ post-run recovery write failure is not reported successful (123.1433ms)
+✔ partial recovery blob write leaves baseline and explicit recovery failure (113.3438ms)
+✔ final manifest failure returns RecoveryFailed without hiding UBT failure (99.7338ms)
+✔ Failed UBT does not trigger unsafe restoration (112.2776ms)
+✔ Cancelled UBT does not trigger unsafe restoration (135.862ms)
+✔ rejected managed child preserves its original error and recovery (126.235ms)
+✔ workspace switch retains exact operation/project association without writes (133.5564ms)
+✔ trust loss during cancellation leaves live newer file and original recovery copy (124.9567ms)
+✔ repeated regeneration and extension-owned mutations are excluded while active (118.8705ms)
+✔ module and plugin commits refuse active generation before creating files (180.7845ms)
+✔ setup file and engine setting writes refuse generation lease (141.6717ms)
+✔ mutation active before regeneration refuses launch (15.0837ms)
+✔ interrupted journal remains recoverable; retry never replays or overwrites it (65.2385ms)
+✔ bounded recovery slots refuse launch without deleting unresolved data (161.1129ms)
+✔ oversized protected file refuses UBT before allocation (44.2489ms)
+✔ document observation quota reports incomplete evidence, never full success (143.7011ms)
+✔ compatibility restore export never writes during a check/write race or a missing file (43.5571ms)
+✔ shared engine configuration is captured with a stub engine, never the installed engine (98.0646ms)
+✔ missing extension storage fails closed before managed process creation (58.6533ms)
+✔ same-folder descriptor selection change is an operation conflict (139.6342ms)
+✔ document observation failure reports incomplete evidence and releases its lease (132.5353ms)
+✔ document artifact write failure keeps baseline and returns recovery failure (126.6029ms)
+✔ recovery storage in protected configuration is refused before launch (30.3004ms)
+✔ two allocators cannot exceed the exclusive recovery slot bound (55.5708ms)
+✔ disposal-triggered cancellation does not free generation exclusion before child completion (114.1852ms)
+✔ configuration-read failure releases the regeneration lease (17.2214ms)
+✖ generation uses the active engine/project and restores existing VS Code configuration (387.7079ms)
+✔ generation refuses missing tools and unsaved files; edits during generation remain stale (324.6498ms)
+✔ metadata changes mark stale only for relevant files in the active project (0.7156ms)
+✖ generation rejects linked configuration before invoking UnrealBuildTool (33.0308ms)
+✔ activation preserves public commands and the internal dependency action after service extraction (206.4455ms)
+✔ discovers flat, split, nested project and descriptor-declared plugin modules (190.0832ms)
+✔ ignores malformed, mismatched, comment/string pseudo-rules and non-module directories (139.1338ms)
+✖ does not discover modules through directory symlinks (45.6586ms)
+✔ API macros derive from the selected module and reject unsafe names (2.005ms)
+✔ one module is automatic; multiple choices distinguish location and remember the recent module (60.0841ms)
+✔ reload before spawn retains intent and blocks a second window (73.3252ms)
+✔ only the original owner can release positively unspawned work (60.6276ms)
+✔ wrapper exit, cancellation and old age never certify tree completion (66.0189ms)
+✔ corrupt, missing and partial intent fail closed; unrelated projects remain clear (36.1123ms)
+✔ concurrent claim acquisition has one winner without sleeps (27.5127ms)
+✔ identity requires all evidence and never treats absence as completion (0.5747ms)
+✔ bounded repeated unspawned operations clean up without accumulating history (401.6619ms)
+✔ active identity is observation only; recovered process is never granted termination authority (21.4557ms)
+✔ oversized records and inaccessible identity do not unblock operations (20.4388ms)
+✔ managed adapter persists intent before spawn and retains quarantine after root close (100.8625ms)
+✔ numeric association policy preserves patch, GUID, whitespace and missing-value behavior (5.4416ms)
+✔ Doctor header uses a readable Unicode separator (25.1212ms)
+✔ containment rejects the immediate parent consistently across creation and tracking (0.4052ms)
+✔ containment boundaries preserve child, relative, case and cross-drive semantics (0.7076ms)
+✔ parses MSVC error (2.2979ms)
+✔ parses MSVC warning (0.4469ms)
+✔ parses column and spaces (0.1381ms)
+✔ parses UHT location (0.1619ms)
+✔ parses clang style (0.3107ms)
+✔ ignores informational and malformed diagnostic lines (0.3509ms)
+✔ identifies Live Coding conflicts without interpreting normal Live Coding logging as failure (0.4962ms)
+✔ no Unreal Editor process reports Stopped (1.3118ms)
+✔ matches an exact project path including spaces and case differences (0.7116ms)
+✔ ignores unrelated projects and substring lookalikes (0.2772ms)
+✔ retains multiple matching processes and supports -project arguments (1.0402ms)
+✔ unavailable and malformed process data yields Unknown, not a false Stopped result (2.7068ms)
+✔ process service reuses short-lived reads but explicit actions refresh (0.4749ms)
+✔ discovers all targets, defaults to Editor and preserves project-specific selections across contexts (61.8832ms)
+✔ build script supports all five configurations without falling back to Development (1.0689ms)
+✔ engine settings protection rejects dirty settings before writing (3.8702ms)
+✔ rejects command injection in target and batch-expanded paths (1.7082ms)
+✔ real PowerShell build script gates launch on exit status and quotes paths (2266.9165ms)
+✔ controls preserve selected builds and trust while preventing duplicate Editor launches (102.7912ms)
+✔ unknown process state refuses automatic Editor launch (31.2938ms)
+✔ structure name rejects "" (2.4126ms)
+✔ structure name rejects " " (0.298ms)
+✔ structure name rejects "123Bad" (0.1012ms)
+✔ structure name rejects "Bad/Name" (0.1158ms)
+✔ structure name rejects "Bad\\Name" (0.1257ms)
+✔ structure name rejects "Bad-Name" (0.1541ms)
+✔ structure name rejects "class" (0.1592ms)
+✔ structure name rejects "CON" (0.2459ms)
+✔ structure name rejects "Bad__Name" (0.144ms)
+✔ structure name rejects "string" (0.2032ms)
+✔ structure name rejects "ModuleRules" (0.1404ms)
+✔ module API names support letters digits underscores (0.5968ms)
+✔ module template Runtime (0.362ms)
+✔ module template RuntimeNoCommandlet (0.1044ms)
+✔ module template Developer (0.0759ms)
+✔ module template Editor (0.0827ms)
+✔ module template EditorNoCommandlet (0.0938ms)
+✔ module template Program (0.1594ms)
+✔ flat module and invalid enum validation (0.2431ms)
+✔ descriptor append preserves original fields {} (1.9262ms)
+✔ descriptor append preserves original fields {
+	"EngineAssociation": "5.8",
+	"Plugins": [{"Name":"Other","Enabled":false}],
+	"Unknown": {"future":true}
+} (0.5645ms)
+✔ descriptor append preserves original fields {"Modules":[],"Unknown":12} (0.2085ms)
+✔ descriptor append preserves original fields {"Modules":[{"Name":"Old","Type":"Runtime","Future":7}]} (0.1665ms)
+✔ invalid descriptor rejected {bad (0.1404ms)
+✔ invalid descriptor rejected [] (0.0705ms)
+✔ invalid descriptor rejected {"Modules":42} (0.0826ms)
+✔ invalid descriptor rejected {"Modules":[null]} (0.0743ms)
+✔ invalid descriptor rejected {"Modules":[],"Modules":[]} (0.0796ms)
+✔ plugin descriptor is neutral and preserves friendly description through JSON escaping (0.2751ms)
+✖ module creation immediately discovers Flat (207.133ms)
+✖ module creation immediately discovers Public / Private (244.5939ms)
+✔ plugin creation immediately discovers Flat (141.6249ms)
+✔ plugin creation immediately discovers Public / Private (138.6491ms)
+✔ existing modules, Source directories and plugin descriptors collide case-insensitively (49.7527ms)
+✔ transaction rollback for Build.cs (67.0471ms)
+✔ transaction rollback for .h (70.0725ms)
+✔ transaction rollback for .cpp (90.2923ms)
+✔ transaction rollback for descriptor (124.8327ms)
+✖ transaction rollback for afterDescriptor (119.1802ms)
+✖ concurrent user changes are preserved during rollback (99.8786ms)
+✖ preflight rejects unsaved, untrusted, changed and symlink destinations (41.412ms)
+✔ partial plugin source write rolls back plugin descriptor and preserves existing content (100.6817ms)
+✔ plugin module can use a distinct safe name (96.65ms)
+✔ module wizard cancels at name (78.0151ms)
+✔ module wizard cancels at type (69.8641ms)
+✔ module wizard cancels at layout (59.6498ms)
+✔ module wizard cancels at confirmation (177.0321ms)
+✔ module wizard cancels at phase (85.2628ms)
+✔ module wizard cancels at advancedConfirmation (78.6171ms)
+✔ plugin wizard cancels at name (44.0934ms)
+✔ plugin wizard cancels at type (49.5909ms)
+✔ plugin wizard cancels at layout (52.0405ms)
+✔ plugin wizard cancels at confirmation (77.5703ms)
+✔ plugin wizard cancels at phase (73.9532ms)
+✔ plugin wizard cancels at advancedConfirmation (71.4784ms)
+✔ plugin wizard cancels at friendly (35.4254ms)
+✔ plugin wizard cancels at description (36.1752ms)
+✔ plugin wizard cancels at moduleName (47.9227ms)
+✖ module wizard previews, marks stale and integrates class/nav commands immediately (143.0062ms)
+✔ plugin wizard previews, marks stale and integrates class/nav commands immediately (148.0562ms)
+✔ plugin navigation handles one, multiple, cancelled, missing and plugin Build.cs (173.7084ms)
+✔ structure wizard rejects untrusted and invalid input can be corrected (28.3313ms)
+✔ runtime interval undefined (1.9711ms)
+✔ runtime interval 0 (0.1826ms)
+✔ runtime interval 1 (0.1452ms)
+✔ runtime interval -1 (0.1164ms)
+✔ runtime interval NaN (0.1217ms)
+✔ runtime interval 10 (0.0995ms)
+✔ runtime interval 60 (0.0868ms)
+✔ runtime interval 4000 (0.1143ms)
+✔ runtime interval 10 (0.1117ms)
+✔ watcher config, serial refresh, coalescing, reset and disposal (0.979ms)
+✔ watcher never publishes disposed or old-workspace refresh results (1.1966ms)
+✔ no project disables periodic timer, manual refresh still works (0.3744ms)
+✔ sidebar groups configuration, runtime and callable actions; changes fire TreeView event (64.2947ms)
+✔ Run success uses shared pipeline without duplicate launches (170.8204ms)
+✔ Run failure uses shared pipeline without duplicate launches (89.0418ms)
+✔ Run running uses shared pipeline without duplicate launches (78.7574ms)
+✔ Build, Run and regeneration share operation lock and reveal active terminal (66.2309ms)
+✔ Explorer mapping false root (40.5383ms)
+✔ Explorer mapping false nested (41.6866ms)
+✔ Explorer mapping true root (44.9261ms)
+✔ Explorer mapping true nested (43.1895ms)
+✔ Explorer mapping true Public (40.5135ms)
+✔ Explorer mapping true Private (46.97ms)
+✖ Explorer rejects generated folders, unrelated paths, files and symlinks; menus enumerate safe folders only (39.8212ms)
+✔ Explorer shared wizard cancellation (37.8682ms)
+✔ Explorer shared wizard creation and collision (104.4924ms)
+✔ package contributions use scoped Explorer action, native view and checked keyboard chord (1.26ms)
+✔ watcher reconciles structural changes and refreshes process state without builds (53.7127ms)
+✔ transient refresh errors retain fallback reconciliation for a previously valid project (0.6524ms)
+✔ workspace changes replace filesystem watcher and disposal releases it (49.6286ms)
+✔ new project uses its own target, keeps settings, creates files once (140.1039ms)
+✔ setup abandons stale workspace after engine barrier (15.3529ms)
+✔ setup abandons stale workspace after dialog barrier (105.6127ms)
+✔ setup abandons stale workspace after update barrier (15.6623ms)
+✔ restricted mode performs no writes and no commands (18.4193ms)
+✔ initialization installs missing companion extensions and continues setup (29.4114ms)
+✔ manual initialization preserves custom files, tasks and saved build configuration (33.4733ms)
+✔ workspace switch during reconciliation cannot mutate old coordinator/state (110.2567ms)
+✔ project selection change in the same folder invalidates a pending collection (139.0378ms)
+✔ malformed project descriptor null (29.6966ms)
+✔ malformed project descriptor [] (27.5873ms)
+✔ malformed project descriptor {"Modules":{}} (29.6494ms)
+✔ malformed project descriptor {"Plugins":"bad"} (30.9473ms)
+✔ malformed project descriptor {"Modules":[null]} (27.8358ms)
+✔ malformed project descriptor {"Plugins":[{"Name":4}]} (31.5699ms)
+✔ dependency document parse rejection is caught and reported after Build.cs deletion (52.7991ms)
+ℹ tests 435
+ℹ suites 0
+ℹ pass 418
+ℹ fail 17
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 31281.3625
+
+✖ failing tests:
+
+test at tests\build-lifecycle.test.js:67:1
+✖ real Windows cancellation stops only the disposable owned PowerShell tree (6119.6068ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'Failed' !== 'Exited'
+  
+      at TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\build-lifecycle.test.js:75:29)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Failed',
+    expected: 'Exited',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\classFiles.test.js:41:1
+✖ symlink, traversal, dirty documents and lost trust block class creation (85.355ms)
+  Error: EPERM: operation not permitted, symlink 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-dV41Xd\Elsewhere' -> 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-dV41Xd\Source\Gameplay\Systems'
+      at async Object.symlink (node:internal/fs/promises:1059:10)
+      at async TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\classFiles.test.js:48:51)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -4048,
+    code: 'EPERM',
+    syscall: 'symlink',
+    path: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-dV41Xd\\Elsewhere',
+    dest: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-dV41Xd\\Source\\Gameplay\\Systems'
+  }
+
+test at tests\dependencies.test.js:63:1
+✖ file edit safety rejects dirty, changed and linked Build.cs (79.0503ms)
+  Error: EPERM: operation not permitted, rename 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-UJwFz4\Source\Gameplay' -> 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-UJwFz4\Source\GameplaySaved'
+      at async Object.rename (node:internal/fs/promises:842:10)
+      at async TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\dependencies.test.js:68:39)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -4048,
+    code: 'EPERM',
+    syscall: 'rename',
+    path: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-UJwFz4\\Source\\Gameplay',
+    dest: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-UJwFz4\\Source\\GameplaySaved'
+  }
+
+test at tests\dependencyUI.test.js:44:1
+✖ generated project and plugin module Build.cs are editable immediately (203.2965ms)
+  Error: EPERM: operation not permitted, rename 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-BaAHV3\.unreal-descriptor-8da66c81-57c9-4666-8139-bbfad31cef94.tmp' -> 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-BaAHV3\Game.uproject'
+      at async Object.rename (node:internal/fs/promises:842:10)
+      at async replace (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\creation.js:70:5)
+      at async commitUnlocked (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\creation.js:80:43)
+      at async Object.mutate (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\generationGuard.js:27:12)
+      at async TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\dependencyUI.test.js:45:178)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -4048,
+    code: 'EPERM',
+    syscall: 'rename',
+    path: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-BaAHV3\\.unreal-descriptor-8da66c81-57c9-4666-8139-bbfad31cef94.tmp',
+    dest: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-BaAHV3\\Game.uproject'
+  }
+
+test at tests\diagnostics.test.js:57:1
+✖ Project Doctor reports created module types and plugin enablement without mutation (243.1154ms)
+  Error: EPERM: operation not permitted, rename 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-mkxQY0\.unreal-descriptor-3e994d98-9347-4074-82f3-436508bc1561.tmp' -> 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-mkxQY0\Game.uproject'
+      at async Object.rename (node:internal/fs/promises:842:10)
+      at async replace (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\creation.js:70:5)
+      at async commitUnlocked (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\creation.js:80:43)
+      at async Object.mutate (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\generationGuard.js:27:12)
+      at async TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\diagnostics.test.js:60:44)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -4048,
+    code: 'EPERM',
+    syscall: 'rename',
+    path: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-mkxQY0\\.unreal-descriptor-3e994d98-9347-4074-82f3-436508bc1561.tmp',
+    dest: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-mkxQY0\\Game.uproject'
+  }
+
+test at tests\generation-recovery.test.js:111:1
+✖ replacement with equal bytes still reports changed identity (114.0599ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Failed'
+  - 'Conflict'
+  
+      at C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\generation-recovery.test.js:113:10
+      at async setup (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\generation-recovery.test.js:25:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Failed',
+    expected: 'Conflict',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\generation-recovery.test.js:120:1
+✖ hard-link replacement is unreadable/unsafe and never written through (116.4645ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      '{"EngineAssociation":"5.8"}',
+  +   'absent'
+  -   'unreadable'
+    ]
+  
+      at C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\generation-recovery.test.js:124:10
+      at async setup (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\generation-recovery.test.js:25:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '{"EngineAssociation":"5.8"}', 'absent' ],
+    expected: [ '{"EngineAssociation":"5.8"}', 'unreadable' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\generation.test.js:10:1
+✖ generation uses the active engine/project and restores existing VS Code configuration (387.7079ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'overwritten by stub generator'
+  - '{"existing":false}'
+  
+      at TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\generation.test.js:21:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'overwritten by stub generator',
+    expected: '{"existing":false}',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\generation.test.js:46:1
+✖ generation rejects linked configuration before invoking UnrealBuildTool (33.0308ms)
+  Error: EPERM: operation not permitted, symlink 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-kFj2qm\config' -> 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-kFj2qm\.vscode'
+      at async Object.symlink (node:internal/fs/promises:1059:10)
+      at async TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\generation.test.js:50:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -4048,
+    code: 'EPERM',
+    syscall: 'symlink',
+    path: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-kFj2qm\\config',
+    dest: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-kFj2qm\\.vscode'
+  }
+
+test at tests\modules.test.js:33:1
+✖ does not discover modules through directory symlinks (45.6586ms)
+  Error: EPERM: operation not permitted, symlink 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-4uDEz0\Source\Gameplay' -> 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-4uDEz0\Source\Linked'
+      at async Object.symlink (node:internal/fs/promises:1059:10)
+      at async TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\modules.test.js:36:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -4048,
+    code: 'EPERM',
+    syscall: 'symlink',
+    path: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-4uDEz0\\Source\\Gameplay',
+    dest: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-4uDEz0\\Source\\Linked'
+  }
+
+test at tests\structure.test.js:29:89
+✖ module creation immediately discovers Flat (207.133ms)
+  Error: EPERM: operation not permitted, rename 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-cNTUhM\.unreal-descriptor-4dae2e66-ee95-480f-aadd-d2288e69afdc.tmp' -> 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-cNTUhM\Game.uproject'
+      at async Object.rename (node:internal/fs/promises:842:10)
+      at async replace (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\creation.js:70:5)
+      at async commitUnlocked (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\creation.js:80:43)
+      at async Object.mutate (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\generationGuard.js:27:12)
+      at async TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\structure.test.js:31:75)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -4048,
+    code: 'EPERM',
+    syscall: 'rename',
+    path: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-cNTUhM\\.unreal-descriptor-4dae2e66-ee95-480f-aadd-d2288e69afdc.tmp',
+    dest: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-cNTUhM\\Game.uproject'
+  }
+
+test at tests\structure.test.js:29:89
+✖ module creation immediately discovers Public / Private (244.5939ms)
+  Error: EPERM: operation not permitted, rename 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-Ip9Il6\.unreal-descriptor-2145b483-747c-400c-a9a1-42ad6107cda3.tmp' -> 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-Ip9Il6\Game.uproject'
+      at async Object.rename (node:internal/fs/promises:842:10)
+      at async replace (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\creation.js:70:5)
+      at async commitUnlocked (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\creation.js:80:43)
+      at async Object.mutate (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\generationGuard.js:27:12)
+      at async TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\structure.test.js:31:75)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -4048,
+    code: 'EPERM',
+    syscall: 'rename',
+    path: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-Ip9Il6\\.unreal-descriptor-2145b483-747c-400c-a9a1-42ad6107cda3.tmp',
+    dest: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-Ip9Il6\\Game.uproject'
+  }
+
+test at tests\structure.test.js:46:79
+✖ transaction rollback for afterDescriptor (119.1802ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Injected/. Input:
+  
+  "Error: EPERM: operation not permitted, rename 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-h55bMq\\.unreal-descriptor-a18861af-6345-4c03-8a97-3b82a94dc439.tmp' -> 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-h55bMq\\Game.uproject'"
+  
+      at async TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\structure.test.js:52:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: EPERM: operation not permitted, rename 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-h55bMq\.unreal-descriptor-a18861af-6345-4c03-8a97-3b82a94dc439.tmp' -> 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-h55bMq\Game.uproject'
+        at async Object.rename (node:internal/fs/promises:842:10)
+        at async replace (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\creation.js:70:5)
+        at async commitUnlocked (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\creation.js:80:43)
+        at async Object.mutate (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\generationGuard.js:27:12)
+        at async waitForActual (node:assert:646:5)
+        at async strict.rejects (node:assert:769:25)
+        at async TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\structure.test.js:52:5)
+        at async Test.run (node:internal/test_runner/test:1389:7)
+        at async Test.processPendingSubtests (node:internal/test_runner/test:960:7),
+    expected: /Injected/,
+    operator: 'rejects',
+    diff: 'simple'
+  }
+
+test at tests\structure.test.js:57:1
+✖ concurrent user changes are preserved during rollback (99.8786ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Rollback incomplete/. Input:
+  
+  "Error: EPERM: operation not permitted, rename 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-pXFt44\\.unreal-descriptor-82b4abf4-a822-4fa1-8c0c-1d95eb3474c8.tmp' -> 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-pXFt44\\Game.uproject'"
+  
+      at async TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\structure.test.js:60:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: EPERM: operation not permitted, rename 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-pXFt44\.unreal-descriptor-82b4abf4-a822-4fa1-8c0c-1d95eb3474c8.tmp' -> 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-pXFt44\Game.uproject'
+        at async Object.rename (node:internal/fs/promises:842:10)
+        at async replace (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\creation.js:70:5)
+        at async commitUnlocked (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\creation.js:80:43)
+        at async Object.mutate (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\generationGuard.js:27:12)
+        at async waitForActual (node:assert:646:5)
+        at async strict.rejects (node:assert:769:25)
+        at async TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\structure.test.js:60:5)
+        at async Test.run (node:internal/test_runner/test:1389:7)
+        at async Test.processPendingSubtests (node:internal/test_runner/test:960:7),
+    expected: /Rollback incomplete/,
+    operator: 'rejects',
+    diff: 'simple'
+  }
+
+test at tests\structure.test.js:64:1
+✖ preflight rejects unsaved, untrusted, changed and symlink destinations (41.412ms)
+  Error: EPERM: operation not permitted, symlink 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-KQJWt2\Source\Gameplay' -> 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-KQJWt2\Source\Combat'
+      at async Object.symlink (node:internal/fs/promises:1059:10)
+      at async TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\structure.test.js:69:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -4048,
+    code: 'EPERM',
+    syscall: 'symlink',
+    path: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-KQJWt2\\Source\\Gameplay',
+    dest: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-KQJWt2\\Source\\Combat'
+  }
+
+test at tests\structureWizard.test.js:36:40
+✖ module wizard previews, marks stale and integrates class/nav commands immediately (143.0062ms)
+  Error: EPERM: operation not permitted, rename 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-9PiGJC\.unreal-descriptor-a9fc9945-c5f4-4a6e-a78f-48cc3e949616.tmp' -> 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-9PiGJC\Game.uproject'
+      at async Object.rename (node:internal/fs/promises:842:10)
+      at async replace (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\creation.js:70:5)
+      at async commitUnlocked (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\creation.js:80:43)
+      at async Object.mutate (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\generationGuard.js:27:12)
+      at async Object.wizard (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\structureWizard.js:50:3)
+      at async TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\structureWizard.test.js:38:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -4048,
+    code: 'EPERM',
+    syscall: 'rename',
+    path: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-9PiGJC\\.unreal-descriptor-a9fc9945-c5f4-4a6e-a78f-48cc3e949616.tmp',
+    dest: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-9PiGJC\\Game.uproject'
+  }
+
+test at tests\ux.test.js:53:1
+✖ Explorer rejects generated folders, unrelated paths, files and symlinks; menus enumerate safe folders only (39.8212ms)
+  Error: EPERM: operation not permitted, symlink 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-2OP5xo' -> 'C:\Users\Owner\AppData\Local\Packages\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\AC\Temp\unreal-v04-2OP5xo\Source\Gameplay\Linked'
+      at async Object.symlink (node:internal/fs/promises:1059:10)
+      at async TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\ux.test.js:57:50)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    errno: -4048,
+    code: 'EPERM',
+    syscall: 'symlink',
+    path: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-2OP5xo',
+    dest: 'C:\\Users\\Owner\\AppData\\Local\\Packages\\sandbox.{f8812818-9c3e-444b-aab5-440675ddfb37}\\AC\\Temp\\unreal-v04-2OP5xo\\Source\\Gameplay\\Linked'
+  }

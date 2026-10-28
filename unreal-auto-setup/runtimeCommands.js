@@ -23,7 +23,13 @@ function register(vscode, context, { coordinator, builds, refresh }) {
     vscode.commands.registerCommand('unrealSetup.cancelPendingAutomaticBuild', () =>
       coordinator.cancelPending()
     ),
-    vscode.commands.registerCommand('unrealSetup.cancelBuild', () => builds.cancel?.())
+    vscode.commands.registerCommand('unrealSetup.cancelBuild', () => {
+      if(builds.active===false) {
+        const reason='No operation is controlled by this host. Recovered processes cannot be safely terminated; inspect recovery details in Build status.';
+        vscode.window.showWarningMessage(reason);return {state:'Refused',reason};
+      }
+      return builds.cancel?.();
+    })
   );
   for (const [id, key, values] of [
     ['automationMode', 'automationMode', ['watch', 'off', 'autoBuild', 'autoBuildAndRegenerate']],

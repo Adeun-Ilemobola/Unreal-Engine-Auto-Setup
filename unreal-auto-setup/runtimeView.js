@@ -29,6 +29,9 @@ function create(vscode, context, services, coordinator, report) {
   const sidebar = sidebarApi.create(vscode, context);
   return snapshot => {
     snapshot.automation = coordinator.snapshot();
+    if(snapshot.recovery?.state==='Unknown' && !coordinator.busy) {
+      snapshot.automation.state='Recovery blocked';snapshot.automation.blocked=snapshot.recovery.reason;
+    }
     snapshot.session && (snapshot.session.automation = snapshot.automation);
     snapshot.dependencies = services.dependencies?.snapshot(snapshot.module);
     sidebar.update(snapshot);

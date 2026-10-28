@@ -1,0 +1,94 @@
+'use strict';
+const fs = require('node:fs/promises');
+const path = require('node:path');
+const {randomUUID, createHash} = require('node:crypto');
+const {execFile} = require('node:child_process');
+const {promisify} = require('node:util');
+const {powershell} = require('./processes');
+const LIMIT = 256;
+const hash = text => createHash('sha256').update(text).digest('hex');
+function classify(expected, observed) {
+  return observed && ['pid','creation','executable','command'].every(key =>
+    expected[key] && expected[key] === observed[key]) ? 'Observed active' : 'Unknown';
+}
+async function query(pid) {
+  if (!Number.isSafeInteger(pid) || pid <= 0) return null;
+  const script = "$ErrorActionPreference='Stop'; $p=Get-CimInstance Win32_Process -Filter 'ProcessId = " + pid + "'; if($p){@{pid=[int]$p.ProcessId;creation=$p.CreationDate.ToUniversalTime().ToString('o');executable=$p.ExecutablePath;command=$p.CommandLine}|ConvertTo-Json -Compress}";
+  try {
+    const {stdout} = await promisify(execFile)(powershell(), ['-NoLogo','-NoProfile','-EncodedCommand',Buffer.from(script,'utf16le').toString('base64')], {windowsHide:true,timeout:5000,maxBuffer:32768});
+    return stdout.trim() ? JSON.parse(stdout) : null;
+  } catch { return null; }
+}
+async function canonical(project) {
+  const actual = await fs.realpath(project);
+  return process.platform === 'win32' ? actual.toLowerCase() : actual;
+}
+async function regular(filename) {
+  const stat = await fs.lstat(filename);
+  if (!stat.isFile() || stat.isSymbolicLink() || stat.nlink !== 1 || stat.size > 32768) throw new Error('Unsafe recovery metadata');
+  return JSON.parse(await fs.readFile(filename,'utf8'));
+}
+async function write(filename, value) {
+  const handle = await fs.open(filename,'wx');
+  try { await handle.writeFile(JSON.stringify(value)); await handle.sync(); }
+  finally { await handle.close(); }
+}
+/** Immutable quarantine records. A root-close event cannot release a spawned claim. */
+function create(root, {queryProcess=query}={}) {
+  async function directory(project) { return path.join(root,hash(await canonical(project))); }
+  async function safeRoot() {
+    await fs.mkdir(root,{recursive:true});
+    const stat=await fs.lstat(root);
+    if (!stat.isDirectory() || stat.isSymbolicLink()) throw new Error('Unsafe recovery storage');
+  }
+  async function inspect(project, {probe=false}={}) {
+    let location;
+    try {
+      location=await directory(project);
+      let stat;
+      try { stat=await fs.lstat(location); } catch(error) { if(error.code==='ENOENT') return {state:'Clear'}; throw error; }
+      if(!stat.isDirectory() || stat.isSymbolicLink()) throw new Error('Unsafe claim');
+      const record=await regular(path.join(location,'intent.json'));
+      if(record.schema!==1 || record.project!==await canonical(project) || !/^[0-9a-f-]{36}$/.test(record.operationId) || !['build','generation'].includes(record.kind)) throw new Error('Invalid claim schema or project');
+      let identity, observation='Unknown';
+      if(probe) {
+        try { identity=await regular(path.join(location,'identity.json')); observation=classify(identity,await queryProcess(identity.pid)); } catch {}
+      }
+      return {state:'Unknown',observation,operationId:record.operationId,directory:location,
+        reason:'Recovery blocked: previous managed '+record.kind+' '+record.operationId+'. '+observation+'. Full process-tree exit and execution result are unconfirmed. Inspect '+location+'; do not remove its claim until all associated work is independently verified stopped.'};
+    } catch(error) { return {state:'Unknown',directory:location,reason:'Recovery blocked: missing, corrupt or inaccessible ownership metadata. '+error.message}; }
+  }
+  async function begin(project,kind) {
+    if(!['build','generation'].includes(kind)) throw new Error('Unsupported operation kind');
+    await safeRoot();
+    const location=await directory(project);
+    let count=0;
+    const entries=await fs.opendir(root);
+    for await(const entry of entries) { if(++count>=LIMIT) throw new Error('Recovery claim quota reached; retain unresolved records for review.'); }
+    try { await fs.mkdir(location); } catch(error) {
+      if(error.code==='EEXIST') throw new Error((await inspect(project)).reason || 'Recovery claim exists');
+      throw error;
+    }
+    const operationId=randomUUID();
+    // Failure after mkdir deliberately leaves a blocking partial claim.
+    await write(path.join(location,'intent.json'),{schema:1,operationId,project:await canonical(project),kind,created:new Date().toISOString()});
+    let attempted=false;
+    return {operationId,directory:location,
+      async spawnAttempted(encoded) { attempted=true; await write(path.join(location,'spawn.json'),{schema:1,operationId,commandHash:hash(encoded)}); },
+      async observe(pid,command) {
+        const identity=await queryProcess(pid);
+        if(identity?.pid!==pid || identity.executable?.toLowerCase()!==powershell().toLowerCase() || !identity.creation || !identity.command?.includes(command)) return;
+        await write(path.join(location,'identity.json'),identity);
+      },
+      async exited(exitCode) { await write(path.join(location,'root-exit.json'),{schema:1,operationId,exitCode,treeExitConfirmed:false}); },
+      async abandonBeforeSpawn() {
+        if(attempted) throw new Error('Spawn attempted; tree ownership remains uncertain');
+        const record=await regular(path.join(location,'intent.json'));
+        if(record.operationId!==operationId) throw new Error('Recovery owner changed');
+        await fs.unlink(path.join(location,'intent.json'));await fs.rmdir(location);
+      }
+    };
+  }
+  return {begin,inspect};
+}
+module.exports={create,classify,query};
