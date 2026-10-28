@@ -1,0 +1,30 @@
+ M bundle_sources.py
+ M docs/DEVELOPMENT.md
+ M docs/maintenance/INDEX.md
+ M unreal-auto-setup/classTemplates.js
+ M unreal-auto-setup/classWizard.js
+ M unreal-auto-setup/debugger.js
+ M unreal-auto-setup/package.json
+ M unreal-auto-setup/tests/classFiles.test.js
+ M unreal-auto-setup/tests/classTemplates.test.js
+ M unreal-auto-setup/tests/classWizard.test.js
+ M unreal-auto-setup/tests/debugger.test.js
+ M unreal-auto-setup/tests/real-unreal-validation.js
+ M unreal-auto-setup/tests/ux.test.js
+?? .github/
+?? docs/maintenance/PHASE4_PROGRESS.md
+?? docs/maintenance/prompts/0010-phase3b3z-v1.md
+?? docs/maintenance/prompts/0013-phase4e-review-v1.md
+?? docs/maintenance/runs/0010-phase3b3z/
+?? docs/maintenance/runs/0011-phase3b3-debugger/
+?? docs/maintenance/runs/0012-phase4.zip
+?? docs/maintenance/runs/0012-phase4/
+?? docs/maintenance/runs/0013-phase4e-review/
+?? tools/phase3b3z/
+?? tools/phase4b/
+?? tools/run-extension-tests.cjs
+?? tools/validate-release.cjs
+?? unreal-auto-setup/snippets/
+?? unreal-auto-setup/tests/creation-expansion.test.js
+?? unreal-auto-setup/tests/engine-validation-failures.test.js
+?? unreal-auto-setup/tests/host-runner-suite.js

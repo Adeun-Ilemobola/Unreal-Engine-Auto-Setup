@@ -1,0 +1,2 @@
+Real debugger scratch: C:\Dev\Scratch\UnrealAutoSetupTests\real-debug-DW3JLM
+Verified debugger cleanup

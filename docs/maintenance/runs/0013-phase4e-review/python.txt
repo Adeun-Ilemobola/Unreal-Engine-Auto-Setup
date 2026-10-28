@@ -1,0 +1,9 @@
+test_document_drift_blocks_preflight (test_bundle_sources.PackagingInputs.test_document_drift_blocks_preflight) ... ok
+test_missing_local_import_blocks_preflight (test_bundle_sources.PackagingInputs.test_missing_local_import_blocks_preflight) ... ok
+test_new_runtime_modules_are_included_without_test_files (test_bundle_sources.PackagingInputs.test_new_runtime_modules_are_included_without_test_files) ... ok
+test_unlisted_entry_point_blocks_preflight (test_bundle_sources.PackagingInputs.test_unlisted_entry_point_blocks_preflight) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.079s
+
+OK

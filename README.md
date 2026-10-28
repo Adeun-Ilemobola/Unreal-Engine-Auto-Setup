@@ -2,12 +2,36 @@
 
 Initialize Unreal projects, create C++ classes, modules and project plugins, build with compiler Problems, monitor project Editors, attach the C++ debugger, and regenerate project files from VS Code.
 
-**Release:** 0.8.0 · **Platform:** Windows / Win64 · **Unreal Engine:** 5.8+ · **VS Code:** 1.100.0+ · **License:** MIT
+**Release:** v1.0 Alpha (1.0.0) · **Platform:** Windows / Win64 · **Unreal Engine:** 5.8+ · **VS Code:** 1.100.0+ · **License:** MIT
 
 Future Unreal Engine releases may require compatibility updates. This is a locally packaged extension with experimental build/editor controls. Its stable extension ID remains `local-tools.unreal-project-tools` so earlier installations can upgrade normally.
 
 
-## v0.8 runtime automation
+## Contents
+
+- [Runtime automation](#runtime-automation)
+- [Install and get started](#install-and-get-started)
+- [Unreal controls in VS Code](#unreal-controls-in-vs-code)
+- [Module dependency tools](#module-dependency-tools)
+- [Required companion extensions](#required-companion-extensions)
+- [Automatic and manual initialization](#automatic-and-manual-initialization)
+- [Configuration selection](#configuration-selection)
+- [Build controls and Problems](#build-controls-and-problems)
+- [Editor runtime controls](#editor-runtime-controls)
+- [Regenerate project files](#regenerate-project-files)
+- [Create an Unreal C++ class](#create-an-unreal-c-class)
+- [Create modules and project-local plugins](#create-modules-and-project-local-plugins)
+- [Engine detection](#engine-detection)
+- [Diagnostics and project logs](#diagnostics-and-project-logs)
+- [Troubleshooting](#troubleshooting)
+- [Current limitations](#current-limitations)
+- [Alpha installation and development](#alpha-installation-and-development)
+- [Generated types](#generated-types)
+- [Command reference](#command-reference)
+- [Settings reference](#settings-reference)
+- [Snippets](#snippets)
+
+## Runtime automation
 
 Automation is opt-in. Existing and new projects default to **Watch**.
 
@@ -36,14 +60,14 @@ Completed terminals are replaced to limit clutter. Complete streamed output acro
 
 UE 5.8.1's installed `ILiveCodingModule.h` exposes in-process Compile calls. `LiveCodingModule.cpp` registers in-Editor `LiveCoding.Compile`/`LiveCoding.CompileSync` commands. UBT's `HotReload.cs` checks an executable-derived `Global\LiveCoding_…` mutex and rejects conflicting external builds. These are not a validated project-addressable external compile endpoint.
 
-v0.8 implements **awareness only**, with no `preferLiveCoding` setting and no external trigger. A read-only mutex probe can report Available, Unavailable or Unknown; the mutex is engine-executable scoped, not proof of a project's current settings. No mutex does not establish loaded-module rebuild safety. The shared strategy uses external UBT only when the matching project Editor is stopped. Running/Unknown states block Build, dirty Run and Auto Build with an explanation. Close Editor and retry, or use Live Coding inside Editor yourself. No synthetic keys, mouse input, UI automation or undocumented trigger protocol is used.
+This release implements **awareness only**, with no `preferLiveCoding` setting and no external trigger. A read-only mutex probe can report Available, Unavailable or Unknown; the mutex is engine-executable scoped, not proof of a project's current settings. No mutex does not establish loaded-module rebuild safety. The shared strategy uses external UBT only when the matching project Editor is stopped. Running/Unknown states block Build, dirty Run and Auto Build with an explanation. Close Editor and retry, or use Live Coding inside Editor yourself. No synthetic keys, mouse input, UI automation or undocumented trigger protocol is used.
 
 Header and structural changes are handled conservatively; the extension does not parse C++ reflection layouts. It does not build engine source as an automation workflow. Unsupported multi-root projects remain unsupported. A timestamp change can conservatively schedule work even when content is unchanged. Dirty state and history are session-local, and compilation coverage is the selected project target, not every possible configuration.
 
 
 ## Install and get started
 
-1. In the VS Code profile you use for Unreal, select **Extensions > ... > Install from VSIX...** and install `unreal-project-tools-0.8.0.vsix`.
+1. In the VS Code profile you use for Unreal, select **Extensions > ... > Install from VSIX...** and install `UnrealAutoSetup-1.0-alpha.vsix`.
 2. Reload VS Code if prompted. Open the single folder directly containing your `.uproject` and trust the workspace.
 3. Automatic initialization adds missing configuration. If prompted, choose an engine installation and complete Skybox's IntelliSense selection.
 4. Use **Build** to compile the active selection or **Run** to get the project ready in Unreal Editor. Open the **Unreal** sidebar for configuration and tools.
@@ -79,15 +103,15 @@ The view's Refresh icon reconciles state; any newly discovered saved changes fol
 
 The watcher reads lightweight process, descriptor, target/module/plugin and engine state. File timestamps reconcile missed structural events. It never invokes UBT, regenerates or compiles on a timer. Refreshes are serialized and event requests coalesced. Workspace/configuration changes reset timers and filesystem watches; disposal prevents late results from updating the view. A transient failure after a valid project retains fallback reconciliation. Polling also runs while the window is unfocused; focus events provide an immediate refresh.
 
-**Automatic build-on-change is not implemented.** No autoBuild setting is advertised and no source save or timer starts a build. Project Doctor reports watcher configuration and this disabled-by-design behavior independently of the watcher.
+Automatic build-on-save is opt-in; Watch remains the recommended default.
 
 ### Explorer creation and keyboard access
 
-Right-click a discovered module folder and choose **Unreal: Create Class Here**. The compact type list is UObject, Actor, Actor Component, Scene Component and Unreal Interface. It uses the full wizard's naming, exposure, preview, templates and safe file writer; the destination comes from the selected folder instead of a separate folder prompt.
+Right-click a discovered module folder and choose **Unreal: Create Class Here**. All 17 registered types are available; Explorer uses native exposure. It uses the full wizard's naming, exposure, preview, templates and safe file writer; the destination comes from the selected folder instead of a separate folder prompt.
 
 A Public/Inventory or Private/Inventory selection maps to Public/Inventory for the header and Private/Inventory for the source. The module root maps to its default layout; flat modules retain colocated files. Only known safe module directories appear in the Explorer menu. Binaries, Intermediate, Saved, DerivedDataCache, symlinks and unrelated folders are rejected again at invocation. New folders may need the next event/poll or explicit sidebar Refresh before the menu appears. Module/plugin Explorer entries are deferred; use the sidebar for those operations.
 
-The full **Unreal: New C++ Class** wizard remains available with all nine types. Its default Windows shortcut is **Ctrl+K, then Ctrl+Alt+N**, active in a trusted Unreal project. It was checked against the installed Windows default keybindings in a real VS Code host; users and other extensions can override it. Ctrl+Shift+T remains untouched.
+The full **Unreal: New C++ Class** wizard remains available with all 17 types. Its default Windows shortcut is **Ctrl+K, then Ctrl+Alt+N**, active in a trusted Unreal project. It was checked against the installed Windows default keybindings in a real VS Code host; users and other extensions can override it. Ctrl+Shift+T remains untouched.
 
 ## Module dependency tools
 
@@ -377,21 +401,128 @@ One local Windows project root only; no multi-root or virtual workspace support.
 
 No module/plugin deletion or renaming, engine plugin creation, Blueprint asset creation, arbitrary C# Build.cs refactoring or automatic Target.cs editing, additional class-template families, cooking/packaging/deployment, custom debugger backend, custom IntelliSense engine, Live Coding control, Insights, multiplayer orchestration, automatic repair, or real-time log tailing is included. Compiler parsing covers common source diagnostics, not every Unreal message. Process matching cannot reliably identify Editors launched with relative-only project arguments or hidden command lines.
 
-## Development and capability report
 
-See [CAPABILITIES.md](CAPABILITIES.md) for the implementation inventory, command IDs, state/files, and validation scope.
+## Alpha installation and development
 
-Run `node --test tests/*.test.js` from the extension source directory. From the repository root, run `python build_bundle.py` to produce `unreal-project-tools-0.8.0.vsix` and `Unreal-Engine-Auto-Setup.zip`. No npm runtime dependencies are used.
+Final installer: `C:\Dev\VSCodeTools\unreal-auto-setup\dist\UnrealAutoSetup-1.0-alpha.vsix`.
 
-The v0.8.0 suite has **301 passing tests**, including 62 new automation cases. Existing regressions pass; sidebar expectations and the intentional refusal to build against an open Editor were updated. See VALIDATION.md for live VS Code and UE 5.8.1 results.
+In your normal Microsoft VS Code profile, open Extensions → ... → Install from VSIX, select this file, accept the update and reload. Confirm Unreal Engine Auto Setup (Alpha), version 1.0.0. The identity local-tools.unreal-project-tools is unchanged. If an older ad-unreal-auto-setup extension is installed under a different identity, manually disable that legacy extension to avoid duplicate controls. Nothing is installed automatically by this build.
 
-**Prior v0.6 UE 5.8.1 compilation validation succeeded.** A fresh disposable project generated a Runtime module in Public/Private layout, regenerated VS Code project files, compiled all nine v0.5 class types through Unreal's reflection/build pipeline, and linked the Editor target. A blank Runtime plugin in Flat layout was then generated and discovered without `.uproject` plugin enablement changes; the Editor target compiled and linked again. Target rules were created only in the disposable test fixture. No production project source was changed.
+Alpha is a development label; package metadata uses numeric 1.0.0. No runtime npm dependencies or transpilation are required. From the repository root:
 
-The v0.6 build exposed and fixed a v0.5 JavaScript inherited-constructor bug affecting constructor-free templates. The initial disposable harness also needed its matching primary-module header included first. Both problems were corrected before the successful rerun. The first sandboxed attempt was blocked at UBT log access; the authorized rerun used normal UBT logs/caches. See [VALIDATION.md](VALIDATION.md) for exact stages, toolchain, fixture and limitations.
+```powershell
+node tools/run-tests.cjs
+python -B -m unittest discover -s tests -p "test_*.py" -v
+node tools/validate-release.cjs
+python -B build_bundle.py --release
+```
 
-Implementation references: [VS Code C++ attach configuration](https://code.visualstudio.com/docs/cpp/launch-json-reference), [Epic build configurations](https://dev.epicgames.com/documentation/unreal-engine/build-configurations-reference-for-unreal-engine), [Epic Windows engine registry discovery](https://github.com/EpicGames/tk-unreal/blob/master/startup.py).
+The release command produces one installer in dist and validates ZIP metadata and packaged bytes. Temporary executables, compiler fixtures and profiles remain under `C:\Dev\Scratch\UnrealAutoSetupTests`, with isolated per-run directories and process-scoped TEMP/TMP. Uncertain process ownership retains evidence rather than deleting live files.
 
-Native UI implementation references: [Tree View API](https://code.visualstudio.com/api/extension-guides/tree-view), [when-clause contexts](https://code.visualstudio.com/api/references/when-clause-contexts).
+**Known P1.1:** UBT regeneration can rewrite protected VS Code configuration. Recovery copies exist, but automatic preservation remains unresolved. The strict gate intentionally fails this unchanged acceptance test. This Alpha is not a production-qualified release. Watch mode is recommended. Native supervision releases operation claims only after verified tree completion; uncertainty remains blocked.
 
+Prior Phase 4E qualification: 493/494 Node tests, Python 4/4, host 20/20 narrowly scoped checks, all 17 types compiled with UE 5.8.4, two real debugger attach/detach cycles. These are historical results, not guarantees for every engine patch. Full interactive wizard/reload/Quick Fix coverage is not established by the host suite. See repository docs/DEVELOPMENT.md and maintenance records for details.
 
-Prior v0.7 validation includes real UE 5.8.1 ownership checks, a native VS Code WorkspaceEdit/Undo and Quick Fix check, and successful UBT Editor compilation after adding both Public and Private dependencies in a disposable project. See [VALIDATION.md](VALIDATION.md) for exact evidence and limits.
+## Generated types
+
+UObject, Actor, Actor Component, Scene Component, Unreal Interface (U/I), Game Instance/World/Engine/Local Player Subsystems, Character, Pawn, Player Controller, Game Mode Base, Blueprint Function Library, Data Asset, reflected Struct and Enum. Struct/Enum are header-only; each type has its own folder, with Public/Private mapping for split modules.
+
+## Command reference
+
+| Command | Palette action / purpose |
+| --- | --- |
+| `unrealSetup.setup` | Unreal: Set Up This Project |
+| `unrealSetup.build` | Unreal: Build Project |
+| `unrealSetup.buildAndRun` | Unreal: Build and Open Editor |
+| `unrealSetup.installExtensions` | Unreal: Install Required Extensions |
+| `unrealSetup.openEditor` | Unreal: Open Editor |
+| `unrealSetup.selectTarget` | Unreal: Select Target |
+| `unrealSetup.selectPlatform` | Unreal: Select Platform |
+| `unrealSetup.selectConfiguration` | Unreal: Select Configuration |
+| `unrealSetup.selectBuild` | Unreal: Select Build Settings |
+| `unrealSetup.diagnose` | Unreal: Diagnose Project |
+| `unrealSetup.openLatestLog` | Unreal: Open Latest Project Log |
+| `unrealSetup.attachDebugger` | Unreal: Attach Debugger to Editor |
+| `unrealSetup.regenerate` | Unreal: Regenerate Project Files |
+| `unrealSetup.newClass` | Unreal: New C++ Class |
+| `unrealSetup.openModuleRules` | Unreal: Open Module Build.cs |
+| `unrealSetup.openProjectDescriptor` | Unreal: Open Project Descriptor |
+| `unrealSetup.openTargetRules` | Unreal: Open Target Rules |
+| `unrealSetup.newModule` | Unreal: New Module |
+| `unrealSetup.newPlugin` | Unreal: New Plugin |
+| `unrealSetup.openPluginDescriptor` | Unreal: Open Plugin Descriptor |
+| `unrealSetup.run` | Unreal: Run |
+| `unrealSetup.refresh` | Unreal: Refresh |
+| `unrealSetup.createClassHere` | Unreal: Create Class Here |
+| `unrealSetup.inspectDependencies` | Unreal: Inspect Module Dependencies |
+| `unrealSetup.addDependency` | Unreal: Add Module Dependency |
+| `unrealSetup.removeDependency` | Unreal: Remove Module Dependency |
+| `unrealSetup.changeDependencyVisibility` | Unreal: Change Dependency Visibility |
+| `unrealSetup.findModuleForInclude` | Unreal: Find Module for Include |
+| `unrealSetup.refreshDependencyIndex` | Unreal: Refresh Dependency Index |
+| `unrealSetup.manageDependencies` | Unreal: Manage Module Dependencies |
+| `unrealSetup.automationMode` | Set Automation Mode |
+| `unrealSetup.autoBuildDelay` | Set Auto Build Delay |
+| `unrealSetup.runtimeInterval` | Set Runtime Refresh Interval |
+| `unrealSetup.cancelPendingAutomaticBuild` | Cancel Pending Automatic Build |
+| `unrealSetup.cancelBuild` | Cancel Build |
+
+## Settings reference
+
+| Setting | Default | Purpose |
+| --- | --- | --- |
+| `unrealSetup.autoSetup` | `true` | Automatically initialize local Unreal project folders. |
+| `unrealSetup.runtimeRefreshInterval` | `30` | Runtime reconciliation interval in seconds: 0 disables polling; use 10â€“3600. Invalid values fall back to 30. Checks pending changes; never an unconditional build timer. |
+| `unrealSetup.automationMode` | `"watch"` | Project automation mode. Compilation is opt-in. |
+| `unrealSetup.autoBuildDelay` | `30` | Seconds after the last relevant saved change before automatic work. |
+| `unrealSetup.verboseRuntimeLogging` | `false` | Log runtime reconciliation details. |
+
+The companion setting `unrealEngine.enginePath` is consumed but not contributed by this extension.
+
+## Snippets
+
+All snippets support C++ (`cpp`). Type the prefix and select its completion, or use Insert Snippet. Examples below show editable snippet placeholders. Reflection snippets require CoreMinimal.h and the matching .generated.h last; they do not add includes.
+
+### ustruct: Unreal reflected struct
+
+Requires CoreMinimal.h and this header's .generated.h as the last include.
+
+```cpp
+USTRUCT(BlueprintType)
+struct F${1:ItemData}
+{
+	GENERATED_BODY()
+
+	$0
+};
+```
+
+### uenum: Unreal scoped enum
+
+Requires a valid Unreal reflection header with its .generated.h last.
+
+```cpp
+UENUM(BlueprintType)
+enum class E${1:ItemCategory} : uint8
+{
+	${2:None} = 0$0
+};
+```
+
+### uproperty: Unreal property
+
+Insert inside a reflected class or struct.
+
+```cpp
+UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "${1:Gameplay}")
+${2:float} ${3:Value} = ${4:0.0f};$0
+```
+
+### ufunction: Unreal function
+
+Insert inside a reflected class; supply the implementation separately.
+
+```cpp
+UFUNCTION(BlueprintCallable, Category = "${1:Gameplay}")
+void ${2:PerformAction}(${3});$0
+```

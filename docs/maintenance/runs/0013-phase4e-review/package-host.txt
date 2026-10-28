@@ -1,0 +1,4 @@
+C:\Dev\Scratch\UnrealAutoSetupTests\package-EyG2zt\unreal-project-tools-0.8.0.vsix
+(node:22248) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `Code --trace-deprecation ...` to show where the warning was created)
+Installed package passed; profile cleaned. VSIX: C:\Dev\Scratch\UnrealAutoSetupTests\package-EyG2zt-artifact\unreal-project-tools-0.8.0.vsix

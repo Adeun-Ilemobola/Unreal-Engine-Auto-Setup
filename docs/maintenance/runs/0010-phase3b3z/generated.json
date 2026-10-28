@@ -1,0 +1,318 @@
+[
+  {
+    "type": "struct",
+    "name": {
+      "stem": "ProbeStructcreationZF30Tv",
+      "className": "FProbeStructcreationZF30Tv",
+      "header": "ProbeStructcreationZF30Tv.h",
+      "source": "ProbeStructcreationZF30Tv.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeStructcreationZF30Tv\\ProbeStructcreationZF30Tv.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"ProbeStructcreationZF30Tv.generated.h\"\n\nUSTRUCT(BlueprintType)\nstruct PHASE3AINTEGRATION_API FProbeStructcreationZF30Tv\n{\n  GENERATED_BODY()\n};\n"
+      }
+    ]
+  },
+  {
+    "type": "enum",
+    "name": {
+      "stem": "ProbeEnumcreationZF30Tv",
+      "className": "EProbeEnumcreationZF30Tv",
+      "header": "ProbeEnumcreationZF30Tv.h",
+      "source": "ProbeEnumcreationZF30Tv.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeEnumcreationZF30Tv\\ProbeEnumcreationZF30Tv.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"ProbeEnumcreationZF30Tv.generated.h\"\n\nUENUM(BlueprintType)\nenum class EProbeEnumcreationZF30Tv : uint8\n{\n  None = 0\n};\n"
+      }
+    ]
+  },
+  {
+    "type": "character",
+    "name": {
+      "stem": "ProbeCharactercreationZF30Tv",
+      "className": "AProbeCharactercreationZF30Tv",
+      "header": "ProbeCharactercreationZF30Tv.h",
+      "source": "ProbeCharactercreationZF30Tv.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeCharactercreationZF30Tv\\ProbeCharactercreationZF30Tv.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"GameFramework/Character.h\"\n#include \"ProbeCharactercreationZF30Tv.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API AProbeCharactercreationZF30Tv : public ACharacter\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeCharactercreationZF30Tv\\ProbeCharactercreationZF30Tv.cpp",
+        "text": "#include \"ProbeCharactercreationZF30Tv.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "pawn",
+    "name": {
+      "stem": "ProbePawncreationZF30Tv",
+      "className": "AProbePawncreationZF30Tv",
+      "header": "ProbePawncreationZF30Tv.h",
+      "source": "ProbePawncreationZF30Tv.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbePawncreationZF30Tv\\ProbePawncreationZF30Tv.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"GameFramework/Pawn.h\"\n#include \"ProbePawncreationZF30Tv.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API AProbePawncreationZF30Tv : public APawn\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbePawncreationZF30Tv\\ProbePawncreationZF30Tv.cpp",
+        "text": "#include \"ProbePawncreationZF30Tv.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "playerController",
+    "name": {
+      "stem": "ProbePlayerControllercreationZF30Tv",
+      "className": "AProbePlayerControllercreationZF30Tv",
+      "header": "ProbePlayerControllercreationZF30Tv.h",
+      "source": "ProbePlayerControllercreationZF30Tv.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbePlayerControllercreationZF30Tv\\ProbePlayerControllercreationZF30Tv.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"GameFramework/PlayerController.h\"\n#include \"ProbePlayerControllercreationZF30Tv.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API AProbePlayerControllercreationZF30Tv : public APlayerController\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbePlayerControllercreationZF30Tv\\ProbePlayerControllercreationZF30Tv.cpp",
+        "text": "#include \"ProbePlayerControllercreationZF30Tv.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "gameModeBase",
+    "name": {
+      "stem": "ProbeGameModeBasecreationZF30Tv",
+      "className": "AProbeGameModeBasecreationZF30Tv",
+      "header": "ProbeGameModeBasecreationZF30Tv.h",
+      "source": "ProbeGameModeBasecreationZF30Tv.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeGameModeBasecreationZF30Tv\\ProbeGameModeBasecreationZF30Tv.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"GameFramework/GameModeBase.h\"\n#include \"ProbeGameModeBasecreationZF30Tv.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API AProbeGameModeBasecreationZF30Tv : public AGameModeBase\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeGameModeBasecreationZF30Tv\\ProbeGameModeBasecreationZF30Tv.cpp",
+        "text": "#include \"ProbeGameModeBasecreationZF30Tv.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "functionLibrary",
+    "name": {
+      "stem": "ProbeFunctionLibrarycreationZF30Tv",
+      "className": "UProbeFunctionLibrarycreationZF30Tv",
+      "header": "ProbeFunctionLibrarycreationZF30Tv.h",
+      "source": "ProbeFunctionLibrarycreationZF30Tv.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeFunctionLibrarycreationZF30Tv\\ProbeFunctionLibrarycreationZF30Tv.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"Kismet/BlueprintFunctionLibrary.h\"\n#include \"ProbeFunctionLibrarycreationZF30Tv.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API UProbeFunctionLibrarycreationZF30Tv : public UBlueprintFunctionLibrary\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeFunctionLibrarycreationZF30Tv\\ProbeFunctionLibrarycreationZF30Tv.cpp",
+        "text": "#include \"ProbeFunctionLibrarycreationZF30Tv.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "dataAsset",
+    "name": {
+      "stem": "ProbeDataAssetcreationZF30Tv",
+      "className": "UProbeDataAssetcreationZF30Tv",
+      "header": "ProbeDataAssetcreationZF30Tv.h",
+      "source": "ProbeDataAssetcreationZF30Tv.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeDataAssetcreationZF30Tv\\ProbeDataAssetcreationZF30Tv.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"Engine/DataAsset.h\"\n#include \"ProbeDataAssetcreationZF30Tv.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API UProbeDataAssetcreationZF30Tv : public UDataAsset\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeDataAssetcreationZF30Tv\\ProbeDataAssetcreationZF30Tv.cpp",
+        "text": "#include \"ProbeDataAssetcreationZF30Tv.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "object",
+    "name": {
+      "stem": "ProbeObjectcreationZF30Tv",
+      "className": "UProbeObjectcreationZF30Tv",
+      "header": "ProbeObjectcreationZF30Tv.h",
+      "source": "ProbeObjectcreationZF30Tv.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeObjectcreationZF30Tv\\ProbeObjectcreationZF30Tv.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"UObject/Object.h\"\n#include \"ProbeObjectcreationZF30Tv.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API UProbeObjectcreationZF30Tv : public UObject\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeObjectcreationZF30Tv\\ProbeObjectcreationZF30Tv.cpp",
+        "text": "#include \"ProbeObjectcreationZF30Tv.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "actor",
+    "name": {
+      "stem": "ProbeActorcreationZF30Tv",
+      "className": "AProbeActorcreationZF30Tv",
+      "header": "ProbeActorcreationZF30Tv.h",
+      "source": "ProbeActorcreationZF30Tv.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeActorcreationZF30Tv\\ProbeActorcreationZF30Tv.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"GameFramework/Actor.h\"\n#include \"ProbeActorcreationZF30Tv.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API AProbeActorcreationZF30Tv : public AActor\n{\n  GENERATED_BODY()\n\npublic:\n  AProbeActorcreationZF30Tv();\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeActorcreationZF30Tv\\ProbeActorcreationZF30Tv.cpp",
+        "text": "#include \"ProbeActorcreationZF30Tv.h\"\n\nAProbeActorcreationZF30Tv::AProbeActorcreationZF30Tv()\n{\n  PrimaryActorTick.bCanEverTick = false;\n}\n"
+      }
+    ]
+  },
+  {
+    "type": "actorComponent",
+    "name": {
+      "stem": "ProbeActorComponentcreationZF30Tv",
+      "className": "UProbeActorComponentcreationZF30Tv",
+      "header": "ProbeActorComponentcreationZF30Tv.h",
+      "source": "ProbeActorComponentcreationZF30Tv.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeActorComponentcreationZF30Tv\\ProbeActorComponentcreationZF30Tv.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"Components/ActorComponent.h\"\n#include \"ProbeActorComponentcreationZF30Tv.generated.h\"\n\nUCLASS(BlueprintType, meta=(BlueprintSpawnableComponent))\nclass PHASE3AINTEGRATION_API UProbeActorComponentcreationZF30Tv : public UActorComponent\n{\n  GENERATED_BODY()\n\npublic:\n  UProbeActorComponentcreationZF30Tv();\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeActorComponentcreationZF30Tv\\ProbeActorComponentcreationZF30Tv.cpp",
+        "text": "#include \"ProbeActorComponentcreationZF30Tv.h\"\n\nUProbeActorComponentcreationZF30Tv::UProbeActorComponentcreationZF30Tv()\n{\n  PrimaryComponentTick.bCanEverTick = false;\n}\n"
+      }
+    ]
+  },
+  {
+    "type": "sceneComponent",
+    "name": {
+      "stem": "ProbeSceneComponentcreationZF30Tv",
+      "className": "UProbeSceneComponentcreationZF30Tv",
+      "header": "ProbeSceneComponentcreationZF30Tv.h",
+      "source": "ProbeSceneComponentcreationZF30Tv.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeSceneComponentcreationZF30Tv\\ProbeSceneComponentcreationZF30Tv.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"Components/SceneComponent.h\"\n#include \"ProbeSceneComponentcreationZF30Tv.generated.h\"\n\nUCLASS(BlueprintType, meta=(BlueprintSpawnableComponent))\nclass PHASE3AINTEGRATION_API UProbeSceneComponentcreationZF30Tv : public USceneComponent\n{\n  GENERATED_BODY()\n\npublic:\n  UProbeSceneComponentcreationZF30Tv();\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeSceneComponentcreationZF30Tv\\ProbeSceneComponentcreationZF30Tv.cpp",
+        "text": "#include \"ProbeSceneComponentcreationZF30Tv.h\"\n\nUProbeSceneComponentcreationZF30Tv::UProbeSceneComponentcreationZF30Tv()\n{\n  PrimaryComponentTick.bCanEverTick = false;\n}\n"
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": {
+      "stem": "ProbeInterfacecreationZF30Tv",
+      "className": "UProbeInterfacecreationZF30Tv",
+      "interfaceName": "IProbeInterfacecreationZF30Tv",
+      "header": "ProbeInterfacecreationZF30Tv.h",
+      "source": "ProbeInterfacecreationZF30Tv.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeInterfacecreationZF30Tv\\ProbeInterfacecreationZF30Tv.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"UObject/Interface.h\"\n#include \"ProbeInterfacecreationZF30Tv.generated.h\"\n\nUINTERFACE(BlueprintType, meta=(CannotImplementInterfaceInBlueprint))\nclass PHASE3AINTEGRATION_API UProbeInterfacecreationZF30Tv : public UInterface\n{\n  GENERATED_BODY()\n};\n\nclass PHASE3AINTEGRATION_API IProbeInterfacecreationZF30Tv\n{\n  GENERATED_BODY()\n\npublic:\n  // Declare native interface functions here.\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeInterfacecreationZF30Tv\\ProbeInterfacecreationZF30Tv.cpp",
+        "text": "#include \"ProbeInterfacecreationZF30Tv.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "gameInstanceSubsystem",
+    "name": {
+      "stem": "ProbeGameInstanceSubsystemcreationZF30Tv",
+      "className": "UProbeGameInstanceSubsystemcreationZF30Tv",
+      "header": "ProbeGameInstanceSubsystemcreationZF30Tv.h",
+      "source": "ProbeGameInstanceSubsystemcreationZF30Tv.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeGameInstanceSubsystemcreationZF30Tv\\ProbeGameInstanceSubsystemcreationZF30Tv.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"Subsystems/GameInstanceSubsystem.h\"\n#include \"ProbeGameInstanceSubsystemcreationZF30Tv.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API UProbeGameInstanceSubsystemcreationZF30Tv : public UGameInstanceSubsystem\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeGameInstanceSubsystemcreationZF30Tv\\ProbeGameInstanceSubsystemcreationZF30Tv.cpp",
+        "text": "#include \"ProbeGameInstanceSubsystemcreationZF30Tv.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "worldSubsystem",
+    "name": {
+      "stem": "ProbeWorldSubsystemcreationZF30Tv",
+      "className": "UProbeWorldSubsystemcreationZF30Tv",
+      "header": "ProbeWorldSubsystemcreationZF30Tv.h",
+      "source": "ProbeWorldSubsystemcreationZF30Tv.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeWorldSubsystemcreationZF30Tv\\ProbeWorldSubsystemcreationZF30Tv.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"Subsystems/WorldSubsystem.h\"\n#include \"ProbeWorldSubsystemcreationZF30Tv.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API UProbeWorldSubsystemcreationZF30Tv : public UWorldSubsystem\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeWorldSubsystemcreationZF30Tv\\ProbeWorldSubsystemcreationZF30Tv.cpp",
+        "text": "#include \"ProbeWorldSubsystemcreationZF30Tv.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "engineSubsystem",
+    "name": {
+      "stem": "ProbeEngineSubsystemcreationZF30Tv",
+      "className": "UProbeEngineSubsystemcreationZF30Tv",
+      "header": "ProbeEngineSubsystemcreationZF30Tv.h",
+      "source": "ProbeEngineSubsystemcreationZF30Tv.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeEngineSubsystemcreationZF30Tv\\ProbeEngineSubsystemcreationZF30Tv.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"Subsystems/EngineSubsystem.h\"\n#include \"ProbeEngineSubsystemcreationZF30Tv.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API UProbeEngineSubsystemcreationZF30Tv : public UEngineSubsystem\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeEngineSubsystemcreationZF30Tv\\ProbeEngineSubsystemcreationZF30Tv.cpp",
+        "text": "#include \"ProbeEngineSubsystemcreationZF30Tv.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "localPlayerSubsystem",
+    "name": {
+      "stem": "ProbeLocalPlayerSubsystemcreationZF30Tv",
+      "className": "UProbeLocalPlayerSubsystemcreationZF30Tv",
+      "header": "ProbeLocalPlayerSubsystemcreationZF30Tv.h",
+      "source": "ProbeLocalPlayerSubsystemcreationZF30Tv.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeLocalPlayerSubsystemcreationZF30Tv\\ProbeLocalPlayerSubsystemcreationZF30Tv.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"Subsystems/LocalPlayerSubsystem.h\"\n#include \"ProbeLocalPlayerSubsystemcreationZF30Tv.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API UProbeLocalPlayerSubsystemcreationZF30Tv : public ULocalPlayerSubsystem\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeLocalPlayerSubsystemcreationZF30Tv\\ProbeLocalPlayerSubsystemcreationZF30Tv.cpp",
+        "text": "#include \"ProbeLocalPlayerSubsystemcreationZF30Tv.h\"\n"
+      }
+    ]
+  }
+]

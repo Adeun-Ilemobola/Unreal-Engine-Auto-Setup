@@ -18,7 +18,7 @@ test('creates both files exclusively and leaves module rules unchanged',async()=
 for(const index of [0,1]) test((index?'source':'header')+' collision leaves both destinations untouched',async()=>{
   const f=await classFixture();
   try {
-    const plan=templates.plan(f.project,f.module,'object','InventoryItem');await fs.writeFile(plan.files[index].path,'keep me');
+    const plan=templates.plan(f.project,f.module,'object','InventoryItem');await fs.mkdir(path.dirname(plan.files[index].path),{recursive:true});await fs.writeFile(plan.files[index].path,'keep me');
     await assert.rejects(files.create(plan,f.vscode),/already exists/);
     assert.equal(await fs.readFile(plan.files[index].path,'utf8'),'keep me');await assert.rejects(fs.stat(plan.files[1-index].path),{code:'ENOENT'});
   } finally {await f.cleanup();}
@@ -54,8 +54,8 @@ test('post-preview module changes and case-insensitive conflicts are rejected',a
   const f=await classFixture();
   try {
     const plan=templates.plan(f.project,f.module,'object','InventoryItem');
-    await fs.writeFile(path.join(f.module.root,'inventoryitem.h'),'existing');await assert.rejects(files.create(plan,f.vscode),/already exists/);
-    await fs.unlink(path.join(f.module.root,'inventoryitem.h'));await fs.appendFile(f.module.buildFile,'// changed');
+    const collision=path.join(path.dirname(plan.files[0].path),'inventoryitem.h');await fs.mkdir(path.dirname(collision),{recursive:true});await fs.writeFile(collision,'existing');await assert.rejects(files.create(plan,f.vscode),/already exists/);
+    await fs.unlink(collision);await fs.appendFile(f.module.buildFile,'// changed');
     await assert.rejects(files.create(plan,f.vscode),/changed/);
   } finally {await f.cleanup();}
 });

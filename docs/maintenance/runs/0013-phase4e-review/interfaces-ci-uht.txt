@@ -1,0 +1,6 @@
+Public interface unchanged: 35 commands, 5 settings
+All prior exports preserved in four changed production modules
+Native helper verified: {"executable":"C:\\Dev\\VSCodeTools\\unreal-auto-setup\\unreal-auto-setup\\native\\OperationSupervisor.exe","helperHash":"9fe009a9132cb40c8f8dbba6b9078520995087862951ff51e2920ef2528d1de7"}
+P1.1 implementation and acceptance test unchanged
+Windows workflow YAML parsed by existing Prettier; no remote execution
+17 independently generated UHT reflection headers verified

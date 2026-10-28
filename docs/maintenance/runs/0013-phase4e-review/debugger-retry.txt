@@ -1,0 +1,3 @@
+Real debugger scratch: C:\Dev\Scratch\UnrealAutoSetupTests\real-debug-SKghxu
+Error: Debugger run incomplete; evidence retained: C:\Dev\Scratch\UnrealAutoSetupTests\real-debug-SKghxu
+    at main (C:\Dev\VSCodeTools\unreal-auto-setup\tools\phase4e\launch-debug.cjs:14:22)

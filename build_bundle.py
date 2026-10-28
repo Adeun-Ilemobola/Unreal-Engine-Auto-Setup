@@ -4,8 +4,13 @@ from bundle_sources import validate
 root = Path(__file__).resolve().parent
 parser = argparse.ArgumentParser()
 parser.add_argument('--validation-dir', type=Path)
+parser.add_argument('--release', action='store_true', help='Build one Alpha installer in dist')
 args = parser.parse_args()
 output = root
+if args.release:
+    if args.validation_dir: raise ValueError("Choose release or validation output")
+    output = root / "dist"
+    output.mkdir(exist_ok=True)
 if args.validation_dir:
     output = args.validation_dir.resolve()
     approved = Path(r'C:\Dev\Scratch\UnrealAutoSetupTests').resolve()
@@ -15,7 +20,7 @@ if args.validation_dir:
 source = root / 'unreal-auto-setup'
 inputs = validate(root)
 p = json.loads((source/'package.json').read_text(encoding='utf-8'))
-name = p['name']+'-'+p['version']+'.vsix'
+name = 'UnrealAutoSetup-1.0-alpha.vsix' if args.release else p['name']+'-'+p['version']+'.vsix'
 manifest = f'''<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
 <Metadata><Identity Language="en-US" Id="{p['name']}" Version="{p['version']}" Publisher="{p['publisher']}"/><DisplayName>{p['displayName']}</DisplayName><Description xml:space="preserve">{p['description']}</Description><Tags>unreal,workspace,formatting</Tags><Categories>Other,Extension Packs</Categories><GalleryFlags>Public</GalleryFlags><Properties><Property Id="Microsoft.VisualStudio.Code.Engine" Value="^1.100.0"/><Property Id="Microsoft.VisualStudio.Code.ExtensionDependencies" Value=""/><Property Id="Microsoft.VisualStudio.Code.ExtensionPack" Value="{",".join(p.get('extensionPack', []))}"/><Property Id="Microsoft.VisualStudio.Code.ExtensionKind" Value="workspace"/><Property Id="Microsoft.VisualStudio.Code.LocalizedLanguages" Value=""/><Property Id="Microsoft.VisualStudio.Code.EnabledApiProposals" Value=""/></Properties><License>extension/LICENSE</License></Metadata>
@@ -35,7 +40,7 @@ with zipfile.ZipFile(output/name) as z:
     assert set(z.namelist()) == {'extension.vsixmanifest','[Content_Types].xml'} | {'extension/'+f.relative_to(source).as_posix() for f in inputs}
     for file in inputs:
         assert z.read('extension/'+file.relative_to(source).as_posix()) == file.read_bytes()
-if args.validation_dir:
+if args.validation_dir or args.release:
     print(output/name)
     raise SystemExit(0)
 bundle=root/'Unreal-Engine-Auto-Setup.zip'

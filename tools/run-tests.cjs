@@ -12,6 +12,6 @@ const files=requested.length?requested:fs.readdirSync(path.join(repository,'unre
 console.log('Test scratch: '+scratch);
 const child=spawn(process.execPath,['--test',...files],{cwd:path.join(repository,'unreal-auto-setup'),stdio:'inherit',env:{...process.env,TEMP:scratch,TMP:scratch,TMPDIR:scratch,UNREAL_AUTO_SETUP_TEST_TEMP:scratch}});
 let cleaned=false;
-function cleanup(){if(!cleaned){cleaned=true;fs.rmSync(scratch,{recursive:true,force:true,maxRetries:5});}}
+function cleanup(){if(!cleaned){cleaned=true;if(fs.existsSync(path.join(scratch,'.retain'))){console.error('Uncertain test artifacts retained: '+scratch);return;}fs.rmSync(scratch,{recursive:true,force:true,maxRetries:5});}}
 child.on('error',error=>{console.error(error.message);cleanup();process.exitCode=1;});
 child.on('close',code=>{cleanup();process.exitCode=code??1;});

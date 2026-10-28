@@ -47,7 +47,7 @@ for(const split of [false,true]) for(const area of ['root','nested',...(split?['
   const f=await classFixture({split});try {
     const folder=area==='root'?f.module.root:area==='nested'?path.join(f.module.root,...(split?['Public']:[]),'Inventory'):path.join(f.module.root,area,'Inventory');
     await fs.mkdir(folder,{recursive:true});const result=await explorer.destination(f.project,{fsPath:folder});assert.equal(result.folder,area==='root'?'':'Inventory');
-    if(split && area==='Private') assert.equal(require('../classTemplates').plan(f.project,result.module,'object','Item',result.folder).files[0].path,path.join(f.module.root,'Public','Inventory','Item.h'));
+    if(split && area==='Private') assert.equal(require('../classTemplates').plan(f.project,result.module,'object','Item',result.folder).files[0].path,path.join(f.module.root,'Public','Inventory','Item','Item.h'));
   } finally {await f.cleanup();}
 });
 test('Explorer rejects generated folders, unrelated paths, files and symlinks; menus enumerate safe folders only',async()=>{
@@ -62,11 +62,11 @@ for(const cancel of [true,false]) test('Explorer shared wizard '+(cancel?'cancel
   const f=await classFixture({split:true});try {
     const folder=path.join(f.module.root,'Private','Inventory');await fs.mkdir(folder);let opened=0;
     f.vscode.workspace.openTextDocument=async uri=>({uri});f.vscode.window.showTextDocument=async()=>opened++;
-    f.vscode.window.showQuickPick=async items=>{if(items[0].type){assert.equal(items.length,5);return cancel?undefined:items.find(item=>item.type.id==='object');}return items[0];};
+    f.vscode.window.showQuickPick=async items=>{if(items[0].type){assert.equal(items.length,require('../classTemplates').registry.length);return cancel?undefined:items.find(item=>item.type.id==='object');}return items[0];};
     f.vscode.window.showInputBox=async options=>{assert.notEqual(options.title,'Logical subfolder');return 'InventoryItem';};
     f.vscode.window.showInformationMessage=async(text,options)=>options?.modal?'Create Class':undefined;
     const plan=await classes.wizard(f.vscode,f.context,{}, {uri:{fsPath:folder}});
-    if(cancel) {assert.equal(plan,undefined);assert.equal(opened,0);} else {assert.equal(opened,1);assert.equal(plan.files[0].path,path.join(f.module.root,'Public','Inventory','InventoryItem.h'));await assert.rejects(classes.wizard(f.vscode,f.context,{}, {uri:{fsPath:folder}}),/already exists/);}
+    if(cancel) {assert.equal(plan,undefined);assert.equal(opened,0);} else {assert.equal(opened,1);assert.equal(plan.files[0].path,path.join(f.module.root,'Public','Inventory','InventoryItem','InventoryItem.h'));await assert.rejects(classes.wizard(f.vscode,f.context,{}, {uri:{fsPath:folder}}),/already exists/);}
   } finally {await f.cleanup();}
 });
 

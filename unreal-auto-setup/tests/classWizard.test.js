@@ -29,7 +29,7 @@ async function harness({cancel,split=true,multiple=false}={}) {
 }
 for(const stage of ['project','module','type','name','exposure','folder','confirmation']) test('wizard cancellation at '+stage+' creates no source files',async()=>{
   const f=await harness({cancel:stage});
-  try {assert.equal(await wizard(f.vscode,f.context),undefined);assert.equal(f.opened.length,0);assert.ok(f.stages.includes(stage));await assert.rejects(fs.stat(path.join(f.module.root,'Public','Systems','InventoryComponent.h')),{code:'ENOENT'});}
+  try {assert.equal(await wizard(f.vscode,f.context),undefined);assert.equal(f.opened.length,0);assert.ok(f.stages.includes(stage));await assert.rejects(fs.stat(path.join(f.module.root,'Public','Systems','InventoryComponent','InventoryComponent.h')),{code:'ENOENT'});}
   finally {await f.cleanup();}
 });
 test('successful wizard previews, creates, remembers module and optionally opens a split without marking metadata stale',async()=>{
@@ -48,7 +48,7 @@ test('multi-module wizard uses the selected module, and invalid names can be cor
   try {
     const original=f.vscode.window.showQuickPick;f.vscode.window.showQuickPick=async choices=>choices[0].module?choices.find(item=>item.label==='Second'):original(choices);
     const originalInput=f.vscode.window.showInputBox;let first=true;f.vscode.window.showInputBox=async options=>{if(first){first=false;assert.ok(options.validateInput('123Bad'));return '123Bad';}return originalInput(options);};
-    const plan=await wizard(f.vscode,f.context);assert.equal(plan.module.name,'Second');assert.equal(plan.api,'SECOND_API');assert.ok(f.errors.length===1);assert.equal(plan.files[0].path,path.join(f.root,'Source','Second','Systems','InventoryComponent.h'));
+    const plan=await wizard(f.vscode,f.context);assert.equal(plan.module.name,'Second');assert.equal(plan.api,'SECOND_API');assert.ok(f.errors.length===1);assert.equal(plan.files[0].path,path.join(f.root,'Source','Second','Systems','InventoryComponent','InventoryComponent.h'));
   } finally {await f.cleanup();}
 });
 test('navigation opens module rules, descriptor and picked target rules; missing/ambiguous cases are handled',async()=>{

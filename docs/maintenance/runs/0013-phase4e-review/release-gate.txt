@@ -1,0 +1,74 @@
+=== Unreal Engine Auto Setup — Quality & Release Checks ===
+
+Checking JavaScript Syntax (Node --check)... PASSED (126 files syntax-checked)
+Checking Extension Manifest (package.json)... PASSED (v0.8.0, main: ./extension.js)
+Checking Public Command Consistency... PASSED (35 declared commands)
+Checking Public Configuration Settings... PASSED (5 properties verified)
+Checking Native Supervisor Integrity... PASSED (Windows Job supervisor valid)
+Checking Snippet Contributions... PASSED (4 snippets (ustruct, uenum, uproperty, ufunction))
+Checking Packaging Preflight & Doc Mirrors (bundle_sources.py)... PASSED (Packaging preflight passed: 51 inputs, 41 runtime modules, 3 document mirrors)
+Checking Documentation Relative Links... PASSED (353 relative links verified)
+Checking Git Ignore & Exclusions... PASSED (Protected rules present)
+Checking Scratch Directory Policy Compliance... PASSED (Scratch root active: C:\Dev\Scratch\UnrealAutoSetupTests)
+test_document_drift_blocks_preflight (test_bundle_sources.PackagingInputs.test_document_drift_blocks_preflight) ... ok
+test_missing_local_import_blocks_preflight (test_bundle_sources.PackagingInputs.test_missing_local_import_blocks_preflight) ... ok
+test_new_runtime_modules_are_included_without_test_files (test_bundle_sources.PackagingInputs.test_new_runtime_modules_are_included_without_test_files) ... ok
+test_unlisted_entry_point_blocks_preflight (test_bundle_sources.PackagingInputs.test_unlisted_entry_point_blocks_preflight) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.070s
+
+OK
+Checking Python Test Suite... PASSED (4 tests passed)
+Checking Full Node Test Suite (isolated scratch)... FAILED
+
+=== Validation Summary ===
+Passed: 11/12
+  Error: Strict release gate requires zero failing tests. P1.1 is unresolved and is not waived.
+s settings, creates files once (215.9339ms)
+✔ setup abandons stale workspace after engine barrier (34.6422ms)
+✔ setup abandons stale workspace after dialog barrier (44.0417ms)
+✔ setup abandons stale workspace after update barrier (45.4306ms)
+✔ restricted mode performs no writes and no commands (41.1947ms)
+✔ initialization installs missing companion extensions and continues setup (86.2308ms)
+✔ manual initialization preserves custom files, tasks and saved build configuration (122.4615ms)
+✔ workspace switch during reconciliation cannot mutate old coordinator/state (559.4482ms)
+✔ project selection change in the same folder invalidates a pending collection (143.8772ms)
+✔ malformed project descriptor null (125.2502ms)
+✔ malformed project descriptor [] (109.3601ms)
+✔ malformed project descriptor {"Modules":{}} (193.0675ms)
+✔ malformed project descriptor {"Plugins":"bad"} (448.1494ms)
+✔ malformed project descriptor {"Modules":[null]} (135.3361ms)
+✔ malformed project descriptor {"Plugins":[{"Name":4}]} (132.0409ms)
+✔ dependency document parse rejection is caught and reported after Build.cs deletion (121.8638ms)
+ℹ tests 494
+ℹ suites 0
+ℹ pass 493
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 26305.8322
+
+✖ failing tests:
+
+test at tests\generation.test.js:10:1
+✖ generation uses the active engine/project and restores existing VS Code configuration (753.176ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'overwritten by stub generator'
+  - '{"existing":false}'
+  
+      at TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\generation.test.js:21:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'overwritten by stub generator',
+    expected: '{"existing":false}',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+Failed: 1/12

@@ -1,0 +1,22 @@
+Test scratch: C:\Dev\Scratch\UnrealAutoSetupTests\suite-QbztHn
+✔ one matching Editor starts a dynamic cppvsdbg attach session (1.8622ms)
+✔ attach reports no Editor and unavailable C/C++ clearly (0.6869ms)
+✔ multiple Editors use a PID picker and cancelled selection does not attach (0.258ms)
+✔ attach rejects disappeared processes, failed queries and refused debug sessions (0.2733ms)
+✔ duplicate attach to same Editor PID is rejected (0.4046ms)
+✔ detach refuses unrelated launch sessions (0.1758ms)
+✔ concurrent attaches cannot both dispatch (0.2221ms)
+✔ detach stops active debug session, leaves editor running, and reattachment succeeds (0.5413ms)
+✔ strict release rejects nonzero test exit "generation uses the active engine/project and restores existing VS Code configuration\nfail 1" (0.8172ms)
+✔ strict release rejects nonzero test exit "generation uses the active engine/project and restores existing VS Code configuration\nfail 10" (0.108ms)
+✔ strict release rejects nonzero test exit "pass 482\nfail 1\nunrelated failure" (0.0573ms)
+✔ strict release rejects nonzero test exit "" (0.0531ms)
+✔ strict gate accepts successful test process (0.1453ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 156.8415

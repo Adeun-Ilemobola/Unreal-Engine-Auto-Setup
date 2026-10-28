@@ -5,7 +5,7 @@ from pathlib import Path
 import re
 
 DOCUMENTS = ("README.md", "CAPABILITIES.md", "VALIDATION.md")
-ASSETS = ("package.json", "media/unreal.svg", "native/OperationSupervisor.cs", "native/OperationSupervisor.exe", "native/supervisor-build.json", *DOCUMENTS, "LICENSE")
+ASSETS = ("package.json", "snippets/unreal.json", "media/unreal.svg", "native/OperationSupervisor.cs", "native/OperationSupervisor.exe", "native/supervisor-build.json", *DOCUMENTS, "LICENSE")
 
 
 def runtime_files(source):

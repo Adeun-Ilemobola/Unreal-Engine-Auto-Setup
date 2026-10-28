@@ -1,0 +1,47 @@
+Using bundled DotNet SDK version: 10.0 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" Phase3AIntegrationEditor Win64 Development -Project=C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Phase3AIntegration.uproject -WaitMutex -NoHotReloadFromIDE -NoUBA -NoXGE -NoFASTBuild -NoSNDBS
+Log file: C:\Users\Owner\AppData\Local\UnrealBuildTool\Log.txt
+Determining max actions to execute in parallel (20 physical cores, 28 logical cores)
+  Executing up to 20 processes, one per physical core
+  Requested 1.5 GB memory per action, 15.73 GB available: limiting max parallel actions to 10
+UbaSessionServer - Disable remote execution (remote sessions will finish current processes)
+Invalidating makefile for Phase3AIntegrationEditor (source directory added)
+UHT compiled-in object format Default
+Building Phase3AIntegrationEditor...
+===== Toolchain Information =====
+Using ISPC compiler (C:\Program Files\Epic Games\UE_5.8\Engine\Source\ThirdParty\Intel\ISPC\bin\Windows\ispc.exe)
+  Intel(r) Implicit SPMD Program Compiler (Intel(r) ISPC), 1.24.0 (build commit  @ 20250404, LLVM 18.1.2) 
+Using Visual Studio 14.50.35739 toolchain (C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from ProbePlugin unity file: ProbePlugin.cpp
+[Adaptive Build] Excluded from Phase3AIntegration unity file: Phase3AIntegration.cpp, ProbeActor.cpp, ProbeComponent.cpp, ProbeObject.cpp, ProbeSubsystem.cpp, ProbeActorComponentcreationZF30Tv.cpp, ProbeActorcreationZF30Tv.cpp, ProbeCharactercreationZF30Tv.cpp, ProbeDataAssetcreationZF30Tv.cpp, ProbeEngineSubsystemcreationZF30Tv.cpp, ProbeFunctionLibrarycreationZF30Tv.cpp, ProbeGameInstanceSubsystemcreationZF30Tv.cpp, ProbeGameModeBasecreationZF30Tv.cpp, ProbeInterfacecreationZF30Tv.cpp, ProbeLocalPlayerSubsystemcreationZF30Tv.cpp, ProbeObjectcreationZF30Tv.cpp, ProbePawncreationZF30Tv.cpp, ProbePlayerControllercreationZF30Tv.cpp, ProbeSceneComponentcreationZF30Tv.cpp, ProbeWorldSubsystemcreationZF30Tv.cpp
+===== End Toolchain Information =====
+Using Unreal Build Accelerator local executor to run 19 action(s)
+  CPU 20 physical cores, 28 logical cores
+  Memory 15.73 GB physical, 35.26 GB/47.18 GB committed
+  UBA Storage capacity 40 GB
+[1/19] Compile [x64] Module.Phase3AIntegration.cpp [NoUba]
+[2/19] Compile [x64] ProbeActorComponentcreationZF30Tv.cpp [NoUba]
+[3/19] Compile [x64] ProbeActorcreationZF30Tv.cpp [NoUba]
+[4/19] Compile [x64] ProbeCharactercreationZF30Tv.cpp [NoUba]
+[5/19] Compile [x64] ProbeDataAssetcreationZF30Tv.cpp [NoUba]
+[6/19] Compile [x64] ProbeEngineSubsystemcreationZF30Tv.cpp [NoUba]
+[7/19] Compile [x64] ProbeFunctionLibrarycreationZF30Tv.cpp [NoUba]
+[8/19] Compile [x64] ProbeGameInstanceSubsystemcreationZF30Tv.cpp [NoUba]
+[9/19] Compile [x64] ProbeGameModeBasecreationZF30Tv.cpp [NoUba]
+[10/19] Compile [x64] ProbeInterfacecreationZF30Tv.cpp [NoUba]
+[11/19] Compile [x64] ProbeLocalPlayerSubsystemcreationZF30Tv.cpp [NoUba]
+[12/19] Compile [x64] ProbeObjectcreationZF30Tv.cpp [NoUba]
+[13/19] Compile [x64] ProbePawncreationZF30Tv.cpp [NoUba]
+[14/19] Compile [x64] ProbePlayerControllercreationZF30Tv.cpp [NoUba]
+[15/19] Compile [x64] ProbeSceneComponentcreationZF30Tv.cpp [NoUba]
+[16/19] Compile [x64] ProbeWorldSubsystemcreationZF30Tv.cpp [NoUba]
+[17/19] Link [x64] UnrealEditor-Phase3AIntegration.lib [NoUba]
+[18/19] Link [x64] UnrealEditor-Phase3AIntegration.dll [NoUba]
+[19/19] WriteMetadata Phase3AIntegrationEditor.target [NoUba]
+
+Total time in Unreal Build Accelerator local executor: 46.86 seconds
+Output binary: C:\Program Files\Epic Games\UE_5.8\Engine\Binaries\Win64\UnrealEditor.exe
+
+Result: Succeeded
+Total execution time: 50.71 seconds
+Trace written to file C:\Users\Owner\AppData\Local\UnrealBuildTool\Trace.uba with size 9.7kb

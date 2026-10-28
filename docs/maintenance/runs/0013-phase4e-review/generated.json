@@ -1,0 +1,318 @@
+[
+  {
+    "type": "struct",
+    "name": {
+      "stem": "ProbeStructcreationMKKjk6",
+      "className": "FProbeStructcreationMKKjk6",
+      "header": "ProbeStructcreationMKKjk6.h",
+      "source": "ProbeStructcreationMKKjk6.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeStructcreationMKKjk6\\ProbeStructcreationMKKjk6.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"ProbeStructcreationMKKjk6.generated.h\"\n\nUSTRUCT(BlueprintType)\nstruct PHASE3AINTEGRATION_API FProbeStructcreationMKKjk6\n{\n  GENERATED_BODY()\n};\n"
+      }
+    ]
+  },
+  {
+    "type": "enum",
+    "name": {
+      "stem": "ProbeEnumcreationMKKjk6",
+      "className": "EProbeEnumcreationMKKjk6",
+      "header": "ProbeEnumcreationMKKjk6.h",
+      "source": "ProbeEnumcreationMKKjk6.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeEnumcreationMKKjk6\\ProbeEnumcreationMKKjk6.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"ProbeEnumcreationMKKjk6.generated.h\"\n\nUENUM(BlueprintType)\nenum class EProbeEnumcreationMKKjk6 : uint8\n{\n  None = 0\n};\n"
+      }
+    ]
+  },
+  {
+    "type": "character",
+    "name": {
+      "stem": "ProbeCharactercreationMKKjk6",
+      "className": "AProbeCharactercreationMKKjk6",
+      "header": "ProbeCharactercreationMKKjk6.h",
+      "source": "ProbeCharactercreationMKKjk6.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeCharactercreationMKKjk6\\ProbeCharactercreationMKKjk6.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"GameFramework/Character.h\"\n#include \"ProbeCharactercreationMKKjk6.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API AProbeCharactercreationMKKjk6 : public ACharacter\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeCharactercreationMKKjk6\\ProbeCharactercreationMKKjk6.cpp",
+        "text": "#include \"ProbeCharactercreationMKKjk6.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "pawn",
+    "name": {
+      "stem": "ProbePawncreationMKKjk6",
+      "className": "AProbePawncreationMKKjk6",
+      "header": "ProbePawncreationMKKjk6.h",
+      "source": "ProbePawncreationMKKjk6.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbePawncreationMKKjk6\\ProbePawncreationMKKjk6.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"GameFramework/Pawn.h\"\n#include \"ProbePawncreationMKKjk6.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API AProbePawncreationMKKjk6 : public APawn\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbePawncreationMKKjk6\\ProbePawncreationMKKjk6.cpp",
+        "text": "#include \"ProbePawncreationMKKjk6.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "playerController",
+    "name": {
+      "stem": "ProbePlayerControllercreationMKKjk6",
+      "className": "AProbePlayerControllercreationMKKjk6",
+      "header": "ProbePlayerControllercreationMKKjk6.h",
+      "source": "ProbePlayerControllercreationMKKjk6.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbePlayerControllercreationMKKjk6\\ProbePlayerControllercreationMKKjk6.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"GameFramework/PlayerController.h\"\n#include \"ProbePlayerControllercreationMKKjk6.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API AProbePlayerControllercreationMKKjk6 : public APlayerController\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbePlayerControllercreationMKKjk6\\ProbePlayerControllercreationMKKjk6.cpp",
+        "text": "#include \"ProbePlayerControllercreationMKKjk6.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "gameModeBase",
+    "name": {
+      "stem": "ProbeGameModeBasecreationMKKjk6",
+      "className": "AProbeGameModeBasecreationMKKjk6",
+      "header": "ProbeGameModeBasecreationMKKjk6.h",
+      "source": "ProbeGameModeBasecreationMKKjk6.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeGameModeBasecreationMKKjk6\\ProbeGameModeBasecreationMKKjk6.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"GameFramework/GameModeBase.h\"\n#include \"ProbeGameModeBasecreationMKKjk6.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API AProbeGameModeBasecreationMKKjk6 : public AGameModeBase\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeGameModeBasecreationMKKjk6\\ProbeGameModeBasecreationMKKjk6.cpp",
+        "text": "#include \"ProbeGameModeBasecreationMKKjk6.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "functionLibrary",
+    "name": {
+      "stem": "ProbeFunctionLibrarycreationMKKjk6",
+      "className": "UProbeFunctionLibrarycreationMKKjk6",
+      "header": "ProbeFunctionLibrarycreationMKKjk6.h",
+      "source": "ProbeFunctionLibrarycreationMKKjk6.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeFunctionLibrarycreationMKKjk6\\ProbeFunctionLibrarycreationMKKjk6.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"Kismet/BlueprintFunctionLibrary.h\"\n#include \"ProbeFunctionLibrarycreationMKKjk6.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API UProbeFunctionLibrarycreationMKKjk6 : public UBlueprintFunctionLibrary\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeFunctionLibrarycreationMKKjk6\\ProbeFunctionLibrarycreationMKKjk6.cpp",
+        "text": "#include \"ProbeFunctionLibrarycreationMKKjk6.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "dataAsset",
+    "name": {
+      "stem": "ProbeDataAssetcreationMKKjk6",
+      "className": "UProbeDataAssetcreationMKKjk6",
+      "header": "ProbeDataAssetcreationMKKjk6.h",
+      "source": "ProbeDataAssetcreationMKKjk6.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeDataAssetcreationMKKjk6\\ProbeDataAssetcreationMKKjk6.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"Engine/DataAsset.h\"\n#include \"ProbeDataAssetcreationMKKjk6.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API UProbeDataAssetcreationMKKjk6 : public UDataAsset\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeDataAssetcreationMKKjk6\\ProbeDataAssetcreationMKKjk6.cpp",
+        "text": "#include \"ProbeDataAssetcreationMKKjk6.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "object",
+    "name": {
+      "stem": "ProbeObjectcreationMKKjk6",
+      "className": "UProbeObjectcreationMKKjk6",
+      "header": "ProbeObjectcreationMKKjk6.h",
+      "source": "ProbeObjectcreationMKKjk6.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeObjectcreationMKKjk6\\ProbeObjectcreationMKKjk6.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"UObject/Object.h\"\n#include \"ProbeObjectcreationMKKjk6.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API UProbeObjectcreationMKKjk6 : public UObject\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeObjectcreationMKKjk6\\ProbeObjectcreationMKKjk6.cpp",
+        "text": "#include \"ProbeObjectcreationMKKjk6.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "actor",
+    "name": {
+      "stem": "ProbeActorcreationMKKjk6",
+      "className": "AProbeActorcreationMKKjk6",
+      "header": "ProbeActorcreationMKKjk6.h",
+      "source": "ProbeActorcreationMKKjk6.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeActorcreationMKKjk6\\ProbeActorcreationMKKjk6.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"GameFramework/Actor.h\"\n#include \"ProbeActorcreationMKKjk6.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API AProbeActorcreationMKKjk6 : public AActor\n{\n  GENERATED_BODY()\n\npublic:\n  AProbeActorcreationMKKjk6();\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeActorcreationMKKjk6\\ProbeActorcreationMKKjk6.cpp",
+        "text": "#include \"ProbeActorcreationMKKjk6.h\"\n\nAProbeActorcreationMKKjk6::AProbeActorcreationMKKjk6()\n{\n  PrimaryActorTick.bCanEverTick = false;\n}\n"
+      }
+    ]
+  },
+  {
+    "type": "actorComponent",
+    "name": {
+      "stem": "ProbeActorComponentcreationMKKjk6",
+      "className": "UProbeActorComponentcreationMKKjk6",
+      "header": "ProbeActorComponentcreationMKKjk6.h",
+      "source": "ProbeActorComponentcreationMKKjk6.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeActorComponentcreationMKKjk6\\ProbeActorComponentcreationMKKjk6.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"Components/ActorComponent.h\"\n#include \"ProbeActorComponentcreationMKKjk6.generated.h\"\n\nUCLASS(BlueprintType, meta=(BlueprintSpawnableComponent))\nclass PHASE3AINTEGRATION_API UProbeActorComponentcreationMKKjk6 : public UActorComponent\n{\n  GENERATED_BODY()\n\npublic:\n  UProbeActorComponentcreationMKKjk6();\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeActorComponentcreationMKKjk6\\ProbeActorComponentcreationMKKjk6.cpp",
+        "text": "#include \"ProbeActorComponentcreationMKKjk6.h\"\n\nUProbeActorComponentcreationMKKjk6::UProbeActorComponentcreationMKKjk6()\n{\n  PrimaryComponentTick.bCanEverTick = false;\n}\n"
+      }
+    ]
+  },
+  {
+    "type": "sceneComponent",
+    "name": {
+      "stem": "ProbeSceneComponentcreationMKKjk6",
+      "className": "UProbeSceneComponentcreationMKKjk6",
+      "header": "ProbeSceneComponentcreationMKKjk6.h",
+      "source": "ProbeSceneComponentcreationMKKjk6.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeSceneComponentcreationMKKjk6\\ProbeSceneComponentcreationMKKjk6.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"Components/SceneComponent.h\"\n#include \"ProbeSceneComponentcreationMKKjk6.generated.h\"\n\nUCLASS(BlueprintType, meta=(BlueprintSpawnableComponent))\nclass PHASE3AINTEGRATION_API UProbeSceneComponentcreationMKKjk6 : public USceneComponent\n{\n  GENERATED_BODY()\n\npublic:\n  UProbeSceneComponentcreationMKKjk6();\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeSceneComponentcreationMKKjk6\\ProbeSceneComponentcreationMKKjk6.cpp",
+        "text": "#include \"ProbeSceneComponentcreationMKKjk6.h\"\n\nUProbeSceneComponentcreationMKKjk6::UProbeSceneComponentcreationMKKjk6()\n{\n  PrimaryComponentTick.bCanEverTick = false;\n}\n"
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": {
+      "stem": "ProbeInterfacecreationMKKjk6",
+      "className": "UProbeInterfacecreationMKKjk6",
+      "interfaceName": "IProbeInterfacecreationMKKjk6",
+      "header": "ProbeInterfacecreationMKKjk6.h",
+      "source": "ProbeInterfacecreationMKKjk6.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeInterfacecreationMKKjk6\\ProbeInterfacecreationMKKjk6.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"UObject/Interface.h\"\n#include \"ProbeInterfacecreationMKKjk6.generated.h\"\n\nUINTERFACE(BlueprintType, meta=(CannotImplementInterfaceInBlueprint))\nclass PHASE3AINTEGRATION_API UProbeInterfacecreationMKKjk6 : public UInterface\n{\n  GENERATED_BODY()\n};\n\nclass PHASE3AINTEGRATION_API IProbeInterfacecreationMKKjk6\n{\n  GENERATED_BODY()\n\npublic:\n  // Declare native interface functions here.\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeInterfacecreationMKKjk6\\ProbeInterfacecreationMKKjk6.cpp",
+        "text": "#include \"ProbeInterfacecreationMKKjk6.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "gameInstanceSubsystem",
+    "name": {
+      "stem": "ProbeGameInstanceSubsystemcreationMKKjk6",
+      "className": "UProbeGameInstanceSubsystemcreationMKKjk6",
+      "header": "ProbeGameInstanceSubsystemcreationMKKjk6.h",
+      "source": "ProbeGameInstanceSubsystemcreationMKKjk6.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeGameInstanceSubsystemcreationMKKjk6\\ProbeGameInstanceSubsystemcreationMKKjk6.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"Subsystems/GameInstanceSubsystem.h\"\n#include \"ProbeGameInstanceSubsystemcreationMKKjk6.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API UProbeGameInstanceSubsystemcreationMKKjk6 : public UGameInstanceSubsystem\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeGameInstanceSubsystemcreationMKKjk6\\ProbeGameInstanceSubsystemcreationMKKjk6.cpp",
+        "text": "#include \"ProbeGameInstanceSubsystemcreationMKKjk6.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "worldSubsystem",
+    "name": {
+      "stem": "ProbeWorldSubsystemcreationMKKjk6",
+      "className": "UProbeWorldSubsystemcreationMKKjk6",
+      "header": "ProbeWorldSubsystemcreationMKKjk6.h",
+      "source": "ProbeWorldSubsystemcreationMKKjk6.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeWorldSubsystemcreationMKKjk6\\ProbeWorldSubsystemcreationMKKjk6.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"Subsystems/WorldSubsystem.h\"\n#include \"ProbeWorldSubsystemcreationMKKjk6.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API UProbeWorldSubsystemcreationMKKjk6 : public UWorldSubsystem\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeWorldSubsystemcreationMKKjk6\\ProbeWorldSubsystemcreationMKKjk6.cpp",
+        "text": "#include \"ProbeWorldSubsystemcreationMKKjk6.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "engineSubsystem",
+    "name": {
+      "stem": "ProbeEngineSubsystemcreationMKKjk6",
+      "className": "UProbeEngineSubsystemcreationMKKjk6",
+      "header": "ProbeEngineSubsystemcreationMKKjk6.h",
+      "source": "ProbeEngineSubsystemcreationMKKjk6.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeEngineSubsystemcreationMKKjk6\\ProbeEngineSubsystemcreationMKKjk6.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"Subsystems/EngineSubsystem.h\"\n#include \"ProbeEngineSubsystemcreationMKKjk6.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API UProbeEngineSubsystemcreationMKKjk6 : public UEngineSubsystem\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeEngineSubsystemcreationMKKjk6\\ProbeEngineSubsystemcreationMKKjk6.cpp",
+        "text": "#include \"ProbeEngineSubsystemcreationMKKjk6.h\"\n"
+      }
+    ]
+  },
+  {
+    "type": "localPlayerSubsystem",
+    "name": {
+      "stem": "ProbeLocalPlayerSubsystemcreationMKKjk6",
+      "className": "UProbeLocalPlayerSubsystemcreationMKKjk6",
+      "header": "ProbeLocalPlayerSubsystemcreationMKKjk6.h",
+      "source": "ProbeLocalPlayerSubsystemcreationMKKjk6.cpp"
+    },
+    "files": [
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeLocalPlayerSubsystemcreationMKKjk6\\ProbeLocalPlayerSubsystemcreationMKKjk6.h",
+        "text": "#pragma once\n\n#include \"CoreMinimal.h\"\n#include \"Subsystems/LocalPlayerSubsystem.h\"\n#include \"ProbeLocalPlayerSubsystemcreationMKKjk6.generated.h\"\n\nUCLASS(BlueprintType)\nclass PHASE3AINTEGRATION_API UProbeLocalPlayerSubsystemcreationMKKjk6 : public ULocalPlayerSubsystem\n{\n  GENERATED_BODY()\n};\n"
+      },
+      {
+        "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Qualification3z\\ProbeLocalPlayerSubsystemcreationMKKjk6\\ProbeLocalPlayerSubsystemcreationMKKjk6.cpp",
+        "text": "#include \"ProbeLocalPlayerSubsystemcreationMKKjk6.h\"\n"
+      }
+    ]
+  }
+]

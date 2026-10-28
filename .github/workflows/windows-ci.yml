@@ -1,0 +1,100 @@
+name: Windows CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      run_host_tests:
+        description: 'Use a self-hosted Windows runner with VS Code already installed'
+        required: false
+        default: false
+        type: boolean
+      run_engine_tests:
+        description: 'Run real Unreal Engine validation tests'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  fast-checks:
+    name: Fast Quality & Packaging Checks
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Packaging Preflight & Mirrors
+        run: python -B bundle_sources.py
+
+      - name: Python Packaging Tests
+        run: python -B -m unittest discover -s tests -p "test_*.py" -v
+
+      - name: Quality & Release Checks
+        run: node tools/validate-release.cjs
+
+  native-helper:
+    name: Native Helper Build & Verification
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify or Compile OperationSupervisor
+        shell: pwsh
+        run: |
+          & ./tools/phase3b2b/build-helper.ps1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+  extension-host-tests:
+    name: VS Code Extension Host Tests
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.run_host_tests == true }}
+    runs-on: [ self-hosted, windows, vscode ]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run Extension Host Validation
+        shell: pwsh
+        run: |
+          # VS Code must already exist; VSCODE_PATH can select its executable.
+          node tools/run-extension-tests.cjs
+
+  unreal-engine-tests:
+    name: Unreal Engine Integration (Opt-in)
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.run_engine_tests == true }}
+    runs-on: [ self-hosted, windows ]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run Real Engine Validation
+        shell: pwsh
+        run: |
+          if (-not $env:UE_PATH) {
+            Write-Error "UE_PATH environment variable required for real engine validation on self-hosted runner."
+            exit 1
+          }
+          node unreal-auto-setup/tests/real-unreal-validation.js $env:UE_PATH

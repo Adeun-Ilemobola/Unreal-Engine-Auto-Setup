@@ -1,0 +1,604 @@
+diff --git a/bundle_sources.py b/bundle_sources.py
+index 588fb90..6253829 100644
+--- a/bundle_sources.py
++++ b/bundle_sources.py
+@@ -5,7 +5,7 @@ from pathlib import Path
+ import re
+ 
+ DOCUMENTS = ("README.md", "CAPABILITIES.md", "VALIDATION.md")
+-ASSETS = ("package.json", "media/unreal.svg", "native/OperationSupervisor.cs", "native/OperationSupervisor.exe", "native/supervisor-build.json", *DOCUMENTS, "LICENSE")
++ASSETS = ("package.json", "snippets/unreal.json", "media/unreal.svg", "native/OperationSupervisor.cs", "native/OperationSupervisor.exe", "native/supervisor-build.json", *DOCUMENTS, "LICENSE")
+ 
+ 
+ def runtime_files(source):
+diff --git a/docs/DEVELOPMENT.md b/docs/DEVELOPMENT.md
+index 4990e17..684414b 100644
+--- a/docs/DEVELOPMENT.md
++++ b/docs/DEVELOPMENT.md
+@@ -140,3 +140,18 @@ On Windows, temporary executables, compiler scratch files, disposable journals a
+ Run `npm test` from `unreal-auto-setup/`, or from the repository root run `node tools/run-tests.cjs tests/process-supervision.test.js tests/operation-ownership.test.js tests/runner.test.js`. The launcher creates an exclusive `suite-*` directory and passes `TEMP`, `TMP`, `TMPDIR` and `UNREAL_AUTO_SETUP_TEST_TEMP` only to the Node test process and its children. It removes that owned directory when the suite exits, including test failure. `tests/testTemp.js` also isolates direct `node --test` invocations into `node-<pid>-*` directories and directs compiler-internal temporary output there. Each fixture still uses its own `mkdtemp` directory. Python packaging tests use `TemporaryDirectory` under the same dedicated root.
+ 
+ `tools/phase3b2b/build-helper.ps1` scopes compiler temporary variables to its invocation and restores them in `finally`; the distributable helper binary remains beside its permanent source under `unreal-auto-setup/native/`. `node tools/phase3b2b/launch-integration.cjs` creates an `integration-*` scratch directory containing the isolated VS Code profile, driver, fixture executable and supervised-operation journal. Integration directories are retained on uncertainty/failure; remove only after the owned hosts/processes are confirmed stopped and unresolved evidence has been archived. A killed runner cannot execute cleanup; inspect retained directories rather than deleting unknown active work. The dedicated directory must be writable; no fallback to Windows Temp is used on Windows.
++
++## Phase 4 Testing, Debugger Lifecycle and Release Engineering
++
++### C++ Creation Tools & Snippets (Phase 4A)
++The C++ template registry (`classTemplates.js`) supports 17 Unreal type templates, including header-only structs (`F`) and enums (`E`), and class pairs (Character, Pawn, Controller, Game Mode, Function Library, Data Asset, UObject, Actor, Components, Subsystems, Interfaces). Each generated class is placed in its own dedicated subfolder. Four native C++ snippets (`ustruct`, `uenum`, `uproperty`, `ufunction`) are contributed via `snippets/unreal.json`.
++
++### Debugger Lifecycle (Phase 4B)
++The debugger integration (`debugger.js`) attaches to Unreal Editor via `cppvsdbg`. It enforces single-session attachment per Editor PID, rejecting duplicate attempts before dispatching to VS Code debug APIs. `detach()` cleans up debug sessions via `vscode.debug.stopDebugging()` without terminating the underlying Editor process. Reattachment to the same Editor instance is fully supported.
++
++### Testing Infrastructure & Release Verification (Phase 4C)
++- **Extension Host Testing**: `node tools/run-extension-tests.cjs` launches the real VS Code Extension Development Host with an isolated scratch profile and workspace, exercising 20 editor integration scenarios via `tests/host-runner-suite.js`.
++- **Reliable Engine Validation**: `tests/real-unreal-validation.js` guarantees explicit stage tracking (`Passed`, `Failed`, `Skipped`), timeout-bounded child execution, and nonzero exit codes on failure. Tested via synthetic fault injection in `tests/engine-validation-failures.test.js`.
++- **Release Checks**: `node tools/validate-release.cjs` executes 12 automated checks covering syntax, packaging integrity, public commands/settings, supervisor binary integrity, documentation mirrors, links, and test suites. Optional flags: `--include-host` and `--include-engine`.
++- **Windows CI**: Checked-in `.github/workflows/windows-ci.yml` organizes fast checks, native helper compilation, Extension Host validation, and opt-in real engine integration on Windows runners.
++
+diff --git a/docs/maintenance/INDEX.md b/docs/maintenance/INDEX.md
+index c65851a..fdc1c48 100644
+--- a/docs/maintenance/INDEX.md
++++ b/docs/maintenance/INDEX.md
+@@ -1,5 +1,11 @@
+ # Maintenance index
+ 
++- [0012 Phase 4 (P4.1, P4.2, P4.3), 2026-10-28](runs/0012-phase4/RESULT.md) — Testing and developer experience: reproducible native Extension Host testing (20/20 scenarios), reliable Unreal Engine validation failure handling (8/8 fault-injection tests), release validation runner (12/12 checks), and Windows CI workflow. [Changes](runs/0012-phase4/CHANGES.md), [validation](runs/0012-phase4/VALIDATION.md), [host testing](runs/0012-phase4/NATIVE_HOST_TESTING.md), [engine validation](runs/0012-phase4/ENGINE_VALIDATION.md), [release checks](runs/0012-phase4/QUALITY_RELEASE_CHECKS.md).
++
++- [0011 Phase 3B.3 / Phase 4B, 2026-10-28](runs/0011-phase3b3-debugger/RESULT.md) — Debugger lifecycle validation: real Unreal Editor attach, duplicate prevention, clean detach, Editor survival, re-attachment, second detach, owned process cleanup. Unit tests 6/6 pass; real UE 5.8 Editor integration passed. [Changes](runs/0011-phase3b3-debugger/CHANGES.md), [validation](runs/0011-phase3b3-debugger/VALIDATION.md), [matrix](runs/0011-phase3b3-debugger/DEBUGGER_LIFECYCLE.md).
++
++- [0010 Phase 3B.3z, 2026-10-28](runs/0010-phase3b3z/RESULT.md) — C++ class creation workflow expansion: 17 templates, native VS Code C++ snippets, folder-grouped class structure, header-only structs/enums, prefix normalization. 472 Node tests pass / one unchanged P1.1 failure; four Python tests pass; real UBT compile exit 0. [Prompt](prompts/0010-phase3b3z-v1.md), [changes](runs/0010-phase3b3z/CHANGES.md), [validation](runs/0010-phase3b3z/VALIDATION.md), [matrix](runs/0010-phase3b3z/CLASS_CREATION_MATRIX.md).
++
+ - [0009 Phase 3B.2c, 2026-10-28](runs/0009-phase3b2c/RESULT.md) — Fresh installed VSIX, public Build-and-Run with UI-assisted Editor closure, admission transaction and bounded resource qualification complete. Node 448 pass / one unchanged P1.1 failure; Python four pass. [Prompt](prompts/0009-phase3b2c-v1.md), [validation](runs/0009-phase3b2c/VALIDATION.md), [concurrency](runs/0009-phase3b2c/ADMISSION_CONCURRENCY.md).
+ 
+ - [0008 Phase 3B.2b, 2026-10-28](runs/0008-phase3b2b/RESULT.md) — Native job supervision restores repeated real managed builds and verified cross-reload release. Broader release qualification remains partial; test scratch relocation complete. Node 441 passed / one unchanged P1.1 failure; Python four passed. [Prompt](prompts/0008-phase3b2b-v1.md), [scratch steering](prompts/0008-phase3b2b-scratch-v1.md), [changes](runs/0008-phase3b2b/CHANGES.md), [validation](runs/0008-phase3b2b/VALIDATION.md), [safety contract](runs/0008-phase3b2b/SAFETY_CONTRACT.md).
+diff --git a/unreal-auto-setup/classTemplates.js b/unreal-auto-setup/classTemplates.js
+index d5a69cb..bff46d0 100644
+--- a/unreal-auto-setup/classTemplates.js
++++ b/unreal-auto-setup/classTemplates.js
+@@ -3,6 +3,9 @@ const path=require('node:path');
+ const {apiMacro}=require('./modules');
+ const exposureModes={native:{label:'Native only',description:'Adds no Blueprint exposure; base-class inherited flags may remain.'},type:{label:'Blueprint Type',description:'Allows values of this type in Blueprint.'},blueprintable:{label:'Blueprintable',description:'Allows Blueprint subclasses and Blueprint values.'}};
+ const registry=[
++  {id:'struct',label:'Unreal Struct',prefix:'F',kind:'struct',cpp:false,exposures:['native','type'],dependencies:['Core','CoreUObject']},
++  {id:'enum',label:'Unreal Enum',prefix:'E',kind:'enum',cpp:false,exposures:['native','type'],dependencies:['Core','CoreUObject']},
++  ...[['character','Character','A','ACharacter','GameFramework/Character.h'],['pawn','Pawn','A','APawn','GameFramework/Pawn.h'],['playerController','Player Controller','A','APlayerController','GameFramework/PlayerController.h'],['gameModeBase','Game Mode Base','A','AGameModeBase','GameFramework/GameModeBase.h'],['functionLibrary','Blueprint Function Library','U','UBlueprintFunctionLibrary','Kismet/BlueprintFunctionLibrary.h'],['dataAsset','Data Asset','U','UDataAsset','Engine/DataAsset.h']].map(([id,label,prefix,base,include])=>({id,label,prefix,base,include,exposures:['native','type','blueprintable']})),
+   {id:'object',label:'UObject',prefix:'U',base:'UObject',include:'UObject/Object.h',exposures:['native','type','blueprintable'],dependencies:['Core','CoreUObject']},
+   {id:'actor',label:'Actor',prefix:'A',base:'AActor',include:'GameFramework/Actor.h',constructor:'PrimaryActorTick.bCanEverTick = false;',exposures:['native','type','blueprintable']},
+   {id:'actorComponent',label:'Actor Component',prefix:'U',base:'UActorComponent',include:'Components/ActorComponent.h',constructor:'PrimaryComponentTick.bCanEverTick = false;',component:true,exposures:['native','type','blueprintable']},
+@@ -20,7 +23,7 @@ function names(input,type) {
+   const prefixes=type.interface?['U','I']:[type.prefix];
+   const explicit=prefixes.some(prefix=>input.startsWith(prefix) && /^[A-Z]/.test(input.slice(1)));
+   const stem=explicit?input.slice(1):input;
+-  if(!explicit && /^[AUFI][A-Z]/.test(input) && !prefixes.includes(input[0])) throw new Error('Use the '+type.prefix+' prefix for this type, or an unprefixed name.');
++  if(!explicit && /^[AUFIE][A-Z]/.test(input) && !prefixes.includes(input[0])) throw new Error('Use the '+type.prefix+' prefix for this type, or an unprefixed name.');
+   if(keywords.has(stem) || deviceName(stem)) throw new Error('This name is reserved by C++ or Windows.');
+   const className=type.prefix+stem;
+   if(registry.some(item=>item.base===className) || className==='IInterface') throw new Error('Choose a name different from an existing Unreal base class.');
+@@ -38,7 +41,9 @@ function render(type,name,api,includePath,exposure) {
+   let metadata=exposure==='native'?'':exposure==='type'?'BlueprintType':'Blueprintable, BlueprintType';
+   if(type.component && exposure!=='native') metadata+=(metadata?', ':'')+'meta=(BlueprintSpawnableComponent)';
+   if(type.interface) metadata+=(metadata?', ':'')+'meta=(CannotImplementInterfaceInBlueprint)';
+-  const includes='#pragma once\n\n#include "CoreMinimal.h"\n#include "'+type.include+'"\n#include "'+name.stem+'.generated.h"\n\n';
++  const includes='#pragma once\n\n#include "CoreMinimal.h"\n'+(type.include?'#include "'+type.include+'"\n':'')+'#include "'+name.stem+'.generated.h"\n\n';
++  if(type.kind==='struct') return {header:includes+'USTRUCT('+metadata+')\nstruct '+api+' '+name.className+'\n{\n  GENERATED_BODY()\n};\n'};
++  if(type.kind==='enum') return {header:includes+'UENUM('+metadata+')\nenum class '+name.className+' : uint8\n{\n  None = 0\n};\n'};
+   let header=includes+(type.interface?'UINTERFACE':'UCLASS')+'('+metadata+')\nclass '+api+' '+name.className+' : public '+type.base+'\n{\n  GENERATED_BODY()\n';
+   if(type.constructor) header+='\npublic:\n  '+name.className+'();\n';
+   header+='};\n';
+@@ -49,16 +54,16 @@ function render(type,name,api,includePath,exposure) {
+ }
+ function plan(project,module,typeId,input,folder='',exposure='native') {
+   const type=registry.find(item=>item.id===typeId);if(!type) throw new Error('Unknown Unreal class type.');
+-  const name=names(input,type),logical=subfolder(folder),api=apiMacro(module.name);
++  const name=names(input,type),logical=[subfolder(folder),name.stem].filter(Boolean).join('/'),api=apiMacro(module.name);
+   const split=module.publicPath && module.privatePath;
+   const flatBase=module.privatePath || module.publicPath || module.root;
+   const headerBase=split?module.publicPath:flatBase,sourceBase=split?module.privatePath:flatBase;
+   const headerPath=path.join(headerBase,logical,name.header),sourcePath=path.join(sourceBase,logical,name.source);
+   // Flat modules may disable Unreal's legacy module-root include search. A colocated header is always resolvable.
+-  const includePath=module.publicPath || module.privatePath ? [logical,name.header].filter(Boolean).join('/') : name.header;
++  const includePath=split ? [logical,name.header].filter(Boolean).join('/') : name.header;
+   const text=render(type,name,api,includePath,exposure);
+   const dependencyStatus=require('./dependencyModel').required(require('./buildCsParser').parse(module.ruleText,module.name),type.requiredDependencies);
+   const missing=dependencyStatus.filter(item=>item.status!=='Present').map(item=>item.name);
+-  return {project,module,type,name,api,exposure,logical,includePath,missing,dependencyStatus,files:[{path:headerPath,text:text.header},{path:sourcePath,text:text.source}]};
++  return {project,module,type,name,api,exposure,logical,includePath,missing,dependencyStatus,files:[{path:headerPath,text:text.header},...(type.cpp?[{path:sourcePath,text:text.source}]:[])]};
+ }
+ module.exports={keywords,deviceName,registry,exposureModes,names,subfolder,render,plan};
+diff --git a/unreal-auto-setup/classWizard.js b/unreal-auto-setup/classWizard.js
+index 6d2564e..7db722d 100644
+--- a/unreal-auto-setup/classWizard.js
++++ b/unreal-auto-setup/classWizard.js
+@@ -26,7 +26,7 @@ async function input(vscode,options,validate) {
+   }
+ }
+ function preview(plan) {
+-  return ['Project: '+plan.project.name,'Module: '+plan.module.name+' ('+plan.module.origin+')','Type: '+plan.type.label,'Class: '+plan.name.className+(plan.name.interfaceName?' / '+plan.name.interfaceName:''),'API macro: '+plan.api,'Header: '+plan.files[0].path,'Source: '+plan.files[1].path,'Blueprint exposure: '+templates.exposureModes[plan.exposure].label,...(plan.dependencyStatus || []).map(item=>'Required '+item.name+': '+item.status),...(plan.missing.length?['Dependency advisory: Build.cs may need '+plan.missing.join(', ')+'. Rules are not edited or fully interpreted.']:[])].join('\n');
++  return ['Project: '+plan.project.name,'Module: '+plan.module.name+' ('+plan.module.origin+')','Type: '+plan.type.label,'Class: '+plan.name.className+(plan.name.interfaceName?' / '+plan.name.interfaceName:''),'API macro: '+plan.api,...plan.files.map(file=>path.extname(file.path)+': '+file.path),'Blueprint exposure: '+templates.exposureModes[plan.exposure].label,...(plan.dependencyStatus || []).map(item=>'Required '+item.name+': '+item.status),...(plan.missing.length?['Dependency advisory: Build.cs may need '+plan.missing.join(', ')+'. Rules are not edited or fully interpreted.']:[])].join('\n');
+ }
+ async function open(vscode,filename,options={preview:false}) {
+   await fs.access(filename);await vscode.window.showTextDocument(await vscode.workspace.openTextDocument(vscode.Uri.file(filename)),options);
+@@ -38,11 +38,11 @@ async function wizard(vscode,context,services={},options={}) {
+   const list=await modules.discover(project.root);
+   const location=options.uri?await explorer.destination(project,options.uri,list):undefined;
+   const module=location?.module || await modules.choose(vscode,context,project,list);if(!module) return;
+-  const typePick=await vscode.window.showQuickPick(templates.registry.filter(type=>!location || ['object','actor','actorComponent','sceneComponent','interface'].includes(type.id)).map(type=>({label:type.label,description:type.base,type})),{placeHolder:'Choose the Unreal C++ class type'});
++  const typePick=await vscode.window.showQuickPick(templates.registry.map(type=>({label:type.label,description:type.base || 'Reflected header-only type',type})),{placeHolder:'Choose the Unreal C++ type'});
+   if(!typePick) return;const type=typePick.type;
+   const name=await input(vscode,{title:'Unreal: New C++ Class',prompt:'Class name without the Unreal prefix, or correctly prefixed. A leading '+type.prefix+' followed by uppercase is treated as a prefix.'},value=>templates.names(value,type));
+   if(name===undefined) return;
+-  const exposurePick=await vscode.window.showQuickPick(type.exposures.map(mode=>({label:templates.exposureModes[mode].label,description:templates.exposureModes[mode].description,mode})),{placeHolder:'Blueprint exposure'});
++  const exposurePick=location?{mode:'native'}:await vscode.window.showQuickPick(type.exposures.map(mode=>({label:templates.exposureModes[mode].label,description:templates.exposureModes[mode].description,mode})),{placeHolder:'Blueprint exposure'});
+   if(!exposurePick) return;
+   const folder=location?location.folder:await input(vscode,{title:'Logical subfolder',prompt:'Optional relative folder inside the module (for example Inventory or UI/Widgets). Leave empty for the module’s default layout.',value:''},templates.subfolder);
+   if(folder===undefined) return;
+@@ -56,8 +56,8 @@ async function wizard(vscode,context,services={},options={}) {
+   if(services.state) services.state.get(project.filename).lastCreatedClass={name:plan.name.className,files:plan.files.map(file=>file.path),createdAt:new Date().toISOString()};
+   await services.refresh?.();
+   await open(vscode,plan.files[0].path);
+-  const next=await vscode.window.showInformationMessage('Created '+plan.name.className+'. Regeneration is optional if your project index needs it.','Open Source Beside Header','Regenerate Project Files',...(plan.missing.length?['Manage Dependencies']:[]));
+-  if(next==='Open Source Beside Header') await open(vscode,plan.files[1].path,{preview:false,viewColumn:vscode.ViewColumn.Beside,preserveFocus:true});
++  const next=await vscode.window.showInformationMessage('Created '+plan.name.className+'. Regeneration is optional if your project index needs it.',...(plan.type.cpp?['Open Source Beside Header']:[]),'Regenerate Project Files',...(plan.missing.length?['Manage Dependencies']:[]));
++  if(next==='Open Source Beside Header' && plan.type.cpp) await open(vscode,plan.files[1].path,{preview:false,viewColumn:vscode.ViewColumn.Beside,preserveFocus:true});
+   else if(next==='Manage Dependencies') await vscode.commands.executeCommand('unrealSetup.manageDependencies',vscode.Uri.file(plan.module.buildFile));
+   else if(next==='Regenerate Project Files') await vscode.commands.executeCommand('unrealSetup.regenerate');
+   return plan;
+diff --git a/unreal-auto-setup/debugger.js b/unreal-auto-setup/debugger.js
+index 9c775cd..6e4d4cd 100644
+--- a/unreal-auto-setup/debugger.js
++++ b/unreal-auto-setup/debugger.js
+@@ -20,10 +20,21 @@ async function attach(vscode,project,processes) {
+   const current=await processes.get(project.filename,{fresh:true});
+   if(!current.matches.some(item=>item.pid===selected.pid && item.commandLine===selected.commandLine)) throw new Error('Selected Unreal Editor process disappeared or changed. Try attaching again.');
+   if(!vscode.workspace.isTrusted) return false;
++  const active=vscode.debug?.activeDebugSession;
++  if(active && String(active.configuration?.processId)===String(selected.pid)) throw new Error('Debugger is already attached to Unreal Editor (PID '+selected.pid+').');
+   const started=await vscode.debug.startDebugging(project.folder,configuration(project,selected));
+   if(!started) throw new Error('VS Code could not start the C++ attach session. Check Debug Console and process permissions.');
+   return true;
+ }
++async function detach(vscode,session) {
++  const target=session || vscode.debug?.activeDebugSession;
++  if(!target) return false;
++  if(vscode.debug?.stopDebugging) {
++    await vscode.debug.stopDebugging(target);
++    return true;
++  }
++  return false;
++}
+ function register(vscode,context,processes,onChange) {
+   context.subscriptions.push(vscode.commands.registerCommand('unrealSetup.attachDebugger',async()=>{
+     try {if(!vscode.workspace.isTrusted) return;const project=await projects.readProject(vscode);if(project) await attach(vscode,project,processes);}
+@@ -31,4 +42,4 @@ function register(vscode,context,processes,onChange) {
+     finally {onChange?.();}
+   }));
+ }
+-module.exports={configuration,attach,register};
++module.exports={configuration,attach,detach,register};
+diff --git a/unreal-auto-setup/package.json b/unreal-auto-setup/package.json
+index 685bda2..7c1cfc6 100644
+--- a/unreal-auto-setup/package.json
++++ b/unreal-auto-setup/package.json
+@@ -29,6 +29,7 @@
+     }
+   },
+   "contributes": {
++    "snippets": [{ "language": "cpp", "path": "./snippets/unreal.json" }],
+     "commands": [
+       {
+         "command": "unrealSetup.setup",
+diff --git a/unreal-auto-setup/tests/classFiles.test.js b/unreal-auto-setup/tests/classFiles.test.js
+index cc108b7..554ca5a 100644
+--- a/unreal-auto-setup/tests/classFiles.test.js
++++ b/unreal-auto-setup/tests/classFiles.test.js
+@@ -18,7 +18,7 @@ test('creates both files exclusively and leaves module rules unchanged',async()=
+ for(const index of [0,1]) test((index?'source':'header')+' collision leaves both destinations untouched',async()=>{
+   const f=await classFixture();
+   try {
+-    const plan=templates.plan(f.project,f.module,'object','InventoryItem');await fs.writeFile(plan.files[index].path,'keep me');
++    const plan=templates.plan(f.project,f.module,'object','InventoryItem');await fs.mkdir(path.dirname(plan.files[index].path),{recursive:true});await fs.writeFile(plan.files[index].path,'keep me');
+     await assert.rejects(files.create(plan,f.vscode),/already exists/);
+     assert.equal(await fs.readFile(plan.files[index].path,'utf8'),'keep me');await assert.rejects(fs.stat(plan.files[1-index].path),{code:'ENOENT'});
+   } finally {await f.cleanup();}
+@@ -54,8 +54,8 @@ test('post-preview module changes and case-insensitive conflicts are rejected',a
+   const f=await classFixture();
+   try {
+     const plan=templates.plan(f.project,f.module,'object','InventoryItem');
+-    await fs.writeFile(path.join(f.module.root,'inventoryitem.h'),'existing');await assert.rejects(files.create(plan,f.vscode),/already exists/);
+-    await fs.unlink(path.join(f.module.root,'inventoryitem.h'));await fs.appendFile(f.module.buildFile,'// changed');
++    const collision=path.join(path.dirname(plan.files[0].path),'inventoryitem.h');await fs.mkdir(path.dirname(collision),{recursive:true});await fs.writeFile(collision,'existing');await assert.rejects(files.create(plan,f.vscode),/already exists/);
++    await fs.unlink(collision);await fs.appendFile(f.module.buildFile,'// changed');
+     await assert.rejects(files.create(plan,f.vscode),/changed/);
+   } finally {await f.cleanup();}
+ });
+diff --git a/unreal-auto-setup/tests/classTemplates.test.js b/unreal-auto-setup/tests/classTemplates.test.js
+index f124f20..d1995b8 100644
+--- a/unreal-auto-setup/tests/classTemplates.test.js
++++ b/unreal-auto-setup/tests/classTemplates.test.js
+@@ -10,11 +10,11 @@ for(const [id,input,expected,stem] of [
+   ['interface','Interactable','UInteractable','Interactable'],['worldSubsystem','SpawnSubsystem','USpawnSubsystem','SpawnSubsystem'],['object','UserProfile','UUserProfile','UserProfile'],['object','UUIWidget','UUIWidget','UIWidget']
+ ]) test('class naming '+id+' / '+input,()=>{const name=templates.names(input,templates.registry.find(type=>type.id===id));assert.equal(name.className,expected);assert.equal(name.header,stem+'.h');assert.equal(name.source,stem+'.cpp');});
+ test('invalid identifiers, keywords and path traversal are rejected',()=>{
+-  const type=templates.registry[0];
++  const type=templates.registry.find(t=>t.id==='object');
+   for(const name of ['', ' ', 'bad name','123Thing','../Thing','Dir/Thing','Dir\\Thing','class','struct','UClass__Thing','CON','_Thing']) assert.throws(()=>templates.names(name,type),name);
+   assert.throws(()=>templates.names('UObject',type),/base class/);
+ });
+-for(const type of templates.registry) test('minimal UHT template for '+type.label,()=>{
++for(const type of templates.registry.filter(t=>t.cpp)) test('minimal UHT template for '+type.label,()=>{
+   const name=templates.names('SampleThing',type);const code=templates.render(type,name,'OTHER_MODULE_API','Systems/SampleThing.h','native');
+   const includes=code.header.match(/^#include .+$/gm);
+   assert.equal(includes.at(-1),'#include "SampleThing.generated.h"');assert.ok(includes.includes('#include "'+type.include+'"'));
+@@ -41,9 +41,9 @@ for(const split of [false,true]) test('output layout and includes: '+(split?'Pub
+   try {
+     const plan=templates.plan(f.project,f.module,'actorComponent','InventoryComponent','Inventory/Items','type');
+     assert.equal(plan.api,'GAMEPLAY_API');assert.ok(!plan.name.className.includes('Gameplay'));
+-    assert.equal(plan.files[0].path,path.join(f.module.root,...(split?['Public']:[]),'Inventory','Items','InventoryComponent.h'));
+-    assert.equal(plan.files[1].path,path.join(f.module.root,...(split?['Private']:[]),'Inventory','Items','InventoryComponent.cpp'));
+-    assert.equal(plan.includePath,split?'Inventory/Items/InventoryComponent.h':'InventoryComponent.h');assert.equal(plan.missing.length,0);
++    assert.equal(plan.files[0].path,path.join(f.module.root,...(split?['Public']:[]),'Inventory','Items','InventoryComponent','InventoryComponent.h'));
++    assert.equal(plan.files[1].path,path.join(f.module.root,...(split?['Private']:[]),'Inventory','Items','InventoryComponent','InventoryComponent.cpp'));
++    assert.equal(plan.includePath,split?'Inventory/Items/InventoryComponent/InventoryComponent.h':'InventoryComponent.h');assert.equal(plan.missing.length,0);
+     assert.throws(()=>templates.plan(f.project,f.module,'object','GoodName','../Escape'));
+   } finally {await f.cleanup();}
+ });
+diff --git a/unreal-auto-setup/tests/classWizard.test.js b/unreal-auto-setup/tests/classWizard.test.js
+index 35903f3..fb25084 100644
+--- a/unreal-auto-setup/tests/classWizard.test.js
++++ b/unreal-auto-setup/tests/classWizard.test.js
+@@ -29,7 +29,7 @@ async function harness({cancel,split=true,multiple=false}={}) {
+ }
+ for(const stage of ['project','module','type','name','exposure','folder','confirmation']) test('wizard cancellation at '+stage+' creates no source files',async()=>{
+   const f=await harness({cancel:stage});
+-  try {assert.equal(await wizard(f.vscode,f.context),undefined);assert.equal(f.opened.length,0);assert.ok(f.stages.includes(stage));await assert.rejects(fs.stat(path.join(f.module.root,'Public','Systems','InventoryComponent.h')),{code:'ENOENT'});}
++  try {assert.equal(await wizard(f.vscode,f.context),undefined);assert.equal(f.opened.length,0);assert.ok(f.stages.includes(stage));await assert.rejects(fs.stat(path.join(f.module.root,'Public','Systems','InventoryComponent','InventoryComponent.h')),{code:'ENOENT'});}
+   finally {await f.cleanup();}
+ });
+ test('successful wizard previews, creates, remembers module and optionally opens a split without marking metadata stale',async()=>{
+@@ -48,7 +48,7 @@ test('multi-module wizard uses the selected module, and invalid names can be cor
+   try {
+     const original=f.vscode.window.showQuickPick;f.vscode.window.showQuickPick=async choices=>choices[0].module?choices.find(item=>item.label==='Second'):original(choices);
+     const originalInput=f.vscode.window.showInputBox;let first=true;f.vscode.window.showInputBox=async options=>{if(first){first=false;assert.ok(options.validateInput('123Bad'));return '123Bad';}return originalInput(options);};
+-    const plan=await wizard(f.vscode,f.context);assert.equal(plan.module.name,'Second');assert.equal(plan.api,'SECOND_API');assert.ok(f.errors.length===1);assert.equal(plan.files[0].path,path.join(f.root,'Source','Second','Systems','InventoryComponent.h'));
++    const plan=await wizard(f.vscode,f.context);assert.equal(plan.module.name,'Second');assert.equal(plan.api,'SECOND_API');assert.ok(f.errors.length===1);assert.equal(plan.files[0].path,path.join(f.root,'Source','Second','Systems','InventoryComponent','InventoryComponent.h'));
+   } finally {await f.cleanup();}
+ });
+ test('navigation opens module rules, descriptor and picked target rules; missing/ambiguous cases are handled',async()=>{
+diff --git a/unreal-auto-setup/tests/debugger.test.js b/unreal-auto-setup/tests/debugger.test.js
+index 4db2fb2..3d4c179 100644
+--- a/unreal-auto-setup/tests/debugger.test.js
++++ b/unreal-auto-setup/tests/debugger.test.js
+@@ -1,6 +1,6 @@
+ const {test}=require('node:test');
+ const assert=require('node:assert/strict');
+-const {attach}=require('../debugger');
++const {attach,detach,configuration}=require('../debugger');
+ const {fakeVSCode}=require('./helpers');
+ const project={name:'Game.uproject',filename:'C:\\Game\\Game.uproject',folder:{name:'Game'}};
+ const one={pid:100,executable:'C:\\UE\\UnrealEditor.exe',commandLine:'UnrealEditor.exe C:\\Game\\Game.uproject'};
+@@ -26,3 +26,43 @@ test('attach rejects disappeared processes, failed queries and refused debug ses
+   await assert.rejects(attach(vscode,project,{get:async()=>({state:'Unknown',matches:[]})}),/unavailable/);
+   vscode.debug.startDebugging=async()=>false;await assert.rejects(attach(vscode,project,service([one])),/could not start/);
+ });
++test('duplicate attach to same Editor PID is rejected',async()=>{
++  const {vscode}=fakeVSCode('C:\\Game');
++  vscode.debug.activeDebugSession={name:'Unreal Attach',type:'cppvsdbg',configuration:{processId:'100'}};
++  await assert.rejects(attach(vscode,project,service([one])),/already attached/);
++});
++test('detach stops active debug session, leaves editor running, and reattachment succeeds',async()=>{
++  const {vscode,events}=fakeVSCode('C:\\Game');let stoppedSession,editorRunning=true;
++  const editorService={get:async()=>({state:editorRunning?'Running':'Stopped',matches:editorRunning?[one]:[]})};
++  vscode.debug.stopDebugging=async session=>{
++    stoppedSession=session;
++    vscode.debug.activeDebugSession=undefined;
++    events.debugEnd.fire(session);
++  };
++  vscode.debug.startDebugging=async(folder,config)=>{
++    vscode.debug.activeDebugSession={name:config.name,type:config.type,configuration:config};
++    events.debugStart.fire(vscode.debug.activeDebugSession);
++    return true;
++  };
++  // 1. Initial attach
++  assert.equal(await attach(vscode,project,editorService),true);
++  assert.ok(vscode.debug.activeDebugSession);
++  assert.equal(vscode.debug.activeDebugSession.configuration.processId,'100');
++  // 2. Detach
++  assert.equal(await detach(vscode),true);
++  assert.equal(stoppedSession.configuration.processId,'100');
++  assert.equal(vscode.debug.activeDebugSession,undefined);
++  // Editor is still alive and running independently
++  assert.equal(editorRunning,true);
++  assert.equal((await editorService.get()).state,'Running');
++  // 3. Re-attach to the same PID succeeds
++  assert.equal(await attach(vscode,project,editorService),true);
++  assert.ok(vscode.debug.activeDebugSession);
++  assert.equal(vscode.debug.activeDebugSession.configuration.processId,'100');
++  // 4. Detach again
++  assert.equal(await detach(vscode),true);
++  assert.equal(vscode.debug.activeDebugSession,undefined);
++  // 5. Detach with no active session returns false
++  assert.equal(await detach(vscode),false);
++});
++
+diff --git a/unreal-auto-setup/tests/real-unreal-validation.js b/unreal-auto-setup/tests/real-unreal-validation.js
+index b187471..50b477b 100644
+--- a/unreal-auto-setup/tests/real-unreal-validation.js
++++ b/unreal-auto-setup/tests/real-unreal-validation.js
+@@ -1,42 +1,213 @@
+ // Opt-in disposable fixture; never operates on an existing project. Run with a UE installation path.
+-const fs=require('node:fs/promises'),os=require('node:os'),path=require('node:path');
+-const {spawn}=require('node:child_process');
+-const creation=require('../creation'),modules=require('../modules'),templates=require('../moduleTemplates'),classes=require('../classTemplates'),classFiles=require('../classFiles');
+-async function run(exe,args,cwd,log) {
+-  return new Promise(resolve=>{const child=spawn(exe,args,{cwd,windowsHide:true});let output='';child.stdout.on('data',b=>{output+=b;process.stdout.write(b);});child.stderr.on('data',b=>{output+=b;process.stderr.write(b);});child.on('error',e=>{output+=e.message;});child.on('close',async code=>{await fs.writeFile(log,output);resolve(code);});});
++'use strict';
++const fs = require('node:fs/promises');
++const fsSync = require('node:fs');
++const os = require('node:os');
++const path = require('node:path');
++const { spawn } = require('node:child_process');
++const creation = require('../creation');
++const modules = require('../modules');
++const templates = require('../moduleTemplates');
++const classes = require('../classTemplates');
++const classFiles = require('../classFiles');
++
++/**
++ * Execute a command with bounded timeout, logging, and explicit status tracking.
++ */
++async function runStage(name, exe, args, cwd, logFile, timeoutMs = 300000) {
++  const result = {
++    name,
++    command: exe,
++    args,
++    exitCode: null,
++    status: 'Failed',
++    timedOut: false,
++    logFile
++  };
++
++  let output = '';
++  let child;
++  try {
++    const isBatch = process.platform === 'win32' && /\.(bat|cmd)$/i.test(exe);
++    const exitPromise = new Promise((resolve, reject) => {
++      try {
++        child = spawn(exe, args, { cwd, windowsHide: true, shell: isBatch });
++      } catch (err) {
++        return reject(err);
++      }
++      child.stdout?.on('data', b => {
++        output += b;
++        process.stdout.write(b);
++      });
++      child.stderr?.on('data', b => {
++        output += b;
++        process.stderr.write(b);
++      });
++      child.on('error', err => {
++        output += '\nChild process error: ' + err.message;
++        reject(err);
++      });
++      child.on('close', code => {
++        resolve(code);
++      });
++    });
++
++    let timer;
++    const timeoutPromise = new Promise((_, reject) => {
++      timer = setTimeout(() => {
++        result.timedOut = true;
++        if (child && child.exitCode === null) {
++          try {
++            child.kill();
++          } catch {}
++        }
++        reject(new Error(`Stage '${name}' timed out after ${timeoutMs}ms`));
++      }, timeoutMs);
++    });
++
++    const code = await Promise.race([exitPromise, timeoutPromise]).finally(() => {
++      clearTimeout(timer);
++    });
++
++    result.exitCode = code;
++    result.status = code === 0 ? 'Passed' : 'Failed';
++  } catch (err) {
++    result.error = err.message;
++    result.status = 'Failed';
++    if (result.exitCode === null) result.exitCode = -1;
++  } finally {
++    try {
++      await fs.writeFile(logFile, output);
++    } catch {}
++  }
++
++  return result;
+ }
+-(async()=>{
+-  const engine=process.argv[2];if(!engine) throw new Error('Pass the UE installation directory.');
+-  const root=await fs.mkdtemp(path.join(require('./testTemp').root(),'UnrealAutoSetup-v06-'));
+-  const filename=path.join(root,'AutoSetupValidation.uproject');
+-  console.log('Disposable project: '+root);
+-  await fs.writeFile(filename,JSON.stringify({FileVersion:3,EngineAssociation:'5.8',Modules:[{Name:'AutoSetupValidation',Type:'Runtime',LoadingPhase:'Default'}]},null,2));
+-  const base=templates.render(path.join(root,'Source','AutoSetupValidation'),'AutoSetupValidation');
+-  base.files[2].text='#include "AutoSetupValidation.h"\n#include "Modules/ModuleManager.h"\nIMPLEMENT_PRIMARY_GAME_MODULE(FDefaultGameModuleImpl, AutoSetupValidation, "AutoSetupValidation");\n';
+-  for(const f of base.files) {await fs.mkdir(path.dirname(f.path),{recursive:true});await fs.writeFile(f.path,f.text);}
+-  for(const type of ['Editor','Game']) {
+-    const target='AutoSetupValidation'+(type==='Editor'?'Editor':'');
+-    await fs.writeFile(path.join(root,'Source',target+'.Target.cs'),'using UnrealBuildTool;\npublic class '+target+'Target : TargetRules { public '+target+'Target(TargetInfo Target) : base(Target) { Type = TargetType.'+type+'; DefaultBuildSettings = BuildSettingsVersion.V7; IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_8; ExtraModuleNames.Add("AutoSetupValidation"); } }\n');
++
++/**
++ * Main validation routine for a real Unreal Engine installation.
++ */
++async function validate(options = {}) {
++  const engine = options.engine || process.argv[2];
++  if (!engine) throw new Error('Pass the UE installation directory.');
++
++  const timeoutMs = options.timeoutMs || 300000;
++  const root = options.root || await fs.mkdtemp(path.join(require('./testTemp').root(), 'UnrealAutoSetup-v06-'));
++  const filename = path.join(root, 'AutoSetupValidation.uproject');
++  console.log('Disposable project: ' + root);
++
++  // Validate disposable project root
++  if (!path.basename(root).startsWith('UnrealAutoSetup-v06-') && !options.allowCustomRoot) {
++    throw new Error('Refusing to run real Unreal validation outside disposable test directory.');
+   }
+-  const project={root,filename,name:'AutoSetupValidation.uproject',descriptor:JSON.parse(await fs.readFile(filename,'utf8'))};
+-  const vscode={workspace:{isTrusted:true,workspaceFolders:[{uri:{fsPath:root}}],textDocuments:[]}};
+-  await creation.commit(await creation.plan(project,{name:'ValidationRuntime'}),vscode);
+-  const module=(await modules.discover(root)).find(m=>m.name==='ValidationRuntime');
+-  if(process.argv[3]==='dependencies') {
+-    const editor=require('../dependencyEditor');let text=await fs.readFile(module.buildFile,'utf8');
+-    for(const [name,visibility] of [['Projects','Private'],['SlateCore','Public']]) text=editor.mutate(text,module.name,{name,visibility}).proposed;
+-    await fs.writeFile(module.buildFile,text);module.ruleText=text;
+-    await fs.appendFile(path.join(module.root,'Private','ValidationRuntime.cpp'),'\n#include "Interfaces/IPluginManager.h"\n#include "Widgets/SWidget.h"\n');
+-    console.log('v0.7 dependency engine added Projects (Private) and SlateCore (Public) in the fresh fixture.');
++
++  const stages = [];
++  const report = {
++    root,
++    engine,
++    classes: classes.registry.map(t => t.label),
++    stages,
++    success: false
++  };
++
++  try {
++    await fs.writeFile(filename, JSON.stringify({
++      FileVersion: 3,
++      EngineAssociation: '5.8',
++      Modules: [{ Name: 'AutoSetupValidation', Type: 'Runtime', LoadingPhase: 'Default' }]
++    }, null, 2));
++
++    const base = templates.render(path.join(root, 'Source', 'AutoSetupValidation'), 'AutoSetupValidation');
++    base.files[2].text = '#include "AutoSetupValidation.h"\n#include "Modules/ModuleManager.h"\nIMPLEMENT_PRIMARY_GAME_MODULE(FDefaultGameModuleImpl, AutoSetupValidation, "AutoSetupValidation");\n';
++    for (const f of base.files) {
++      await fs.mkdir(path.dirname(f.path), { recursive: true });
++      await fs.writeFile(f.path, f.text);
++    }
++
++    for (const type of ['Editor', 'Game']) {
++      const target = 'AutoSetupValidation' + (type === 'Editor' ? 'Editor' : '');
++      await fs.writeFile(
++        path.join(root, 'Source', target + '.Target.cs'),
++        'using UnrealBuildTool;\npublic class ' + target + 'Target : TargetRules { public ' + target + 'Target(TargetInfo Target) : base(Target) { Type = TargetType.' + type + '; DefaultBuildSettings = BuildSettingsVersion.V7; IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_8; ExtraModuleNames.Add("AutoSetupValidation"); } }\n'
++      );
++    }
++
++    const project = { root, filename, name: 'AutoSetupValidation.uproject', descriptor: JSON.parse(await fs.readFile(filename, 'utf8')) };
++    const vscode = { workspace: { isTrusted: true, workspaceFolders: [{ uri: { fsPath: root } }], textDocuments: [] } };
++
++    await creation.commit(await creation.plan(project, { name: 'ValidationRuntime' }), vscode);
++    const module = (await modules.discover(root)).find(m => m.name === 'ValidationRuntime');
++
++    if (options.dependencies || process.argv[3] === 'dependencies') {
++      const editor = require('../dependencyEditor');
++      let text = await fs.readFile(module.buildFile, 'utf8');
++      for (const [name, visibility] of [['Projects', 'Private'], ['SlateCore', 'Public']]) {
++        text = editor.mutate(text, module.name, { name, visibility }).proposed;
++      }
++      await fs.writeFile(module.buildFile, text);
++      module.ruleText = text;
++      await fs.appendFile(path.join(module.root, 'Private', 'ValidationRuntime.cpp'), '\n#include "Interfaces/IPluginManager.h"\n#include "Widgets/SWidget.h"\n');
++      console.log('v0.7 dependency engine added Projects (Private) and SlateCore (Public) in the fresh fixture.');
++    }
++
++    for (const type of classes.registry) {
++      await classFiles.create(classes.plan(project, module, type.id, 'Validation' + type.label.replace(/ /g, ''), '', type.exposures.includes('blueprintable') ? 'blueprintable' : 'type'), vscode);
++    }
++
++    const ubt = options.ubtPath || path.join(engine, 'Engine', 'Binaries', 'DotNET', 'UnrealBuildTool', 'UnrealBuildTool.exe');
++    if (!fsSync.existsSync(ubt) && !options.mockUbt) {
++      const missingStage = { name: 'generation', command: ubt, exitCode: -1, status: 'Failed', error: 'UnrealBuildTool executable not found: ' + ubt };
++      stages.push(missingStage);
++      throw new Error(missingStage.error);
++    }
++
++    // Stage 1: Generation
++    const genStage = await runStage('generation', ubt, ['-projectfiles', '-project=' + filename, '-game', '-progress', '-vscode'], root, path.join(root, 'generation.log'), timeoutMs);
++    stages.push(genStage);
++    if (genStage.status !== 'Passed') {
++      stages.push({ name: 'moduleBuild', status: 'Skipped', reason: 'Dependent on generation stage' });
++      stages.push({ name: 'pluginBuild', status: 'Skipped', reason: 'Dependent on generation stage' });
++      throw new Error(`Generation stage failed with exit code ${genStage.exitCode}`);
++    }
++
++    // Stage 2: Module Build
++    const args = ['AutoSetupValidationEditor', 'Win64', 'Development', '-Project=' + filename, '-WaitMutex', '-NoHotReloadFromIDE'];
++    const moduleStage = await runStage('moduleBuild', ubt, args, root, path.join(root, 'module-build.log'), timeoutMs);
++    stages.push(moduleStage);
++    if (moduleStage.status !== 'Passed') {
++      stages.push({ name: 'pluginBuild', status: 'Skipped', reason: 'Dependent on moduleBuild stage' });
++      throw new Error(`Module build stage failed with exit code ${moduleStage.exitCode}`);
++    }
++
++    // Stage 3: Plugin Build
++    await creation.commit(await creation.plan(project, { kind: 'plugin', name: 'ValidationPlugin', layout: 'Flat' }), vscode);
++    const pluginStage = await runStage('pluginBuild', ubt, args, root, path.join(root, 'plugin-build.log'), timeoutMs);
++    stages.push(pluginStage);
++    if (pluginStage.status !== 'Passed') {
++      throw new Error(`Plugin build stage failed with exit code ${pluginStage.exitCode}`);
++    }
++
++    report.success = stages.every(s => s.status === 'Passed');
++  } catch (error) {
++    report.success = false;
++    report.error = error.message;
++  } finally {
++    try {
++      await fs.writeFile(path.join(root, 'validation-results.json'), JSON.stringify(report, null, 2));
++    } catch {}
+   }
+-  for(const type of classes.registry) await classFiles.create(classes.plan(project,module,type.id,'Validation'+type.label.replace(/ /g,''),'',type.exposures.includes('blueprintable')?'blueprintable':'type'),vscode);
+-  const ubt=path.join(engine,'Engine','Binaries','DotNET','UnrealBuildTool','UnrealBuildTool.exe');
+-  const results={root,engine,classes:classes.registry.map(t=>t.label)};
+-  results.generation=await run(ubt,['-projectfiles','-project='+filename,'-game','-progress','-vscode'],root,path.join(root,'generation.log'));
+-  const args=['AutoSetupValidationEditor','Win64','Development','-Project='+filename,'-WaitMutex','-NoHotReloadFromIDE'];
+-  results.moduleBuild=await run(ubt,args,root,path.join(root,'module-build.log'));
+-  await creation.commit(await creation.plan(project,{kind:'plugin',name:'ValidationPlugin',layout:'Flat'}),vscode);
+-  results.pluginBuild=await run(ubt,args,root,path.join(root,'plugin-build.log'));
+-  await fs.writeFile(path.join(root,'validation-results.json'),JSON.stringify(results,null,2));
+-  console.log('VALIDATION_RESULTS '+JSON.stringify(results));
+-})().catch(error=>{console.error(error);process.exitCode=1;});
++
++  console.log('VALIDATION_RESULTS ' + JSON.stringify(report));
++  return report;
++}
++
++if (require.main === module) {
++  validate().then(report => {
++    if (!report.success) process.exitCode = 1;
++  }).catch(error => {
++    console.error(error);
++    process.exitCode = 1;
++  });
++}
++
++module.exports = { runStage, validate };
+diff --git a/unreal-auto-setup/tests/ux.test.js b/unreal-auto-setup/tests/ux.test.js
+index c6655a9..c03c1a8 100644
+--- a/unreal-auto-setup/tests/ux.test.js
++++ b/unreal-auto-setup/tests/ux.test.js
+@@ -47,7 +47,7 @@ for(const split of [false,true]) for(const area of ['root','nested',...(split?['
+   const f=await classFixture({split});try {
+     const folder=area==='root'?f.module.root:area==='nested'?path.join(f.module.root,...(split?['Public']:[]),'Inventory'):path.join(f.module.root,area,'Inventory');
+     await fs.mkdir(folder,{recursive:true});const result=await explorer.destination(f.project,{fsPath:folder});assert.equal(result.folder,area==='root'?'':'Inventory');
+-    if(split && area==='Private') assert.equal(require('../classTemplates').plan(f.project,result.module,'object','Item',result.folder).files[0].path,path.join(f.module.root,'Public','Inventory','Item.h'));
++    if(split && area==='Private') assert.equal(require('../classTemplates').plan(f.project,result.module,'object','Item',result.folder).files[0].path,path.join(f.module.root,'Public','Inventory','Item','Item.h'));
+   } finally {await f.cleanup();}
+ });
+ test('Explorer rejects generated folders, unrelated paths, files and symlinks; menus enumerate safe folders only',async()=>{
+@@ -62,11 +62,11 @@ for(const cancel of [true,false]) test('Explorer shared wizard '+(cancel?'cancel
+   const f=await classFixture({split:true});try {
+     const folder=path.join(f.module.root,'Private','Inventory');await fs.mkdir(folder);let opened=0;
+     f.vscode.workspace.openTextDocument=async uri=>({uri});f.vscode.window.showTextDocument=async()=>opened++;
+-    f.vscode.window.showQuickPick=async items=>{if(items[0].type){assert.equal(items.length,5);return cancel?undefined:items.find(item=>item.type.id==='object');}return items[0];};
++    f.vscode.window.showQuickPick=async items=>{if(items[0].type){assert.equal(items.length,require('../classTemplates').registry.length);return cancel?undefined:items.find(item=>item.type.id==='object');}return items[0];};
+     f.vscode.window.showInputBox=async options=>{assert.notEqual(options.title,'Logical subfolder');return 'InventoryItem';};
+     f.vscode.window.showInformationMessage=async(text,options)=>options?.modal?'Create Class':undefined;
+     const plan=await classes.wizard(f.vscode,f.context,{}, {uri:{fsPath:folder}});
+-    if(cancel) {assert.equal(plan,undefined);assert.equal(opened,0);} else {assert.equal(opened,1);assert.equal(plan.files[0].path,path.join(f.module.root,'Public','Inventory','InventoryItem.h'));await assert.rejects(classes.wizard(f.vscode,f.context,{}, {uri:{fsPath:folder}}),/already exists/);}
++    if(cancel) {assert.equal(plan,undefined);assert.equal(opened,0);} else {assert.equal(opened,1);assert.equal(plan.files[0].path,path.join(f.module.root,'Public','Inventory','InventoryItem','InventoryItem.h'));await assert.rejects(classes.wizard(f.vscode,f.context,{}, {uri:{fsPath:folder}}),/already exists/);}
+   } finally {await f.cleanup();}
+ });
+ 

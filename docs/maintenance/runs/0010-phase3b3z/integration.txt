@@ -1,0 +1,1 @@
+Compiled all 17 templates with UHT and UBT; owned sources and scratch cleaned.

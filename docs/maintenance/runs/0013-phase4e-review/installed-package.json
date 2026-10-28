@@ -1,0 +1,11 @@
+{
+  "scratch": "C:\\Dev\\Scratch\\UnrealAutoSetupTests\\package-EyG2zt",
+  "checks": [
+    "Installed VSIX activation",
+    "All public commands registered",
+    "Four packaged snippets inserted by native editor",
+    "Installed native helper integrity"
+  ],
+  "extensionPath": "C:\\Dev\\Scratch\\UnrealAutoSetupTests\\package-EyG2zt\\extensions\\local-tools.unreal-project-tools-0.8.0",
+  "status": "Passed"
+}

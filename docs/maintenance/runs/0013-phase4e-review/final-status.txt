@@ -1,0 +1,94 @@
+ M bundle_sources.py
+ M docs/DEVELOPMENT.md
+ M docs/maintenance/INDEX.md
+ M tools/run-tests.cjs
+ M unreal-auto-setup/classTemplates.js
+ M unreal-auto-setup/classWizard.js
+ M unreal-auto-setup/debugger.js
+ M unreal-auto-setup/package.json
+ M unreal-auto-setup/processSupervisor.js
+ M unreal-auto-setup/tests/classFiles.test.js
+ M unreal-auto-setup/tests/classTemplates.test.js
+ M unreal-auto-setup/tests/classWizard.test.js
+ M unreal-auto-setup/tests/debugger.test.js
+ M unreal-auto-setup/tests/real-unreal-validation.js
+ M unreal-auto-setup/tests/testTemp.js
+ M unreal-auto-setup/tests/ux.test.js
+?? .github/workflows/windows-ci.yml
+?? docs/maintenance/PHASE4_PROGRESS.md
+?? docs/maintenance/prompts/0010-phase3b3z-v1.md
+?? docs/maintenance/prompts/0013-phase4e-review-v1.md
+?? docs/maintenance/runs/0010-phase3b3z/CHANGES.md
+?? docs/maintenance/runs/0010-phase3b3z/CLASS_CREATION_MATRIX.md
+?? docs/maintenance/runs/0010-phase3b3z/RESULT.md
+?? docs/maintenance/runs/0010-phase3b3z/VALIDATION.md
+?? docs/maintenance/runs/0010-phase3b3z/compile-result.json
+?? docs/maintenance/runs/0010-phase3b3z/generated.json
+?? docs/maintenance/runs/0010-phase3b3z/integration.txt
+?? docs/maintenance/runs/0010-phase3b3z/node.txt
+?? docs/maintenance/runs/0010-phase3b3z/targeted.txt
+?? docs/maintenance/runs/0010-phase3b3z/ubt.txt
+?? docs/maintenance/runs/0011-phase3b3-debugger/CHANGES.md
+?? docs/maintenance/runs/0011-phase3b3-debugger/DEBUGGER_LIFECYCLE.md
+?? docs/maintenance/runs/0011-phase3b3-debugger/RESULT.md
+?? docs/maintenance/runs/0011-phase3b3-debugger/VALIDATION.md
+?? docs/maintenance/runs/0011-phase3b3-debugger/debugger-lifecycle.json
+?? docs/maintenance/runs/0012-phase4.zip
+?? docs/maintenance/runs/0012-phase4/CHANGES.md
+?? docs/maintenance/runs/0012-phase4/ENGINE_VALIDATION.md
+?? docs/maintenance/runs/0012-phase4/NATIVE_HOST_TESTING.md
+?? docs/maintenance/runs/0012-phase4/QUALITY_RELEASE_CHECKS.md
+?? docs/maintenance/runs/0012-phase4/RESULT.md
+?? docs/maintenance/runs/0012-phase4/VALIDATION.md
+?? docs/maintenance/runs/0013-phase4e-review/CHANGES.md
+?? docs/maintenance/runs/0013-phase4e-review/FINDINGS.md
+?? docs/maintenance/runs/0013-phase4e-review/INTEGRATION_EVIDENCE.md
+?? docs/maintenance/runs/0013-phase4e-review/RELEASE_GATE_REVIEW.md
+?? docs/maintenance/runs/0013-phase4e-review/RESULT.md
+?? docs/maintenance/runs/0013-phase4e-review/VALIDATION.md
+?? docs/maintenance/runs/0013-phase4e-review/baseline.txt
+?? docs/maintenance/runs/0013-phase4e-review/compile-result.json
+?? docs/maintenance/runs/0013-phase4e-review/compile.txt
+?? docs/maintenance/runs/0013-phase4e-review/debugger-driver-case-failure.json
+?? docs/maintenance/runs/0013-phase4e-review/debugger-early-threads-failure.json
+?? docs/maintenance/runs/0013-phase4e-review/debugger-final.txt
+?? docs/maintenance/runs/0013-phase4e-review/debugger-retry.txt
+?? docs/maintenance/runs/0013-phase4e-review/debugger-unit.txt
+?? docs/maintenance/runs/0013-phase4e-review/debugger.txt
+?? docs/maintenance/runs/0013-phase4e-review/engine-faults.txt
+?? docs/maintenance/runs/0013-phase4e-review/final-owned-processes.json
+?? docs/maintenance/runs/0013-phase4e-review/final-status.txt
+?? docs/maintenance/runs/0013-phase4e-review/focused.txt
+?? docs/maintenance/runs/0013-phase4e-review/generated.json
+?? docs/maintenance/runs/0013-phase4e-review/host.txt
+?? docs/maintenance/runs/0013-phase4e-review/incoming.diff
+?? docs/maintenance/runs/0013-phase4e-review/initial-status.txt
+?? docs/maintenance/runs/0013-phase4e-review/installation.txt
+?? docs/maintenance/runs/0013-phase4e-review/installed-package.json
+?? docs/maintenance/runs/0013-phase4e-review/interfaces-ci-uht.txt
+?? docs/maintenance/runs/0013-phase4e-review/node-final.txt
+?? docs/maintenance/runs/0013-phase4e-review/package-host.txt
+?? docs/maintenance/runs/0013-phase4e-review/package-location.txt
+?? docs/maintenance/runs/0013-phase4e-review/package.json
+?? docs/maintenance/runs/0013-phase4e-review/preflight.txt
+?? docs/maintenance/runs/0013-phase4e-review/python.txt
+?? docs/maintenance/runs/0013-phase4e-review/real-debugger.json
+?? docs/maintenance/runs/0013-phase4e-review/release-gate.txt
+?? docs/maintenance/runs/0013-phase4e-review/ubt.txt
+?? docs/maintenance/runs/0013-phase4e-review/vsix-inspection.json
+?? docs/maintenance/runs/0013-phase4e-review/whitespace.txt
+?? tools/phase3b3z/compile.cjs
+?? tools/phase4b/debugger-lifecycle.cjs
+?? tools/phase4e/check.cjs
+?? tools/phase4e/debug-host.cjs
+?? tools/phase4e/launch-debug.cjs
+?? tools/phase4e/launch-package.cjs
+?? tools/phase4e/package-host.cjs
+?? tools/run-extension-tests.cjs
+?? tools/validate-release.cjs
+?? unreal-auto-setup/snippets/unreal.json
+?? unreal-auto-setup/tests/creation-expansion.test.js
+?? unreal-auto-setup/tests/engine-validation-failures.test.js
+?? unreal-auto-setup/tests/host-runner-suite.js
+?? unreal-auto-setup/tests/release-gate.test.js
+?? unreal-auto-setup/tests/supervisedStage.js

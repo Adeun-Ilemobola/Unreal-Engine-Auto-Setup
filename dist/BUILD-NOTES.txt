@@ -1,0 +1,15 @@
+Alpha 1.0.0. Removed generated archives:
+ad-unreal-auto-setup-0.1.0.vsix
+ad-unreal-auto-setup-0.1.1.vsix
+unreal-project-tools-0.2.0.vsix
+unreal-project-tools-0.2.1.vsix
+unreal-project-tools-0.3.0.vsix
+unreal-project-tools-0.4.0.vsix
+unreal-project-tools-0.5.0.vsix
+unreal-project-tools-0.6.0.vsix
+unreal-project-tools-0.6.5.vsix
+unreal-project-tools-0.7.0.vsix
+unreal-project-tools-0.8.0.vsix
+AD-Unreal-Auto-Setup.zip
+Unreal-Engine-Auto-Setup.zip
+Unreal-Project-Tools.zip

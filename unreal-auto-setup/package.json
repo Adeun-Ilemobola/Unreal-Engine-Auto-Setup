@@ -1,8 +1,8 @@
 {
   "name": "unreal-project-tools",
-  "displayName": "Unreal Engine Auto Setup",
+  "displayName": "Unreal Engine Auto Setup (Alpha)",
   "description": "Unreal project setup, safe build automation, Editor controls, C++ generation and module dependency tools for VS Code.",
-  "version": "0.8.0",
+  "version": "1.0.0",
   "publisher": "local-tools",
   "license": "MIT",
   "engines": {
@@ -29,6 +29,7 @@
     }
   },
   "contributes": {
+    "snippets": [{ "language": "cpp", "path": "./snippets/unreal.json" }],
     "commands": [
       {
         "command": "unrealSetup.setup",

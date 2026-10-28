@@ -1,0 +1,30 @@
+{
+  "evidenceKind": "Real VS Code debug API and locally installed Microsoft cppvsdbg adapter",
+  "events": [
+    {
+      "event": "start",
+      "id": "ef03962c-560e-4827-b8ec-b52b45d6ab41",
+      "type": "cppvsdbg",
+      "configuration": {
+        "name": "Unreal: Attach Phase3AIntegration.uproject (PID 27324)",
+        "type": "cppvsdbg",
+        "request": "attach",
+        "processId": "27324",
+        "environment": [
+          {
+            "name": "_NO_DEBUG_HEAP",
+            "value": "1"
+          }
+        ]
+      }
+    }
+  ],
+  "adapterExtension": {
+    "path": "C:\\Dev\\Scratch\\UnrealAutoSetupTests\\real-debug-SKghxu\\extensions\\ms-vscode.cpptools-1.35.5-win32-x64",
+    "version": "1.35.5"
+  },
+  "editorPid": 27324,
+  "status": "Failed",
+  "error": "CodeExpectedError: Error processing 'threads' request. \n    at Ust.handleErrorResponse (vscode-file://vscode-app/c:/Users/Owner/AppData/Local/Programs/Microsoft%20VS%20Code/e646868227/resources/app/out/vs/workbench/workbench.desktop.main.js:4147:18679)\n    at vscode-file://vscode-app/c:/Users/Owner/AppData/Local/Programs/Microsoft%20VS%20Code/e646868227/resources/app/out/vs/workbench/workbench.desktop.main.js:4147:18196",
+  "editorExit": null
+}

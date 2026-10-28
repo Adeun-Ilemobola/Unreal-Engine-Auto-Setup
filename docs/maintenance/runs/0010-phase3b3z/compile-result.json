@@ -1,0 +1,17 @@
+{
+  "scratch": "C:\\Dev\\Scratch\\UnrealAutoSetupTests\\creation-ZF30Tv",
+  "exitCode": 0,
+  "proof": {
+    "schema": 1,
+    "operationId": "70c81798-8629-44bb-be51-dcba87867bc4",
+    "project": "c:\\dev\\vscodetools\\unreal-auto-setup\\.local-test-projects\\phase3aintegration\\phase3aintegration.uproject",
+    "helperHash": "9fe009a9132cb40c8f8dbba6b9078520995087862951ff51e2920ef2528d1de7",
+    "commandHash": "cc289ad3677fd2005a89d9f886cade664ae262e4e67feaab702b44a815bb55a2",
+    "activeProcesses": 0,
+    "rootExited": true,
+    "exitCode": 0,
+    "cancelled": false,
+    "containment": "windows-job-v1"
+  },
+  "types": 17
+}

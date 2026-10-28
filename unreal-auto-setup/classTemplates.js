@@ -3,6 +3,9 @@ const path=require('node:path');
 const {apiMacro}=require('./modules');
 const exposureModes={native:{label:'Native only',description:'Adds no Blueprint exposure; base-class inherited flags may remain.'},type:{label:'Blueprint Type',description:'Allows values of this type in Blueprint.'},blueprintable:{label:'Blueprintable',description:'Allows Blueprint subclasses and Blueprint values.'}};
 const registry=[
+  {id:'struct',label:'Unreal Struct',prefix:'F',kind:'struct',cpp:false,exposures:['native','type'],dependencies:['Core','CoreUObject']},
+  {id:'enum',label:'Unreal Enum',prefix:'E',kind:'enum',cpp:false,exposures:['native','type'],dependencies:['Core','CoreUObject']},
+  ...[['character','Character','A','ACharacter','GameFramework/Character.h'],['pawn','Pawn','A','APawn','GameFramework/Pawn.h'],['playerController','Player Controller','A','APlayerController','GameFramework/PlayerController.h'],['gameModeBase','Game Mode Base','A','AGameModeBase','GameFramework/GameModeBase.h'],['functionLibrary','Blueprint Function Library','U','UBlueprintFunctionLibrary','Kismet/BlueprintFunctionLibrary.h'],['dataAsset','Data Asset','U','UDataAsset','Engine/DataAsset.h']].map(([id,label,prefix,base,include])=>({id,label,prefix,base,include,exposures:['native','type','blueprintable']})),
   {id:'object',label:'UObject',prefix:'U',base:'UObject',include:'UObject/Object.h',exposures:['native','type','blueprintable'],dependencies:['Core','CoreUObject']},
   {id:'actor',label:'Actor',prefix:'A',base:'AActor',include:'GameFramework/Actor.h',constructor:'PrimaryActorTick.bCanEverTick = false;',exposures:['native','type','blueprintable']},
   {id:'actorComponent',label:'Actor Component',prefix:'U',base:'UActorComponent',include:'Components/ActorComponent.h',constructor:'PrimaryComponentTick.bCanEverTick = false;',component:true,exposures:['native','type','blueprintable']},
@@ -20,7 +23,7 @@ function names(input,type) {
   const prefixes=type.interface?['U','I']:[type.prefix];
   const explicit=prefixes.some(prefix=>input.startsWith(prefix) && /^[A-Z]/.test(input.slice(1)));
   const stem=explicit?input.slice(1):input;
-  if(!explicit && /^[AUFI][A-Z]/.test(input) && !prefixes.includes(input[0])) throw new Error('Use the '+type.prefix+' prefix for this type, or an unprefixed name.');
+  if(!explicit && /^[AUFIE][A-Z]/.test(input) && !prefixes.includes(input[0])) throw new Error('Use the '+type.prefix+' prefix for this type, or an unprefixed name.');
   if(keywords.has(stem) || deviceName(stem)) throw new Error('This name is reserved by C++ or Windows.');
   const className=type.prefix+stem;
   if(registry.some(item=>item.base===className) || className==='IInterface') throw new Error('Choose a name different from an existing Unreal base class.');
@@ -38,7 +41,9 @@ function render(type,name,api,includePath,exposure) {
   let metadata=exposure==='native'?'':exposure==='type'?'BlueprintType':'Blueprintable, BlueprintType';
   if(type.component && exposure!=='native') metadata+=(metadata?', ':'')+'meta=(BlueprintSpawnableComponent)';
   if(type.interface) metadata+=(metadata?', ':'')+'meta=(CannotImplementInterfaceInBlueprint)';
-  const includes='#pragma once\n\n#include "CoreMinimal.h"\n#include "'+type.include+'"\n#include "'+name.stem+'.generated.h"\n\n';
+  const includes='#pragma once\n\n#include "CoreMinimal.h"\n'+(type.include?'#include "'+type.include+'"\n':'')+'#include "'+name.stem+'.generated.h"\n\n';
+  if(type.kind==='struct') return {header:includes+'USTRUCT('+metadata+')\nstruct '+api+' '+name.className+'\n{\n  GENERATED_BODY()\n};\n'};
+  if(type.kind==='enum') return {header:includes+'UENUM('+metadata+')\nenum class '+name.className+' : uint8\n{\n  None = 0\n};\n'};
   let header=includes+(type.interface?'UINTERFACE':'UCLASS')+'('+metadata+')\nclass '+api+' '+name.className+' : public '+type.base+'\n{\n  GENERATED_BODY()\n';
   if(type.constructor) header+='\npublic:\n  '+name.className+'();\n';
   header+='};\n';
@@ -49,16 +54,16 @@ function render(type,name,api,includePath,exposure) {
 }
 function plan(project,module,typeId,input,folder='',exposure='native') {
   const type=registry.find(item=>item.id===typeId);if(!type) throw new Error('Unknown Unreal class type.');
-  const name=names(input,type),logical=subfolder(folder),api=apiMacro(module.name);
+  const name=names(input,type),logical=[subfolder(folder),name.stem].filter(Boolean).join('/'),api=apiMacro(module.name);
   const split=module.publicPath && module.privatePath;
   const flatBase=module.privatePath || module.publicPath || module.root;
   const headerBase=split?module.publicPath:flatBase,sourceBase=split?module.privatePath:flatBase;
   const headerPath=path.join(headerBase,logical,name.header),sourcePath=path.join(sourceBase,logical,name.source);
   // Flat modules may disable Unreal's legacy module-root include search. A colocated header is always resolvable.
-  const includePath=module.publicPath || module.privatePath ? [logical,name.header].filter(Boolean).join('/') : name.header;
+  const includePath=split ? [logical,name.header].filter(Boolean).join('/') : name.header;
   const text=render(type,name,api,includePath,exposure);
   const dependencyStatus=require('./dependencyModel').required(require('./buildCsParser').parse(module.ruleText,module.name),type.requiredDependencies);
   const missing=dependencyStatus.filter(item=>item.status!=='Present').map(item=>item.name);
-  return {project,module,type,name,api,exposure,logical,includePath,missing,dependencyStatus,files:[{path:headerPath,text:text.header},{path:sourcePath,text:text.source}]};
+  return {project,module,type,name,api,exposure,logical,includePath,missing,dependencyStatus,files:[{path:headerPath,text:text.header},...(type.cpp?[{path:sourcePath,text:text.source}]:[])]};
 }
 module.exports={keywords,deviceName,registry,exposureModes,names,subfolder,render,plan};

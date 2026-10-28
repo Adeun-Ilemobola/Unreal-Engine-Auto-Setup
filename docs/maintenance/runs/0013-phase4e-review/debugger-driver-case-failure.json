@@ -1,0 +1,6 @@
+{
+  "evidenceKind": "Real VS Code debug API and locally installed Microsoft cppvsdbg adapter",
+  "events": [],
+  "status": "Failed",
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'C:\\\\Dev\\\\VSCodeTools\\\\unreal-auto-setup'\n- 'c:\\\\Dev\\\\VSCodeTools\\\\unreal-auto-setup'\n\n\tat exports.run (c:\\Dev\\VSCodeTools\\unreal-auto-setup\\tools\\phase4e\\debug-host.cjs:10:9)"
+}

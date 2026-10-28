@@ -1,0 +1,56 @@
+{
+  "scratch": "C:\\Dev\\Scratch\\UnrealAutoSetupTests\\debugger-CSd3JU",
+  "editorPid": 73280,
+  "steps": [
+    {
+      "step": "launch_and_detect",
+      "status": "Passed",
+      "pid": 73280,
+      "executable": "C:\\Program Files\\Epic Games\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor.exe"
+    },
+    {
+      "step": "initial_attach",
+      "status": "Passed",
+      "config": {
+        "name": "Unreal: Attach Phase3AIntegration.uproject (PID 73280)",
+        "type": "cppvsdbg",
+        "request": "attach",
+        "processId": "73280"
+      }
+    },
+    {
+      "step": "duplicate_attach_prevention",
+      "status": "Passed"
+    },
+    {
+      "step": "initial_detach",
+      "status": "Passed"
+    },
+    {
+      "step": "editor_survival_after_detach",
+      "status": "Passed",
+      "editorState": "Running"
+    },
+    {
+      "step": "reattach",
+      "status": "Passed",
+      "config": {
+        "name": "Unreal: Attach Phase3AIntegration.uproject (PID 73280)",
+        "type": "cppvsdbg",
+        "request": "attach",
+        "processId": "73280"
+      }
+    },
+    {
+      "step": "second_detach",
+      "status": "Passed"
+    },
+    {
+      "step": "editor_survival_after_second_detach",
+      "status": "Passed"
+    }
+  ],
+  "outcome": "Passed",
+  "editorExitCode": null,
+  "finalProjectState": "Stopped"
+}

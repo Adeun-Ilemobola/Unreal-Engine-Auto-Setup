@@ -26,7 +26,7 @@ async function input(vscode,options,validate) {
   }
 }
 function preview(plan) {
-  return ['Project: '+plan.project.name,'Module: '+plan.module.name+' ('+plan.module.origin+')','Type: '+plan.type.label,'Class: '+plan.name.className+(plan.name.interfaceName?' / '+plan.name.interfaceName:''),'API macro: '+plan.api,'Header: '+plan.files[0].path,'Source: '+plan.files[1].path,'Blueprint exposure: '+templates.exposureModes[plan.exposure].label,...(plan.dependencyStatus || []).map(item=>'Required '+item.name+': '+item.status),...(plan.missing.length?['Dependency advisory: Build.cs may need '+plan.missing.join(', ')+'. Rules are not edited or fully interpreted.']:[])].join('\n');
+  return ['Project: '+plan.project.name,'Module: '+plan.module.name+' ('+plan.module.origin+')','Type: '+plan.type.label,'Class: '+plan.name.className+(plan.name.interfaceName?' / '+plan.name.interfaceName:''),'API macro: '+plan.api,...plan.files.map(file=>path.extname(file.path)+': '+file.path),'Blueprint exposure: '+templates.exposureModes[plan.exposure].label,...(plan.dependencyStatus || []).map(item=>'Required '+item.name+': '+item.status),...(plan.missing.length?['Dependency advisory: Build.cs may need '+plan.missing.join(', ')+'. Rules are not edited or fully interpreted.']:[])].join('\n');
 }
 async function open(vscode,filename,options={preview:false}) {
   await fs.access(filename);await vscode.window.showTextDocument(await vscode.workspace.openTextDocument(vscode.Uri.file(filename)),options);
@@ -38,11 +38,11 @@ async function wizard(vscode,context,services={},options={}) {
   const list=await modules.discover(project.root);
   const location=options.uri?await explorer.destination(project,options.uri,list):undefined;
   const module=location?.module || await modules.choose(vscode,context,project,list);if(!module) return;
-  const typePick=await vscode.window.showQuickPick(templates.registry.filter(type=>!location || ['object','actor','actorComponent','sceneComponent','interface'].includes(type.id)).map(type=>({label:type.label,description:type.base,type})),{placeHolder:'Choose the Unreal C++ class type'});
+  const typePick=await vscode.window.showQuickPick(templates.registry.map(type=>({label:type.label,description:type.base || 'Reflected header-only type',type})),{placeHolder:'Choose the Unreal C++ type'});
   if(!typePick) return;const type=typePick.type;
   const name=await input(vscode,{title:'Unreal: New C++ Class',prompt:'Class name without the Unreal prefix, or correctly prefixed. A leading '+type.prefix+' followed by uppercase is treated as a prefix.'},value=>templates.names(value,type));
   if(name===undefined) return;
-  const exposurePick=await vscode.window.showQuickPick(type.exposures.map(mode=>({label:templates.exposureModes[mode].label,description:templates.exposureModes[mode].description,mode})),{placeHolder:'Blueprint exposure'});
+  const exposurePick=location?{mode:'native'}:await vscode.window.showQuickPick(type.exposures.map(mode=>({label:templates.exposureModes[mode].label,description:templates.exposureModes[mode].description,mode})),{placeHolder:'Blueprint exposure'});
   if(!exposurePick) return;
   const folder=location?location.folder:await input(vscode,{title:'Logical subfolder',prompt:'Optional relative folder inside the module (for example Inventory or UI/Widgets). Leave empty for the module’s default layout.',value:''},templates.subfolder);
   if(folder===undefined) return;
@@ -56,8 +56,8 @@ async function wizard(vscode,context,services={},options={}) {
   if(services.state) services.state.get(project.filename).lastCreatedClass={name:plan.name.className,files:plan.files.map(file=>file.path),createdAt:new Date().toISOString()};
   await services.refresh?.();
   await open(vscode,plan.files[0].path);
-  const next=await vscode.window.showInformationMessage('Created '+plan.name.className+'. Regeneration is optional if your project index needs it.','Open Source Beside Header','Regenerate Project Files',...(plan.missing.length?['Manage Dependencies']:[]));
-  if(next==='Open Source Beside Header') await open(vscode,plan.files[1].path,{preview:false,viewColumn:vscode.ViewColumn.Beside,preserveFocus:true});
+  const next=await vscode.window.showInformationMessage('Created '+plan.name.className+'. Regeneration is optional if your project index needs it.',...(plan.type.cpp?['Open Source Beside Header']:[]),'Regenerate Project Files',...(plan.missing.length?['Manage Dependencies']:[]));
+  if(next==='Open Source Beside Header' && plan.type.cpp) await open(vscode,plan.files[1].path,{preview:false,viewColumn:vscode.ViewColumn.Beside,preserveFocus:true});
   else if(next==='Manage Dependencies') await vscode.commands.executeCommand('unrealSetup.manageDependencies',vscode.Uri.file(plan.module.buildFile));
   else if(next==='Regenerate Project Files') await vscode.commands.executeCommand('unrealSetup.regenerate');
   return plan;

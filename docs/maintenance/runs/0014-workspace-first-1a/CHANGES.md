@@ -1,0 +1,9 @@
+# Phase 1A changes and rollback boundary
+
+Added `docs/architecture/workspace-first/MASTER_PLAN.md` as a byte-identical copy of the supplied Downloads master plan. Added this single maintenance run: BASELINE.md, OWNERSHIP_MATRIX.md, REFERENCE_WORKSPACE_FACTS.md, REPRODUCTION_MATRIX.md, P1_1_BOUNDARIES.md, DECISIONS.md, VALIDATION.md, PLAN_STATUS.md, RESULT.md, CHANGES.md and RESUME.md. Appended one entry to the existing maintenance INDEX.md; its prior content remains intact. No duplicate report ZIP or parallel run archive created.
+
+Outside the repository, created the uniquely named scratch evidence directory `C:\Dev\Scratch\UnrealAutoSetupTests\wf-p1a-20261028T172121Z` and isolated runner profile `C:\Dev\Scratch\UnrealAutoSetupTests\host-kzaJKz`. They hold recovery snapshots, JSON/hash inventories, probe scripts and logs. Existing test runners created and cleaned only their own new disposable test subdirectories. The blocked native profile was retained; nothing was cleaned based solely on a launcher exit.
+
+No runtime, test, manifest, package, original report or reference project changes. No version increment, regeneration, build, engine edit, extension installation, commit, tag, reset, rebase, publish, antivirus modification or global settings change. Existing Alpha release files and historical artifacts were preserved.
+
+Rollback this documentation phase only: first verify the final preservation report and inspect any later changes. Remove only the newly added master-plan copy and this new 0014 run if still unchanged, and remove only the appended 0014 entry from INDEX.md. Do not reset INDEX.md to HEAD, as it already contained incoming work. Do not apply the baseline patch over the dirty checkout. Keep the scratch recovery snapshot until the user no longer needs it. Cleanup is documented, not executed; exact owned paths must be reverified before deletion.

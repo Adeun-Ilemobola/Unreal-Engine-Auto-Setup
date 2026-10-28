@@ -42,11 +42,11 @@ async function cancel(claim) {
   try {const existing=await read(filename);if(existing.operationId!==intent.operationId || existing.commandHash!==plan.commandHash)throw new Error('Cancellation identity mismatch');return;}catch(error){if(error.code!=='ENOENT')throw error;}
   await write(filename,{schema:1,operationId:intent.operationId,commandHash:plan.commandHash});
 }
-async function launch(claim,encoded) {
+async function launch(claim,encoded,{env=process.env}={}) {
   const helper=await verifyHelper(),intent=await read(path.join(claim.directory,'intent.json'));
   if(intent.operationId!==claim.operationId)throw new Error('Launch ownership mismatch');
   await write(path.join(claim.directory,'supervision.json'),{schema:1,operationId:intent.operationId,project:intent.project,encoded,commandHash:hash(encoded),helperHash:helper.helperHash});
-  const child=spawn(helper.executable,[claim.directory],{windowsHide:true,stdio:'ignore'});
+  const child=spawn(helper.executable,[claim.directory],{windowsHide:true,stdio:'ignore',env});
   const wrapper=new EventEmitter();wrapper.pid=child.pid;wrapper.stdout=new PassThrough();wrapper.stderr=new PassThrough();wrapper.cancel=()=>cancel(claim);wrapper.detach=()=>{finished=true;child.unref();wrapper.stdout.destroy();wrapper.stderr.destroy();};
   let exited=false,failed,finished=false,lastProbe=0;const launched=Date.now();
   const offsets={stdout:0,stderr:0};

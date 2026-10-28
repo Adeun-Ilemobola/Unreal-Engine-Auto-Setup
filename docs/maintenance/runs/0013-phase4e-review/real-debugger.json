@@ -1,0 +1,110 @@
+{
+  "evidenceKind": "Real VS Code debug API and locally installed Microsoft cppvsdbg adapter",
+  "events": [
+    {
+      "event": "adapter-response",
+      "id": "006a9c3a-6f4d-424f-9e34-840300ebb623",
+      "command": "initialize",
+      "success": true
+    },
+    {
+      "event": "adapter-response",
+      "id": "006a9c3a-6f4d-424f-9e34-840300ebb623",
+      "command": "attach",
+      "success": true
+    },
+    {
+      "event": "adapter-initialized",
+      "id": "006a9c3a-6f4d-424f-9e34-840300ebb623",
+      "body": {}
+    },
+    {
+      "event": "start",
+      "id": "006a9c3a-6f4d-424f-9e34-840300ebb623",
+      "type": "cppvsdbg",
+      "configuration": {
+        "name": "Unreal: Attach Phase3AIntegration.uproject (PID 82660)",
+        "type": "cppvsdbg",
+        "request": "attach",
+        "processId": "82660",
+        "environment": [
+          {
+            "name": "_NO_DEBUG_HEAP",
+            "value": "1"
+          }
+        ]
+      }
+    },
+    {
+      "event": "adapter-response",
+      "id": "006a9c3a-6f4d-424f-9e34-840300ebb623",
+      "command": "disconnect",
+      "success": true
+    },
+    {
+      "event": "end",
+      "id": "006a9c3a-6f4d-424f-9e34-840300ebb623"
+    },
+    {
+      "event": "editor-survived",
+      "iteration": 0,
+      "pid": 82660
+    },
+    {
+      "event": "adapter-response",
+      "id": "d62db9d5-af13-4f2a-bcef-9cd6789a4bc0",
+      "command": "initialize",
+      "success": true
+    },
+    {
+      "event": "adapter-response",
+      "id": "d62db9d5-af13-4f2a-bcef-9cd6789a4bc0",
+      "command": "attach",
+      "success": true
+    },
+    {
+      "event": "adapter-initialized",
+      "id": "d62db9d5-af13-4f2a-bcef-9cd6789a4bc0",
+      "body": {}
+    },
+    {
+      "event": "start",
+      "id": "d62db9d5-af13-4f2a-bcef-9cd6789a4bc0",
+      "type": "cppvsdbg",
+      "configuration": {
+        "name": "Unreal: Attach Phase3AIntegration.uproject (PID 82660)",
+        "type": "cppvsdbg",
+        "request": "attach",
+        "processId": "82660",
+        "environment": [
+          {
+            "name": "_NO_DEBUG_HEAP",
+            "value": "1"
+          }
+        ]
+      }
+    },
+    {
+      "event": "adapter-response",
+      "id": "d62db9d5-af13-4f2a-bcef-9cd6789a4bc0",
+      "command": "disconnect",
+      "success": true
+    },
+    {
+      "event": "end",
+      "id": "d62db9d5-af13-4f2a-bcef-9cd6789a4bc0"
+    },
+    {
+      "event": "editor-survived",
+      "iteration": 1,
+      "pid": 82660
+    }
+  ],
+  "adapterExtension": {
+    "path": "C:\\Dev\\Scratch\\UnrealAutoSetupTests\\real-debug-DW3JLM\\extensions\\ms-vscode.cpptools-1.35.5-win32-x64",
+    "version": "1.35.5"
+  },
+  "editorPid": 82660,
+  "status": "Passed",
+  "editorExit": null
+}

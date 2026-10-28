@@ -1,0 +1,17 @@
+{
+  "scratch": "C:\\Dev\\Scratch\\UnrealAutoSetupTests\\creation-MKKjk6",
+  "exitCode": 0,
+  "proof": {
+    "schema": 1,
+    "operationId": "a4739ca7-c2e9-4df2-86a4-3241e98689e4",
+    "project": "c:\\dev\\vscodetools\\unreal-auto-setup\\.local-test-projects\\phase3aintegration\\phase3aintegration.uproject",
+    "helperHash": "9fe009a9132cb40c8f8dbba6b9078520995087862951ff51e2920ef2528d1de7",
+    "commandHash": "7e4de0673bf8f64f9eabafb64f4ccf82f6cb446c9ed1738ca86c9956a7398287",
+    "activeProcesses": 0,
+    "rootExited": true,
+    "exitCode": 0,
+    "cancelled": false,
+    "containment": "windows-job-v1"
+  },
+  "types": 17
+}

@@ -1,0 +1,22 @@
+{
+  "Unreal reflected struct": {
+    "prefix": "ustruct",
+    "description": "Requires CoreMinimal.h and this header's .generated.h as the last include.",
+    "body": ["USTRUCT(BlueprintType)", "struct F${1:ItemData}", "{", "\tGENERATED_BODY()", "", "\t$0", "};"]
+  },
+  "Unreal scoped enum": {
+    "prefix": "uenum",
+    "description": "Requires a valid Unreal reflection header with its .generated.h last.",
+    "body": ["UENUM(BlueprintType)", "enum class E${1:ItemCategory} : uint8", "{", "\t${2:None} = 0$0", "};"]
+  },
+  "Unreal property": {
+    "prefix": "uproperty",
+    "description": "Insert inside a reflected class or struct.",
+    "body": ["UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = \"${1:Gameplay}\")", "${2:float} ${3:Value} = ${4:0.0f};$0"]
+  },
+  "Unreal function": {
+    "prefix": "ufunction",
+    "description": "Insert inside a reflected class; supply the implementation separately.",
+    "body": ["UFUNCTION(BlueprintCallable, Category = \"${1:Gameplay}\")", "void ${2:PerformAction}(${3});$0"]
+  }
+}
