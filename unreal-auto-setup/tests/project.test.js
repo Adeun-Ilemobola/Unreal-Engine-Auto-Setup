@@ -7,7 +7,7 @@ const projects=require('../project');
 const {buildScript}=require('../runner');
 
 test('discovers all targets, defaults to Editor and preserves project-specific selections across contexts',async()=>{
-  const root=await fs.mkdtemp(path.join(os.tmpdir(),'unreal-selection-'));
+  const root=await fs.mkdtemp(path.join(require('./testTemp').root(),'unreal-selection-'));
   try {
     await fs.mkdir(path.join(root,'Source'));
     for(const [name,code] of [['Game','Type=TargetType.Game;'],['GameEditor','Type=TargetType.Editor;'],['GameServer','Type=TargetType.Server;'],['Ambiguous','if(foo) Type=TargetType.Editor; else Type=TargetType.Game;'],['Unknown','// Type=TargetType.Editor;']]) {
@@ -43,7 +43,7 @@ test('build script supports all five configurations without falling back to Deve
 });
 
 test('engine settings protection rejects dirty settings before writing',async()=>{
-  const root=await fs.mkdtemp(path.join(os.tmpdir(),'unreal-dirty-'));
+  const root=await fs.mkdtemp(path.join(require('./testTemp').root(),'unreal-dirty-'));
   try {await assert.rejects(projects.protectSettings(root,{workspace:{textDocuments:[{uri:{fsPath:path.join(root,'.vscode','settings.json')},isDirty:true}]}}),/Save/);}
   finally {await fs.rm(root,{recursive:true,force:true});}
 });

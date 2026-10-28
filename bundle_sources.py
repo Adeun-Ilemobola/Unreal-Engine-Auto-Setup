@@ -1,10 +1,11 @@
 """Read-only packaging inputs/preflight. Running this module never writes an archive."""
 import json
+import hashlib
 from pathlib import Path
 import re
 
 DOCUMENTS = ("README.md", "CAPABILITIES.md", "VALIDATION.md")
-ASSETS = ("package.json", "media/unreal.svg", *DOCUMENTS, "LICENSE")
+ASSETS = ("package.json", "media/unreal.svg", "native/OperationSupervisor.cs", "native/OperationSupervisor.exe", "native/supervisor-build.json", *DOCUMENTS, "LICENSE")
 
 
 def runtime_files(source):
@@ -39,6 +40,15 @@ def validate(root):
                 target = target.with_suffix(".js")
             if target.resolve() not in included:
                 raise ValueError(f"Unpackaged local import in {file.name}: {local}")
+    if (source / "processSupervisor.js").is_file():
+        native = source / "native"
+        identity = json.loads((native / "supervisor-build.json").read_text(encoding="utf-8-sig"))
+        binary = (native / "OperationSupervisor.exe").read_bytes()
+        source_bytes = (native / "OperationSupervisor.cs").read_bytes()
+        if identity.get("schema") != 1 or identity.get("binarySha256") != hashlib.sha256(binary).hexdigest() or identity.get("sourceSha256") != hashlib.sha256(source_bytes).hexdigest():
+            raise ValueError("Supervisor source/binary identity mismatch; rebuild helper")
+        if binary[:2] != b"MZ":
+            raise ValueError("Supervisor is not a Windows executable")
     for name in DOCUMENTS:
         if (root / name).read_bytes() != (source / name).read_bytes():
             raise ValueError(f"Documentation copies differ: {name}; edit extension copy, then mirror it")

@@ -7,7 +7,7 @@ async function run(exe,args,cwd,log) {
 }
 (async()=>{
   const engine=process.argv[2];if(!engine) throw new Error('Pass the UE installation directory.');
-  const root=await fs.mkdtemp(path.join(os.tmpdir(),'UnrealAutoSetup-v06-'));
+  const root=await fs.mkdtemp(path.join(require('./testTemp').root(),'UnrealAutoSetup-v06-'));
   const filename=path.join(root,'AutoSetupValidation.uproject');
   console.log('Disposable project: '+root);
   await fs.writeFile(filename,JSON.stringify({FileVersion:3,EngineAssociation:'5.8',Modules:[{Name:'AutoSetupValidation',Type:'Runtime',LoadingPhase:'Default'}]},null,2));

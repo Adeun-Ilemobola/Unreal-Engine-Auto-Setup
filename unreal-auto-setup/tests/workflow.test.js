@@ -6,7 +6,7 @@ const os = require('node:os');
 const vm = require('node:vm');
 
 async function fixture(trusted=true, missingExtensions=false, hooks={}) {
-  const root = await fs.mkdtemp(path.join(os.tmpdir(),'ad-workflow-'));
+  const root = await fs.mkdtemp(path.join(require('./testTemp').root(),'ad-workflow-'));
   await fs.mkdir(path.join(root,'Source'));
   await fs.writeFile(path.join(root,'NewGame.uproject'),JSON.stringify({EngineAssociation:'5.8'}));
   await fs.writeFile(path.join(root,'Source','NewGameEditor.Target.cs'),'Type = TargetType.Editor;');

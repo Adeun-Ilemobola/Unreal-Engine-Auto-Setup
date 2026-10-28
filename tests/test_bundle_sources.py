@@ -1,5 +1,6 @@
 """Disposable preflight fixtures; do not invoke build_bundle or create installers."""
 import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -9,7 +10,9 @@ from bundle_sources import ASSETS, DOCUMENTS, package_files, validate
 
 class PackagingInputs(unittest.TestCase):
     def setUp(self):
-        self.temp = tempfile.TemporaryDirectory(prefix="unreal-package-")
+        scratch = Path(os.environ.get("UNREAL_AUTO_SETUP_TEST_TEMP", r"C:\Dev\Scratch\UnrealAutoSetupTests")) if os.name == "nt" else Path(tempfile.gettempdir()) / "UnrealAutoSetupTests"
+        scratch.mkdir(parents=True, exist_ok=True)
+        self.temp = tempfile.TemporaryDirectory(prefix="python-package-", dir=scratch)
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         self.source = self.root / "unreal-auto-setup"

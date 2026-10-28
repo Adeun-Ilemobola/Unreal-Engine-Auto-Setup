@@ -4,7 +4,7 @@ const fs=require('node:fs/promises'),os=require('node:os'),path=require('node:pa
 const engine=require('../engine'),project=require('../project');
 for(const source of ['configured','discovered','picked']) for(const requireBuild of [false,true]) for(const requireEditor of [false,true]) {
   test(source+' capability requirements '+requireBuild+'/'+requireEditor,async()=>{
-    const root=await fs.mkdtemp(path.join(os.tmpdir(),'unreal-capabilities-'));
+    const root=await fs.mkdtemp(path.join(require('./testTemp').root(),'unreal-capabilities-'));
     try {
       const build=path.join(root,'Engine/Build/BatchFiles/Build.bat'),editor=path.join(root,'Engine/Binaries/Win64/UnrealEditor.exe');
       await fs.mkdir(path.dirname(build),{recursive:true});await fs.mkdir(path.dirname(editor),{recursive:true});
@@ -44,7 +44,7 @@ const cases=[
   ,['public class GameTarget : TargetRules { void Helper() { Type = TargetType.Editor; } }','Unknown']
 ];
 for(const [text,expected] of cases) test('target inference '+JSON.stringify(text),async()=>{
-  const root=await fs.mkdtemp(path.join(os.tmpdir(),'unreal-target-'));
+  const root=await fs.mkdtemp(path.join(require('./testTemp').root(),'unreal-target-'));
   try {await fs.mkdir(path.join(root,'Source'));await fs.writeFile(path.join(root,'Source/Game.Target.cs'),text);assert.equal((await project.discoverTargets(root))[0].type,expected);}
   finally {await fs.rm(root,{recursive:true,force:true});}
 });

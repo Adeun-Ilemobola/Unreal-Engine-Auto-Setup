@@ -15,7 +15,7 @@ test('rejects command injection in target and batch-expanded paths',()=>{
 });
 
 test('real PowerShell build script gates launch on exit status and quotes paths', {skip:process.platform!=='win32'}, async()=>{
-  const root=await fs.mkdtemp(path.join(os.tmpdir(),"Unreal test's space "));
+  const root=await fs.mkdtemp(path.join(require('./testTemp').root(),"Unreal test's space "));
   try {
     const batch=path.join(root,'Engine','Build','BatchFiles');
     const binaries=path.join(root,'Engine','Binaries','Win64');

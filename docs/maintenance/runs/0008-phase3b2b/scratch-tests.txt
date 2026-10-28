@@ -1,0 +1,28 @@
+Test scratch: C:\Dev\Scratch\UnrealAutoSetupTests\suite-YSmJR1
+✔ reload before spawn retains intent and blocks a second window (31.5735ms)
+✔ only the original owner can release positively unspawned work (43.6514ms)
+✔ wrapper exit, cancellation and old age never certify tree completion (44.8815ms)
+✔ corrupt, missing and partial intent fail closed; unrelated projects remain clear (35.7556ms)
+✔ concurrent claim acquisition has one winner without sleeps (34.6054ms)
+✔ identity requires all evidence and never treats absence as completion (0.6208ms)
+✔ bounded repeated unspawned operations clean up without accumulating history (238.1598ms)
+✔ active identity is observation only; recovered process is never granted termination authority (11.7687ms)
+✔ oversized records and inaccessible identity do not unblock operations (11.3932ms)
+✔ managed adapter persists intent before spawn and retains quarantine after root close (170.9598ms)
+Compiled test fixture: C:\Dev\Scratch\UnrealAutoSetupTests\suite-YSmJR1\node-41432-0BT19e\supervision-DE0any\TreeFixture.exe
+✔ native job retains a root-exited descendant until release; repeated operations clean claims (5338.6924ms)
+✔ native cancellation uses private job and permits a subsequent operation (2493.7191ms)
+✔ completion proof binds operation, descriptor, helper and exact launch (1205.5725ms)
+✔ legacy root-exit record remains quarantined and is never promoted to tree completion (17.6196ms)
+✔ rejects command injection in target and batch-expanded paths (1.666ms)
+✔ real PowerShell build script gates launch on exit status and quotes paths (2783.1526ms)
+✔ controls preserve selected builds and trust while preventing duplicate Editor launches (94.8732ms)
+✔ unknown process state refuses automatic Editor launch (20.0824ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9221.6564

@@ -1,0 +1,16 @@
+Test scratch: C:\Dev\Scratch\UnrealAutoSetupTests\suite-nZ9xyJ
+Compiled test fixture: C:\Dev\Scratch\UnrealAutoSetupTests\suite-nZ9xyJ\node-35380-dydGd5\supervision-Qvhcrb\TreeFixture.exe
+✔ native job retains a root-exited descendant until release; repeated operations clean claims (4028.0215ms)
+✔ native cancellation uses private job and permits a subsequent operation (1623.948ms)
+✔ completion proof binds operation, descriptor, helper and exact launch (806.5886ms)
+✔ legacy root-exit record remains quarantined and is never promoted to tree completion (20.5021ms)
+✔ native job refuses explicit breakaway (904.2111ms)
+✔ supervisor loss closes the private job but never fabricates durable completion (2022.8383ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9508.7116

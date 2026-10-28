@@ -1,0 +1,12 @@
+✔ native job retains a root-exited descendant until release; repeated operations clean claims (2692.1258ms)
+✔ native cancellation uses private job and permits a subsequent operation (780.2993ms)
+✔ completion proof binds operation, descriptor, helper and exact launch (473.1637ms)
+✔ legacy root-exit record remains quarantined and is never promoted to tree completion (53.3567ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4102.7125

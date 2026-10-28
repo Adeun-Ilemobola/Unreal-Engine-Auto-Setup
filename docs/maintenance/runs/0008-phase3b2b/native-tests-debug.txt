@@ -1,0 +1,19 @@
+✖ native job retains a root-exited descendant until release; repeated operations clean claims (347.2715ms)
+✔ native cancellation uses private job and permits a subsequent operation (683.2074ms)
+✔ completion proof binds operation, descriptor, helper and exact launch (583.6365ms)
+✔ legacy root-exit record remains quarantined and is never promoted to tree completion (19.6461ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15154.0426
+
+✖ failing tests:
+
+test at tests\process-supervision.test.js:24:1
+✖ native job retains a root-exited descendant until release; repeated operations clean claims (347.2715ms)
+  Error: Supervisor ended without verified tree completion. Recovery remains blocked.
+      at poll (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\processSupervisor.js:70:33)

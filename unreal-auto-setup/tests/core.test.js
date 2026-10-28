@@ -23,7 +23,7 @@ test('does not guess among ambiguous Editor targets',()=>{
   assert.equal(chooseTarget([],'Game'),undefined);
 });
 test('file creation is repeatable and never overwrites project rules',async()=>{
-  const root = await fs.mkdtemp(path.join(os.tmpdir(),'ad-unreal-'));
+  const root = await fs.mkdtemp(path.join(require('./testTemp').root(),'ad-unreal-'));
   try {
     const file = path.join(root,'.vscode','test.json');
     assert.equal(await writeNew(file,'existing'),true);

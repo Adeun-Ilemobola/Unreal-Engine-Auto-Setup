@@ -6,7 +6,7 @@ const os=require('node:os');
 const path=require('node:path');
 const ownership=require('../operationOwnership');
 async function fixture(t) {
- const root=await fs.mkdtemp(path.join(os.tmpdir(),'ownership-'));
+ const root=await fs.mkdtemp(path.join(require('./testTemp').root(),'ownership-'));
  t.after(()=>fs.rm(root,{recursive:true,force:true}));
  const project=path.join(root,'Game.uproject');await fs.writeFile(project,'{}');
  return {root,project,store:ownership.create(root)};

@@ -1,0 +1,17 @@
+# Phase 3B.2b — 2026-10-28
+
+Implementation status: **Partially Complete** for the full original release qualification; **Complete** for the requested development-test scratch relocation. Real repeated managed builds and automatic verified claim release now work. The remaining qualification limits below must not be interpreted as successful tests.
+
+Starting revision: `70b4a088c7aad641d3a14abc5581ed5f4f94341b` on `main`. Changes remain uncommitted; no reset, rebase, release, installer overwrite, engine source edit or RPGX mutation was performed.
+
+The Windows helper launches the managed root suspended, assigns it to a private Job Object, then resumes it. An independent worker retains the job and root handles across VS Code reload. Root exit is separate from job active-process count zero. Only a durable, identity-bound completion record permits removal of the exclusive project claim. Missing/corrupt records, lost workers and legacy root-only receipts remain blocked. Cancellation targets the retained private job, never recovered PIDs or an existing Editor.
+
+The final real VS Code run completed two consecutive UE 5.8.4 builds, recovered a surviving fixture descendant across reload, recovered completed real UBT work across another reload, and built successfully after a deliberate compile failure. Each successful build ended Clear and the final store was empty. A separately launched Unreal Editor survived cancellation of an owned test job. Two development hosts sharing one store excluded the same project, allowed another project, and retried successfully after release.
+
+Temporary fixtures, compiler scratch, isolated profiles and test journals now use `C:\Dev\Scratch\UnrealAutoSetupTests`; permanent sources and the distributed helper remain in the repository. Environment overrides are process-local. Successful integration cleanup waits for completion barriers and absence of processes referencing that exact run directory. Failed/uncertain integrations retain evidence. No antivirus settings were changed.
+
+Final Node suite: **442 tests, 441 passed, one known P1.1 failure**, zero skipped/TODO/cancelled. Python: **4 passed**. Packaging input preflight: **50 inputs, 41 runtime modules, 3 mirrors**. See [validation](VALIDATION.md), [changes](CHANGES.md), [design](PROCESS_SUPERVISION_DESIGN.md), [native matrix](PROCESS_TREE_TEST_MATRIX.md), [reload evidence](RELOAD_INTEGRATION_RESULTS.md), [safety contract](SAFETY_CONTRACT.md), and [scratch configuration](SCRATCH_CONFIGURATION.md).
+
+Remaining limits: a freshly installed VSIX and a fresh real Build-and-Run launch were not qualified in this phase; development-host builds and Editor independence were exercised. Distributed/brokered execution is excluded; helper absence or denied bootstrap breakaway blocks safely. Cross-profile coordination requires a common store and does not coordinate external builds, users or a shared engine. The existing 256-entry admission check is bounded but is not an atomic global quota across simultaneous distinct-project admissions. No comparative CPU/handle benchmark or crash-at-every-write stress campaign was completed. P1.1 automatic preservation remains failed with its original assertion unchanged. Recovered cancellation intentionally remains unavailable; no PID-based workaround was added.
+
+Phase 3B.3 was not started. Finish the remaining release qualification and quota concurrency hardening before treating the broader phase as fully complete.

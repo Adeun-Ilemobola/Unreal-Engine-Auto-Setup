@@ -6,7 +6,7 @@ const path=require('node:path');
 const {collect,format,latestLog}=require('../diagnostics');
 
 test('Project Doctor reports healthy and broken states without settings or state writes',async()=>{
-  const root=await fs.mkdtemp(path.join(os.tmpdir(),'unreal-doctor-'));
+  const root=await fs.mkdtemp(path.join(require('./testTemp').root(),'unreal-doctor-'));
   try {
     for(const dir of ['Source','.vscode','Engine/Build/BatchFiles','Engine/Binaries/Win64','Engine/Binaries/DotNET/UnrealBuildTool']) await fs.mkdir(path.join(root,dir),{recursive:true});
     for(const file of ['.vscode/settings.json','.vscode/tasks.json','.vscode/c_cpp_properties.json','.clang-format','Engine/Build/BatchFiles/Build.bat','Engine/Binaries/Win64/UnrealEditor.exe','Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.exe']) await fs.writeFile(path.join(root,file),'');
@@ -44,7 +44,7 @@ test('Project Doctor reports healthy and broken states without settings or state
 });
 
 test('latest project log chooses modification time and handles absent logs',async()=>{
-  const root=await fs.mkdtemp(path.join(os.tmpdir(),'unreal-logs-'));
+  const root=await fs.mkdtemp(path.join(require('./testTemp').root(),'unreal-logs-'));
   try {
     assert.equal(await latestLog(root),undefined);
     const logs=path.join(root,'Saved','Logs');await fs.mkdir(logs,{recursive:true});

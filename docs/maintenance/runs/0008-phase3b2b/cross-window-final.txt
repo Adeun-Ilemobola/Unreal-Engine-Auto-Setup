@@ -1,0 +1,2 @@
+Cross-window scratch: C:\Dev\Scratch\UnrealAutoSetupTests\windows-PbSW39
+Cleaned cross-window scratch: C:\Dev\Scratch\UnrealAutoSetupTests\windows-PbSW39

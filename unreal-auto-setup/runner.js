@@ -51,6 +51,7 @@ async function register(vscode, context, report, services = {}) {
   const ownership = (services.ownership ||= context.globalStorageUri && require('./operationOwnership').create(require('node:path').join(context.globalStorageUri.fsPath,'operations-v1')));
   const builds = (services.builds ||= buildApi.createService(vscode, context, state, {
     ownership,
+    supervision: require('./processSupervisor'),
     changed: () => {
       void refresh();
     }

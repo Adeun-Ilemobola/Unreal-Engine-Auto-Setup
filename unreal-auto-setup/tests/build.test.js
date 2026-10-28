@@ -4,6 +4,19 @@ const build=require('../build');
 const {createState}=require('../runtime');
 const {fakeVSCode,child}=require('./helpers');
 const spec=()=>build.specification('C:\\UE','C:\\Game\\Game.uproject',{target:'GameEditor',platform:'Win64',configuration:'DebugGame'});
+test('cancellation during asynchronous supervisor launch waits for verified completion',async()=>{
+  const f=fakeVSCode('C:\\Game');let attach,launched,requests=0,released=0;
+  const entering=new Promise(resolve=>{launched=resolve;});
+  const process=child();process.cancel=async()=>{requests++;};
+  const claim={operationId:'test',spawnAttempted:async()=>{},complete:async()=>{released++;},exited:async()=>{throw new Error('Unexpected root-only completion');}};
+  const service=build.createService(f.vscode,f.context,createState(),{ownership:{begin:async()=>claim},supervision:{launch:()=>{launched();return new Promise(resolve=>{attach=resolve;});}}});
+  const operation=service.run(spec());await entering;
+  const cancellation=operation.cancel();assert.equal(service.active,true);
+  attach(process);await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(requests,1);assert.equal(released,0);assert.equal(service.active,true);
+  process.proof={activeProcesses:0};process.emit('close',1223);
+  assert.equal((await operation.done).status,'Cancelled');assert.equal((await cancellation).state,'Exited');assert.equal(released,1);
+});
 test('managed build streams output, publishes Problems, records failure and clears old diagnostics on retry',async()=>{
   const f=fakeVSCode('C:\\Game'),state=createState(),children=[];
   const service=build.createService(f.vscode,f.context,state,{spawnProcess:()=>{const process=child();children.push(process);return process;}});

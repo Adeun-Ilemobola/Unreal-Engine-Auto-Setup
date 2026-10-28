@@ -1,0 +1,10 @@
+{
+  "syntaxFiles": 102,
+  "manifestChange": {
+    "oldTest": "node --test tests/*.test.js",
+    "newTest": "node ../tools/run-tests.cjs"
+  },
+  "publicManifestUnchanged": true,
+  "preservationUnchanged": true,
+  "helperHash": "9fe009a9132cb40c8f8dbba6b9078520995087862951ff51e2920ef2528d1de7"
+}

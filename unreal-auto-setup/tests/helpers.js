@@ -31,7 +31,7 @@ function fakeVSCode(root) {
   return {vscode,context,commands,terminals,buttons,errors,infos,warnings,picks,diagnostics,events,values,saves:()=>saves};
 }
 async function fixture() {
-  const root=await fs.mkdtemp(path.join(os.tmpdir(),'unreal-v04-'));
+  const root=await fs.mkdtemp(path.join(require('./testTemp').root(),'unreal-v04-'));
   for(const dir of ['Source','Engine/Build/BatchFiles','Engine/Binaries/Win64','Engine/Binaries/DotNET/UnrealBuildTool']) await fs.mkdir(path.join(root,dir),{recursive:true});
   await fs.writeFile(path.join(root,'Game.uproject'),'{"EngineAssociation":"5.8"}');
   await fs.writeFile(path.join(root,'Source','GameEditor.Target.cs'),'Type=TargetType.Editor;');

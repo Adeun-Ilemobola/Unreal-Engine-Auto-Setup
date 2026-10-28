@@ -1,0 +1,22 @@
+✔ managed build streams output, publishes Problems, records failure and clears old diagnostics on retry (4.241ms)
+✔ cancelled and failed-to-start builds complete with an explicit result (0.4195ms)
+✔ Skybox and direct builds use the same target/platform/configuration specification (0.5761ms)
+✔ real managed PowerShell build streams a source error and returns its exit code (321.1032ms)
+✔ reload before spawn retains intent and blocks a second window (22.0505ms)
+✔ only the original owner can release positively unspawned work (21.1159ms)
+✔ wrapper exit, cancellation and old age never certify tree completion (23.5153ms)
+✔ corrupt, missing and partial intent fail closed; unrelated projects remain clear (15.4323ms)
+✔ concurrent claim acquisition has one winner without sleeps (13.7453ms)
+✔ identity requires all evidence and never treats absence as completion (0.216ms)
+✔ bounded repeated unspawned operations clean up without accumulating history (166.92ms)
+✔ active identity is observation only; recovered process is never granted termination authority (12.6835ms)
+✔ oversized records and inaccessible identity do not unblock operations (13.0994ms)
+✔ managed adapter persists intent before spawn and retains quarantine after root close (91.2936ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 914.4001

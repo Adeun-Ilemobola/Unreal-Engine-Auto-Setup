@@ -78,6 +78,8 @@ Phase 3B.1b separates equal-byte/same-identity timestamp changes from content co
 
 ## Cancellation and recovery
 
+The diagram and partial-status note below describe the earlier raw-process adapter. Production Windows managed execution now uses the Phase 3B.2b job supervisor described below; its completion signal requires the full owned job to be empty.
+
 ```mermaid
 stateDiagram-v2
   [*] --> Requested: cancel
@@ -119,6 +121,18 @@ Real VS Code/Unreal validation is a separate release step using an explicitly di
 
 ## Phase 3B.2 conservative process quarantine (partial)
 
+Historical Phase 3B.2 behavior follows. Phase 3B.2b supersedes it for newly supervised operations; legacy uncertain records remain blocked.
+
 Managed execution now persists an exclusive canonical-descriptor claim under globalStorageUri/operations-v1 before spawning. Activation/runtime refresh exposes unresolved claims in Build status; Build/Run/regeneration refuse them. Recovered processes are never killed. The claim is evidence of possible work, not permission to terminate.
 
 **Development limitation:** even exit 0 retains a spawned claim because root exit does not prove compiler-tree exit. Ordinary repeated managed Build/Run therefore requires independently verified administrative recovery. Do not treat this as release-ready lifecycle support. No automatic claim expiry or guessed completion exists. Original in-host cancellation still has the earlier taskkill/descendant limitations. Same-storage/project claim arbitration is tested; profiles, shared engines, other users, external builds and Skybox are outside it. Full containment, safe completion release and retry acceptance remain prerequisites. See [Phase 3B.2 result](maintenance/runs/0007-phase3b2/RESULT.md).
+
+## Temporary test artifacts
+
+For the current supervision contract and remaining release qualification limits, see [Phase 3B.2b](maintenance/runs/0008-phase3b2b/RESULT.md). A private Windows Job Object retains work across host reload and releases claims only after matching durable proof of root exit and zero active members. Cancellation requests target that private job; missing proof remains blocked. Existing Editors stay independent. Known distributed executors are disabled for this local containment boundary.
+
+On Windows, temporary executables, compiler scratch files, disposable journals and test profiles belong under `C:\Dev\Scratch\UnrealAutoSetupTests`. Permanent sources remain in this repository. No antivirus or system-wide environment configuration is changed.
+
+Run `npm test` from `unreal-auto-setup/`, or from the repository root run `node tools/run-tests.cjs tests/process-supervision.test.js tests/operation-ownership.test.js tests/runner.test.js`. The launcher creates an exclusive `suite-*` directory and passes `TEMP`, `TMP`, `TMPDIR` and `UNREAL_AUTO_SETUP_TEST_TEMP` only to the Node test process and its children. It removes that owned directory when the suite exits, including test failure. `tests/testTemp.js` also isolates direct `node --test` invocations into `node-<pid>-*` directories and directs compiler-internal temporary output there. Each fixture still uses its own `mkdtemp` directory. Python packaging tests use `TemporaryDirectory` under the same dedicated root.
+
+`tools/phase3b2b/build-helper.ps1` scopes compiler temporary variables to its invocation and restores them in `finally`; the distributable helper binary remains beside its permanent source under `unreal-auto-setup/native/`. `node tools/phase3b2b/launch-integration.cjs` creates an `integration-*` scratch directory containing the isolated VS Code profile, driver, fixture executable and supervised-operation journal. Integration directories are retained on uncertainty/failure; remove only after the owned hosts/processes are confirmed stopped and unresolved evidence has been archived. A killed runner cannot execute cleanup; inspect retained directories rather than deleting unknown active work. The dedicated directory must be writable; no fallback to Windows Temp is used on Windows.

@@ -1,0 +1,30 @@
+ M build_bundle.py
+ M bundle_sources.py
+ M docs/DEVELOPMENT.md
+ M docs/maintenance/INDEX.md
+ M tests/test_bundle_sources.py
+ M unreal-auto-setup/build.js
+ M unreal-auto-setup/operationOwnership.js
+ M unreal-auto-setup/package.json
+ M unreal-auto-setup/runner.js
+ M unreal-auto-setup/runtimeView.js
+ M unreal-auto-setup/tests/build.test.js
+ M unreal-auto-setup/tests/core.test.js
+ M unreal-auto-setup/tests/detection-regressions.test.js
+ M unreal-auto-setup/tests/diagnostics.test.js
+ M unreal-auto-setup/tests/engine.test.js
+ M unreal-auto-setup/tests/helpers.js
+ M unreal-auto-setup/tests/operation-ownership.test.js
+ M unreal-auto-setup/tests/project.test.js
+ M unreal-auto-setup/tests/real-unreal-validation.js
+ M unreal-auto-setup/tests/runner.test.js
+ M unreal-auto-setup/tests/workflow.test.js
+?? docs/maintenance/prompts/0008-phase3b2b-scratch-v1.md
+?? docs/maintenance/prompts/0008-phase3b2b-v1.md
+?? docs/maintenance/runs/0008-phase3b2b/
+?? tools/phase3b2b/
+?? tools/run-tests.cjs
+?? unreal-auto-setup/native/
+?? unreal-auto-setup/processSupervisor.js
+?? unreal-auto-setup/tests/process-supervision.test.js
+?? unreal-auto-setup/tests/testTemp.js

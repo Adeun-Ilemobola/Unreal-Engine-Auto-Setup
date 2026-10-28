@@ -34,7 +34,7 @@ function editorScript(engine,project) {
 function createService(vscode,context,state,{spawnProcess=spawn,stopProcess=pid=>new Promise((resolve,reject)=>{
   // Kill only the extension-owned process tree when the user closes its terminal.
   execFile(path.join(process.env.SystemRoot || 'C:\\Windows','System32','taskkill.exe'),['/PID',String(pid),'/T','/F'],{windowsHide:true,timeout:5000},error=>error?reject(error):resolve());
-}),changed=()=>{},cancellationTimeout=6000,setTimer=setTimeout,clearTimer=clearTimeout,ownership}={}) {
+}),changed=()=>{},cancellationTimeout=6000,setTimer=setTimeout,clearTimer=clearTimeout,ownership,supervision}={}) {
   const diagnostics=vscode.languages.createDiagnosticCollection('unreal-build');
   const output=vscode.window.createOutputChannel?.('Unreal Build History');if(output) context.subscriptions.push(output);
   const owned=new Map();let activeTerminal,activeOperation,disposed=false;
@@ -73,14 +73,18 @@ function createService(vscode,context,state,{spawnProcess=spawn,stopProcess=pid=
       if(cancelPromise) return cancelPromise;
       cancelled=true;cancelPromise=new Promise(resolve=>{resolveCancel=resolve;});
       reportCancellation('Requested');
-      if(!child?.pid) {finish(null);return cancelPromise;}
+      if(!child?.pid && !(supervision && spawnAttempted)) {finish(null);return cancelPromise;}
       cancelTimer=setTimer(()=>reportCancellation('Unconfirmed','No process-exit acknowledgement received within '+cancellationTimeout+' ms.'),cancellationTimeout);
-      try {
-        Promise.resolve(stopProcess(child.pid)).then(()=>{if(!finished && cancellation.state==='Requested') reportCancellation('Accepted');},error=>{if(!finished && cancellation.state!=='Exited')reportCancellation('Failed',error.message);});
-      } catch(error) {reportCancellation('Failed',error.message);}
+      if(!child) return cancelPromise; // launch is asynchronous; cancel its private job once attached.
+      requestCancellation();
       return cancelPromise;
     }
-    activeOperation={cancel,cancellation:()=>cancellation};
+    function requestCancellation() {
+      try {
+        Promise.resolve(child.cancel ? child.cancel() : stopProcess(child.pid)).then(()=>{if(!finished && cancellation.state==='Requested') reportCancellation('Accepted');},error=>{if(!finished && cancellation.state!=='Exited')reportCancellation('Failed',error.message);});
+      } catch(error) {reportCancellation('Failed',error.message);}
+    }
+    activeOperation={cancel,cancellation:()=>cancellation,detach:()=>{child?.detach?.();write.dispose();close.dispose();}};
     const result={target:spec.target,platform:spec.platform,configuration:spec.configuration,startTime:new Date().toISOString(),completionTime:undefined,status:'Running',success:undefined,exitCode:undefined};
     if(spec.kind==='build') {
       for(const file of owned.get(spec.project) || []) diagnostics.delete(vscode.Uri.file(file));
@@ -112,15 +116,18 @@ function createService(vscode,context,state,{spawnProcess=spawn,stopProcess=pid=
     async function finish(code,error) {
       if(finished) return;finished=true;
       if(claim) {
-        try { if(spawnAttempted) await claim.exited(code); else await claim.abandonBeforeSpawn(); }
+        try { if(supervision && child?.proof) await claim.complete(); else if(spawnAttempted) await claim.exited(code); else await claim.abandonBeforeSpawn(); }
         catch(e) { output?.appendLine("Recovery metadata retained: "+e.message); }
       }
-      if(cancelled) reportCancellation('Exited');
+      if(cancelled) reportCancellation(supervision && !child?.proof && spawnAttempted?'Unconfirmed':'Exited',supervision && !child?.proof?'Tree completion was not verified.':undefined);
       for(const text of Object.values(pending)) if(text) line(text);
       result.completionTime=new Date().toISOString();result.exitCode=typeof code==='number'?code:null;
       result.success=!cancelled && !error && code===0;result.status=cancelled?'Cancelled':result.success?'Succeeded':'Failed';
-      if(cancelled) result.reason='Cancellation confirmed by child process exit.';
-      if(error) write.fire('\r\n'+error+'\r\n');
+      if(cancelled) {
+        result.reason='Cancellation confirmed by child process exit.';
+        if(supervision && spawnAttempted && !child?.proof) {result.status='Blocked';result.reason='Cancellation requested; tree completion was not verified.';}
+      }
+      if(error) {write.fire('\r\n'+error+'\r\n');result.reason=error;if(supervision && spawnAttempted && !child?.proof)result.status='Blocked';}
       if(conflict && !result.success) {
         result.reason='External build blocked by Live Coding/open Editor. Close the Editor or resolve its Live Coding state before retrying.';
         write.fire('\r\n'+result.reason+'\r\n');vscode.window.showWarningMessage(result.reason);
@@ -141,15 +148,17 @@ function createService(vscode,context,state,{spawnProcess=spawn,stopProcess=pid=
           claim=await ownership.begin(spec.project,spec.kind);
           if(finished) {await claim.abandonBeforeSpawn();return;}
         }
-        const encoded=Buffer.from((claim?'# Operation '+claim.operationId+'\n':'')+script(spec),'utf16le').toString('base64');
+        const executionSpec=supervision && spec.kind==='build'?{...spec,args:[...spec.args,'-NoUBA','-NoXGE','-NoFASTBuild','-NoSNDBS']}:spec;
+        const encoded=Buffer.from((claim?'# Operation '+claim.operationId+'\n':'')+script(executionSpec),'utf16le').toString('base64');
         if(claim) {spawnAttempted=true;await claim.spawnAttempted(encoded);if(finished)return;}
-        child=spawnProcess(powershell(),['-NoLogo','-NoProfile','-EncodedCommand',encoded],{cwd:spec.cwd,windowsHide:true,stdio:['ignore','pipe','pipe']});
+        child=supervision && claim ? await supervision.launch(claim,encoded) : spawnProcess(powershell(),['-NoLogo','-NoProfile','-EncodedCommand',encoded],{cwd:spec.cwd,windowsHide:true,stdio:['ignore','pipe','pipe']});
         child.stdout.setEncoding('utf8');child.stderr.setEncoding('utf8');
         child.stdout.on('data',stdout);child.stderr.on('data',stderr);
         child.on('error',onError);child.on('close',onClose);
-        if(claim) void claim.observe(child.pid,encoded).catch(e=>output?.appendLine('Identity observation unavailable: '+e.message));
+        if(cancelled) requestCancellation();
+        if(claim && !supervision) void claim.observe(child.pid,encoded).catch(e=>output?.appendLine('Identity observation unavailable: '+e.message));
       } catch(error) {finish(null,error.message);}
-    },close() {void cancel();}};
+    },close() {if(disposed && supervision)return;void cancel();}};
     let terminal;
     try {
       terminal=vscode.window.createTerminal({name:spec.kind==='build'?'Unreal: Build':'Unreal: Project Files',pty,isTransient:true});
@@ -164,6 +173,7 @@ function createService(vscode,context,state,{spawnProcess=spawn,stopProcess=pid=
   }
   const service={run,diagnostics,get active(){return !!activeOperation;},cancel:()=>activeOperation?.cancel(),cancellation:()=>activeOperation?.cancellation(),reveal:()=>activeTerminal?.show(),dispose(){
     disposed=true;
+    if(activeOperation && supervision) {activeOperation.detach();diagnostics.dispose();output?.dispose();return;}
     if(activeOperation) return activeOperation.cancel();
     activeTerminal?.dispose();activeTerminal=undefined;diagnostics.dispose();output?.dispose();
   }};

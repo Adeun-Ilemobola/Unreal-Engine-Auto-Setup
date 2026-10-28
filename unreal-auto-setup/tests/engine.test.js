@@ -15,7 +15,7 @@ test('engine discovery reads Epic manifest and exact-version registry informatio
 });
 
 test('auto-detection validates candidates, falls back to picker, and preserves explicit paths',async()=>{
-  const root=await fs.mkdtemp(path.join(os.tmpdir(),'unreal-engine-'));
+  const root=await fs.mkdtemp(path.join(require('./testTemp').root(),'unreal-engine-'));
   try {
     await fs.mkdir(path.join(root,'Engine','Build','BatchFiles'),{recursive:true});
     await fs.mkdir(path.join(root,'Engine','Binaries','Win64'),{recursive:true});

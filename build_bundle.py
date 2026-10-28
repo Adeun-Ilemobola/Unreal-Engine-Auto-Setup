@@ -11,7 +11,7 @@ manifest = f'''<?xml version="1.0" encoding="utf-8"?>
 <Metadata><Identity Language="en-US" Id="{p['name']}" Version="{p['version']}" Publisher="{p['publisher']}"/><DisplayName>{p['displayName']}</DisplayName><Description xml:space="preserve">{p['description']}</Description><Tags>unreal,workspace,formatting</Tags><Categories>Other,Extension Packs</Categories><GalleryFlags>Public</GalleryFlags><Properties><Property Id="Microsoft.VisualStudio.Code.Engine" Value="^1.100.0"/><Property Id="Microsoft.VisualStudio.Code.ExtensionDependencies" Value=""/><Property Id="Microsoft.VisualStudio.Code.ExtensionPack" Value="{",".join(p.get('extensionPack', []))}"/><Property Id="Microsoft.VisualStudio.Code.ExtensionKind" Value="workspace"/><Property Id="Microsoft.VisualStudio.Code.LocalizedLanguages" Value=""/><Property Id="Microsoft.VisualStudio.Code.EnabledApiProposals" Value=""/></Properties><License>extension/LICENSE</License></Metadata>
 <Installation><InstallationTarget Id="Microsoft.VisualStudio.Code"/></Installation><Dependencies/>
 <Assets><Asset Type="Microsoft.VisualStudio.Code.Manifest" Path="extension/package.json" Addressable="true"/><Asset Type="Microsoft.VisualStudio.Services.Content.Details" Path="extension/README.md" Addressable="true"/><Asset Type="Microsoft.VisualStudio.Services.Content.License" Path="extension/LICENSE" Addressable="true"/></Assets></PackageManifest>'''
-content_types='''<?xml version="1.0" encoding="utf-8"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="json" ContentType="application/json"/><Default Extension="js" ContentType="application/javascript"/><Default Extension="svg" ContentType="image/svg+xml"/><Default Extension="md" ContentType="text/markdown"/><Default Extension="vsixmanifest" ContentType="text/xml"/><Default Extension="xml" ContentType="text/xml"/><Override PartName="/extension/LICENSE" ContentType="text/plain"/></Types>'''
+content_types='''<?xml version="1.0" encoding="utf-8"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="exe" ContentType="application/octet-stream"/><Default Extension="cs" ContentType="text/plain"/><Default Extension="json" ContentType="application/json"/><Default Extension="js" ContentType="application/javascript"/><Default Extension="svg" ContentType="image/svg+xml"/><Default Extension="md" ContentType="text/markdown"/><Default Extension="vsixmanifest" ContentType="text/xml"/><Default Extension="xml" ContentType="text/xml"/><Override PartName="/extension/LICENSE" ContentType="text/plain"/></Types>'''
 with zipfile.ZipFile(root/name,'w',zipfile.ZIP_DEFLATED) as z:
     z.writestr('extension.vsixmanifest',manifest)
     z.writestr('[Content_Types].xml',content_types)
@@ -28,6 +28,10 @@ with zipfile.ZipFile(bundle,'w',zipfile.ZIP_DEFLATED) as z:
     z.write(source/'README.md','README.md')
     z.write(root/'build_bundle.py','build_bundle.py')
     z.write(root/'bundle_sources.py','bundle_sources.py')
+    z.write(root/'tools/run-tests.cjs','tools/run-tests.cjs')
+    for tool in sorted((root/'tools/phase3b2b').glob('*')):
+        if tool.suffix in ('.cjs', '.cs', '.ps1'):
+            z.write(tool, str(tool.relative_to(root)))
     for file in sorted(source.rglob('*')):
         if file.is_file(): z.write(file,str(file.relative_to(root)))
 print(bundle)

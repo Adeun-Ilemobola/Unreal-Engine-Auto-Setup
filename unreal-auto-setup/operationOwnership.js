@@ -50,6 +50,22 @@ function create(root, {queryProcess=query}={}) {
       if(!stat.isDirectory() || stat.isSymbolicLink()) throw new Error('Unsafe claim');
       const record=await regular(path.join(location,'intent.json'));
       if(record.schema!==1 || record.project!==await canonical(project) || !/^[0-9a-f-]{36}$/.test(record.operationId) || !['build','generation'].includes(record.kind)) throw new Error('Invalid claim schema or project');
+      // Old quarantine records have no supervision plan and remain unresolved.
+      try {
+        const proof=await require('./processSupervisor').outcome(location,record);
+        if(probe) {await release(location,record);return {state:'Clear',previous:proof};}
+        return {state:'Completed',operationId:record.operationId,previous:proof,directory:location};
+      } catch(error) {if(error.code!=='ENOENT') return {state:'Unknown',directory:location,reason:'Recovery blocked: '+error.message};}
+      if(probe) {
+        try {
+          const started=await regular(path.join(location,'supervisor-started.json'));
+          const plan=await regular(path.join(location,'supervision.json'));
+          const helper=await require('./processSupervisor').verifyHelper();
+          const actual=await queryProcess(started.pid);
+          if(started.operationId===record.operationId && started.project===record.project && started.helperHash===helper.helperHash && started.commandHash===plan.commandHash && actual?.executable?.toLowerCase()===helper.executable.toLowerCase() && actual.command?.includes(location) && Date.parse(actual.creation)===Date.parse(started.creation))
+            return {state:'Running',operationId:record.operationId,directory:location,reason:'Recovery blocked: verified supervisor is managing the previous operation. Retry after its full tree completes.'};
+        } catch {}
+      }
       let identity, observation='Unknown';
       if(probe) {
         try { identity=await regular(path.join(location,'identity.json')); observation=classify(identity,await queryProcess(identity.pid)); } catch {}
@@ -57,6 +73,19 @@ function create(root, {queryProcess=query}={}) {
       return {state:'Unknown',observation,operationId:record.operationId,directory:location,
         reason:'Recovery blocked: previous managed '+record.kind+' '+record.operationId+'. '+observation+'. Full process-tree exit and execution result are unconfirmed. Inspect '+location+'; do not remove its claim until all associated work is independently verified stopped.'};
     } catch(error) { return {state:'Unknown',directory:location,reason:'Recovery blocked: missing, corrupt or inaccessible ownership metadata. '+error.message}; }
+  }
+  async function release(location,record) {
+    const lock=path.join(location,'release-lock');
+    await fs.mkdir(lock); // No stale-lease theft; a crash here remains conservative.
+    let moved=false;
+    try {
+      const current=await regular(path.join(location,'intent.json'));
+      if(current.operationId!==record.operationId)throw new Error('Release owner changed');
+      await require('./processSupervisor').outcome(location,current);
+      const retired=path.join(root,'.completed-'+record.operationId);
+      await fs.rename(location,retired);moved=true;
+      await fs.rm(retired,{recursive:true});
+    } finally {if(!moved)await fs.rmdir(lock).catch(()=>{});}
   }
   async function begin(project,kind) {
     if(!['build','generation'].includes(kind)) throw new Error('Unsupported operation kind');
@@ -74,6 +103,7 @@ function create(root, {queryProcess=query}={}) {
     await write(path.join(location,'intent.json'),{schema:1,operationId,project:await canonical(project),kind,created:new Date().toISOString()});
     let attempted=false;
     return {operationId,directory:location,
+      async complete() {return release(location,await regular(path.join(location,'intent.json')));},
       async spawnAttempted(encoded) { attempted=true; await write(path.join(location,'spawn.json'),{schema:1,operationId,commandHash:hash(encoded)}); },
       async observe(pid,command) {
         const identity=await queryProcess(pid);

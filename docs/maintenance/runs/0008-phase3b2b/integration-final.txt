@@ -1,0 +1,2 @@
+Integration scratch: C:\Dev\Scratch\UnrealAutoSetupTests\integration-jAiaCo
+Cleaned completed integration scratch: C:\Dev\Scratch\UnrealAutoSetupTests\integration-jAiaCo

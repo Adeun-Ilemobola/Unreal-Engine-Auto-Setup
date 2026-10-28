@@ -1,0 +1,24 @@
+{
+  "scratch": "C:\\Dev\\Scratch\\UnrealAutoSetupTests\\editor-NNADJu",
+  "editorPid": 41556,
+  "identity": {
+    "pid": 41556,
+    "executable": "C:\\Program Files\\Epic Games\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor.exe",
+    "commandLine": "\"C:\\Program Files\\Epic Games\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor.exe\" C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.uproject -NoSplash -NoSound -Unattended -nullrhi -abslog=C:\\Dev\\Scratch\\UnrealAutoSetupTests\\editor-NNADJu\\editor.log",
+    "matches": true
+  },
+  "proof": {
+    "schema": 1,
+    "operationId": "6fec9db3-d1cd-435d-af00-2c370b243d46",
+    "project": "c:\\dev\\vscodetools\\unreal-auto-setup\\.local-test-projects\\phase3aintegration\\phase3aintegration.uproject",
+    "helperHash": "9fe009a9132cb40c8f8dbba6b9078520995087862951ff51e2920ef2528d1de7",
+    "commandHash": "2e1709a51340b6630487d2e72642139c042c131c997d5c542352e3c58350cb3c",
+    "activeProcesses": 0,
+    "rootExited": true,
+    "exitCode": 1223,
+    "cancelled": true,
+    "containment": "windows-job-v1"
+  },
+  "editorSurvived": true,
+  "editorExit": null
+}
