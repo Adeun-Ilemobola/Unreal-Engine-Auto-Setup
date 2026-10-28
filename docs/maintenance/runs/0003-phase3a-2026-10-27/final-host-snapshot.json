@@ -1,0 +1,453 @@
+{
+  "time": "2026-10-27T18:42:12.045Z",
+  "phase": "request-complete",
+  "id": "final-snapshot",
+  "elapsedMs": 681.0357999999542,
+  "result": {
+    "folders": [
+      "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration",
+      "/c:/Dev/VSCodeTools/unreal-auto-setup/.local-test-projects/Phase3AIntegration/Source/Phase3AIntegration",
+      "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Plugins\\ProbePlugin\\Source\\ProbePlugin",
+      "/c:/Dev/VSCodeTools/unreal-auto-setup/.local-test-projects/Phase3AIntegration/Plugins/ProbePlugin/Source/ProbePlugin",
+      "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Plugins\\ProbePlugin\\Source\\ProbePlugin\\Private",
+      "/c:/Dev/VSCodeTools/unreal-auto-setup/.local-test-projects/Phase3AIntegration/Plugins/ProbePlugin/Source/ProbePlugin/Private",
+      "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Plugins\\ProbePlugin\\Source\\ProbePlugin\\Public",
+      "/c:/Dev/VSCodeTools/unreal-auto-setup/.local-test-projects/Phase3AIntegration/Plugins/ProbePlugin/Source/ProbePlugin/Public",
+      "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\ProbeRuntime",
+      "/c:/Dev/VSCodeTools/unreal-auto-setup/.local-test-projects/Phase3AIntegration/Source/ProbeRuntime",
+      "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\ProbeRuntime\\Private",
+      "/c:/Dev/VSCodeTools/unreal-auto-setup/.local-test-projects/Phase3AIntegration/Source/ProbeRuntime/Private",
+      "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\ProbeRuntime\\Public",
+      "/c:/Dev/VSCodeTools/unreal-auto-setup/.local-test-projects/Phase3AIntegration/Source/ProbeRuntime/Public"
+    ],
+    "project": {
+      "folder": {
+        "uri": {
+          "$mid": 1,
+          "fsPath": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration",
+          "_sep": 1,
+          "external": "file:///c%3A/Dev/VSCodeTools/unreal-auto-setup/.local-test-projects/Phase3AIntegration",
+          "path": "/C:/Dev/VSCodeTools/unreal-auto-setup/.local-test-projects/Phase3AIntegration",
+          "scheme": "file"
+        },
+        "name": "Phase3AIntegration",
+        "index": 0
+      },
+      "root": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration",
+      "name": "Phase3AIntegration.uproject",
+      "projects": [
+        "Phase3AIntegration.uproject"
+      ],
+      "config": "[VS Code configuration omitted]",
+      "descriptor": {
+        "FileVersion": 3,
+        "EngineAssociation": "5.8",
+        "Category": "",
+        "Description": "",
+        "Modules": [
+          {
+            "Name": "Phase3AIntegration",
+            "Type": "Runtime",
+            "LoadingPhase": "Default"
+          },
+          {
+            "Name": "ProbeRuntime",
+            "Type": "Runtime",
+            "LoadingPhase": "Default"
+          }
+        ],
+        "Plugins": []
+      },
+      "filename": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.uproject",
+      "targets": [
+        {
+          "name": "Phase3AIntegration",
+          "file": "Phase3AIntegration.Target.cs",
+          "type": "Game"
+        },
+        {
+          "name": "Phase3AIntegrationEditor",
+          "file": "Phase3AIntegrationEditor.Target.cs",
+          "type": "Editor"
+        }
+      ]
+    },
+    "editor": {
+      "state": "Stopped",
+      "matches": [],
+      "processes": [],
+      "checkedAt": 1793126532038
+    },
+    "modules": [
+      {
+        "name": "Phase3AIntegration",
+        "root": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration",
+        "buildFile": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Phase3AIntegration.Build.cs",
+        "origin": "project",
+        "api": "PHASE3AINTEGRATION_API",
+        "layout": "Flat",
+        "ruleText": "// Copyright Epic Games, Inc. All Rights Reserved.\r\n\r\nusing UnrealBuildTool;\r\n\r\npublic class Phase3AIntegration : ModuleRules\r\n{\r\n\tpublic Phase3AIntegration(ReadOnlyTargetRules Target) : base(Target)\r\n\t{\r\n\t\tPCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;\r\n\t\r\n\t\tPublicDependencyModuleNames.AddRange(new string[] { \"Core\", \"CoreUObject\", \"Engine\", \"InputCore\", \"EnhancedInput\" });\r\n\r\n\t\tPrivateDependencyModuleNames.AddRange(new string[] {   \"ProbeRuntime\" });\r\n\r\n\t\t// Uncomment if you are using Slate UI\r\n\t\t// PrivateDependencyModuleNames.AddRange(new string[] { \"Slate\", \"SlateCore\" });\r\n\t\t\r\n\t\t// Uncomment if you are using online features\r\n\t\t// PrivateDependencyModuleNames.Add(\"OnlineSubsystem\");\r\n\r\n\t\t// To include OnlineSubsystemSteam, add it to the plugins section in your uproject file with the Enabled attribute set to true\r\n\t}\r\n}\r\n"
+      },
+      {
+        "name": "ProbePlugin",
+        "root": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Plugins\\ProbePlugin\\Source\\ProbePlugin",
+        "buildFile": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Plugins\\ProbePlugin\\Source\\ProbePlugin\\ProbePlugin.Build.cs",
+        "publicPath": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Plugins\\ProbePlugin\\Source\\ProbePlugin\\Public",
+        "privatePath": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Plugins\\ProbePlugin\\Source\\ProbePlugin\\Private",
+        "origin": "plugin",
+        "plugin": "ProbePlugin.uplugin",
+        "api": "PROBEPLUGIN_API",
+        "layout": "Public / Private",
+        "ruleText": "using UnrealBuildTool;\n\npublic class ProbePlugin : ModuleRules\n{\n  public ProbePlugin(ReadOnlyTargetRules Target) : base(Target)\n  {\n    PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;\n    PublicDependencyModuleNames.AddRange(new string[] { \"Core\", \"CoreUObject\", \"Engine\" });\n  }\n}\n",
+        "type": "Runtime"
+      },
+      {
+        "name": "ProbeRuntime",
+        "root": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\ProbeRuntime",
+        "buildFile": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\ProbeRuntime\\ProbeRuntime.Build.cs",
+        "publicPath": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\ProbeRuntime\\Public",
+        "privatePath": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\ProbeRuntime\\Private",
+        "origin": "project",
+        "api": "PROBERUNTIME_API",
+        "layout": "Public / Private",
+        "ruleText": "using UnrealBuildTool;\n\npublic class ProbeRuntime : ModuleRules\n{\n  public ProbeRuntime(ReadOnlyTargetRules Target) : base(Target)\n  {\n    PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;\n    PublicDependencyModuleNames.AddRange(new string[] { \"Core\", \"CoreUObject\", \"Engine\" });\n  }\n}\n"
+      }
+    ],
+    "plugins": [
+      {
+        "name": "ProbePlugin",
+        "root": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Plugins\\ProbePlugin",
+        "filename": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Plugins\\ProbePlugin\\ProbePlugin.uplugin",
+        "descriptor": {
+          "FileVersion": 3,
+          "Version": 1,
+          "VersionName": "1.0",
+          "FriendlyName": "ProbePlugin",
+          "Description": "",
+          "Category": "Other",
+          "CanContainContent": false,
+          "EnabledByDefault": true,
+          "Modules": [
+            {
+              "Name": "ProbePlugin",
+              "Type": "Runtime",
+              "LoadingPhase": "Default"
+            }
+          ]
+        }
+      }
+    ],
+    "engine": {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8",
+      "build": true,
+      "editor": true,
+      "compatible": true,
+      "version": {
+        "MajorVersion": 5,
+        "MinorVersion": 8,
+        "PatchVersion": 4,
+        "Changelist": 58902052,
+        "CompatibleChangelist": 55116800,
+        "IsLicenseeVersion": 0,
+        "IsPromotedBuild": 1,
+        "BranchName": "++UE5+Release-5.8"
+      }
+    },
+    "selected": {
+      "target": "Phase3AIntegrationEditor",
+      "platform": "Win64",
+      "configuration": "Development"
+    },
+    "session": {
+      "revision": 0,
+      "stale": false,
+      "automation": {
+        "mode": "watch",
+        "delay": 30,
+        "dirty": [],
+        "state": "Idle",
+        "pending": false,
+        "due": 0,
+        "blocked": "",
+        "reason": "",
+        "history": [
+          {
+            "project": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.uproject",
+            "triggerReason": "Manual run",
+            "origin": "Manual",
+            "request": "run",
+            "reason": "Manual run",
+            "started": "2026-10-27T18:39:15.465Z",
+            "success": true,
+            "status": "Reused",
+            "finished": "2026-10-27T18:39:16.610Z"
+          },
+          {
+            "project": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.uproject",
+            "triggerReason": "Manual open",
+            "origin": "Manual",
+            "request": "open",
+            "reason": "Manual open",
+            "started": "2026-10-27T18:39:13.997Z",
+            "success": true,
+            "status": "Opened",
+            "finished": "2026-10-27T18:39:15.060Z"
+          },
+          {
+            "project": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.uproject",
+            "triggerReason": "Implementation",
+            "origin": "Manual",
+            "request": "build",
+            "reason": "Implementation",
+            "started": "2026-10-27T18:38:37.366Z",
+            "target": "Phase3AIntegrationEditor",
+            "platform": "Win64",
+            "configuration": "Development",
+            "startTime": "2026-10-27T18:38:38.021Z",
+            "completionTime": "2026-10-27T18:39:13.794Z",
+            "status": "Succeeded",
+            "success": true,
+            "exitCode": 0,
+            "finished": "2026-10-27T18:39:13.795Z"
+          },
+          {
+            "project": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.uproject",
+            "triggerReason": "Implementation",
+            "origin": "Manual",
+            "request": "build",
+            "reason": "Close this project’s Unreal Editor before an external build. Live Coding can be invoked inside Unreal Editor; external triggering is unsupported.",
+            "started": "2026-10-27T18:36:57.791Z",
+            "success": false,
+            "status": "Blocked",
+            "finished": "2026-10-27T18:36:58.789Z"
+          },
+          {
+            "project": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.uproject",
+            "triggerReason": "Implementation",
+            "origin": "Manual",
+            "request": "run",
+            "reason": "Close this project’s Unreal Editor before an external build. Live Coding can be invoked inside Unreal Editor; external triggering is unsupported.",
+            "started": "2026-10-27T18:36:56.265Z",
+            "success": false,
+            "status": "Blocked",
+            "finished": "2026-10-27T18:36:57.588Z"
+          },
+          {
+            "project": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.uproject",
+            "triggerReason": "Implementation",
+            "origin": "Manual",
+            "request": "open",
+            "reason": "Implementation",
+            "started": "2026-10-27T18:36:24.941Z",
+            "success": true,
+            "status": "Opened",
+            "finished": "2026-10-27T18:36:26.937Z"
+          },
+          {
+            "project": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.uproject",
+            "triggerReason": "Implementation",
+            "origin": "Manual",
+            "request": "build",
+            "reason": "Implementation",
+            "started": "2026-10-27T18:34:55.989Z",
+            "target": "Phase3AIntegrationEditor",
+            "platform": "Win64",
+            "configuration": "Development",
+            "startTime": "2026-10-27T18:34:56.085Z",
+            "completionTime": "2026-10-27T18:34:58.975Z",
+            "status": "Succeeded",
+            "success": true,
+            "exitCode": 0,
+            "finished": "2026-10-27T18:34:58.975Z"
+          },
+          {
+            "project": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.uproject",
+            "triggerReason": "Manual build",
+            "origin": "Manual",
+            "request": "build",
+            "reason": "Manual build",
+            "started": "2026-10-27T18:34:52.458Z",
+            "target": "Phase3AIntegrationEditor",
+            "platform": "Win64",
+            "configuration": "Development",
+            "startTime": "2026-10-27T18:34:53.168Z",
+            "completionTime": "2026-10-27T18:34:55.383Z",
+            "status": "Failed",
+            "success": false,
+            "exitCode": 6,
+            "finished": "2026-10-27T18:34:55.383Z"
+          }
+        ]
+      },
+      "strategy": {
+        "allowed": true,
+        "name": "External UBT",
+        "liveCoding": {
+          "support": "Unsupported",
+          "canTriggerExternally": false,
+          "state": "Unavailable",
+          "detail": "No validated external Live Coding trigger. Editor session enablement is not inferred from saved settings."
+        }
+      },
+      "lastBuild": {
+        "target": "Phase3AIntegrationEditor",
+        "platform": "Win64",
+        "configuration": "Development",
+        "startTime": "2026-10-27T18:38:38.021Z",
+        "completionTime": "2026-10-27T18:39:13.794Z",
+        "status": "Succeeded",
+        "success": true,
+        "exitCode": 0
+      }
+    },
+    "module": "[Circular/reference]",
+    "automation": "[Circular/reference]",
+    "dependencies": {
+      "module": "Phase3AIntegration",
+      "buildFile": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Source\\Phase3AIntegration\\Phase3AIntegration.Build.cs",
+      "parsed": {
+        "status": "Editable",
+        "editable": true,
+        "dependencies": [
+          {
+            "name": "Core",
+            "category": "PublicDependencyModuleNames",
+            "visibility": "Public",
+            "start": 314,
+            "end": 320,
+            "line": 11,
+            "declaration": {
+              "category": "PublicDependencyModuleNames",
+              "method": "AddRange",
+              "start": 262,
+              "end": 379,
+              "tokenStart": 27,
+              "tokenEnd": 47,
+              "valid": true,
+              "open": {
+                "start": 312,
+                "end": 313,
+                "value": "{",
+                "kind": "punct",
+                "close": 45
+              },
+              "close": {
+                "start": 376,
+                "end": 377,
+                "value": "}",
+                "kind": "punct",
+                "open": 35
+              },
+              "entries": [
+                "[Circular/reference]",
+                {
+                  "name": "CoreUObject",
+                  "category": "PublicDependencyModuleNames",
+                  "visibility": "Public",
+                  "start": 322,
+                  "end": 335,
+                  "line": 11,
+                  "declaration": "[Circular/reference]",
+                  "editable": true,
+                  "complex": false
+                },
+                {
+                  "name": "Engine",
+                  "category": "PublicDependencyModuleNames",
+                  "visibility": "Public",
+                  "start": 337,
+                  "end": 345,
+                  "line": 11,
+                  "declaration": "[Circular/reference]",
+                  "editable": true,
+                  "complex": false
+                },
+                {
+                  "name": "InputCore",
+                  "category": "PublicDependencyModuleNames",
+                  "visibility": "Public",
+                  "start": 347,
+                  "end": 358,
+                  "line": 11,
+                  "declaration": "[Circular/reference]",
+                  "editable": true,
+                  "complex": false
+                },
+                {
+                  "name": "EnhancedInput",
+                  "category": "PublicDependencyModuleNames",
+                  "visibility": "Public",
+                  "start": 360,
+                  "end": 375,
+                  "line": 11,
+                  "declaration": "[Circular/reference]",
+                  "editable": true,
+                  "complex": false
+                }
+              ]
+            },
+            "editable": true,
+            "complex": false
+          },
+          "[Circular/reference]",
+          "[Circular/reference]",
+          "[Circular/reference]",
+          "[Circular/reference]",
+          {
+            "name": "ProbeRuntime",
+            "category": "PrivateDependencyModuleNames",
+            "visibility": "Private",
+            "start": 440,
+            "end": 454,
+            "line": 13,
+            "declaration": {
+              "category": "PrivateDependencyModuleNames",
+              "method": "AddRange",
+              "start": 385,
+              "end": 458,
+              "tokenStart": 48,
+              "tokenEnd": 60,
+              "valid": true,
+              "open": {
+                "start": 436,
+                "end": 437,
+                "value": "{",
+                "kind": "punct",
+                "close": 58
+              },
+              "close": {
+                "start": 455,
+                "end": 456,
+                "value": "}",
+                "kind": "punct",
+                "open": 56
+              },
+              "entries": [
+                "[Circular/reference]"
+              ]
+            },
+            "editable": true,
+            "complex": false
+          }
+        ]
+      },
+      "index": {
+        "status": "Not indexed",
+        "headers": 7
+      },
+      "warnings": [
+        "Phase3AIntegration: Core not in the current module index (may require indexing).",
+        "Phase3AIntegration: CoreUObject not in the current module index (may require indexing).",
+        "Phase3AIntegration: Engine not in the current module index (may require indexing).",
+        "Phase3AIntegration: InputCore not in the current module index (may require indexing).",
+        "Phase3AIntegration: EnhancedInput not in the current module index (may require indexing).",
+        "ProbePlugin: Core not in the current module index (may require indexing).",
+        "ProbePlugin: CoreUObject not in the current module index (may require indexing).",
+        "ProbePlugin: Engine not in the current module index (may require indexing).",
+        "ProbeRuntime: Core not in the current module index (may require indexing).",
+        "ProbeRuntime: CoreUObject not in the current module index (may require indexing).",
+        "ProbeRuntime: Engine not in the current module index (may require indexing)."
+      ]
+    }
+  }
+}

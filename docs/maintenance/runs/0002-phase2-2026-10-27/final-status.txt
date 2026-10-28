@@ -1,0 +1,37 @@
+ M build_bundle.py
+ M unreal-auto-setup/build.js
+ M unreal-auto-setup/classFiles.js
+ M unreal-auto-setup/classWizard.js
+ M unreal-auto-setup/core.js
+ M unreal-auto-setup/dependencyActions.js
+ M unreal-auto-setup/dependencyDiagnostics.js
+ M unreal-auto-setup/dependencyIndex.js
+ M unreal-auto-setup/diagnostics.js
+ M unreal-auto-setup/dirtyTracker.js
+ M unreal-auto-setup/engine.js
+ M unreal-auto-setup/extension.js
+ M unreal-auto-setup/generation.js
+ M unreal-auto-setup/moduleTemplates.js
+ M unreal-auto-setup/project.js
+ M unreal-auto-setup/runner.js
+ M unreal-auto-setup/runtime.js
+ M unreal-auto-setup/runtimeCoordinator.js
+ M unreal-auto-setup/runtimeWatcher.js
+ M unreal-auto-setup/sidebar.js
+ M unreal-auto-setup/tests/workflow.test.js
+?? .prettierrc.json
+?? bundle_sources.py
+?? docs/
+?? tests/
+?? tools/
+?? unreal-auto-setup/contracts.js
+?? unreal-auto-setup/enginePolicy.js
+?? unreal-auto-setup/paths.js
+?? unreal-auto-setup/runtimeCommands.js
+?? unreal-auto-setup/runtimeView.js
+?? unreal-auto-setup/tests/build-lifecycle.test.js
+?? unreal-auto-setup/tests/detection-regressions.test.js
+?? unreal-auto-setup/tests/generation-conflict.test.js
+?? unreal-auto-setup/tests/maintenance.test.js
+?? unreal-auto-setup/tests/policy.test.js
+?? unreal-auto-setup/tests/workspace-safety.test.js

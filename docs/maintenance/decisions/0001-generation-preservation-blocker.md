@@ -1,0 +1,13 @@
+# 0001 — P1.1 preservation blocker
+
+Decision: do not substitute writer guesses for the existing preservation contract. P1.1 is blocked, not fixed. The known data-loss defect remains. Do not rely on unattended regeneration while protected files may be edited.
+
+Installed source inspected read-only at `C:/Program Files/Epic Games/UE_5.8/Engine/Source/Programs/UnrealBuildTool/ProjectFiles/VisualStudioCode/VSCodeProjectFileGenerator.cs`: lines 268–305 construct project `.vscode`, write workspace/ignore/provider files, and write shared engine `.vscode` for foreign projects. Flags at 63/70 (`NoCompileCommands`, `UseVSCodeExtension`) do not redirect these writes. Base `ProjectFileGenerator.cs` assigns PrimaryProjectPath from the project directory (around 1080); no general output isolation contract was validated. No engine was executed or modified. This is evidence about inspected source, not proof that no other engine mechanism could exist.
+
+Reproduction: `tests/generation-conflict.test.js` is an explicitly TODO regression with the desired preservation assertion. The current implementation overwrites the concurrent saved descriptor edit. Existing generation tests already cover unchanged/success/failure/dirty/link behavior but cannot establish writer identity.
+
+Rejected: hash-only restoration, watcher silence as proof of generator ownership, filename/JSON-content heuristics, moving configuration out of the way while UBT runs, broad OS locking, an unvalidated UBT flag, and silently replacing all successful regeneration with conflict outcomes. The last option could eliminate this extension's restore overwrite, but changes the requested automatic user-configuration preservation contract. Recoverable copies alone do not restore that contract or prevent UBT itself overwriting intervening edits.
+
+Class, module and plugin writers have independent guards; module creation commits the project descriptor and can overlap generation. Shared engine files can also be written by other extension hosts/tools. An in-host gate alone cannot establish external writer provenance. No new lock was added without a complete preservation strategy.
+
+To unblock: validate engine-supported isolation (including shared engine outputs and path references), or explicitly approve a conservative behavior change that treats changed protected files as conflicts, retains originals/current/document versions in a recovery store, and requires explicit user resolution instead of automatic restoration. Then implement the full 12-scenario matrix in the archived prompt. No speculative production change was made for this package, per the user's safety-blocker instruction. Independent P1.2–P1.4 continue.

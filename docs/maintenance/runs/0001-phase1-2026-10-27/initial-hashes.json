@@ -1,0 +1,12 @@
+{
+  "docs\\audit\\00-repository-inventory.md": "0f0018a46d167fa212768664cb4351c17ecd38803e869bd0069d6178cb391998",
+  "docs\\audit\\01-current-architecture.md": "67bfd420fa9942451abe8748a8a8fad02214ceba6b3e8deea52a1867446aa70c",
+  "docs\\audit\\02-code-quality.md": "44d948a395f4cb191d256db0acb17b0b1b30db14392a48d29745ed745b2d3027",
+  "docs\\audit\\03-unreal-integration.md": "6468818d9942794b49cadf50d4d9b45a5ae69fd3a9c3b8aad22a6c9e2d7fcb9c",
+  "docs\\audit\\04-reliability-security.md": "466347df7126f9761c72688a061384f96dd46661e1a930dfd5ea119005e30510",
+  "docs\\audit\\05-testing-and-tooling.md": "9ce8e1ac76aa29103f287869135c74dabca4eaa84b88d64c1bd045b45082a917",
+  "docs\\audit\\06-proposed-architecture.md": "c1f836f5fe814e7acbb31778a4dee753fab19e6de16c16994e92bc4d5e0e9dd2",
+  "docs\\audit\\07-improvement-roadmap.md": "879623aa4b46e33eb2debe7d0157516435aa638f08574ca38636c7e0ab65163a",
+  "docs\\audit\\AUDIT_SUMMARY.md": "feae6f70322f27c821e45ffd7cad2bef56a6fdafa134346e3419ba26fb96945b",
+  "unreal-auto-setup\\package.json": "84792d219aba8288bce9c0104b581c29a374eefb878c4ca1db51458d323616f6"
+}

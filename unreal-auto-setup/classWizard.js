@@ -1,7 +1,7 @@
 'use strict';
 const fs=require('node:fs/promises');
 const path=require('node:path');
-const core=require('./core');
+const {supportedVersion,numericAssociation}=require('./enginePolicy');
 const projects=require('./project');
 const engines=require('./engine');
 const modules=require('./modules');
@@ -10,9 +10,9 @@ const files=require('./classFiles');
 const explorer=require('./explorerClass');
 
 async function validateProject(project) {
-  const numeric=/^(\d+)\.(\d+)(?:\.\d+)?$/.exec(String(project.descriptor.EngineAssociation || ''));
+  const numeric=numericAssociation(project.descriptor.EngineAssociation);
   if(numeric) {
-    if(!core.supportedVersion(+numeric[1],+numeric[2])) throw new Error('Class creation requires Unreal Engine 5.8+.');
+    if(!supportedVersion(+numeric[1],+numeric[2])) throw new Error('Class creation requires Unreal Engine 5.8+.');
     if(!project.config.get('unrealEngine.enginePath')) return;
   }
   const info=await engines.inspect(project.config.get('unrealEngine.enginePath'),project.descriptor.EngineAssociation);

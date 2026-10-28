@@ -1,0 +1,37 @@
+
+[main 2026-10-27T18:20:22.442Z] [node-compile-cache] main: packaged cache enabled (status: enabled, configured: C:\Users\Owner\AppData\Local\Programs\Microsoft VS Code\e646868227\resources\app\node-compile-cache\main, active: C:\Users\Owner\AppData\Local\Programs\Microsoft VS Code\e646868227\resources\app\node-compile-cache\main\v24.21.0-x64-c3a7e8f2)
+[main 2026-10-27T18:20:22.452Z] StorageMainService: creating application shared storage
+[main 2026-10-27T18:20:22.533Z] [shared storage] Creating shared storage database at 'c:\Users\Owner\.vscode-shared\sharedStorage\state.vscdb' (wasCreated: false)
+[main 2026-10-27T18:20:22.533Z] [shared storage] Initializing fallback application storage (path: c:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\host-data\User\globalStorage\state.vscdb)
+[main 2026-10-27T18:20:22.562Z] [shared storage] Fallback application storage initialized with 3 items
+[main 2026-10-27T18:20:22.889Z] update#disable - updates are disabled by user preference
+[main 2026-10-27T18:20:22.889Z] update#setState disabled
+[main 2026-10-27T18:20:22.909Z] AgentHostProcessManager: agent host started
+[main 2026-10-27T18:20:23.521Z] [AgentHost:stderr] (node:61752) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `Code --trace-deprecation ...` to show where the warning was created)
+
+[main 2026-10-27T18:20:23.948Z] Error: Error while decrypting the ciphertext provided to safeStorage.decryptString.
+    at _c.decrypt (file:///C:/Users/Owner/AppData/Local/Programs/Microsoft%20VS%20Code/e646868227/resources/app/out/mainImpl.js:47:19772)
+    at Object.call (file:///C:/Users/Owner/AppData/Local/Programs/Microsoft%20VS%20Code/e646868227/resources/app/out/mainImpl.js:34:5575)
+    at zu.onPromise (file:///C:/Users/Owner/AppData/Local/Programs/Microsoft%20VS%20Code/e646868227/resources/app/out/mainImpl.js:32:14903)
+    at zu.onRawMessage (file:///C:/Users/Owner/AppData/Local/Programs/Microsoft%20VS%20Code/e646868227/resources/app/out/mainImpl.js:32:14326)
+    at wl.value (file:///C:/Users/Owner/AppData/Local/Programs/Microsoft%20VS%20Code/e646868227/resources/app/out/mainImpl.js:32:13592)
+    at x._deliver (file:///C:/Users/Owner/AppData/Local/Programs/Microsoft%20VS%20Code/e646868227/resources/app/out/mainImpl.js:31:3644)
+    at x._deliverQueue (file:///C:/Users/Owner/AppData/Local/Programs/Microsoft%20VS%20Code/e646868227/resources/app/out/mainImpl.js:31:3733)
+    at x.fire (file:///C:/Users/Owner/AppData/Local/Programs/Microsoft%20VS%20Code/e646868227/resources/app/out/mainImpl.js:31:4067)
+    at wl.value (file:///C:/Users/Owner/AppData/Local/Programs/Microsoft%20VS%20Code/e646868227/resources/app/out/mainImpl.js:29:6009)
+    at x._deliver (file:///C:/Users/Owner/AppData/Local/Programs/Microsoft%20VS%20Code/e646868227/resources/app/out/mainImpl.js:31:3644)
+    at x.fire (file:///C:/Users/Owner/AppData/Local/Programs/Microsoft%20VS%20Code/e646868227/resources/app/out/mainImpl.js:31:3962)
+    at wl.value (file:///C:/Users/Owner/AppData/Local/Programs/Microsoft%20VS%20Code/e646868227/resources/app/out/mainImpl.js:29:6207)
+    at x._deliver (file:///C:/Users/Owner/AppData/Local/Programs/Microsoft%20VS%20Code/e646868227/resources/app/out/mainImpl.js:31:3644)
+    at x.fire (file:///C:/Users/Owner/AppData/Local/Programs/Microsoft%20VS%20Code/e646868227/resources/app/out/mainImpl.js:31:3962)
+    at ie (file:///C:/Users/Owner/AppData/Local/Programs/Microsoft%20VS%20Code/e646868227/resources/app/out/mainImpl.js:29:9649)
+    at IpcMainImpl.t (file:///C:/Users/Owner/AppData/Local/Programs/Microsoft%20VS%20Code/e646868227/resources/app/out/mainImpl.js:37:11290)
+    at IpcMainImpl.emit (node:events:514:28)
+    at Session.<anonymous> (node:electron/js2c/browser_init:2:119845)
+    at Session.emit (node:events:514:28)
+Unknown channel: agentHostClientByokLm
+Unknown channel: agentHostClientProxy
+Unknown channel: agentHostClientProxy
+Unknown channel: agentHostClientProxy
+[main 2026-10-27T18:21:36.464Z] Extension host with pid 75728 exited with code: 0, signal: unknown.

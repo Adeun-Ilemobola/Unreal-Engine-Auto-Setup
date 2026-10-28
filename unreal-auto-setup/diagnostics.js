@@ -6,7 +6,7 @@ const engine=require('./engine');
 const processApi=require('./processes');
 const generation=require('./generation');
 const modules=require('./modules');
-const core=require('./core');
+const {supportedVersion,numericAssociation}=require('./enginePolicy');
 async function present(filename) { try { await fs.stat(filename); return true; } catch { return false; } }
 
 // Structured findings keep reporting separate from any future repair actions.
@@ -70,15 +70,17 @@ async function collect(vscode,context,{discover=engine.candidates,processes=proc
   const generator=await generation.tool(info.path);
   add('Project generation','UnrealBuildTool',generator || 'Not found',!!generator);
   add('Project generation','Regeneration available',!!generator && info.compatible,!!generator && info.compatible);
+  if(context.globalStorageUri) add('Project generation','Recovery storage',path.join(context.globalStorageUri.fsPath,'regeneration-v1')+' (baseline.json, observed.json, document-*.json; no automatic replay)');
+  if(latest?.lastGeneration) add('Project generation','Last preservation',JSON.stringify(latest.lastGeneration.preservation),latest.lastGeneration.preservation?.status==='Unchanged');
   const moduleList=project ? await modules.discover(project.root) : [];
   add('Modules','Modules discovered',moduleList.length,moduleList.length>0);
   const preferred=project && modules.recent(context,project,moduleList);
   add('Modules','Selected/default module',preferred?.name || 'Choose a module');
   for(const module of moduleList) add('Modules',module.name,path.relative(project.root,module.buildFile)+' | '+module.layout+' | '+module.api+' | '+module.origin+' | '+(module.type || project.descriptor.Modules?.find(item=>item.Name===module.name)?.Type || 'Undeclared/unknown'));
-  const numeric=project && /^(\d+)\.(\d+)(?:\.\d+)?$/.exec(String(project.descriptor.EngineAssociation));
-  const canCreate=!!project && moduleList.length>0 && vscode.workspace.isTrusted && (project.config.get('unrealEngine.enginePath') ? info.compatible : numeric ? core.supportedVersion(+numeric[1],+numeric[2]) : info.compatible);
+  const numeric=project && numericAssociation(project.descriptor.EngineAssociation);
+  const canCreate=!!project && moduleList.length>0 && vscode.workspace.isTrusted && (project.config.get('unrealEngine.enginePath') ? info.compatible : numeric ? supportedVersion(+numeric[1],+numeric[2]) : info.compatible);
   add('Class generation','Available',canCreate,canCreate);
-  const canStructure=!!project && vscode.workspace.isTrusted && (project.config.get('unrealEngine.enginePath') ? info.compatible : numeric ? core.supportedVersion(+numeric[1],+numeric[2]) : info.compatible);
+  const canStructure=!!project && vscode.workspace.isTrusted && (project.config.get('unrealEngine.enginePath') ? info.compatible : numeric ? supportedVersion(+numeric[1],+numeric[2]) : info.compatible);
   add('Module creation','Available',canStructure,canStructure);
   add('Plugin creation','Available',canStructure,canStructure);
   if(project) for(const plugin of await modules.plugins(project.root)) {
@@ -98,7 +100,7 @@ async function collect(vscode,context,{discover=engine.candidates,processes=proc
   return findings;
 }
 function format(findings) {
-  return ['Unreal Engine Auto Setup â€” Project diagnostics',...findings.map(item=>'['+(item.ok?'OK':'CHECK')+'] '+item.section+' / '+item.label+': '+item.value)].join('\n');
+  return ['Unreal Engine Auto Setup — Project diagnostics',...findings.map(item=>'['+(item.ok?'OK':'CHECK')+'] '+item.section+' / '+item.label+': '+item.value)].join('\n');
 }
 async function latestLog(root) {
   const directory=path.join(root,'Saved','Logs');

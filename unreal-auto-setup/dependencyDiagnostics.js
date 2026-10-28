@@ -30,7 +30,7 @@ function analyze(text,filename,module,parsed,index) {
   }
   return results;
 }
-function register(vscode,context,service,applyAction) {
+function register(vscode,context,service) {
   if(!vscode.languages?.registerCodeActionsProvider) return {refresh(){},dispose(){}};
   const collection=vscode.languages.createDiagnosticCollection('unreal-dependencies');let timer,disposed=false,records=new Map(),revision=0;
   async function refresh() {

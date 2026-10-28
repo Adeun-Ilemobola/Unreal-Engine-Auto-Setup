@@ -35,3 +35,6 @@ venv/
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# Authorized disposable Phase 3A Unreal integration workspace only
+/.local-test-projects/Phase3AIntegration/

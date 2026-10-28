@@ -1,0 +1,134 @@
+[
+  {
+    "unchanged": true,
+    "after": "C47B1CBBB8911DC483BD7FC903C9AAFA1CDA3AD200ECE0BE390E10ED7281598F",
+    "file": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\c_cpp_properties.json",
+    "before": "C47B1CBBB8911DC483BD7FC903C9AAFA1CDA3AD200ECE0BE390E10ED7281598F"
+  },
+  {
+    "unchanged": true,
+    "after": "306AF55289DC3D0B2544970A70C2B62117EEF42A6F1F1DED2A1AFC354281D6EE",
+    "file": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\settings.json",
+    "before": "306AF55289DC3D0B2544970A70C2B62117EEF42A6F1F1DED2A1AFC354281D6EE"
+  },
+  {
+    "unchanged": true,
+    "after": "9FCC6A39C18623ABB5ED6EF39BDA5DCDEA33B1387C6429CEA34031843A59219A",
+    "file": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\tasks.json",
+    "before": "9FCC6A39C18623ABB5ED6EF39BDA5DCDEA33B1387C6429CEA34031843A59219A"
+  },
+  {
+    "unchanged": true,
+    "after": "C537290A66155C540D162CD543D37B8C89BE6BC614C0B9AA5192A79BB3652B4C",
+    "file": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.clang-format",
+    "before": "C537290A66155C540D162CD543D37B8C89BE6BC614C0B9AA5192A79BB3652B4C"
+  },
+  {
+    "unchanged": true,
+    "after": "C336D46DDA77425C4C16E43A715D9C256015F094764CF7895377665E70A09AE1",
+    "file": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.uproject",
+    "before": "C336D46DDA77425C4C16E43A715D9C256015F094764CF7895377665E70A09AE1"
+  },
+  {
+    "unchanged": true,
+    "after": "C6BD9880A8C2A35B11554B5A67089B2E9813098DDF9FE9629781A9D8E0CE3F2F",
+    "file": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\c_cpp_properties.json",
+    "before": "C6BD9880A8C2A35B11554B5A67089B2E9813098DDF9FE9629781A9D8E0CE3F2F"
+  },
+  {
+    "unchanged": true,
+    "after": "2E1019490003F1501DBE777C762442945C2A1E7EAEBD32B6283DDA38FBD7778F",
+    "file": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation.json",
+    "before": "2E1019490003F1501DBE777C762442945C2A1E7EAEBD32B6283DDA38FBD7778F"
+  },
+  {
+    "unchanged": true,
+    "after": "18E407620A24BB08605AA083DBB0549218BEB12DFB5A8DF79EA817B1E5577DF0",
+    "file": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default.json",
+    "before": "18E407620A24BB08605AA083DBB0549218BEB12DFB5A8DF79EA817B1E5577DF0"
+  },
+  {
+    "unchanged": true,
+    "after": "3DE39BFFE04CE32B3DB6F62278630F7CABA8E3C7DC83785F4EF97C1D33E97D86",
+    "file": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\AutoSetupValidation.0.rsp",
+    "before": "3DE39BFFE04CE32B3DB6F62278630F7CABA8E3C7DC83785F4EF97C1D33E97D86"
+  },
+  {
+    "unchanged": true,
+    "after": "5C18C76FA38A27C73817BDC5207DD5FE2A8C7D57FD5ED429B7D3059236F43B04",
+    "file": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\AutoSetupValidation.1.rsp",
+    "before": "5C18C76FA38A27C73817BDC5207DD5FE2A8C7D57FD5ED429B7D3059236F43B04"
+  },
+  {
+    "unchanged": true,
+    "after": "3DE39BFFE04CE32B3DB6F62278630F7CABA8E3C7DC83785F4EF97C1D33E97D86",
+    "file": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\AutoSetupValidation.2.rsp",
+    "before": "3DE39BFFE04CE32B3DB6F62278630F7CABA8E3C7DC83785F4EF97C1D33E97D86"
+  },
+  {
+    "unchanged": true,
+    "after": "7253E3875BF0A5D1F30334BE86EF351A57B6F0CEF5DDFD68005DFDC38180A4C8",
+    "file": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\ValidationPlugin.0.rsp",
+    "before": "7253E3875BF0A5D1F30334BE86EF351A57B6F0CEF5DDFD68005DFDC38180A4C8"
+  },
+  {
+    "unchanged": true,
+    "after": "7253E3875BF0A5D1F30334BE86EF351A57B6F0CEF5DDFD68005DFDC38180A4C8",
+    "file": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\ValidationPlugin.2.rsp",
+    "before": "7253E3875BF0A5D1F30334BE86EF351A57B6F0CEF5DDFD68005DFDC38180A4C8"
+  },
+  {
+    "unchanged": true,
+    "after": "CB0D340742698F0C62709568F3346A04B0D79D42398C655DE20570B364D1E10E",
+    "file": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\ValidationRuntime.0.rsp",
+    "before": "CB0D340742698F0C62709568F3346A04B0D79D42398C655DE20570B364D1E10E"
+  },
+  {
+    "unchanged": true,
+    "after": "D7FCBD6D1E0CFF0EC23AD04FCEE5D5B3801A908C9AF7DAED7A741E107471A5AD",
+    "file": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\ValidationRuntime.1.rsp",
+    "before": "D7FCBD6D1E0CFF0EC23AD04FCEE5D5B3801A908C9AF7DAED7A741E107471A5AD"
+  },
+  {
+    "unchanged": true,
+    "after": "3DE39BFFE04CE32B3DB6F62278630F7CABA8E3C7DC83785F4EF97C1D33E97D86",
+    "file": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\AutoSetupValidation.0.rsp",
+    "before": "3DE39BFFE04CE32B3DB6F62278630F7CABA8E3C7DC83785F4EF97C1D33E97D86"
+  },
+  {
+    "unchanged": true,
+    "after": "5C18C76FA38A27C73817BDC5207DD5FE2A8C7D57FD5ED429B7D3059236F43B04",
+    "file": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\AutoSetupValidation.1.rsp",
+    "before": "5C18C76FA38A27C73817BDC5207DD5FE2A8C7D57FD5ED429B7D3059236F43B04"
+  },
+  {
+    "unchanged": true,
+    "after": "3DE39BFFE04CE32B3DB6F62278630F7CABA8E3C7DC83785F4EF97C1D33E97D86",
+    "file": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\AutoSetupValidation.2.rsp",
+    "before": "3DE39BFFE04CE32B3DB6F62278630F7CABA8E3C7DC83785F4EF97C1D33E97D86"
+  },
+  {
+    "unchanged": true,
+    "after": "7253E3875BF0A5D1F30334BE86EF351A57B6F0CEF5DDFD68005DFDC38180A4C8",
+    "file": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ValidationPlugin.0.rsp",
+    "before": "7253E3875BF0A5D1F30334BE86EF351A57B6F0CEF5DDFD68005DFDC38180A4C8"
+  },
+  {
+    "unchanged": true,
+    "after": "7253E3875BF0A5D1F30334BE86EF351A57B6F0CEF5DDFD68005DFDC38180A4C8",
+    "file": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ValidationPlugin.2.rsp",
+    "before": "7253E3875BF0A5D1F30334BE86EF351A57B6F0CEF5DDFD68005DFDC38180A4C8"
+  },
+  {
+    "unchanged": true,
+    "after": "CB0D340742698F0C62709568F3346A04B0D79D42398C655DE20570B364D1E10E",
+    "file": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ValidationRuntime.0.rsp",
+    "before": "CB0D340742698F0C62709568F3346A04B0D79D42398C655DE20570B364D1E10E"
+  },
+  {
+    "unchanged": true,
+    "after": "D7FCBD6D1E0CFF0EC23AD04FCEE5D5B3801A908C9AF7DAED7A741E107471A5AD",
+    "file": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ValidationRuntime.1.rsp",
+    "before": "D7FCBD6D1E0CFF0EC23AD04FCEE5D5B3801A908C9AF7DAED7A741E107471A5AD"
+  }
+]

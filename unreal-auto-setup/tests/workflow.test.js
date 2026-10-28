@@ -5,7 +5,7 @@ const path = require('node:path');
 const os = require('node:os');
 const vm = require('node:vm');
 
-async function fixture(trusted=true, missingExtensions=false) {
+async function fixture(trusted=true, missingExtensions=false, hooks={}) {
   const root = await fs.mkdtemp(path.join(os.tmpdir(),'ad-workflow-'));
   await fs.mkdir(path.join(root,'Source'));
   await fs.writeFile(path.join(root,'NewGame.uproject'),JSON.stringify({EngineAssociation:'5.8'}));
@@ -21,6 +21,7 @@ async function fixture(trusted=true, missingExtensions=false) {
       if (target === 3 && key === 'files.associations') throw new Error('Unable to write to Folder Settings because files.associations does not support the folder resource scope.');
       assert.equal(target,2,'single-project configuration must use Workspace scope');
       values[(prefix?prefix+'.':'')+key]=value;updates.push(key);
+      await hooks.updated?.(key,vscode);
     }
   });
   const vscode={
@@ -31,9 +32,9 @@ async function fixture(trusted=true, missingExtensions=false) {
     commands:{registerCommand(name,fn){registered.set(name,fn);return disposable;},async executeCommand(name,id){invoked.push(name);if(name==='workbench.extensions.installExtension') installed.add(id);}}
   };
   const context={subscriptions:[],workspaceState:{get:key=>state.get(key),update:async(key,value)=>state.set(key,value)}};
-  const sandbox={require:name=>name==='vscode'?vscode:name==='./core'?require('../core'):name==='./runner'?{register:async()=>{},editorTargets:require('../runner').editorTargets}:name==='./engine'?{resolve:async()=>undefined,remember:async()=>{}}:name==='./diagnostics'?{register(){}}:name.startsWith('./')?require('../'+name.slice(2)):require(name),module:{exports:{}},process:{platform:'win32'},console};
+  const sandbox={require:name=>name==='vscode'?vscode:name==='./core'?require('../core'):name==='./runner'?{register:async()=>{},editorTargets:require('../runner').editorTargets}:name==='./engine'?{resolve:async()=>{await hooks.resolve?.(vscode);return undefined;},remember:async()=>{}}:name==='./diagnostics'?{register(){}}:name.startsWith('./')?require('../'+name.slice(2)):require(name),module:{exports:{}},process:{platform:'win32'},console};
   vm.runInNewContext(await fs.readFile(path.join(__dirname,'..','extension.js'),'utf8'),sandbox);
-  return {root,values,errors,invoked,updates,context,activate:sandbox.module.exports.activate,registered,cleanup:()=>fs.rm(root,{recursive:true,force:true})};
+  return {root,values,errors,invoked,updates,context,vscode,activate:sandbox.module.exports.activate,registered,cleanup:()=>fs.rm(root,{recursive:true,force:true})};
 }
 test('new project uses its own target, keeps settings, creates files once',async()=>{
   const f=await fixture();
@@ -57,6 +58,19 @@ test('new project uses its own target, keeps settings, creates files once',async
     await f.registered.get('unrealSetup.setup')();
     assert.equal(await fs.readFile(path.join(f.root,'.clang-format'),'utf8'),'custom format');
     assert.equal(f.values['tasks.tasks'].length,1);
+  } finally {await f.cleanup();}
+});
+function barrier(){let entered,release;return {entered:new Promise(r=>entered=r),wait:()=>{entered();return new Promise(r=>release=r);},release:()=>release()};}
+for(const stage of ['engine','dialog','update']) test('setup abandons stale workspace after '+stage+' barrier',async()=>{
+  const b=barrier();let first=true;
+  const f=await fixture(true,false,stage==='engine'?{resolve:()=>b.wait()}:stage==='update'?{updated:()=>{if(first){first=false;return b.wait();}}}:{});
+  try {
+    if(stage==='dialog') {await fs.writeFile(path.join(f.root,'Other.uproject'),'{"EngineAssociation":"5.8"}');f.vscode.window.showQuickPick=async()=>{await b.wait();return 'NewGame.uproject';};}
+    const pending=f.activate(f.context);await b.entered;
+    f.vscode.workspace.workspaceFolders=[{uri:{scheme:'file',fsPath:path.join(f.root,'different'),toString:()=>f.root+'/different'}}];
+    const before=f.updates.length;b.release();await pending;
+    assert.equal(f.updates.length,before,'no updates after workspace changes');
+    assert.equal(f.invoked.length,0);assert.ok(f.errors.some(e=>/workspace|project.*changed/i.test(e)));
   } finally {await f.cleanup();}
 });
 test('restricted mode performs no writes and no commands',async()=>{

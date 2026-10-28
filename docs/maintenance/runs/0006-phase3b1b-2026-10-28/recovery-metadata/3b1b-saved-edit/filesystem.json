@@ -1,0 +1,508 @@
+{
+  "events": [
+    {
+      "sequence": 1,
+      "delivered": "2026-10-28T04:47:43.680Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.clang-format"
+    },
+    {
+      "sequence": 2,
+      "delivered": "2026-10-28T04:47:43.680Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.clang-format"
+    },
+    {
+      "sequence": 3,
+      "delivered": "2026-10-28T04:47:43.681Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.clang-format"
+    },
+    {
+      "sequence": 4,
+      "delivered": "2026-10-28T04:47:46.654Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.ignore"
+    },
+    {
+      "sequence": 5,
+      "delivered": "2026-10-28T04:47:46.655Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.ignore"
+    },
+    {
+      "sequence": 6,
+      "delivered": "2026-10-28T04:47:46.655Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.ignore"
+    },
+    {
+      "sequence": 7,
+      "delivered": "2026-10-28T04:47:46.662Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration.json"
+    },
+    {
+      "sequence": 8,
+      "delivered": "2026-10-28T04:47:46.663Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\ProbeRuntime.0.rsp"
+    },
+    {
+      "sequence": 9,
+      "delivered": "2026-10-28T04:47:46.663Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\ProbeRuntime.0.rsp"
+    },
+    {
+      "sequence": 10,
+      "delivered": "2026-10-28T04:47:46.663Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\ProbeRuntime.0.rsp"
+    },
+    {
+      "sequence": 11,
+      "delivered": "2026-10-28T04:47:46.664Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\ProbeRuntime.0.rsp"
+    },
+    {
+      "sequence": 12,
+      "delivered": "2026-10-28T04:47:46.664Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\Phase3AIntegration.1.rsp"
+    },
+    {
+      "sequence": 13,
+      "delivered": "2026-10-28T04:47:46.665Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\Phase3AIntegration.1.rsp"
+    },
+    {
+      "sequence": 14,
+      "delivered": "2026-10-28T04:47:46.665Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\Phase3AIntegration.1.rsp"
+    },
+    {
+      "sequence": 15,
+      "delivered": "2026-10-28T04:47:46.665Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\Phase3AIntegration.1.rsp"
+    },
+    {
+      "sequence": 16,
+      "delivered": "2026-10-28T04:47:46.665Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\ProbePlugin.2.rsp"
+    },
+    {
+      "sequence": 17,
+      "delivered": "2026-10-28T04:47:46.665Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\ProbePlugin.2.rsp"
+    },
+    {
+      "sequence": 18,
+      "delivered": "2026-10-28T04:47:46.666Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\ProbePlugin.2.rsp"
+    },
+    {
+      "sequence": 19,
+      "delivered": "2026-10-28T04:47:46.666Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\ProbePlugin.2.rsp"
+    },
+    {
+      "sequence": 20,
+      "delivered": "2026-10-28T04:47:46.666Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration.json"
+    },
+    {
+      "sequence": 21,
+      "delivered": "2026-10-28T04:47:46.667Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default.json"
+    },
+    {
+      "sequence": 22,
+      "delivered": "2026-10-28T04:47:46.667Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\ProbeRuntime.0.rsp"
+    },
+    {
+      "sequence": 23,
+      "delivered": "2026-10-28T04:47:46.667Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\ProbeRuntime.0.rsp"
+    },
+    {
+      "sequence": 24,
+      "delivered": "2026-10-28T04:47:46.668Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\ProbeRuntime.0.rsp"
+    },
+    {
+      "sequence": 25,
+      "delivered": "2026-10-28T04:47:46.668Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\ProbeRuntime.0.rsp"
+    },
+    {
+      "sequence": 26,
+      "delivered": "2026-10-28T04:47:46.668Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\Phase3AIntegration.1.rsp"
+    },
+    {
+      "sequence": 27,
+      "delivered": "2026-10-28T04:47:46.669Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\Phase3AIntegration.1.rsp"
+    },
+    {
+      "sequence": 28,
+      "delivered": "2026-10-28T04:47:46.669Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\Phase3AIntegration.1.rsp"
+    },
+    {
+      "sequence": 29,
+      "delivered": "2026-10-28T04:47:46.669Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\Phase3AIntegration.1.rsp"
+    },
+    {
+      "sequence": 30,
+      "delivered": "2026-10-28T04:47:46.669Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\ProbePlugin.2.rsp"
+    },
+    {
+      "sequence": 31,
+      "delivered": "2026-10-28T04:47:46.670Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\ProbePlugin.2.rsp"
+    },
+    {
+      "sequence": 32,
+      "delivered": "2026-10-28T04:47:46.670Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\ProbePlugin.2.rsp"
+    },
+    {
+      "sequence": 33,
+      "delivered": "2026-10-28T04:47:46.670Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\ProbePlugin.2.rsp"
+    },
+    {
+      "sequence": 34,
+      "delivered": "2026-10-28T04:47:46.670Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default.json"
+    },
+    {
+      "sequence": 35,
+      "delivered": "2026-10-28T04:47:46.671Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\c_cpp_properties.json"
+    },
+    {
+      "sequence": 36,
+      "delivered": "2026-10-28T04:47:46.671Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\c_cpp_properties.json"
+    },
+    {
+      "sequence": 37,
+      "delivered": "2026-10-28T04:47:46.671Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\c_cpp_properties.json"
+    },
+    {
+      "sequence": 38,
+      "delivered": "2026-10-28T04:47:46.683Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.code-workspace"
+    },
+    {
+      "sequence": 39,
+      "delivered": "2026-10-28T04:47:46.683Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.code-workspace"
+    },
+    {
+      "sequence": 40,
+      "delivered": "2026-10-28T04:47:46.684Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.code-workspace"
+    },
+    {
+      "sequence": 41,
+      "delivered": "2026-10-28T04:47:46.684Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.code-workspace"
+    },
+    {
+      "sequence": 42,
+      "delivered": "2026-10-28T04:47:46.684Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.code-workspace"
+    },
+    {
+      "sequence": 43,
+      "delivered": "2026-10-28T04:47:46.685Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration.json"
+    },
+    {
+      "sequence": 44,
+      "delivered": "2026-10-28T04:47:46.685Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\ProbeRuntime.0.rsp"
+    },
+    {
+      "sequence": 45,
+      "delivered": "2026-10-28T04:47:46.685Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\ProbeRuntime.0.rsp"
+    },
+    {
+      "sequence": 46,
+      "delivered": "2026-10-28T04:47:46.685Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\ProbeRuntime.0.rsp"
+    },
+    {
+      "sequence": 47,
+      "delivered": "2026-10-28T04:47:46.685Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\Phase3AIntegration.1.rsp"
+    },
+    {
+      "sequence": 48,
+      "delivered": "2026-10-28T04:47:46.686Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\Phase3AIntegration.1.rsp"
+    },
+    {
+      "sequence": 49,
+      "delivered": "2026-10-28T04:47:46.686Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\Phase3AIntegration.1.rsp"
+    },
+    {
+      "sequence": 50,
+      "delivered": "2026-10-28T04:47:46.686Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\ProbePlugin.2.rsp"
+    },
+    {
+      "sequence": 51,
+      "delivered": "2026-10-28T04:47:46.686Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\ProbePlugin.2.rsp"
+    },
+    {
+      "sequence": 52,
+      "delivered": "2026-10-28T04:47:46.686Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\ProbePlugin.2.rsp"
+    },
+    {
+      "sequence": 53,
+      "delivered": "2026-10-28T04:47:46.686Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration.json"
+    },
+    {
+      "sequence": 54,
+      "delivered": "2026-10-28T04:47:46.687Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default.json"
+    },
+    {
+      "sequence": 55,
+      "delivered": "2026-10-28T04:47:46.687Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ProbeRuntime.0.rsp"
+    },
+    {
+      "sequence": 56,
+      "delivered": "2026-10-28T04:47:46.687Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ProbeRuntime.0.rsp"
+    },
+    {
+      "sequence": 57,
+      "delivered": "2026-10-28T04:47:46.687Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ProbeRuntime.0.rsp"
+    },
+    {
+      "sequence": 58,
+      "delivered": "2026-10-28T04:47:46.687Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\Phase3AIntegration.1.rsp"
+    },
+    {
+      "sequence": 59,
+      "delivered": "2026-10-28T04:47:46.688Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\Phase3AIntegration.1.rsp"
+    },
+    {
+      "sequence": 60,
+      "delivered": "2026-10-28T04:47:46.688Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\Phase3AIntegration.1.rsp"
+    },
+    {
+      "sequence": 61,
+      "delivered": "2026-10-28T04:47:46.688Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ProbePlugin.2.rsp"
+    },
+    {
+      "sequence": 62,
+      "delivered": "2026-10-28T04:47:46.688Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ProbePlugin.2.rsp"
+    },
+    {
+      "sequence": 63,
+      "delivered": "2026-10-28T04:47:46.688Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ProbePlugin.2.rsp"
+    },
+    {
+      "sequence": 64,
+      "delivered": "2026-10-28T04:47:46.689Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default.json"
+    },
+    {
+      "sequence": 65,
+      "delivered": "2026-10-28T04:47:46.689Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\c_cpp_properties.json"
+    },
+    {
+      "sequence": 66,
+      "delivered": "2026-10-28T04:47:46.689Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\c_cpp_properties.json"
+    },
+    {
+      "sequence": 67,
+      "delivered": "2026-10-28T04:47:46.743Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\c_cpp_properties.json"
+    },
+    {
+      "sequence": 68,
+      "delivered": "2026-10-28T04:47:46.743Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\c_cpp_properties.json"
+    },
+    {
+      "sequence": 69,
+      "delivered": "2026-10-28T04:47:46.744Z",
+      "deliveryPhase": "Executing",
+      "type": "change",
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\c_cpp_properties.json"
+    }
+  ],
+  "roots": [
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration",
+      "recursive": false,
+      "available": true
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode",
+      "recursive": true,
+      "available": true
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode",
+      "recursive": true,
+      "available": true
+    }
+  ],
+  "errors": [],
+  "dropped": 0,
+  "complete": true,
+  "writerIdentityKnown": false
+}

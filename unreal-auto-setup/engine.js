@@ -3,9 +3,8 @@ const fs = require('node:fs/promises');
 const path = require('node:path');
 const {execFile} = require('node:child_process');
 const {promisify} = require('node:util');
-const core = require('./core');
+const {supportedVersion,numericAssociation} = require('./enginePolicy');
 const {protectSettings} = require('./project');
-const numericAssociation = value=>/^(\d+)\.(\d+)(?:\.\d+)?$/.exec(String(value || ''));
 function normalize(root) { root=path.resolve(root); return path.basename(root).toLowerCase()==='engine' ? path.dirname(root) : root; }
 async function exists(filename) { try { return (await fs.stat(filename)).isFile(); } catch { return false; } }
 async function inspect(root,association) {
@@ -16,7 +15,7 @@ async function inspect(root,association) {
     const version=JSON.parse((await fs.readFile(path.join(root,'Engine','Build','Build.version'),'utf8')).replace(/^\uFEFF/,''));
     result.version=version;
     const associationVersion=numericAssociation(association);
-    result.compatible=core.supportedVersion(version.MajorVersion,version.MinorVersion) && (!associationVersion || (+associationVersion[1]===version.MajorVersion && +associationVersion[2]===version.MinorVersion));
+    result.compatible=supportedVersion(version.MajorVersion,version.MinorVersion) && (!associationVersion || (+associationVersion[1]===version.MajorVersion && +associationVersion[2]===version.MinorVersion));
     if (!result.compatible) result.error='Engine must be UE 5.8+ and match the numeric project association';
   } catch(error) { result.error='Cannot read Build.version: '+error.message; }
   return result;
@@ -41,29 +40,33 @@ async function candidates(association,{readFile=fs.readFile,registry=promisify(e
   return [...new Set(roots.map(normalize))];
 }
 async function resolve(project,{pick,discover=candidates,requireBuild=true,requireEditor=true}={}) {
+  const usable=result=>result.compatible && (!requireBuild || result.build) && (!requireEditor || result.editor);
   const configured=project.config.get('unrealEngine.enginePath');
   const association=project.descriptor.EngineAssociation;
   // Explicit configuration remains authoritative; do not silently replace user choices.
   if (configured) {
     const result=await inspect(configured,association);
-    if (!result.compatible || (requireBuild && !result.build) || (requireEditor && !result.editor)) throw new Error(result.error || 'Configured engine is missing '+(requireBuild && !result.build ? 'Build.bat' : 'UnrealEditor.exe')+'. Correct unrealEngine.enginePath.');
+    if (!usable(result)) throw new Error(result.error || 'Configured engine is missing '+(requireBuild && !result.build ? 'Build.bat' : 'UnrealEditor.exe')+'. Correct unrealEngine.enginePath.');
     return result;
   }
   for (const root of await discover(association)) {
     const result=await inspect(root,association);
-    if (result.compatible && result.build && result.editor) return result;
+    if (usable(result)) return result;
   }
   if (!pick) return undefined;
   const root=await pick();
   if (!root) return undefined;
   const result=await inspect(root,association);
-  if (!result.compatible || (requireBuild && !result.build) || (requireEditor && !result.editor)) throw new Error(result.error || 'Selected engine is missing required Build.bat/UnrealEditor.exe files.');
+  if (!usable(result)) throw new Error(result.error || 'Selected engine is missing required Build.bat/UnrealEditor.exe files.');
   return result;
 }
 async function remember(vscode,project,result) {
   if (!result || project.config.get('unrealEngine.enginePath')) return;
+  return require('./generationGuard').mutate([project.root], async()=>{
   if (!vscode.workspace.isTrusted) throw new Error('Trust the workspace before remembering its engine.');
   await protectSettings(project.root,vscode);
+  project.assertCurrent?.();
   await project.config.update('unrealEngine.enginePath',result.path,vscode.ConfigurationTarget.Workspace);
+  });
 }
 module.exports={inspect,candidates,resolve,remember,normalize};

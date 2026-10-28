@@ -1,0 +1,32 @@
+{
+  "branch": "main",
+  "head": "dc91401b7e9eed159de80cc96713e58dfdd0a3e1",
+  "baselineFilesUnchanged": 156,
+  "intendedExistingFilesChanged": [
+    "unreal-auto-setup\\classFiles.js",
+    "unreal-auto-setup\\contracts.js",
+    "unreal-auto-setup\\core.js",
+    "unreal-auto-setup\\creation.js",
+    "unreal-auto-setup\\diagnostics.js",
+    "unreal-auto-setup\\engine.js",
+    "unreal-auto-setup\\extension.js",
+    "unreal-auto-setup\\generation.js",
+    "unreal-auto-setup\\runner.js",
+    "unreal-auto-setup\\tests\\generation-conflict.test.js",
+    "unreal-auto-setup\\tests\\generation.test.js",
+    "unreal-auto-setup\\tests\\helpers.js",
+    "docs\\DEVELOPMENT.md",
+    "docs\\maintenance\\INDEX.md"
+  ],
+  "fixtureInitialFilesChecked": 37,
+  "fixtureChanged": [
+    "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\c_cpp_properties.json",
+    "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default.json",
+    "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration.json",
+    "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.clang-format"
+  ],
+  "fixtureSourceDescriptorAssets": "unchanged",
+  "promptExact": true,
+  "promptSHA256": "9473A15929D20B9E98B07269FA2CCC4727093D50760AE146FD16DEBBBED7D4DF",
+  "manifestUnchanged": true
+}

@@ -1,0 +1,20 @@
+
+[main 2026-10-28T04:43:14.161Z] [node-compile-cache] main: packaged cache enabled (status: enabled, configured: C:\Users\Owner\AppData\Local\Programs\Microsoft VS Code\e646868227\resources\app\node-compile-cache\main, active: C:\Users\Owner\AppData\Local\Programs\Microsoft VS Code\e646868227\resources\app\node-compile-cache\main\v24.21.0-x64-c3a7e8f2)
+[main 2026-10-28T04:43:14.253Z] StorageMainService: creating application shared storage
+[main 2026-10-28T04:43:14.336Z] [shared storage] Creating shared storage database at 'c:\Users\Owner\.vscode-shared\sharedStorage\state.vscdb' (wasCreated: false)
+[main 2026-10-28T04:43:14.337Z] [shared storage] Initializing fallback application storage (path: c:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\host-3b1b-ordinary\User\globalStorage\state.vscdb)
+[main 2026-10-28T04:43:14.363Z] [shared storage] Fallback application storage initialized with 3 items
+[main 2026-10-28T04:43:15.151Z] update#setState idle
+[main 2026-10-28T04:43:15.178Z] AgentHostProcessManager: agent host started
+(node:13288) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `Code --trace-deprecation ...` to show where the warning was created)
+[main 2026-10-28T04:43:16.052Z] [AgentHost:stderr] (node:27656) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `Code --trace-deprecation ...` to show where the warning was created)
+
+Unknown channel: agentHostClientByokLm
+Unknown channel: agentHostClientProxy
+Unknown channel: agentHostClientProxy
+Unknown channel: agentHostClientProxy
+[main 2026-10-28T04:43:45.213Z] update#setState checking for updates
+[main 2026-10-28T04:43:45.250Z] update#setState idle
+[main 2026-10-28T04:47:19.229Z] Extension host with pid 77648 exited with code: 0, signal: unknown.

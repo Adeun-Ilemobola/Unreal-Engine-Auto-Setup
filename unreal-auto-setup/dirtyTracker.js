@@ -1,7 +1,7 @@
 'use strict';
 const path=require('node:path'),fs=require('node:fs/promises');
+const {inside}=require('./paths');
 const ignored=/^(Binaries|Intermediate|Saved|DerivedDataCache|\.git)$/i;
-function inside(root,file) {const rel=path.relative(root,file);return !!rel && !rel.startsWith('..'+path.sep) && !path.isAbsolute(rel);}
 function classify(project,modules,file) {
   if(!inside(project.root,file) || path.relative(project.root,file).split(path.sep).some(p=>ignored.test(p))) return;
   if(file===project.filename || /\.uplugin$/i.test(file) && inside(path.join(project.root,'Plugins'),file) || /\.Target\.cs$/i.test(file) && inside(path.join(project.root,'Source'),file)) return 'Structure';

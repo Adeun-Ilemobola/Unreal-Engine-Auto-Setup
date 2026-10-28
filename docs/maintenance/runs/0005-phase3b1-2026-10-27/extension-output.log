@@ -1,0 +1,77 @@
+2026-10-27T23:00:39.884Z Unreal regeneration: Conflict. Automatic restoration refused. Review baseline/observed copies in c:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\host-data\User\globalStorage\local-tools.unreal-project-tools\regeneration-v1\transaction-2
+2026-10-27T23:00:39.884Z Project generation Conflict: Phase3AIntegration.uproject
+2026-10-27T23:00:39.884Z [Build] Manual generate Conflict: Automatic restoration refused. Review baseline/observed copies in c:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\host-data\User\globalStorage\local-tools.unreal-project-tools\regeneration-v1\transaction-2
+2026-10-27T23:01:16.596Z Unreal regeneration: Conflict. Automatic restoration refused. Review baseline/observed copies in c:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\host-data\User\globalStorage\local-tools.unreal-project-tools\regeneration-v1\transaction-3
+2026-10-27T23:01:16.596Z Project generation Conflict: Phase3AIntegration.uproject
+2026-10-27T23:01:16.596Z [Build] Manual generate Conflict: Automatic restoration refused. Review baseline/observed copies in c:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\host-data\User\globalStorage\local-tools.unreal-project-tools\regeneration-v1\transaction-3
+2026-10-27T23:02:17.681Z Build Succeeded: Phase3AIntegration.uproject (Phase3AIntegrationEditor / Win64 / Development).
+2026-10-27T23:02:17.681Z [Build] Manual build Succeeded: Manual build
+Unreal Engine Auto Setup — Project diagnostics
+[OK] VS Code / Workspace trust: true
+[OK] VS Code / Microsoft C/C++: true
+[OK] VS Code / Skybox Unreal integration: true
+[OK] Project / .uproject found: Phase3AIntegration.uproject
+[OK] Project / Selected project: Phase3AIntegration.uproject
+[OK] Project / Source directory: true
+[OK] Engine / Engine path: C:\Program Files\Epic Games\UE_5.8
+[OK] Engine / Detected version: 5.8.4
+[OK] Engine / Version compatibility: Meets 5.8+ check; numeric association matches when present
+[OK] Engine / Build.bat available: true
+[OK] Engine / UnrealEditor.exe available: true
+[OK] VS Code / .vscode/settings.json: true
+[OK] VS Code / .vscode/c_cpp_properties.json: true
+[OK] VS Code / .vscode/tasks.json: true
+[OK] VS Code / .clang-format: true
+[OK] Project / Selected target: Phase3AIntegrationEditor
+[OK] Build configuration / target: Phase3AIntegrationEditor
+[OK] Build configuration / platform: Win64
+[OK] Build configuration / configuration: Development
+[OK] Runtime watcher / Enabled: false
+[OK] Runtime watcher / Interval seconds: 0
+[OK] Automation / Mode: watch
+[OK] Automation / Delay: 30
+[OK] Automation / Reconciliation: 0
+[OK] Automation / Pending: Idle
+[OK] Automation / Blocked: No
+[OK] Automation / SourceDirty: 0
+[OK] Automation / StructuralDirty: 0
+[OK] Automation / Trigger: None
+[OK] Automation / LastAutomatic: "None"
+[OK] Automation / Strategy: External UBT
+[OK] Automation / LiveCoding: {"support":"Unsupported","canTriggerExternally":false,"state":"Unavailable","detail":"No validated external Live Coding trigger. Editor session enablement is not inferred from saved settings."}
+[OK] Runtime / Editor state: Stopped
+[OK] Runtime / Matching PIDs: None
+[OK] Runtime / Matching executable: None
+[OK] Debugger / Microsoft C/C++ available: true
+[OK] Debugger / Attach target available: false
+[OK] Debugger / Active debug session: None
+[OK] Build / Latest extension build: {"target":"Phase3AIntegrationEditor","platform":"Win64","configuration":"Development","startTime":"2026-10-27T23:01:35.194Z","completionTime":"2026-10-27T23:02:17.680Z","status":"Succeeded","success":true,"exitCode":0}
+[CHECK] Build / Project metadata: Project Files May Need Refresh
+[OK] Project generation / UnrealBuildTool: C:\Program Files\Epic Games\UE_5.8\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.exe
+[OK] Project generation / Regeneration available: true
+[OK] Project generation / Recovery storage: c:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\host-data\User\globalStorage\local-tools.unreal-project-tools\regeneration-v1 (baseline.json, observed.json, document-*.json; no automatic replay)
+[CHECK] Project generation / Last preservation: {"status":"Conflict","conflicts":[{"path":"c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\Phase3AIntegration.2.rsp","reason":"Content or metadata changed; writer unknown"},{"path":"c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\ProbeRuntime.0.rsp","reason":"Content or metadata changed; writer unknown"},{"path":"c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default.json","reason":"Content or metadata changed; writer unknown"},{"path":"c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\Phase3AIntegration.2.rsp","reason":"Content or metadata changed; writer unknown"},{"path":"c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\ProbeRuntime.0.rsp","reason":"Content or metadata changed; writer unknown"},{"path":"c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration.json","reason":"Content or metadata changed; writer unknown"},{"path":"c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\c_cpp_properties.json","reason":"Content or metadata changed; writer unknown"},{"path":"c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.ignore","reason":"Content or metadata changed; writer unknown"},{"path":"c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.code-workspace","reason":"Content or metadata changed; writer unknown"},{"path":"C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\Phase3AIntegration.2.rsp","reason":"Content or metadata changed; writer unknown"},{"path":"C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ProbeRuntime.0.rsp","reason":"Content or metadata changed; writer unknown"},{"path":"C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default.json","reason":"Content or metadata changed; writer unknown"},{"path":"C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\Phase3AIntegration.2.rsp","reason":"Content or metadata changed; writer unknown"},{"path":"C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\ProbeRuntime.0.rsp","reason":"Content or metadata changed; writer unknown"},{"path":"C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration.json","reason":"Content or metadata changed; writer unknown"},{"path":"C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\c_cpp_properties.json","reason":"Content or metadata changed; writer unknown"},{"path":"c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\ProbePlugin.1.rsp","reason":"Created during generation; writer unknown"},{"path":"c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\ProbePlugin.1.rsp","reason":"Created during generation; writer unknown"},{"path":"C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ProbePlugin.1.rsp","reason":"Created during generation; writer unknown"},{"path":"C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\ProbePlugin.1.rsp","reason":"Created during generation; writer unknown"}],"operationId":"e9b515e5-1ba4-460e-8568-f1b339189b28","recoveryLocation":"c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\host-data\\User\\globalStorage\\local-tools.unreal-project-tools\\regeneration-v1\\transaction-3","elapsedMs":4374.993299999995,"recoveryBytes":3271810}
+[OK] Modules / Modules discovered: 3
+[OK] Modules / Selected/default module: Phase3AIntegration
+[OK] Modules / Phase3AIntegration: Source\Phase3AIntegration\Phase3AIntegration.Build.cs | Flat | PHASE3AINTEGRATION_API | project | Runtime
+[OK] Modules / ProbePlugin: Plugins\ProbePlugin\Source\ProbePlugin\ProbePlugin.Build.cs | Public / Private | PROBEPLUGIN_API | plugin | Runtime
+[OK] Modules / ProbeRuntime: Source\ProbeRuntime\ProbeRuntime.Build.cs | Public / Private | PROBERUNTIME_API | project | Runtime
+[OK] Class generation / Available: true
+[OK] Module creation / Available: true
+[OK] Plugin creation / Available: true
+[OK] Plugins / ProbePlugin: Plugins\ProbePlugin\ProbePlugin.uplugin | Modules: 1 | Discoverable: Yes | Enabled by descriptor: true (target/platform restrictions may apply)
+[OK] Dependencies / Phase3AIntegration: Editable | Public: Core, CoreUObject, Engine, InputCore, EnhancedInput | Private: ProbeRuntime
+[OK] Dependencies / ProbePlugin: Editable | Public: Core, CoreUObject, Engine | Private: 
+[OK] Dependencies / ProbeRuntime: Editable | Public: Core, CoreUObject, Engine | Private: 
+[OK] Dependency Index / State: {"status":"Not indexed","headers":7}
+[OK] Dependency relationships / Review: Phase3AIntegration: Core not in the current module index (may require indexing).
+[OK] Dependency relationships / Review: Phase3AIntegration: CoreUObject not in the current module index (may require indexing).
+[OK] Dependency relationships / Review: Phase3AIntegration: Engine not in the current module index (may require indexing).
+[OK] Dependency relationships / Review: Phase3AIntegration: InputCore not in the current module index (may require indexing).
+[OK] Dependency relationships / Review: Phase3AIntegration: EnhancedInput not in the current module index (may require indexing).
+[OK] Dependency relationships / Review: ProbePlugin: Core not in the current module index (may require indexing).
+[OK] Dependency relationships / Review: ProbePlugin: CoreUObject not in the current module index (may require indexing).
+[OK] Dependency relationships / Review: ProbePlugin: Engine not in the current module index (may require indexing).
+[OK] Dependency relationships / Review: ProbeRuntime: Core not in the current module index (may require indexing).
+[OK] Dependency relationships / Review: ProbeRuntime: CoreUObject not in the current module index (may require indexing).
+[OK] Dependency relationships / Review: ProbeRuntime: Engine not in the current module index (may require indexing).

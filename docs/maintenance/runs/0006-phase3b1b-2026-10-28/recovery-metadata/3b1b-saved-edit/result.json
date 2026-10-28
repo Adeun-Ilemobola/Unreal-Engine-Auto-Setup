@@ -1,0 +1,146 @@
+{
+  "schema": 1,
+  "operationId": "a28db104-9ef5-4538-bba4-7ee4c12784dd",
+  "project": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.uproject",
+  "startTime": "2026-10-28T04:47:41.880Z",
+  "completionTime": "2026-10-28T04:47:46.841Z",
+  "status": "Conflict",
+  "success": false,
+  "exitCode": 0,
+  "execution": {
+    "startTime": "2026-10-28T04:47:41.880Z",
+    "completionTime": "2026-10-28T04:47:46.841Z",
+    "status": "Succeeded",
+    "success": true,
+    "exitCode": 0
+  },
+  "preservation": {
+    "status": "Conflict",
+    "conflicts": [
+      {
+        "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default.json",
+        "reason": "Content changed; writer unknown"
+      },
+      {
+        "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration.json",
+        "reason": "Content changed; writer unknown"
+      },
+      {
+        "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.clang-format",
+        "reason": "Content changed; writer unknown"
+      },
+      {
+        "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.ignore",
+        "reason": "Content changed; writer unknown"
+      },
+      {
+        "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default.json",
+        "reason": "Content changed; writer unknown"
+      },
+      {
+        "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration.json",
+        "reason": "Content changed; writer unknown"
+      },
+      {
+        "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.clang-format",
+        "reason": "Observed VS Code document change; writer not inferred"
+      },
+      {
+        "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.clang-format",
+        "reason": "Observed VS Code document change; writer not inferred"
+      },
+      {
+        "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.clang-format",
+        "reason": "Observed VS Code document change; writer not inferred"
+      },
+      {
+        "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.clang-format",
+        "reason": "Observed VS Code document change; writer not inferred"
+      },
+      {
+        "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.clang-format",
+        "reason": "Observed VS Code document change; writer not inferred"
+      },
+      {
+        "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.clang-format",
+        "reason": "Observed VS Code document change; writer not inferred"
+      }
+    ],
+    "metadataChanges": [
+      {
+        "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\Phase3AIntegration.1.rsp",
+        "reason": "Observed metadata change with equal current bytes; no restoration needed; writer unknown"
+      },
+      {
+        "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\ProbePlugin.2.rsp",
+        "reason": "Observed metadata change with equal current bytes; no restoration needed; writer unknown"
+      },
+      {
+        "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\ProbeRuntime.0.rsp",
+        "reason": "Observed metadata change with equal current bytes; no restoration needed; writer unknown"
+      },
+      {
+        "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\Phase3AIntegration.1.rsp",
+        "reason": "Observed metadata change with equal current bytes; no restoration needed; writer unknown"
+      },
+      {
+        "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\ProbePlugin.2.rsp",
+        "reason": "Observed metadata change with equal current bytes; no restoration needed; writer unknown"
+      },
+      {
+        "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\ProbeRuntime.0.rsp",
+        "reason": "Observed metadata change with equal current bytes; no restoration needed; writer unknown"
+      },
+      {
+        "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\c_cpp_properties.json",
+        "reason": "Observed metadata change with equal current bytes; no restoration needed; writer unknown"
+      },
+      {
+        "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.code-workspace",
+        "reason": "Observed metadata change with equal current bytes; no restoration needed; writer unknown"
+      },
+      {
+        "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\Phase3AIntegration.1.rsp",
+        "reason": "Observed metadata change with equal current bytes; no restoration needed; writer unknown"
+      },
+      {
+        "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ProbePlugin.2.rsp",
+        "reason": "Observed metadata change with equal current bytes; no restoration needed; writer unknown"
+      },
+      {
+        "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ProbeRuntime.0.rsp",
+        "reason": "Observed metadata change with equal current bytes; no restoration needed; writer unknown"
+      },
+      {
+        "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\Phase3AIntegration.1.rsp",
+        "reason": "Observed metadata change with equal current bytes; no restoration needed; writer unknown"
+      },
+      {
+        "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\ProbePlugin.2.rsp",
+        "reason": "Observed metadata change with equal current bytes; no restoration needed; writer unknown"
+      },
+      {
+        "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\ProbeRuntime.0.rsp",
+        "reason": "Observed metadata change with equal current bytes; no restoration needed; writer unknown"
+      },
+      {
+        "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\c_cpp_properties.json",
+        "reason": "Observed metadata change with equal current bytes; no restoration needed; writer unknown"
+      }
+    ],
+    "filesystem": {
+      "eventCount": 69,
+      "complete": true,
+      "dropped": 0,
+      "errors": [],
+      "writerIdentityKnown": false,
+      "record": "filesystem.json"
+    },
+    "operationId": "a28db104-9ef5-4538-bba4-7ee4c12784dd",
+    "recoveryLocation": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\host-3b1b-saved\\User\\globalStorage\\local-tools.unreal-project-tools\\regeneration-v1\\transaction-0",
+    "elapsedMs": 5712.349200000001,
+    "recoveryBytes": 3437093
+  },
+  "reason": "Automatic restoration refused. Review baseline/observed copies in c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\host-3b1b-saved\\User\\globalStorage\\local-tools.unreal-project-tools\\regeneration-v1\\transaction-0",
+  "recoveryBytes": 3437093
+}

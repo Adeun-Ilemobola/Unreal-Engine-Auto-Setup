@@ -6,8 +6,8 @@ async function scanModules(root,origin='engine',plugin) {
   async function walk(dir,depth=0,currentPlugin=plugin) {
     if(depth>25) return;
     let entries;try {const stat=await fs.lstat(dir);if(stat.isSymbolicLink()) return;entries=await fs.readdir(dir,{withFileTypes:true});} catch(e) {if(e.code==='ENOENT') return;throw e;}
-    const descriptor=entries.find(e=>e.isFile() && e.name.endsWith('.uplugin'));let declarations;
-    if(descriptor) {currentPlugin=path.join(dir,descriptor.name);try {declarations=JSON.parse(await fs.readFile(currentPlugin,'utf8')).Modules;} catch {}}
+    const descriptor=entries.find(e=>e.isFile() && e.name.endsWith('.uplugin'));
+    if(descriptor) currentPlugin=path.join(dir,descriptor.name);
     const name=path.basename(dir),build=entries.find(e=>e.isFile() && e.name===name+'.Build.cs');
     if(build) {
       const parts=dir.split(path.sep);let type=parts.includes('Editor')?'Editor':parts.includes('Runtime')?'Runtime':undefined;

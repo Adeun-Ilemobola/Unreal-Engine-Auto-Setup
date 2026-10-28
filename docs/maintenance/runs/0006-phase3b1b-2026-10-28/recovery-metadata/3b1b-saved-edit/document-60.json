@@ -1,0 +1,7 @@
+{
+  "stage": "initial",
+  "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\c_cpp_properties.json",
+  "version": 1,
+  "dirty": false,
+  "text": "{\n    \"configurations\": [\n        {\n            \"name\": \"Phase3AIntegrationEditor Editor Win64 Development (Phase3AIntegration)\",\n            \"compilerPath\": \"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\18\\\\Community\\\\VC\\\\Tools\\\\MSVC\\\\14.50.35717\\\\bin\\\\Hostx64\\\\x64\\\\cl.exe\",\n            \"cStandard\": \"c17\",\n            \"cppStandard\": \"c++20\",\n            \"intelliSenseMode\": \"msvc-x64\",\n            \"compileCommands\": [\n                \"C:\\\\Dev\\\\VSCodeTools\\\\unreal-auto-setup\\\\.local-test-projects\\\\Phase3AIntegration\\\\.vscode\\\\compileCommands_Phase3AIntegration.json\"\n            ]\n        },\n        {\n            \"name\": \"Win32\",\n            \"compilerPath\": \"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\18\\\\Community\\\\VC\\\\Tools\\\\MSVC\\\\14.50.35717\\\\bin\\\\Hostx64\\\\x64\\\\cl.exe\",\n            \"cStandard\": \"c17\",\n            \"cppStandard\": \"c++20\",\n            \"intelliSenseMode\": \"msvc-x64\",\n            \"compileCommands\": [\n                \"C:\\\\Dev\\\\VSCodeTools\\\\unreal-auto-setup\\\\.local-test-projects\\\\Phase3AIntegration\\\\.vscode\\\\compileCommands_Default.json\"\n            ]\n        }\n    ],\n    \"version\": 4\n}"
+}

@@ -1,0 +1,80 @@
+✔ P1.1: regeneration must preserve a newer saved descriptor edit (150.7862ms)
+✔ ordinary unchanged generation preserves all protected bytes and clears stale (144.0921ms)
+✔ ambiguous generator rewrite keeps current bytes and both recoverable versions (75.0101ms)
+✔ originally absent paths have explicit absence records (61.2258ms)
+✔ created protected file is retained and reported, never deleted as rollback (65.5937ms)
+✔ new workspace file is discovered without scanning project content (65.0724ms)
+✔ multiple changed protected files retain independent baseline and current copies (78.7287ms)
+✔ saved VS Code edits persist as labeled document observations (68.0937ms)
+✔ unsaved VS Code edits persist as labeled document observations (72.9332ms)
+✔ multiple successive document versions survive even when final disk returns to baseline (128.7324ms)
+✔ pre-launch edit aborts without starting UBT and retains changed content (216.9235ms)
+✔ post-UBT/pre-finalization edit is not overwritten (59.0971ms)
+✔ deletion has a recovery tombstone and does not recreate the file (133.7023ms)
+✔ replacement with equal bytes still reports changed identity (48.2639ms)
+✔ symlink replacement refuses dereference or restoration (48.0991ms)
+✔ hard-link replacement is unreadable/unsafe and never written through (47.9491ms)
+✔ unexpected directory at protected file location is never replaced (49.4088ms)
+✔ permission failure before launch refuses UBT (13.4363ms)
+✔ partial protected read before launch fails closed (16.7916ms)
+✔ recovery baseline write failure aborts before UBT and preserves live file (32.5329ms)
+✔ post-run recovery write failure is not reported successful (46.6965ms)
+✔ partial recovery blob write leaves baseline and explicit recovery failure (55.7962ms)
+✔ final manifest failure returns RecoveryFailed without hiding UBT failure (45.2262ms)
+✔ Failed UBT does not trigger unsafe restoration (54.28ms)
+✔ Cancelled UBT does not trigger unsafe restoration (50.9408ms)
+✔ rejected managed child preserves its original error and recovery (51.5675ms)
+✔ workspace switch retains exact operation/project association without writes (59.7487ms)
+✔ trust loss during cancellation leaves live newer file and original recovery copy (53.4396ms)
+✔ repeated regeneration and extension-owned mutations are excluded while active (56.3895ms)
+✔ module and plugin commits refuse active generation before creating files (60.3637ms)
+✔ setup file and engine setting writes refuse generation lease (57.5921ms)
+✔ mutation active before regeneration refuses launch (12.8356ms)
+✔ interrupted journal remains recoverable; retry never replays or overwrites it (82.1137ms)
+✔ bounded recovery slots refuse launch without deleting unresolved data (61.0289ms)
+✔ oversized protected file refuses UBT before allocation (14.0292ms)
+✔ document observation quota reports incomplete evidence, never full success (49.75ms)
+✔ compatibility restore export never writes during a check/write race or a missing file (13.3109ms)
+✔ shared engine configuration is captured with a stub engine, never the installed engine (28.2851ms)
+✔ missing extension storage fails closed before managed process creation (15.6391ms)
+✔ same-folder descriptor selection change is an operation conflict (54.9787ms)
+✔ document observation failure reports incomplete evidence and releases its lease (54.1965ms)
+✔ document artifact write failure keeps baseline and returns recovery failure (53.45ms)
+✔ recovery storage in protected configuration is refused before launch (19.5406ms)
+✔ two allocators cannot exceed the exclusive recovery slot bound (40.0788ms)
+✔ disposal-triggered cancellation does not free generation exclusion before child completion (60.434ms)
+✔ configuration-read failure releases the regeneration lease (12.3793ms)
+✖ generation uses the active engine/project and restores existing VS Code configuration (155.5009ms)
+✔ generation refuses missing tools and unsaved files; edits during generation remain stale (68.1706ms)
+✔ metadata changes mark stale only for relevant files in the active project (0.3076ms)
+✔ generation rejects linked configuration before invoking UnrealBuildTool (13.2883ms)
+ℹ tests 50
+ℹ suites 0
+ℹ pass 49
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2740.7384
+
+✖ failing tests:
+
+test at tests\generation.test.js:10:1
+✖ generation uses the active engine/project and restores existing VS Code configuration (155.5009ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'overwritten by stub generator'
+  - '{"existing":false}'
+  
+      at TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\generation.test.js:21:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'overwritten by stub generator',
+    expected: '{"existing":false}',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+

@@ -1,0 +1,6 @@
+{
+  "associatedProcesses": [],
+  "associatedProcessCount": 0,
+  "scope": "All process names with Phase3AIntegration in readable command line; exclude only this audit PowerShell PID",
+  "checkedUtc": "2026-10-27T18:53:01.4106566Z"
+}

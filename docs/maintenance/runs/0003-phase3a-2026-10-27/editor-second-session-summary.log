@@ -1,0 +1,17 @@
+LogPluginManager: Mounting Project plugin ProbePlugin
+LogInit:  CurlRequestOptions (configurable via config and command line):
+LogInit: Engine Version: 5.8.4-58902052+++UE5+Release-5.8
+LogInit: Compatible Engine Version: 5.8.0-55116800+++UE5+Release-5.8
+LogInit: Command Line: -log
+LogInit: Base Directory: C:/Program Files/Epic Games/UE_5.8/Engine/Binaries/Win64/
+[2026.10.27-18.39.26:337][  0]LogModuleManager: InternalLoadLibrary: 'Phase3AIntegration' ('C:/Dev/VSCodeTools/unreal-auto-setup/.local-test-projects/Phase3AIntegration/Binaries/Win64/UnrealEditor-Phase3AIntegration.dll')
+[2026.10.27-18.39.26:338][  0]LogModuleManager: InternalLoadLibrary: 'ProbeRuntime' ('C:/Dev/VSCodeTools/unreal-auto-setup/.local-test-projects/Phase3AIntegration/Binaries/Win64/UnrealEditor-ProbeRuntime.dll')
+[2026.10.27-18.39.27:829][  0]LogModuleManager: InternalLoadLibrary: 'ProbePlugin' ('C:/Dev/VSCodeTools/unreal-auto-setup/.local-test-projects/Phase3AIntegration/Plugins/ProbePlugin/Binaries/Win64/UnrealEditor-ProbePlugin.dll')
+[2026.10.27-18.39.31:264][  0]LogLoad: (Engine Initialization) Total time: 15.63 seconds
+[2026.10.27-18.40.41:870][212]LogCore: Engine exit requested (reason: UUnrealEdEngine::CloseEditor())
+[2026.10.27-18.40.41:876][212]LogCore: Engine exit requested (reason: EngineExit() was called; note: exit was already requested)
+[2026.10.27-18.40.41:989][212]LogExit: Preparing to exit.
+[2026.10.27-18.40.43:462][212]LogExit: Editor shut down
+[2026.10.27-18.40.43:464][212]LogExit: Transaction tracking system shut down
+[2026.10.27-18.40.43:705][212]LogExit: Object subsystem successfully closed.
+[2026.10.27-18.40.44:896][212]LogExit: Exiting.

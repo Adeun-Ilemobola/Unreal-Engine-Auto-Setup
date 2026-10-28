@@ -21,7 +21,8 @@ function render(root,moduleName,type='Runtime',layout='Public / Private',phase='
   const source='#include "'+moduleName+'.h"\n#include "Modules/ModuleManager.h"\n\nIMPLEMENT_MODULE(F'+moduleName+'Module, '+moduleName+')\n';
   return {name:moduleName,type,layout,phase,api,root,entry:{Name:moduleName,Type:type,LoadingPhase:phase},files:[{path:path.join(root,moduleName+'.Build.cs'),text:rules},{path:path.join(root,...(split?['Public']:[]),moduleName+'.h'),text:header},{path:path.join(root,...(split?['Private']:[]),moduleName+'.cpp'),text:source}]};
 }
-function pluginDescriptor(pluginName,friendly,description,module) {
+// Retain the positional name argument for existing template callers; FriendlyName is independent.
+function pluginDescriptor(_pluginName,friendly,description,module) {
   if(!friendly.trim() || friendly.length>120 || description.length>2000) throw new Error('Provide a friendly name (up to 120 characters) and description up to 2000 characters.');
   return JSON.stringify({FileVersion:3,Version:1,VersionName:'1.0',FriendlyName:friendly,Description:description,Category:'Other',CanContainContent:false,EnabledByDefault:true,Modules:[module.entry]},null,2)+'\n';
 }

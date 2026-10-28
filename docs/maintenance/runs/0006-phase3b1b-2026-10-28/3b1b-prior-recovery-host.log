@@ -1,0 +1,17 @@
+
+[main 2026-10-28T04:42:43.200Z] [node-compile-cache] main: packaged cache enabled (status: enabled, configured: C:\Users\Owner\AppData\Local\Programs\Microsoft VS Code\e646868227\resources\app\node-compile-cache\main, active: C:\Users\Owner\AppData\Local\Programs\Microsoft VS Code\e646868227\resources\app\node-compile-cache\main\v24.21.0-x64-c3a7e8f2)
+[main 2026-10-28T04:42:43.210Z] StorageMainService: creating application shared storage
+[main 2026-10-28T04:42:43.318Z] [shared storage] Creating shared storage database at 'c:\Users\Owner\.vscode-shared\sharedStorage\state.vscdb' (wasCreated: false)
+[main 2026-10-28T04:42:43.318Z] [shared storage] Initializing fallback application storage (path: c:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\host-data\User\globalStorage\state.vscdb)
+[main 2026-10-28T04:42:43.343Z] [shared storage] Fallback application storage initialized with 89 items
+[main 2026-10-28T04:42:43.680Z] update#disable - updates are disabled by user preference
+[main 2026-10-28T04:42:43.681Z] update#setState disabled
+[main 2026-10-28T04:42:43.701Z] AgentHostProcessManager: agent host started
+[main 2026-10-28T04:42:44.462Z] [AgentHost:stderr] (node:77564) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `Code --trace-deprecation ...` to show where the warning was created)
+
+Unknown channel: agentHostClientByokLm
+Unknown channel: agentHostClientProxy
+Unknown channel: agentHostClientProxy
+Unknown channel: agentHostClientProxy
+[main 2026-10-28T04:43:12.005Z] Extension host with pid 73236 exited with code: 0, signal: unknown.

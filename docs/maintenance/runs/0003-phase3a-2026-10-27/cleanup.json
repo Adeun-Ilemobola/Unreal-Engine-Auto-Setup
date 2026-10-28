@@ -1,0 +1,11 @@
+{
+  "associatedProcesses": [],
+  "checkedUtc": "2026-10-27T18:44:37.2449573Z",
+  "reason": "Retain ignored fixture for review/reproduction; all explicitly project-associated host/build/Editor processes exited",
+  "editorPidsTested": [
+    12320,
+    77056
+  ],
+  "project": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration",
+  "directoryRetained": true
+}

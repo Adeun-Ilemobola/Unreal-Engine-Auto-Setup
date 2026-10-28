@@ -1,0 +1,90 @@
+{
+  "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\c_cpp_properties.json": {
+    "bytes": 154,
+    "hash": "C47B1CBBB8911DC483BD7FC903C9AAFA1CDA3AD200ECE0BE390E10ED7281598F"
+  },
+  "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\settings.json": {
+    "bytes": 1194,
+    "hash": "306AF55289DC3D0B2544970A70C2B62117EEF42A6F1F1DED2A1AFC354281D6EE"
+  },
+  "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\tasks.json": {
+    "bytes": 347,
+    "hash": "9FCC6A39C18623ABB5ED6EF39BDA5DCDEA33B1387C6429CEA34031843A59219A"
+  },
+  "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.clang-format": {
+    "bytes": 20,
+    "hash": "C537290A66155C540D162CD543D37B8C89BE6BC614C0B9AA5192A79BB3652B4C"
+  },
+  "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.uproject": {
+    "bytes": 320,
+    "hash": "C336D46DDA77425C4C16E43A715D9C256015F094764CF7895377665E70A09AE1"
+  },
+  "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\c_cpp_properties.json": {
+    "bytes": 830,
+    "hash": "C6BD9880A8C2A35B11554B5A67089B2E9813098DDF9FE9629781A9D8E0CE3F2F"
+  },
+  "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation.json": {
+    "bytes": 5384,
+    "hash": "2E1019490003F1501DBE777C762442945C2A1E7EAEBD32B6283DDA38FBD7778F"
+  },
+  "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default.json": {
+    "bytes": 5252,
+    "hash": "18E407620A24BB08605AA083DBB0549218BEB12DFB5A8DF79EA817B1E5577DF0"
+  },
+  "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\AutoSetupValidation.0.rsp": {
+    "bytes": 35271,
+    "hash": "3DE39BFFE04CE32B3DB6F62278630F7CABA8E3C7DC83785F4EF97C1D33E97D86"
+  },
+  "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\AutoSetupValidation.1.rsp": {
+    "bytes": 35290,
+    "hash": "5C18C76FA38A27C73817BDC5207DD5FE2A8C7D57FD5ED429B7D3059236F43B04"
+  },
+  "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\AutoSetupValidation.2.rsp": {
+    "bytes": 35271,
+    "hash": "3DE39BFFE04CE32B3DB6F62278630F7CABA8E3C7DC83785F4EF97C1D33E97D86"
+  },
+  "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\ValidationPlugin.0.rsp": {
+    "bytes": 35132,
+    "hash": "7253E3875BF0A5D1F30334BE86EF351A57B6F0CEF5DDFD68005DFDC38180A4C8"
+  },
+  "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\ValidationPlugin.2.rsp": {
+    "bytes": 35132,
+    "hash": "7253E3875BF0A5D1F30334BE86EF351A57B6F0CEF5DDFD68005DFDC38180A4C8"
+  },
+  "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\ValidationRuntime.0.rsp": {
+    "bytes": 35280,
+    "hash": "CB0D340742698F0C62709568F3346A04B0D79D42398C655DE20570B364D1E10E"
+  },
+  "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\ValidationRuntime.1.rsp": {
+    "bytes": 35261,
+    "hash": "D7FCBD6D1E0CFF0EC23AD04FCEE5D5B3801A908C9AF7DAED7A741E107471A5AD"
+  },
+  "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\AutoSetupValidation.0.rsp": {
+    "bytes": 35271,
+    "hash": "3DE39BFFE04CE32B3DB6F62278630F7CABA8E3C7DC83785F4EF97C1D33E97D86"
+  },
+  "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\AutoSetupValidation.1.rsp": {
+    "bytes": 35290,
+    "hash": "5C18C76FA38A27C73817BDC5207DD5FE2A8C7D57FD5ED429B7D3059236F43B04"
+  },
+  "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\AutoSetupValidation.2.rsp": {
+    "bytes": 35271,
+    "hash": "3DE39BFFE04CE32B3DB6F62278630F7CABA8E3C7DC83785F4EF97C1D33E97D86"
+  },
+  "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ValidationPlugin.0.rsp": {
+    "bytes": 35132,
+    "hash": "7253E3875BF0A5D1F30334BE86EF351A57B6F0CEF5DDFD68005DFDC38180A4C8"
+  },
+  "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ValidationPlugin.2.rsp": {
+    "bytes": 35132,
+    "hash": "7253E3875BF0A5D1F30334BE86EF351A57B6F0CEF5DDFD68005DFDC38180A4C8"
+  },
+  "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ValidationRuntime.0.rsp": {
+    "bytes": 35280,
+    "hash": "CB0D340742698F0C62709568F3346A04B0D79D42398C655DE20570B364D1E10E"
+  },
+  "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ValidationRuntime.1.rsp": {
+    "bytes": 35261,
+    "hash": "D7FCBD6D1E0CFF0EC23AD04FCEE5D5B3801A908C9AF7DAED7A741E107471A5AD"
+  }
+}

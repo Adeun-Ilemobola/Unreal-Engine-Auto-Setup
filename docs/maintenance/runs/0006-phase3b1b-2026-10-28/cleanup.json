@@ -1,0 +1,17 @@
+{
+  "recordedRoots": [
+    46512,
+    13288,
+    77692
+  ],
+  "recordedExtensionHosts": [
+    73236,
+    77648,
+    12244
+  ],
+  "directDescendantsStillPresent": [],
+  "relevantEditorUBTCompilerCodeQuery": "empty after all hosts closed",
+  "forcedTermination": false,
+  "fixture": "retained; no deletion",
+  "limit": "Point-in-time queries and ordinary exits, not a general cross-reload process-tree proof"
+}

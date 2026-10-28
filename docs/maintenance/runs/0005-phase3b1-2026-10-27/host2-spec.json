@@ -1,0 +1,18 @@
+{
+  "label": "phase3b1-host2",
+  "args": [
+    "--new-window",
+    "--wait",
+    "--user-data-dir=C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\host-data",
+    "--extensions-dir=C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\host-extensions",
+    "--extensionDevelopmentPath=C:\\Dev\\VSCodeTools\\unreal-auto-setup\\unreal-auto-setup",
+    "--extensionDevelopmentPath=C:\\Users\\Owner\\.vscode\\extensions\\ms-vscode.cpptools-1.35.4-win32-x64",
+    "--extensionDevelopmentPath=C:\\Users\\Owner\\.vscode\\extensions\\skyboxlabs.unrealengine-tools-0.1.2",
+    "--extensionDevelopmentPath=C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\phase3b1-driver",
+    "--skip-welcome",
+    "--skip-release-notes",
+    "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration"
+  ],
+  "cwd": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration",
+  "executable": "C:\\Users\\Owner\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+}

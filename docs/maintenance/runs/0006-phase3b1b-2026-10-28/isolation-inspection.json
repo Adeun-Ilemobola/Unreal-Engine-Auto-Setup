@@ -1,0 +1,14 @@
+{
+  "writeMethods": [
+    "WriteCppPropertiesFile",
+    "WriteWorkspaceIgnoreFile",
+    "WriteWorkspaceFile"
+  ],
+  "ProjectFileGeneratorSource": "32F240AE6090A0DE2C73DBE69F9DBD6EB869A8F8348E6611D2CFE690851C2A88",
+  "isolation": "No supported general VS Code output-root redirect established; NoCompileCommands and UseVSCodeExtension still write live configuration",
+  "adoptedIsolation": false,
+  "VSCodeGeneratorSource": "DB97F1A18E68F25330252FB2346D757642F76E38C678F7ADCC653D376CB39C1D",
+  "temporaryFlag": "bGeneratingTemporaryProjects is only enabled by Xcode generator; not a VS Code CLI isolation option",
+  "GenerateProjectFilesModeSource": "504EB6AB2EE0F824A1DAA8830A666828D2AD027FF4D7DE4177FEC9CEA9016329",
+  "engine": "5.8.4 CL58902052"
+}

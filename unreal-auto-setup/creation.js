@@ -44,6 +44,9 @@ async function validate(plan,vscode,io=fs) {
   if(plan.kind==='plugin') await unique(plan.project,plan.module.name);
 }
 async function commit(plan,vscode,{io=fs,afterDescriptor=async()=>{}}={}) {
+  return require('./generationGuard').mutate([plan.project.root],()=>commitUnlocked(plan,vscode,{io,afterDescriptor}));
+}
+async function commitUnlocked(plan,vscode,{io=fs,afterDescriptor=async()=>{}}={}) {
   await validate(plan,vscode,io);
   const owned=[],dirs=[];let descriptorWritten=false;
   async function mkdir(dir) {

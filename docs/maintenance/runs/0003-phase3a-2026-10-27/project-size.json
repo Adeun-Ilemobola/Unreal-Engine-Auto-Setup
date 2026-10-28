@@ -1,0 +1,9 @@
+{
+  "bytes": 2959975806.0,
+  "directories": 222,
+  "sourceBytes": 4577.0,
+  "measuredUtc": "2026-10-27T18:39:29.0611698Z",
+  "sourceFiles": 20,
+  "files": 563,
+  "note": "Fixture includes isolated VS Code profile, generated binaries/intermediates and Editor caches; not representative of RPG asset scale"
+}

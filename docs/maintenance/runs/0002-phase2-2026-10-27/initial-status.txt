@@ -1,0 +1,15 @@
+ M unreal-auto-setup/build.js
+ M unreal-auto-setup/core.js
+ M unreal-auto-setup/dependencyActions.js
+ M unreal-auto-setup/engine.js
+ M unreal-auto-setup/extension.js
+ M unreal-auto-setup/generation.js
+ M unreal-auto-setup/project.js
+ M unreal-auto-setup/runner.js
+ M unreal-auto-setup/runtimeWatcher.js
+ M unreal-auto-setup/tests/workflow.test.js
+?? docs/
+?? unreal-auto-setup/tests/build-lifecycle.test.js
+?? unreal-auto-setup/tests/detection-regressions.test.js
+?? unreal-auto-setup/tests/generation-conflict.test.js
+?? unreal-auto-setup/tests/workspace-safety.test.js

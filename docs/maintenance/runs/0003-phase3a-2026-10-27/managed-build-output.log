@@ -1,0 +1,380 @@
+--- host-data\logs\20261027T101031\window1\exthost\output_logging_20261027T101032\2-Unreal Build History.log ---
+
+--- host-data\logs\20261027T101147\window1\exthost\output_logging_20261027T101148\2-Unreal Build History.log ---
+
+--- host-data\logs\20261027T102022\window1\exthost\output_logging_20261027T102023\3-Unreal Build History.log ---
+
+--- host-data\logs\20261027T102139\window1\exthost\output_logging_20261027T102140\3-Unreal Build History.log ---
+[2026-10-27T18:31:14.872Z] Manual generation 
+Log file: C:\Users\Owner\AppData\Local\UnrealBuildTool\Log_GPF.txt
+Project file formats specified via the command line will be ignored when generating
+project files from the editor and other engine tools.
+
+Consider setting your desired IDE from the editor preferences window, or modify your
+BuildConfiguration.xml file with:
+
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration xmlns="https://www.unrealengine.com/BuildConfiguration">
+  <ProjectFileGenerator>
+    <Format>VisualStudioCode</Format>
+  </ProjectFileGenerator>
+</Configuration>
+
+
+Generating VisualStudioCode project files:
+Discovering modules, targets and source code for project...
+Adding projects for all targets...
+Adding projects for all targets took 2.18s
+Adding projects for all game projects took 0.00s
+Adding projects for all modules took 0.10s
+Compiling Rules Assemblies
+@progress 'Compiling Rules Assemblies' 0%
+@progress 'Compiling Rules Assemblies' 50%
+@progress 'Compiling Rules Assemblies' 100%
+Compiling Rules Assemblies 100%
+Creating Build Targets
+@progress 'Creating Build Targets' 0%
+@progress 'Creating Build Targets' 50%
+Creating Build Targets 100%
+Binding IntelliSense data...
+@progress 'Creating Build Targets' 100%
+Creating Build Targets took 0.61s
+@progress 'Binding IntelliSense data...' 0%
+@progress 'Binding IntelliSense data...' 1%
+@progress 'Binding IntelliSense data...' 2%
+@progress 'Binding IntelliSense data...' 3%
+@progress 'Binding IntelliSense data...' 4%
+@progress 'Binding IntelliSense data...' 5%
+@progress 'Binding IntelliSense data...' 6%
+@progress 'Binding IntelliSense data...' 7%
+@progress 'Binding IntelliSense data...' 8%
+@progress 'Binding IntelliSense data...' 9%
+@progress 'Binding IntelliSense data...' 10%
+@progress 'Binding IntelliSense data...' 11%
+@progress 'Binding IntelliSense data...' 12%
+@progress 'Binding IntelliSense data...' 13%
+@progress 'Binding IntelliSense data...' 14%
+@progress 'Binding IntelliSense data...' 15%
+@progress 'Binding IntelliSense data...' 16%
+@progress 'Binding IntelliSense data...' 17%
+@progress 'Binding IntelliSense data...' 18%
+@progress 'Binding IntelliSense data...' 19%
+@progress 'Binding IntelliSense data...' 20%
+@progress 'Binding IntelliSense data...' 21%
+@progress 'Binding IntelliSense data...' 22%
+@progress 'Binding IntelliSense data...' 23%
+@progress 'Binding IntelliSense data...' 24%
+@progress 'Binding IntelliSense data...' 25%
+@progress 'Binding IntelliSense data...' 26%
+@progress 'Binding IntelliSense data...' 27%
+@progress 'Binding IntelliSense data...' 28%
+@progress 'Binding IntelliSense data...' 29%
+@progress 'Binding IntelliSense data...' 30%
+@progress 'Binding IntelliSense data...' 31%
+@progress 'Binding IntelliSense data...' 32%
+@progress 'Binding IntelliSense data...' 33%
+@progress 'Binding IntelliSense data...' 34%
+@progress 'Binding IntelliSense data...' 35%
+@progress 'Binding IntelliSense data...' 36%
+@progress 'Binding IntelliSense data...' 37%
+@progress 'Binding IntelliSense data...' 38%
+@progress 'Binding IntelliSense data...' 39%
+@progress 'Binding IntelliSense data...' 40%
+@progress 'Binding IntelliSense data...' 41%
+@progress 'Binding IntelliSense data...' 42%
+@progress 'Binding IntelliSense data...' 43%
+@progress 'Binding IntelliSense data...' 44%
+@progress 'Binding IntelliSense data...' 45%
+@progress 'Binding IntelliSense data...' 46%
+@progress 'Binding IntelliSense data...' 47%
+@progress 'Binding IntelliSense data...' 48%
+@progress 'Binding IntelliSense data...' 49%
+@progress 'Binding IntelliSense data...' 50%
+@progress 'Binding IntelliSense data...' 51%
+@progress 'Binding IntelliSense data...' 52%
+@progress 'Binding IntelliSense data...' 53%
+@progress 'Binding IntelliSense data...' 54%
+@progress 'Binding IntelliSense data...' 55%
+@progress 'Binding IntelliSense data...' 56%
+@progress 'Binding IntelliSense data...' 57%
+@progress 'Binding IntelliSense data...' 58%
+@progress 'Binding IntelliSense data...' 59%
+@progress 'Binding IntelliSense data...' 60%
+@progress 'Binding IntelliSense data...' 61%
+@progress 'Binding IntelliSense data...' 62%
+@progress 'Binding IntelliSense data...' 63%
+@progress 'Binding IntelliSense data...' 64%
+@progress 'Binding IntelliSense data...' 65%
+@progress 'Binding IntelliSense data...' 66%
+@progress 'Binding IntelliSense data...' 67%
+@progress 'Binding IntelliSense data...' 68%
+@progress 'Binding IntelliSense data...' 69%
+@progress 'Binding IntelliSense data...' 70%
+@progress 'Binding IntelliSense data...' 71%
+@progress 'Binding IntelliSense data...' 72%
+@progress 'Binding IntelliSense data...' 73%
+@progress 'Binding IntelliSense data...' 74%
+@progress 'Binding IntelliSense data...' 75%
+@progress 'Binding IntelliSense data...' 76%
+@progress 'Binding IntelliSense data...' 77%
+@progress 'Binding IntelliSense data...' 78%
+@progress 'Binding IntelliSense data...' 79%
+@progress 'Binding IntelliSense data...' 80%
+@progress 'Binding IntelliSense data...' 81%
+@progress 'Binding IntelliSense data...' 82%
+@progress 'Binding IntelliSense data...' 83%
+@progress 'Binding IntelliSense data...' 84%
+@progress 'Binding IntelliSense data...' 85%
+@progress 'Binding IntelliSense data...' 86%
+@progress 'Binding IntelliSense data...' 87%
+@progress 'Binding IntelliSense data...' 88%
+@progress 'Binding IntelliSense data...' 89%
+@progress 'Binding IntelliSense data...' 90%
+@progress 'Binding IntelliSense data...' 91%
+@progress 'Binding IntelliSense data...' 92%
+@progress 'Binding IntelliSense data...' 93%
+@progress 'Binding IntelliSense data...' 94%
+@progress 'Binding IntelliSense data...' 95%
+@progress 'Binding IntelliSense data...' 96%
+@progress 'Binding IntelliSense data...' 97%
+@progress 'Binding IntelliSense data...' 98%
+@progress 'Binding IntelliSense data...' 99%
+@progress 'Binding IntelliSense data...' 100%
+Binding IntelliSense data... 100%
+Binding IntelliSense data took 0.80s
+Writing project files...
+@progress 'Writing project files...' 0%
+@progress 'Writing project files...' 33%
+@progress 'Writing project files...' 67%
+Writing project files... 100%
+@progress 'Writing project files...' 100%
+Writing project files took 0.05s
+
+Generating QueryTargets data for editor...
+Compiling Rules Assemblies
+@progress 'Compiling Rules Assemblies' 0%
+Compiling Rules Assemblies 100%
+@progress 'Compiling Rules Assemblies' 50%
+@progress 'Compiling Rules Assemblies' 100%
+Writing Query Target Info
+@progress 'Writing Query Target Info' 0%
+@progress 'Writing Query Target Info' 50%
+Writing Query Target Info 100%
+@progress 'Writing Query Target Info' 100%
+Generating QueryTargets data for editor took 0.01s
+
+Result: Succeeded
+Total execution time: 5.77 seconds
+Trace written to file C:\Users\Owner\AppData\Local\UnrealBuildTool\Trace.uba with size 129.9kb
+[2026-10-27T18:31:44.847Z] Manual build Phase3AIntegrationEditor
+Using bundled DotNet SDK version: 10.0 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" Phase3AIntegrationEditor Win64 Development -Project=c:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Phase3AIntegration.uproject -WaitMutex -NoHotReloadFromIDE
+Log file: C:\Users\Owner\AppData\Local\UnrealBuildTool\Log.txt
+Determining max actions to execute in parallel (20 physical cores, 28 logical cores)
+  Executing up to 20 processes, one per physical core
+  Requested 1.5 GB memory per action, 15.73 GB available: limiting max parallel actions to 10
+Creating makefile for Phase3AIntegrationEditor (.uproject file is newer)
+UbaServer - Listening on 0.0.0.0:1345
+UHT compiled-in object format Default
+Building Phase3AIntegrationEditor...
+===== Toolchain Information =====
+Using ISPC compiler (C:\Program Files\Epic Games\UE_5.8\Engine\Source\ThirdParty\Intel\ISPC\bin\Windows\ispc.exe)
+  Intel(r) Implicit SPMD Program Compiler (Intel(r) ISPC), 1.24.0 (build commit  @ 20250404, LLVM 18.1.2) 
+Using Visual Studio 14.50.35739 toolchain (C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from ProbePlugin unity file: ProbePlugin.cpp
+===== End Toolchain Information =====
+Using Unreal Build Accelerator local executor to run 20 action(s)
+  CPU 20 physical cores, 28 logical cores
+  Memory 15.73 GB physical, 35.5 GB/47.18 GB committed
+  UBA Storage capacity 40 GB
+[1/20] Compile Resource [x64] Default.rc2
+[2/20] Compile Resource [x64] Default.rc2
+[3/20] Compile [x64] PerModuleInline.gen.cpp
+[4/20] Compile [x64] ProbeRuntime.cpp
+[5/20] Link [x64] UnrealEditor-ProbeRuntime.lib
+[6/20] Link [x64] UnrealEditor-ProbeRuntime.dll
+[7/20] Compile [x64] Module.Phase3AIntegration.gen.cpp
+[8/20] Compile [x64] PerModuleInline.gen.cpp
+[9/20] Compile [x64] Phase3AIntegration.cpp
+[10/20] Compile [x64] ProbeActor.cpp
+[11/20] Compile [x64] ProbeComponent.cpp
+[12/20] Compile [x64] ProbeObject.cpp
+[13/20] Compile [x64] ProbeSubsystem.cpp
+[14/20] Link [x64] UnrealEditor-Phase3AIntegration.lib
+[15/20] Link [x64] UnrealEditor-Phase3AIntegration.dll
+[16/20] Compile [x64] Module.ProbePlugin.cpp
+[17/20] Compile [x64] ProbePlugin.cpp
+[18/20] Link [x64] UnrealEditor-ProbePlugin.lib
+[19/20] Link [x64] UnrealEditor-ProbePlugin.dll
+[20/20] WriteMetadata Phase3AIntegrationEditor.target [NoUba]
+
+Total time in Unreal Build Accelerator local executor: 35.70 seconds
+Output binary: C:\Program Files\Epic Games\UE_5.8\Engine\Binaries\Win64\UnrealEditor.exe
+
+Result: Succeeded
+Total execution time: 39.28 seconds
+Trace written to file C:\Users\Owner\AppData\Local\UnrealBuildTool\Trace.uba with size 12.2kb
+[2026-10-27T18:32:50.291Z] Manual build Phase3AIntegrationEditor
+Using bundled DotNet SDK version: 10.0 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" Phase3AIntegrationEditor Win64 Development -Project=c:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Phase3AIntegration.uproject -WaitMutex -NoHotReloadFromIDE
+Log file: C:\Users\Owner\AppData\Local\UnrealBuildTool\Log.txt
+Determining max actions to execute in parallel (20 physical cores, 28 logical cores)
+  Executing up to 20 processes, one per physical core
+  Requested 1.5 GB memory per action, 15.73 GB available: limiting max parallel actions to 10
+UbaServer - Listening on 0.0.0.0:1345
+Building Phase3AIntegrationEditor...
+===== Toolchain Information =====
+Using ISPC compiler (C:\Program Files\Epic Games\UE_5.8\Engine\Source\ThirdParty\Intel\ISPC\bin\Windows\ispc.exe)
+  Intel(r) Implicit SPMD Program Compiler (Intel(r) ISPC), 1.24.0 (build commit  @ 20250404, LLVM 18.1.2) 
+Using Visual Studio 14.50.35739 toolchain (C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from ProbePlugin unity file: ProbePlugin.cpp
+===== End Toolchain Information =====
+Using Unreal Build Accelerator local executor to run 4 action(s)
+  CPU 20 physical cores, 28 logical cores
+  Memory 15.73 GB physical, 34.79 GB/47.18 GB committed
+  UBA Storage capacity 40 GB
+[1/4] Compile [x64] ProbeActor.cpp
+C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Source\Phase3AIntegration\ProbeActor.cpp(8,1): fatal error C1189: #error:  PHASE3A_CONTROLLED_FAILURE
+#error PHASE3A_CONTROLLED_FAILURE
+^
+Total time in Unreal Build Accelerator local executor: 0.48 seconds
+
+Result: Failed (OtherCompilationError)
+Total execution time: 1.43 seconds
+Trace written to file C:\Users\Owner\AppData\Local\UnrealBuildTool\Trace.uba with size 4.4kb
+[2026-10-27T18:32:52.879Z] Manual build Phase3AIntegrationEditor
+Using bundled DotNet SDK version: 10.0 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" Phase3AIntegrationEditor Win64 Development -Project=c:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Phase3AIntegration.uproject -WaitMutex -NoHotReloadFromIDE
+Log file: C:\Users\Owner\AppData\Local\UnrealBuildTool\Log.txt
+Determining max actions to execute in parallel (20 physical cores, 28 logical cores)
+  Executing up to 20 processes, one per physical core
+  Requested 1.5 GB memory per action, 15.73 GB available: limiting max parallel actions to 10
+UbaServer - Listening on 0.0.0.0:1345
+Building Phase3AIntegrationEditor...
+===== Toolchain Information =====
+Using ISPC compiler (C:\Program Files\Epic Games\UE_5.8\Engine\Source\ThirdParty\Intel\ISPC\bin\Windows\ispc.exe)
+  Intel(r) Implicit SPMD Program Compiler (Intel(r) ISPC), 1.24.0 (build commit  @ 20250404, LLVM 18.1.2) 
+Using Visual Studio 14.50.35739 toolchain (C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from ProbePlugin unity file: ProbePlugin.cpp
+===== End Toolchain Information =====
+Using Unreal Build Accelerator local executor to run 3 action(s)
+  CPU 20 physical cores, 28 logical cores
+  Memory 15.73 GB physical, 34.95 GB/47.18 GB committed
+  UBA Storage capacity 40 GB
+[1/3] Link [x64] UnrealEditor-Phase3AIntegration.lib
+[2/3] Link [x64] UnrealEditor-Phase3AIntegration.dll
+[3/3] WriteMetadata Phase3AIntegrationEditor.target [NoUba]
+
+Total time in Unreal Build Accelerator local executor: 1.41 seconds
+Output binary: C:\Program Files\Epic Games\UE_5.8\Engine\Binaries\Win64\UnrealEditor.exe
+
+Result: Succeeded
+Total execution time: 2.29 seconds
+Trace written to file C:\Users\Owner\AppData\Local\UnrealBuildTool\Trace.uba with size 5.1kb
+
+--- host-data\logs\20261027T103409\window1\exthost\output_logging_20261027T103411\3-Unreal Build History.log ---
+
+--- host-data\logs\20261027T103428\window1\exthost\output_logging_20261027T103429\3-Unreal Build History.log ---
+[2026-10-27T18:34:53.168Z] Manual build Phase3AIntegrationEditor
+Using bundled DotNet SDK version: 10.0 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" Phase3AIntegrationEditor Win64 Development -Project=c:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Phase3AIntegration.uproject -WaitMutex -NoHotReloadFromIDE
+Log file: C:\Users\Owner\AppData\Local\UnrealBuildTool\Log.txt
+Determining max actions to execute in parallel (20 physical cores, 28 logical cores)
+  Executing up to 20 processes, one per physical core
+  Requested 1.5 GB memory per action, 15.73 GB available: limiting max parallel actions to 10
+UbaServer - Listening on 0.0.0.0:1345
+Building Phase3AIntegrationEditor...
+===== Toolchain Information =====
+Using ISPC compiler (C:\Program Files\Epic Games\UE_5.8\Engine\Source\ThirdParty\Intel\ISPC\bin\Windows\ispc.exe)
+  Intel(r) Implicit SPMD Program Compiler (Intel(r) ISPC), 1.24.0 (build commit  @ 20250404, LLVM 18.1.2) 
+Using Visual Studio 14.50.35739 toolchain (C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from ProbePlugin unity file: ProbePlugin.cpp
+===== End Toolchain Information =====
+Using Unreal Build Accelerator local executor to run 4 action(s)
+  CPU 20 physical cores, 28 logical cores
+  Memory 15.73 GB physical, 35.51 GB/47.18 GB committed
+  UBA Storage capacity 40 GB
+[1/4] Compile [x64] ProbeActor.cpp
+C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Source\Phase3AIntegration\ProbeActor.cpp(8,1): fatal error C1189: #error:  PHASE3A_CONTROLLED_FAILURE
+#error PHASE3A_CONTROLLED_FAILURE
+^
+Total time in Unreal Build Accelerator local executor: 0.51 seconds
+
+Result: Failed (OtherCompilationError)
+Total execution time: 1.52 seconds
+Trace written to file C:\Users\Owner\AppData\Local\UnrealBuildTool\Trace.uba with size 4.4kb
+[2026-10-27T18:34:56.085Z] Manual build Phase3AIntegrationEditor
+Using bundled DotNet SDK version: 10.0 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" Phase3AIntegrationEditor Win64 Development -Project=c:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Phase3AIntegration.uproject -WaitMutex -NoHotReloadFromIDE
+Log file: C:\Users\Owner\AppData\Local\UnrealBuildTool\Log.txt
+Determining max actions to execute in parallel (20 physical cores, 28 logical cores)
+  Executing up to 20 processes, one per physical core
+  Requested 1.5 GB memory per action, 15.73 GB available: limiting max parallel actions to 10
+UbaServer - Listening on 0.0.0.0:1345
+Building Phase3AIntegrationEditor...
+===== Toolchain Information =====
+Using ISPC compiler (C:\Program Files\Epic Games\UE_5.8\Engine\Source\ThirdParty\Intel\ISPC\bin\Windows\ispc.exe)
+  Intel(r) Implicit SPMD Program Compiler (Intel(r) ISPC), 1.24.0 (build commit  @ 20250404, LLVM 18.1.2) 
+Using Visual Studio 14.50.35739 toolchain (C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from ProbePlugin unity file: ProbePlugin.cpp
+===== End Toolchain Information =====
+Using Unreal Build Accelerator local executor to run 3 action(s)
+  CPU 20 physical cores, 28 logical cores
+  Memory 15.73 GB physical, 35.48 GB/47.18 GB committed
+  UBA Storage capacity 40 GB
+[1/3] Link [x64] UnrealEditor-Phase3AIntegration.lib
+[2/3] Link [x64] UnrealEditor-Phase3AIntegration.dll
+[3/3] WriteMetadata Phase3AIntegrationEditor.target [NoUba]
+
+Total time in Unreal Build Accelerator local executor: 1.41 seconds
+Output binary: C:\Program Files\Epic Games\UE_5.8\Engine\Binaries\Win64\UnrealEditor.exe
+
+Result: Succeeded
+Total execution time: 2.32 seconds
+Trace written to file C:\Users\Owner\AppData\Local\UnrealBuildTool\Trace.uba with size 5.1kb
+[2026-10-27T18:38:38.021Z] Manual build Phase3AIntegrationEditor
+Using bundled DotNet SDK version: 10.0 win-x64
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" Phase3AIntegrationEditor Win64 Development -Project=c:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Phase3AIntegration.uproject -WaitMutex -NoHotReloadFromIDE
+Log file: C:\Users\Owner\AppData\Local\UnrealBuildTool\Log.txt
+Determining max actions to execute in parallel (20 physical cores, 28 logical cores)
+  Executing up to 20 processes, one per physical core
+  Requested 1.5 GB memory per action, 15.73 GB available: limiting max parallel actions to 10
+UbaServer - Listening on 0.0.0.0:1345
+Creating makefile for Phase3AIntegrationEditor (command line arguments changed)
+UHT compiled-in object format Default
+Building Phase3AIntegrationEditor...
+===== Toolchain Information =====
+Using ISPC compiler (C:\Program Files\Epic Games\UE_5.8\Engine\Source\ThirdParty\Intel\ISPC\bin\Windows\ispc.exe)
+  Intel(r) Implicit SPMD Program Compiler (Intel(r) ISPC), 1.24.0 (build commit  @ 20250404, LLVM 18.1.2) 
+Using Visual Studio 14.50.35739 toolchain (C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from ProbePlugin unity file: ProbePlugin.cpp
+===== End Toolchain Information =====
+Using Unreal Build Accelerator local executor to run 18 action(s)
+  CPU 20 physical cores, 28 logical cores
+  Memory 15.73 GB physical, 38.38 GB/47.18 GB committed
+  UBA Storage capacity 40 GB
+[1/18] Compile [x64] PerModuleInline.gen.cpp
+[2/18] Compile [x64] ProbeRuntime.cpp
+[3/18] Link [x64] UnrealEditor-ProbeRuntime.lib
+[4/18] Link [x64] UnrealEditor-ProbeRuntime.dll
+[5/18] Compile [x64] Module.Phase3AIntegration.gen.cpp
+[6/18] Compile [x64] PerModuleInline.gen.cpp
+[7/18] Compile [x64] Phase3AIntegration.cpp
+[8/18] Compile [x64] ProbeActor.cpp
+[9/18] Compile [x64] ProbeComponent.cpp
+[10/18] Compile [x64] ProbeObject.cpp
+[11/18] Compile [x64] ProbeSubsystem.cpp
+[12/18] Link [x64] UnrealEditor-Phase3AIntegration.lib
+[13/18] Link [x64] UnrealEditor-Phase3AIntegration.dll
+[14/18] Compile [x64] Module.ProbePlugin.cpp
+[15/18] Compile [x64] ProbePlugin.cpp
+[16/18] Link [x64] UnrealEditor-ProbePlugin.lib
+[17/18] Link [x64] UnrealEditor-ProbePlugin.dll
+[18/18] WriteMetadata Phase3AIntegrationEditor.target [NoUba]
+
+Total time in Unreal Build Accelerator local executor: 31.10 seconds
+Output binary: C:\Program Files\Epic Games\UE_5.8\Engine\Binaries\Win64\UnrealEditor.exe
+
+Result: Succeeded
+Total execution time: 35.06 seconds
+Trace written to file C:\Users\Owner\AppData\Local\UnrealBuildTool\Trace.uba with size 11.4kb

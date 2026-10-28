@@ -1,0 +1,155 @@
+[
+  {
+    "time": "2026-10-27T18:17:28.917Z",
+    "phase": "activation-complete",
+    "elapsedMs": 0.03399999998509884
+  },
+  {
+    "time": "2026-10-27T18:21:45.045Z",
+    "phase": "activation-complete",
+    "alreadyActive": false,
+    "activationWaitMs": 3468.9862999999996
+  },
+  {
+    "time": "2026-10-27T18:21:45.635Z",
+    "phase": "request-complete",
+    "id": "driver-ready",
+    "elapsedMs": 586.4008999999996,
+    "result": [
+      {
+        "label": "projectDiscovery",
+        "elapsedMs": 1.3380000000006476
+      },
+      {
+        "label": "moduleDiscovery",
+        "elapsedMs": 1.1181000000005952,
+        "count": 1
+      },
+      {
+        "label": "pluginDiscovery",
+        "elapsedMs": 0.05069999999977881,
+        "count": 0
+      },
+      {
+        "label": "savedFileReconciliation",
+        "elapsedMs": 0.9138000000002648,
+        "count": 6
+      },
+      {
+        "label": "runtimeRefresh",
+        "elapsedMs": 579.9185000000007
+      }
+    ]
+  },
+  {
+    "time": "2026-10-27T18:33:12.417Z",
+    "phase": "request-complete",
+    "id": "engine-index-once",
+    "elapsedMs": 5474.2504999999655
+  },
+  {
+    "time": "2026-10-27T18:34:03.977Z",
+    "phase": "request-complete",
+    "id": "indexed-runtime-measure",
+    "elapsedMs": 585.3146000000415,
+    "result": [
+      {
+        "label": "projectDiscovery",
+        "elapsedMs": 1.4347999999299645
+      },
+      {
+        "label": "moduleDiscovery",
+        "elapsedMs": 5.8416000000434,
+        "count": 3
+      },
+      {
+        "label": "pluginDiscovery",
+        "elapsedMs": 0.5278999999864027,
+        "count": 1
+      },
+      {
+        "label": "savedFileReconciliation",
+        "elapsedMs": 4.044999999925494,
+        "count": 21
+      },
+      {
+        "label": "runtimeRefresh",
+        "elapsedMs": 573.4206000000704
+      }
+    ]
+  },
+  {
+    "time": "2026-10-27T18:34:15.865Z",
+    "phase": "activation-complete",
+    "alreadyActive": false,
+    "activationWaitMs": 2931.5308
+  },
+  {
+    "time": "2026-10-27T18:34:34.174Z",
+    "phase": "activation-complete",
+    "alreadyActive": false,
+    "activationWaitMs": 3044.5909
+  },
+  {
+    "time": "2026-10-27T18:34:34.788Z",
+    "phase": "request-complete",
+    "id": "host-final-ready",
+    "elapsedMs": 611.5855000000001,
+    "result": [
+      {
+        "label": "projectDiscovery",
+        "elapsedMs": 1.296400000000176
+      },
+      {
+        "label": "moduleDiscovery",
+        "elapsedMs": 4.247599999999693,
+        "count": 3
+      },
+      {
+        "label": "pluginDiscovery",
+        "elapsedMs": 0.7802000000001499,
+        "count": 1
+      },
+      {
+        "label": "savedFileReconciliation",
+        "elapsedMs": 5.206699999999728,
+        "count": 21
+      },
+      {
+        "label": "runtimeRefresh",
+        "elapsedMs": 596.7424999999994
+      }
+    ]
+  },
+  {
+    "time": "2026-10-27T18:40:43.416Z",
+    "phase": "request-complete",
+    "id": "final-runtime-measure",
+    "elapsedMs": 919.3445000000065,
+    "result": [
+      {
+        "label": "projectDiscovery",
+        "elapsedMs": 2.018099999986589
+      },
+      {
+        "label": "moduleDiscovery",
+        "elapsedMs": 3.4884999999776483,
+        "count": 3
+      },
+      {
+        "label": "pluginDiscovery",
+        "elapsedMs": 0.5411999999778345,
+        "count": 1
+      },
+      {
+        "label": "savedFileReconciliation",
+        "elapsedMs": 9.414999999979045,
+        "count": 21
+      },
+      {
+        "label": "runtimeRefresh",
+        "elapsedMs": 902.9806000000099
+      }
+    ]
+  }
+]

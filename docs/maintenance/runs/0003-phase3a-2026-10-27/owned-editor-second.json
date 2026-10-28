@@ -1,0 +1,7 @@
+{
+  "ProcessId": 77056,
+  "ParentProcessId": 67796,
+  "ExecutablePath": "C:\\Program Files\\Epic Games\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor.exe",
+  "CommandLine": "\"C:\\Program Files\\Epic Games\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor.exe\" c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.uproject -log",
+  "CreationDate": "2026-10-27T11:39:15.484435-07:00"
+}

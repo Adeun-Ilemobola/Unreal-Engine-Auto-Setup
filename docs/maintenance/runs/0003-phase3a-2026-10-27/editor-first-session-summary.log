@@ -1,0 +1,10 @@
+LogPluginManager: Mounting Project plugin ProbePlugin
+LogInit:  CurlRequestOptions (configurable via config and command line):
+LogInit: Engine Version: 5.8.4-58902052+++UE5+Release-5.8
+LogInit: Compatible Engine Version: 5.8.0-55116800+++UE5+Release-5.8
+LogInit: Command Line: -log
+LogInit: Base Directory: C:/Program Files/Epic Games/UE_5.8/Engine/Binaries/Win64/
+[2026.10.27-18.36.42:303][  0]LogModuleManager: InternalLoadLibrary: 'Phase3AIntegration' ('C:/Dev/VSCodeTools/unreal-auto-setup/.local-test-projects/Phase3AIntegration/Binaries/Win64/UnrealEditor-Phase3AIntegration.dll')
+[2026.10.27-18.36.42:305][  0]LogModuleManager: InternalLoadLibrary: 'ProbeRuntime' ('C:/Dev/VSCodeTools/unreal-auto-setup/.local-test-projects/Phase3AIntegration/Binaries/Win64/UnrealEditor-ProbeRuntime.dll')
+[2026.10.27-18.36.44:273][  0]LogModuleManager: InternalLoadLibrary: 'ProbePlugin' ('C:/Dev/VSCodeTools/unreal-auto-setup/.local-test-projects/Phase3AIntegration/Plugins/ProbePlugin/Binaries/Win64/UnrealEditor-ProbePlugin.dll')
+[2026.10.27-18.36.48:637][  0]LogLoad: (Engine Initialization) Total time: 20.95 seconds

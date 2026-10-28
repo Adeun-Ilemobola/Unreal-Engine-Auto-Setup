@@ -1,0 +1,20 @@
+{
+  "head": "dc91401b7e9eed159de80cc96713e58dfdd0a3e1",
+  "branch": "main",
+  "existingFilesUnchanged": 241,
+  "intendedExistingChanges": [
+    "unreal-auto-setup\\generation.js",
+    "unreal-auto-setup\\generationRecovery.js",
+    "unreal-auto-setup\\tests\\generation-recovery.test.js",
+    "docs\\DEVELOPMENT.md",
+    "docs\\maintenance\\INDEX.md"
+  ],
+  "previousRecoveryFilesPreserved": 448,
+  "recordedFixtureFilesVerified": 33,
+  "originalOrdinaryTestUnchanged": true,
+  "manifestUnchanged": true,
+  "promptExact": true,
+  "promptSHA256": "1A214C4A867E4752951C021D53B788BC65C724F77933955E8EDBCF17769EB461",
+  "engineSourceInspectionHashes": "recorded read-only in isolation-inspection.json",
+  "fixtureStatus": "retained and ignored; before/after copies preserved"
+}

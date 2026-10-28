@@ -1,0 +1,862 @@
+{
+  "schema": 1,
+  "operationId": "5410923f-c22e-4f09-b152-6f2ed4e3880d",
+  "project": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.uproject",
+  "engine": "C:\\Program Files\\Epic Games\\UE_5.8",
+  "entries": [
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode",
+      "kind": "directory",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 6473924465069787,
+        "nlink": 1,
+        "size": 0,
+        "mtimeMs": 1793125881182.5176,
+        "ctimeMs": 1793125881182.5176
+      }
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default",
+      "kind": "directory",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 844424930962029,
+        "nlink": 1,
+        "size": 0,
+        "mtimeMs": 1793141944980.2107,
+        "ctimeMs": 1793141944980.2107
+      }
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\Phase3AIntegration.0.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 6755399442468333,
+        "nlink": 1,
+        "size": 35703,
+        "mtimeMs": 1793141856234.9429,
+        "ctimeMs": 1793141856234.9429
+      },
+      "sha256": "7046b082b745e92c9a63f50bfcf3cdca4ddd607e1a608dd82cc2932b46341c47",
+      "blob": "baseline-1.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\Phase3AIntegration.1.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 3659174698651537,
+        "nlink": 1,
+        "size": 35703,
+        "mtimeMs": 1793141944980.2107,
+        "ctimeMs": 1793141944980.2107
+      },
+      "sha256": "7046b082b745e92c9a63f50bfcf3cdca4ddd607e1a608dd82cc2932b46341c47",
+      "blob": "baseline-2.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\Phase3AIntegration.2.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 844424930962032,
+        "nlink": 1,
+        "size": 35703,
+        "mtimeMs": 1793125881184.7654,
+        "ctimeMs": 1793125881184.7654
+      },
+      "sha256": "7046b082b745e92c9a63f50bfcf3cdca4ddd607e1a608dd82cc2932b46341c47",
+      "blob": "baseline-3.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\ProbePlugin.0.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 844424930962030,
+        "nlink": 1,
+        "size": 35441,
+        "mtimeMs": 1793125881182.5176,
+        "ctimeMs": 1793125881182.5176
+      },
+      "sha256": "a736fd73d36a518a10a812d718859adc17c535bebdec62b00e1598c98412287a",
+      "blob": "baseline-4.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\ProbePlugin.2.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 6473924465757681,
+        "nlink": 1,
+        "size": 35441,
+        "mtimeMs": 1793141944980.9614,
+        "ctimeMs": 1793141944980.9614
+      },
+      "sha256": "a736fd73d36a518a10a812d718859adc17c535bebdec62b00e1598c98412287a",
+      "blob": "baseline-5.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\ProbeRuntime.0.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 3659174698651536,
+        "nlink": 1,
+        "size": 35346,
+        "mtimeMs": 1793141944980.2107,
+        "ctimeMs": 1793141944980.2107
+      },
+      "sha256": "8ff6d9b70d9f6ed63e50d47a66ef7e11ca985e6d0a91c04c304631296cf2c718",
+      "blob": "baseline-6.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default\\ProbeRuntime.1.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 844424930962031,
+        "nlink": 1,
+        "size": 35346,
+        "mtimeMs": 1793141856235.668,
+        "ctimeMs": 1793141856235.668
+      },
+      "sha256": "8ff6d9b70d9f6ed63e50d47a66ef7e11ca985e6d0a91c04c304631296cf2c718",
+      "blob": "baseline-7.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default.json",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 844424930962028,
+        "nlink": 1,
+        "size": 3649,
+        "mtimeMs": 1793141944980.9614,
+        "ctimeMs": 1793141944980.9614
+      },
+      "sha256": "b60d62977cc9aedcf06e6fec81cdc81f29e8826d6d283aad6cb1c68c2f97447b",
+      "blob": "baseline-8.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration",
+      "kind": "directory",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 844424930962024,
+        "nlink": 1,
+        "size": 0,
+        "mtimeMs": 1793141944977.2112,
+        "ctimeMs": 1793141944977.2112
+      }
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\Phase3AIntegration.0.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 7318349395889629,
+        "nlink": 1,
+        "size": 35703,
+        "mtimeMs": 1793141856231.9065,
+        "ctimeMs": 1793141856231.9065
+      },
+      "sha256": "7046b082b745e92c9a63f50bfcf3cdca4ddd607e1a608dd82cc2932b46341c47",
+      "blob": "baseline-9.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\Phase3AIntegration.1.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 4503599628783259,
+        "nlink": 1,
+        "size": 35703,
+        "mtimeMs": 1793141944977.2112,
+        "ctimeMs": 1793141944977.2112
+      },
+      "sha256": "7046b082b745e92c9a63f50bfcf3cdca4ddd607e1a608dd82cc2932b46341c47",
+      "blob": "baseline-10.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\Phase3AIntegration.2.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 844424930962027,
+        "nlink": 1,
+        "size": 35703,
+        "mtimeMs": 1793125881181.0203,
+        "ctimeMs": 1793125881181.0203
+      },
+      "sha256": "7046b082b745e92c9a63f50bfcf3cdca4ddd607e1a608dd82cc2932b46341c47",
+      "blob": "baseline-11.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\ProbePlugin.0.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 844424930962025,
+        "nlink": 1,
+        "size": 35441,
+        "mtimeMs": 1793125881178.0066,
+        "ctimeMs": 1793125881178.0066
+      },
+      "sha256": "a736fd73d36a518a10a812d718859adc17c535bebdec62b00e1598c98412287a",
+      "blob": "baseline-12.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\ProbePlugin.2.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 6192449489047007,
+        "nlink": 1,
+        "size": 35441,
+        "mtimeMs": 1793141944977.2112,
+        "ctimeMs": 1793141944977.2112
+      },
+      "sha256": "a736fd73d36a518a10a812d718859adc17c535bebdec62b00e1598c98412287a",
+      "blob": "baseline-13.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\ProbeRuntime.0.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 5348024558915225,
+        "nlink": 1,
+        "size": 35346,
+        "mtimeMs": 1793141944976.462,
+        "ctimeMs": 1793141944976.462
+      },
+      "sha256": "8ff6d9b70d9f6ed63e50d47a66ef7e11ca985e6d0a91c04c304631296cf2c718",
+      "blob": "baseline-14.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration\\ProbeRuntime.1.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 844424930962026,
+        "nlink": 1,
+        "size": 35346,
+        "mtimeMs": 1793141856232.6648,
+        "ctimeMs": 1793141856232.6648
+      },
+      "sha256": "8ff6d9b70d9f6ed63e50d47a66ef7e11ca985e6d0a91c04c304631296cf2c718",
+      "blob": "baseline-15.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration.json",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 844424930962023,
+        "nlink": 1,
+        "size": 3726,
+        "mtimeMs": 1793141944978.7117,
+        "ctimeMs": 1793141944978.7117
+      },
+      "sha256": "302302ace89f7025e83c291aeb8448e11aad620dd2f4a9c0a4a3d86a48d5bf92",
+      "blob": "baseline-16.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\c_cpp_properties.json",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 124693414682880140,
+        "nlink": 1,
+        "size": 1114,
+        "mtimeMs": 1793141945053.9802,
+        "ctimeMs": 1793141945053.9802
+      },
+      "sha256": "9032e5517640a0cf6850e27da82dc1f6b46b3f0cc1d0de02e96316294fc2c915",
+      "blob": "baseline-17.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\settings.json",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 3377699721253219,
+        "nlink": 1,
+        "size": 1289,
+        "mtimeMs": 1793126125615.0452,
+        "ctimeMs": 1793126125615.0452
+      },
+      "sha256": "60ae3487d6b474c63876c49d1542747aea1ca70a4fd32a7b291ac1c1cfaacb42",
+      "blob": "baseline-18.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\tasks.json",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 3096224743964512,
+        "nlink": 1,
+        "size": 347,
+        "mtimeMs": 1793125050160.704,
+        "ctimeMs": 1793125050160.704
+      },
+      "sha256": "9fcc6a39c18623abb5ed6ef39bda5dcdea33b1387c6429cea34031843a59219a",
+      "blob": "baseline-19.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.clang-format",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 2814749767895142,
+        "nlink": 1,
+        "size": 56,
+        "mtimeMs": 1793141941256.8965,
+        "ctimeMs": 1793141941256.8965
+      },
+      "sha256": "8a8895c4f63cbb252e8978831374164172dc76ffeaa8041acf622e7d435781ed",
+      "blob": "baseline-20.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.uproject",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 3096224744647227,
+        "nlink": 1,
+        "size": 320,
+        "mtimeMs": 1793125667885.828,
+        "ctimeMs": 1793125667889.5771
+      },
+      "sha256": "c336d46dda77425c4c16e43a715d9c256015f094764cf7895377665e70a09ae1",
+      "blob": "baseline-21.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.ignore",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 844424930962022,
+        "nlink": 1,
+        "size": 213,
+        "mtimeMs": 1793141944970.2007,
+        "ctimeMs": 1793141944970.2007
+      },
+      "sha256": "a73a32efc37bc2301a39fa41cc0f877ec17e07b3ca839830529989110262cac6",
+      "blob": "baseline-22.bin"
+    },
+    {
+      "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.code-workspace",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 844424930962033,
+        "nlink": 1,
+        "size": 21604,
+        "mtimeMs": 1793141944994.4683,
+        "ctimeMs": 1793141944994.4683
+      },
+      "sha256": "d9fee70222b7998f748db539bda752340d6c4a3078c8e742b6a730285b28e9b7",
+      "blob": "baseline-23.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode",
+      "kind": "directory",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 3940649674447884,
+        "nlink": 1,
+        "size": 0,
+        "mtimeMs": 1793125881198.265,
+        "ctimeMs": 1793125881198.265
+      }
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation",
+      "kind": "directory",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 7318349394975774,
+        "nlink": 1,
+        "size": 0,
+        "mtimeMs": 1789062161300.8079,
+        "ctimeMs": 1789062161300.8079
+      }
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\AutoSetupValidation.0.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 4222124651264570,
+        "nlink": 1,
+        "size": 35271,
+        "mtimeMs": 1789062399966.947,
+        "ctimeMs": 1789062399966.947
+      },
+      "sha256": "3de39bffe04ce32b3db6f62278630f7caba8e3c7dc83785f4ef97c1d33e97d86",
+      "blob": "baseline-24.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\AutoSetupValidation.1.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 5066549581290549,
+        "nlink": 1,
+        "size": 35290,
+        "mtimeMs": 1789062161447.3274,
+        "ctimeMs": 1789062161447.3274
+      },
+      "sha256": "5c18c76fa38a27c73817bdc5207dd5fe2a8c7d57fd5ed429b7d3059236f43b04",
+      "blob": "baseline-25.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\AutoSetupValidation.2.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 8162774324692669,
+        "nlink": 1,
+        "size": 35271,
+        "mtimeMs": 1789061970299.1084,
+        "ctimeMs": 1789061970299.1084
+      },
+      "sha256": "3de39bffe04ce32b3db6f62278630f7caba8e3c7dc83785f4ef97c1d33e97d86",
+      "blob": "baseline-26.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\ValidationPlugin.0.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 8725724278113977,
+        "nlink": 1,
+        "size": 35132,
+        "mtimeMs": 1789061970298.3574,
+        "ctimeMs": 1789061970298.3574
+      },
+      "sha256": "7253e3875bf0a5d1f30334be86ef351a57b6f0cef5ddfd68005dfdc38180a4c8",
+      "blob": "baseline-27.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\ValidationPlugin.2.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 11258999068522708,
+        "nlink": 1,
+        "size": 35132,
+        "mtimeMs": 1789062399966.947,
+        "ctimeMs": 1789062399966.947
+      },
+      "sha256": "7253e3875bf0a5d1f30334be86ef351a57b6f0cef5ddfd68005dfdc38180a4c8",
+      "blob": "baseline-28.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\ValidationRuntime.0.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 3940649674447908,
+        "nlink": 1,
+        "size": 35280,
+        "mtimeMs": 1789062161450.3352,
+        "ctimeMs": 1789062161450.3352
+      },
+      "sha256": "cb0d340742698f0c62709568f3346a04b0d79d42398c655de20570b364d1e10e",
+      "blob": "baseline-29.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation\\ValidationRuntime.1.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 3940649674557573,
+        "nlink": 1,
+        "size": 35261,
+        "mtimeMs": 1789062399966.947,
+        "ctimeMs": 1789062399966.947
+      },
+      "sha256": "d7fcbd6d1e0cff0ec23ad04fcee5d5b3801a908c9af7daed7a741e107471a5ad",
+      "blob": "baseline-30.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_AutoSetupValidation.json",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 3940649674447891,
+        "nlink": 1,
+        "size": 5384,
+        "mtimeMs": 1789062400117.463,
+        "ctimeMs": 1789062400117.463
+      },
+      "sha256": "2e1019490003f1501dbe777c762442945c2a1e7eaebd32b6283dda38fbd7778f",
+      "blob": "baseline-31.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default",
+      "kind": "directory",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 7599824371686457,
+        "nlink": 1,
+        "size": 0,
+        "mtimeMs": 1793141944996.7175,
+        "ctimeMs": 1793141944996.7175
+      }
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\AutoSetupValidation.0.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 3377699721136713,
+        "nlink": 1,
+        "size": 35271,
+        "mtimeMs": 1789062399967.6963,
+        "ctimeMs": 1789062399967.6963
+      },
+      "sha256": "3de39bffe04ce32b3db6f62278630f7caba8e3c7dc83785f4ef97c1d33e97d86",
+      "blob": "baseline-32.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\AutoSetupValidation.1.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 5066549581290559,
+        "nlink": 1,
+        "size": 35290,
+        "mtimeMs": 1789062161452.5847,
+        "ctimeMs": 1789062161452.5847
+      },
+      "sha256": "5c18c76fa38a27c73817bdc5207dd5fe2a8c7d57fd5ed429b7d3059236f43b04",
+      "blob": "baseline-33.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\AutoSetupValidation.2.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 10133099161667268,
+        "nlink": 1,
+        "size": 35271,
+        "mtimeMs": 1789061970301.1326,
+        "ctimeMs": 1789061970301.1326
+      },
+      "sha256": "3de39bffe04ce32b3db6f62278630f7caba8e3c7dc83785f4ef97c1d33e97d86",
+      "blob": "baseline-34.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\Phase3AIntegration.0.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 5910974512336380,
+        "nlink": 1,
+        "size": 35703,
+        "mtimeMs": 1793141856250.7766,
+        "ctimeMs": 1793141856250.7766
+      },
+      "sha256": "7046b082b745e92c9a63f50bfcf3cdca4ddd607e1a608dd82cc2932b46341c47",
+      "blob": "baseline-35.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\Phase3AIntegration.1.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 3659174698651541,
+        "nlink": 1,
+        "size": 35703,
+        "mtimeMs": 1793141944997.467,
+        "ctimeMs": 1793141944997.467
+      },
+      "sha256": "7046b082b745e92c9a63f50bfcf3cdca4ddd607e1a608dd82cc2932b46341c47",
+      "blob": "baseline-36.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\Phase3AIntegration.2.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 844424930962041,
+        "nlink": 1,
+        "size": 35703,
+        "mtimeMs": 1793125881202.0151,
+        "ctimeMs": 1793125881202.0151
+      },
+      "sha256": "7046b082b745e92c9a63f50bfcf3cdca4ddd607e1a608dd82cc2932b46341c47",
+      "blob": "baseline-37.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ProbePlugin.0.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 844424930962039,
+        "nlink": 1,
+        "size": 35441,
+        "mtimeMs": 1793125881202.0151,
+        "ctimeMs": 1793125881202.0151
+      },
+      "sha256": "a736fd73d36a518a10a812d718859adc17c535bebdec62b00e1598c98412287a",
+      "blob": "baseline-38.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ProbePlugin.2.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 6192449489047040,
+        "nlink": 1,
+        "size": 35441,
+        "mtimeMs": 1793141944997.467,
+        "ctimeMs": 1793141944997.467
+      },
+      "sha256": "a736fd73d36a518a10a812d718859adc17c535bebdec62b00e1598c98412287a",
+      "blob": "baseline-39.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ProbeRuntime.0.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 4222124652072852,
+        "nlink": 1,
+        "size": 35346,
+        "mtimeMs": 1793141944996.7175,
+        "ctimeMs": 1793141944996.7175
+      },
+      "sha256": "8ff6d9b70d9f6ed63e50d47a66ef7e11ca985e6d0a91c04c304631296cf2c718",
+      "blob": "baseline-40.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ProbeRuntime.1.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 844424930962040,
+        "nlink": 1,
+        "size": 35346,
+        "mtimeMs": 1793141856250.7766,
+        "ctimeMs": 1793141856250.7766
+      },
+      "sha256": "8ff6d9b70d9f6ed63e50d47a66ef7e11ca985e6d0a91c04c304631296cf2c718",
+      "blob": "baseline-41.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ValidationPlugin.0.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 10696049115088576,
+        "nlink": 1,
+        "size": 35132,
+        "mtimeMs": 1789061970299.8574,
+        "ctimeMs": 1789061970299.8574
+      },
+      "sha256": "7253e3875bf0a5d1f30334be86ef351a57b6f0cef5ddfd68005dfdc38180a4c8",
+      "blob": "baseline-42.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ValidationPlugin.2.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 27584547717740972,
+        "nlink": 1,
+        "size": 35132,
+        "mtimeMs": 1789062399968.4553,
+        "ctimeMs": 1789062399968.4553
+      },
+      "sha256": "7253e3875bf0a5d1f30334be86ef351a57b6f0cef5ddfd68005dfdc38180a4c8",
+      "blob": "baseline-43.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ValidationRuntime.0.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 3940649674447931,
+        "nlink": 1,
+        "size": 35280,
+        "mtimeMs": 1789062161454.8357,
+        "ctimeMs": 1789062161454.8357
+      },
+      "sha256": "cb0d340742698f0c62709568f3346a04b0d79d42398c655de20570b364d1e10e",
+      "blob": "baseline-44.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default\\ValidationRuntime.1.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 3659174697849097,
+        "nlink": 1,
+        "size": 35261,
+        "mtimeMs": 1789062399968.4553,
+        "ctimeMs": 1789062399968.4553
+      },
+      "sha256": "d7fcbd6d1e0cff0ec23ad04fcee5d5b3801a908c9af7daed7a741e107471a5ad",
+      "blob": "baseline-45.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default.json",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 5066549581290552,
+        "nlink": 1,
+        "size": 3341,
+        "mtimeMs": 1793141944997.467,
+        "ctimeMs": 1793141944997.467
+      },
+      "sha256": "b76e2f3ecca08a01a6bf449792d7699aaca65a9fabcbc445d197ab360f8f462c",
+      "blob": "baseline-46.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration",
+      "kind": "directory",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 844424930962035,
+        "nlink": 1,
+        "size": 0,
+        "mtimeMs": 1793141944995.2175,
+        "ctimeMs": 1793141944995.2175
+      }
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\Phase3AIntegration.0.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 5629499535625719,
+        "nlink": 1,
+        "size": 35703,
+        "mtimeMs": 1793141856249.2595,
+        "ctimeMs": 1793141856249.2595
+      },
+      "sha256": "7046b082b745e92c9a63f50bfcf3cdca4ddd607e1a608dd82cc2932b46341c47",
+      "blob": "baseline-47.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\Phase3AIntegration.1.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 3659174698651539,
+        "nlink": 1,
+        "size": 35703,
+        "mtimeMs": 1793141944995.2175,
+        "ctimeMs": 1793141944995.2175
+      },
+      "sha256": "7046b082b745e92c9a63f50bfcf3cdca4ddd607e1a608dd82cc2932b46341c47",
+      "blob": "baseline-48.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\Phase3AIntegration.2.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 844424930962038,
+        "nlink": 1,
+        "size": 35703,
+        "mtimeMs": 1793125881200.529,
+        "ctimeMs": 1793125881200.529
+      },
+      "sha256": "7046b082b745e92c9a63f50bfcf3cdca4ddd607e1a608dd82cc2932b46341c47",
+      "blob": "baseline-49.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\ProbePlugin.0.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 844424930962036,
+        "nlink": 1,
+        "size": 35441,
+        "mtimeMs": 1793125881199.0154,
+        "ctimeMs": 1793125881199.0154
+      },
+      "sha256": "a736fd73d36a518a10a812d718859adc17c535bebdec62b00e1598c98412287a",
+      "blob": "baseline-50.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\ProbePlugin.2.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 6192449489047034,
+        "nlink": 1,
+        "size": 35441,
+        "mtimeMs": 1793141944995.9673,
+        "ctimeMs": 1793141944995.9673
+      },
+      "sha256": "a736fd73d36a518a10a812d718859adc17c535bebdec62b00e1598c98412287a",
+      "blob": "baseline-51.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\ProbeRuntime.0.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 4222124652072850,
+        "nlink": 1,
+        "size": 35346,
+        "mtimeMs": 1793141944995.2175,
+        "ctimeMs": 1793141944995.2175
+      },
+      "sha256": "8ff6d9b70d9f6ed63e50d47a66ef7e11ca985e6d0a91c04c304631296cf2c718",
+      "blob": "baseline-52.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration\\ProbeRuntime.1.rsp",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 844424930962037,
+        "nlink": 1,
+        "size": 35346,
+        "mtimeMs": 1793141856249.2595,
+        "ctimeMs": 1793141856249.2595
+      },
+      "sha256": "8ff6d9b70d9f6ed63e50d47a66ef7e11ca985e6d0a91c04c304631296cf2c718",
+      "blob": "baseline-53.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration.json",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 844424930962034,
+        "nlink": 1,
+        "size": 3418,
+        "mtimeMs": 1793141944995.9673,
+        "ctimeMs": 1793141944995.9673
+      },
+      "sha256": "42f725d8cb070c987542346c087cc2f3fb68bcc233f70747a2da7d96a3b9324b",
+      "blob": "baseline-54.bin"
+    },
+    {
+      "path": "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\c_cpp_properties.json",
+      "kind": "file",
+      "identity": {
+        "dev": 3938932523,
+        "ino": 3940649674447952,
+        "nlink": 1,
+        "size": 827,
+        "mtimeMs": 1793141944997.467,
+        "ctimeMs": 1793141944997.467
+      },
+      "sha256": "a303b37e250ef93fbef8c1d74a4f2d5779cec3dc8027eb3194a4a436416f8a94",
+      "blob": "baseline-55.bin"
+    }
+  ]
+}

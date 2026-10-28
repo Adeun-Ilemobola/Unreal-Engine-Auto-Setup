@@ -1,7 +1,9 @@
 from pathlib import Path
 import json, zipfile, xml.etree.ElementTree as ET
+from bundle_sources import validate
 root = Path(__file__).resolve().parent
 source = root / 'unreal-auto-setup'
+inputs = validate(root)
 p = json.loads((source/'package.json').read_text(encoding='utf-8'))
 name = p['name']+'-'+p['version']+'.vsix'
 manifest = f'''<?xml version="1.0" encoding="utf-8"?>
@@ -13,8 +15,8 @@ content_types='''<?xml version="1.0" encoding="utf-8"?><Types xmlns="http://sche
 with zipfile.ZipFile(root/name,'w',zipfile.ZIP_DEFLATED) as z:
     z.writestr('extension.vsixmanifest',manifest)
     z.writestr('[Content_Types].xml',content_types)
-    for filename in ['package.json','extension.js','core.js','runner.js','project.js','engine.js','diagnostics.js','processes.js','debugger.js','build.js','problemParser.js','runtime.js','generation.js','modules.js','classTemplates.js','classFiles.js','classWizard.js','descriptors.js','moduleTemplates.js','creation.js','structureWizard.js','buildCsParser.js','dependencyModel.js','dependencyEditor.js','dependencyIndex.js','dependencyDiagnostics.js','dependencyActions.js','dirtyTracker.js','runtimeCoordinator.js','liveCoding.js','runtimeWatcher.js','sidebar.js','explorerClass.js','media/unreal.svg','CAPABILITIES.md','VALIDATION.md','README.md','LICENSE']:
-        z.write(source/filename, 'extension/'+filename)
+    for file in inputs:
+        z.write(file, 'extension/'+file.relative_to(source).as_posix())
 with zipfile.ZipFile(root/name) as z:
     assert z.testzip() is None
     ET.fromstring(z.read('extension.vsixmanifest'))
@@ -25,6 +27,7 @@ with zipfile.ZipFile(bundle,'w',zipfile.ZIP_DEFLATED) as z:
     z.write(root/name,name)
     z.write(source/'README.md','README.md')
     z.write(root/'build_bundle.py','build_bundle.py')
+    z.write(root/'bundle_sources.py','bundle_sources.py')
     for file in sorted(source.rglob('*')):
         if file.is_file(): z.write(file,str(file.relative_to(root)))
 print(bundle)

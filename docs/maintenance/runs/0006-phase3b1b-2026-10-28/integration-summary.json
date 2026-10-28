@@ -1,0 +1,118 @@
+{
+  "operations": [
+    {
+      "id": "3b1b-prior-unresolved",
+      "status": "Blocked",
+      "execution": {
+        "success": false,
+        "status": "NotStarted"
+      },
+      "wallMs": 61.47260000000006,
+      "recoveryLocation": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\host-data\\User\\globalStorage\\local-tools.unreal-project-tools\\regeneration-v1\\transaction-0"
+    },
+    {
+      "id": "3b1b-ordinary-generate",
+      "status": "Conflict",
+      "execution": {
+        "startTime": "2026-10-28T04:45:02.833Z",
+        "completionTime": "2026-10-28T04:45:07.461Z",
+        "status": "Succeeded",
+        "success": true,
+        "exitCode": 0
+      },
+      "wallMs": 5401.5947000000015,
+      "metadataOnly": 14,
+      "filesystem": {
+        "eventCount": 65,
+        "complete": true,
+        "dropped": 0,
+        "errors": [],
+        "writerIdentityKnown": false,
+        "record": "filesystem.json"
+      },
+      "pipelineMs": 5375.950900000011,
+      "outsideManagedMs": 747.9509000000107,
+      "recoveryLocation": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\host-3b1b-ordinary\\User\\globalStorage\\local-tools.unreal-project-tools\\regeneration-v1\\transaction-0"
+    },
+    {
+      "id": "3b1b-ordinary-repeat",
+      "status": "Blocked",
+      "execution": {
+        "success": false,
+        "status": "NotStarted"
+      },
+      "wallMs": 28.03849999999511,
+      "recoveryLocation": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\host-3b1b-ordinary\\User\\globalStorage\\local-tools.unreal-project-tools\\regeneration-v1\\transaction-0"
+    },
+    {
+      "id": "3b1b-saved-edit",
+      "status": "Conflict",
+      "execution": {
+        "startTime": "2026-10-28T04:47:41.880Z",
+        "completionTime": "2026-10-28T04:47:46.841Z",
+        "status": "Succeeded",
+        "success": true,
+        "exitCode": 0
+      },
+      "wallMs": 5765.9005,
+      "metadataOnly": 15,
+      "filesystem": {
+        "eventCount": 69,
+        "complete": true,
+        "dropped": 0,
+        "errors": [],
+        "writerIdentityKnown": false,
+        "record": "filesystem.json"
+      },
+      "pipelineMs": 5712.349200000001,
+      "outsideManagedMs": 751.3492000000006,
+      "recoveryLocation": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\host-3b1b-saved\\User\\globalStorage\\local-tools.unreal-project-tools\\regeneration-v1\\transaction-0",
+      "savedEditSurvives": true,
+      "savedTextMatchesDisk": true
+    }
+  ],
+  "ordinaryHashes": {
+    "beforeFiles": 59,
+    "afterFiles": 59,
+    "changedBytes": [
+      "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default.json",
+      "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration.json",
+      "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\c_cpp_properties.json",
+      "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.ignore",
+      "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default.json",
+      "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration.json"
+    ]
+  },
+  "savedHashes": {
+    "beforeFiles": 59,
+    "afterFiles": 59,
+    "changedBytes": [
+      "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default.json",
+      "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration.json",
+      "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.clang-format",
+      "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.ignore",
+      "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default.json",
+      "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration.json"
+    ]
+  },
+  "seededProviderStillConfigured": false,
+  "providerJsonValid": true,
+  "recoveryBlobsVerified": 236,
+  "build": {
+    "time": "2026-10-28T04:49:43.522Z",
+    "phase": "complete",
+    "id": "3b1b-build",
+    "elapsedMs": 23373.501999999993,
+    "result": {
+      "target": "Phase3AIntegrationEditor",
+      "platform": "Win64",
+      "configuration": "Development",
+      "startTime": "2026-10-28T04:49:20.698Z",
+      "completionTime": "2026-10-28T04:49:43.521Z",
+      "status": "Succeeded",
+      "success": true,
+      "exitCode": 0
+    }
+  },
+  "errors": []
+}

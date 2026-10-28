@@ -1,0 +1,17 @@
+[
+  {
+    "productVersion": "++UE5+Release-5.8-CL-58902052",
+    "fileVersion": "++UE5+Release-5.8-CL-58902052",
+    "path": "C:\\Program Files\\Epic Games\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor.exe"
+  },
+  {
+    "productVersion": "5.8.0.0",
+    "fileVersion": "5.8.0.0",
+    "path": "C:\\Program Files\\Epic Games\\UE_5.8\\Engine\\Binaries\\DotNET\\UnrealBuildTool\\UnrealBuildTool.exe"
+  },
+  {
+    "productVersion": "5.8.0.0",
+    "fileVersion": "5.8.0.0",
+    "path": "C:\\Program Files\\Epic Games\\UE_5.8\\Engine\\Binaries\\DotNET\\UnrealBuildTool\\UnrealBuildTool.dll"
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "stage": "event",
+  "path": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\c_cpp_properties.json",
+  "version": 3,
+  "dirty": false,
+  "text": "{\r\n  \"configurations\": [\r\n    {\r\n      \"name\": \"Phase3B1b\",\r\n      \"configurationProvider\": \"skyboxlabs.unrealengine-tools\"\r\n    }\r\n  ],\r\n  \"version\": 4\r\n}\r\n"
+}

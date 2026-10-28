@@ -1,0 +1,28 @@
+{
+  "scope": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\phase3b1b-atomic-probe",
+  "replacementCases": [
+    {
+      "scenario": "ordinary",
+      "primitive": "System.IO.File.Replace (Windows atomic replacement with backup)",
+      "preLength": 17,
+      "preLastWriteUtc": "2026-10-28T04:23:08.0401440Z",
+      "live": "original-configuration",
+      "backup": "generated-content",
+      "ordinaryRestoration": true,
+      "concurrentLiveContentPreserved": false
+    },
+    {
+      "scenario": "late-external-save",
+      "primitive": "System.IO.File.Replace (Windows atomic replacement with backup)",
+      "preLength": 18,
+      "preLastWriteUtc": "2026-10-28T04:23:08.0528860Z",
+      "live": "original-configuration",
+      "backup": "newer-user-content",
+      "ordinaryRestoration": true,
+      "concurrentLiveContentPreserved": false
+    }
+  ],
+  "exclusiveWriteLockBlocksBothGeneratorAndUser": true,
+  "adopted": false,
+  "conclusion": "Atomic backup preserves the displaced version but does not identify its writer; a blanket write lock also prevents ordinary generator writes. Neither alone establishes safe conflict-free restoration."
+}

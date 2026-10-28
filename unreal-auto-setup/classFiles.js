@@ -2,11 +2,7 @@
 const fs=require('node:fs/promises');
 const path=require('node:path');
 const modules=require('./modules');
-
-function inside(root,filename) {
-  const relative=path.relative(path.resolve(root),path.resolve(filename));
-  return relative!=='' && relative!=='..' && !relative.startsWith('..'+path.sep) && !path.isAbsolute(relative);
-}
+const {inside}=require('./paths');
 async function safeAncestors(filename,io=fs) {
   let current=path.resolve(filename);
   while(true) {
@@ -40,6 +36,9 @@ async function validate(plan,vscode,{io=fs}={}) {
   }
 }
 async function create(plan,vscode,{io=fs}={}) {
+  return require('./generationGuard').mutate([plan.project.root],()=>createUnlocked(plan,vscode,{io}));
+}
+async function createUnlocked(plan,vscode,{io=fs}={}) {
   await validate(plan,vscode,{io});
   const created=[],directories=[];
   async function makeDirectory(directory) {

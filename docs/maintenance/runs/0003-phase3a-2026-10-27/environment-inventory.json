@@ -1,0 +1,66 @@
+{
+  "os": {
+    "build": "26300",
+    "version": "10.0.26300",
+    "caption": "Microsoft Windows 11 Home"
+  },
+  "engine": {
+    "MajorVersion": 5,
+    "MinorVersion": 8,
+    "PatchVersion": 4,
+    "Changelist": 58902052,
+    "CompatibleChangelist": 55116800,
+    "IsLicenseeVersion": 0,
+    "IsPromotedBuild": 1,
+    "BranchName": "++UE5+Release-5.8"
+  },
+  "installationType": "Epic installed/promoted build; InstalledBuild.txt present",
+  "vscode": {
+    "path": "C:\\Users\\Owner\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+    "version": "1.143.1",
+    "commit": "e646868227c3e3a9e3f24277c8c7220be42c0be7"
+  },
+  "extensions": [
+    {
+      "path": "C:\\Users\\Owner\\.vscode\\extensions\\local-tools.unreal-project-tools-0.8.0",
+      "id": "local-tools.unreal-project-tools",
+      "version": "0.8.0"
+    },
+    {
+      "path": "C:\\Users\\Owner\\.vscode\\extensions\\ms-vscode.cpptools-1.35.4-win32-x64",
+      "id": "ms-vscode.cpptools",
+      "version": "1.35.4"
+    },
+    {
+      "path": "C:\\Users\\Owner\\.vscode\\extensions\\skyboxlabs.unrealengine-tools-0.1.2",
+      "id": "skyboxlabs.unrealengine-tools",
+      "version": "0.1.2"
+    }
+  ],
+  "msvcInstalled": [
+    {
+      "folder": "14.44.35207",
+      "compilerFileVersion": "19.44.35229.0"
+    },
+    {
+      "folder": "14.50.35717",
+      "compilerFileVersion": "19.50.35739.0"
+    },
+    {
+      "folder": "14.51.36231",
+      "compilerFileVersion": "19.51.36260.0"
+    }
+  ],
+  "windowsSDKs": [
+    "10.0.22621.0",
+    "10.0.26100.0",
+    "10.0.28000.0"
+  ],
+  "selectedByUBT": {
+    "folder": "14.50.35717",
+    "sdk": "10.0.22621.0",
+    "toolchain": "14.50.35739"
+  },
+  "node": "v24.19.0",
+  "python": "3.14.7"
+}

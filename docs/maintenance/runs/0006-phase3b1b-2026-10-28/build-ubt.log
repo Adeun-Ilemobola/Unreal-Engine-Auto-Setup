@@ -1,0 +1,174 @@
+Log started at 10/27/2026 21:49:21 (2026-10-28T04:49:21Z)
+Resolved project argument c:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Phase3AIntegration.uproject to C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Phase3AIntegration.uproject
+No config file at C:\ProgramData\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
+No config file at C:\Users\Owner\AppData\Local\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
+No config file at C:\Users\Owner\Documents\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
+Configuration will be read from:
+  C:\Users\Owner\AppData\Roaming\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
+Reading configuration file from cache (C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Intermediate\Build\XmlConfigCache.bin): C:\Users\Owner\AppData\Roaming\Unreal Engine\UnrealBuildTool\BuildConfiguration.xml
+Reading configuration file from cache (C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Intermediate\Build\XmlConfigCache.bin): C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Saved\UnrealBuildTool\BuildConfiguration.xml
+Reading configuration file from cache (C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Intermediate\Build\XmlConfigCache.bin): C:\Users\Owner\AppData\Local\UnrealEngine\Intermediate\Build\UnrealBuildTool.Env.BuildConfiguration.xml
+Setting temp directory to 'C:\Users\Owner\AppData\Local\Temp\UnrealBuildTool\eb6d2d82'
+    Registering build platform: UnrealBuildTool.AndroidPlatformFactory
+    Registering build platform: UnrealBuildTool.IOSPlatformFactory
+    Registering build platform: UnrealBuildTool.LinuxPlatformFactory
+    Registering build platform: UnrealBuildTool.MacPlatformFactory
+    Registering build platform: UnrealBuildTool.TVOSPlatformFactory
+    Registering build platform: UnrealBuildTool.WindowsPlatformFactory
+Found Windows 10 SDK root at C:\Program Files (x86)\Windows Kits\10 (1)
+Found Windows 10 SDK root at C:\Program Files (x86)\Windows Kits\10 (2)
+Found Windows 10 SDK version 10.0.22621.0 at C:\Program Files (x86)\Windows Kits\10
+Found Universal CRT version 10.0.22621.0 at C:\Program Files (x86)\Windows Kits\10
+Found Windows 10 SDK version 10.0.26100.0 at C:\Program Files (x86)\Windows Kits\10
+Found Universal CRT version 10.0.26100.0 at C:\Program Files (x86)\Windows Kits\10
+Found Windows 10 SDK version 10.0.28000.0 at C:\Program Files (x86)\Windows Kits\10
+Found Universal CRT version 10.0.28000.0 at C:\Program Files (x86)\Windows Kits\10
+Win64 Installed SDK(s): MinVersion_Sdk=10.0.19041.0, MaxVersion_Sdk=10.9.99999.0, CurrentVersion_Sdk=10.0.22621.0, Version_AutoSdk=10.0.22621.0, CurrentVersion_AutoSdk=
+        Registering build platform: Win64 - buildable: True
+    Registering build platform: UnrealBuildTool.VisionOSPlatformFactory
+Command line: "C:\Program Files\Epic Games\UE_5.8\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" Phase3AIntegrationEditor Win64 Development -Project=c:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Phase3AIntegration.uproject -WaitMutex -NoHotReloadFromIDE
+Log file: C:\Users\Owner\AppData\Local\UnrealBuildTool\Log.txt
+Deleting old log file: C:\Users\Owner\AppData\Local\UnrealBuildTool\Log-backup-2026.08.19-18.18.03.txt
+Deleting old log file: C:\Users\Owner\AppData\Local\UnrealBuildTool\Log-backup-2026.08.19-18.18.03.json
+
+Determining max actions to execute in parallel (20 physical cores, 28 logical cores)
+  Executing up to 20 processes, one per physical core
+  Requested 1.5 GB memory per action, 15.73 GB available: limiting max parallel actions to 10
+UbaStorageServer - Database loaded from C:\ProgramData\Epic\UnrealBuildAccelerator\cas\casdb (v32) in <1ms (contained 0 entries estimated to 0b)
+UbaServer - Listening on 0.0.0.0:1345
+Skipping C:\Program Files\Epic Games\UE_5.8\Engine\Intermediate\Build\BuildRules\UE5Rules.dll: File is installed
+Skipping C:\Program Files\Epic Games\UE_5.8\Engine\Intermediate\Build\BuildRules\UE5ProgramRules.dll: File is installed
+Old command line arguments:
+-NoPCHChain
+New command line arguments:
+
+Creating makefile for Phase3AIntegrationEditor (command line arguments changed)
+Compiler: C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\bin\Hostx64\x64\cl.exe
+Linker: C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\bin\Hostx64\x64\link.exe
+Library Manager: C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\bin\Hostx64\x64\link.exe
+Resource Compiler: C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\rc.exe
+Resource Converter: C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717\bin\Hostx64\x64\cvtres.exe
+Using EngineIncludeOrderVersion.Unreal5_8 for target Phase3AIntegrationEditor.Target.cs
+Building UnrealEditor - Phase3AIntegrationEditor - Win64 - Development
+VerseVMBytecodeGenerator.Generate, generating CPP headers in: 'C:\Program Files\Epic Games\UE_5.8\Engine\Intermediate\Build\Win64\UnrealEditor\Inc\CoreUObject\VerseVMBytecode'
+	Writing out generated header file. Changed:False Path:'C:\Program Files\Epic Games\UE_5.8\Engine\Intermediate\Build\Win64\UnrealEditor\Inc\CoreUObject\VerseVMBytecode\VVMBytecodeOps.gen.h'
+	Writing out generated header file. Changed:False Path:'C:\Program Files\Epic Games\UE_5.8\Engine\Intermediate\Build\Win64\UnrealEditor\Inc\CoreUObject\VerseVMBytecode\VVMBytecodesAndCaptures.gen.h'
+	Writing out generated header file. Changed:False Path:'C:\Program Files\Epic Games\UE_5.8\Engine\Intermediate\Build\Win64\UnrealEditor\Inc\CoreUObject\VerseVMBytecode\VVMMakeCapturesFuncs.gen.h'
+	Writing out generated header file. Changed:False Path:'C:\Program Files\Epic Games\UE_5.8\Engine\Intermediate\Build\Win64\UnrealEditor\Inc\CoreUObject\VerseVMBytecode\VVMCaptureSwitch.gen.h'
+Found 5 shared PCH headers (listed in order of preference):
+	UnrealEd
+	Engine
+	Slate
+	CoreUObject
+	Core
+Parsing headers for Phase3AIntegrationEditor
+  Running Internal UnrealHeaderTool C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Phase3AIntegration.uproject C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Intermediate\Build\Win64\Phase3AIntegrationEditor\Phase3AIntegrationEditor.uhtmanifest -WarningsAsErrors -installed
+Updating C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Intermediate\Build\Win64\x64\UnrealEditor\Development\Phase3AIntegration\Phase3AIntegration.Shared.rsp: contents have changed. Saving previous version to C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Intermediate\Build\Win64\x64\UnrealEditor\Development\Phase3AIntegration\Phase3AIntegration.Shared.rsp.old.
+Updating C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Plugins\ProbePlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProbePlugin\ProbePlugin.Shared.rsp: contents have changed. Saving previous version to C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Plugins\ProbePlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProbePlugin\ProbePlugin.Shared.rsp.old.
+Updating C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProbeRuntime\ProbeRuntime.Shared.rsp: contents have changed. Saving previous version to C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProbeRuntime\ProbeRuntime.Shared.rsp.old.
+Updating C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Plugins\ProbePlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProbePlugin\Module.ProbePlugin.cpp: contents have changed. Saving previous version to C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Plugins\ProbePlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProbePlugin\Module.ProbePlugin.cpp.old.
+UHT compiled-in object format Default
+Step - Parse Headers
+Reading engine version from file: C:\Program Files\Epic Games\UE_5.8\Engine\Source\Runtime\Launch\Resources\Version.h
+Got engine version 5.8.4
+Step - Populate symbol table
+Step - Exports
+       Exporter Stats skipped
+       Exporter Json skipped
+       Running exporter CodeGen
+UHT processed Phase3AIntegrationEditor in 1.5718795 seconds (0 generated files written)
+Deleting outdated item: C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProbeRuntime\UnrealEditor-ProbeRuntime.lib
+Deleting outdated item: C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Binaries\Win64\UnrealEditor-ProbeRuntime.pdb
+Deleting outdated item: C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Binaries\Win64\UnrealEditor-Phase3AIntegration.pdb
+Deleting outdated item: C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Intermediate\Build\Win64\x64\UnrealEditor\Development\Phase3AIntegration\UnrealEditor-Phase3AIntegration.lib
+Deleting outdated item: C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Plugins\ProbePlugin\Binaries\Win64\UnrealEditor-ProbePlugin.pdb
+Deleting outdated item: C:\Dev\VSCodeTools\unreal-auto-setup\.local-test-projects\Phase3AIntegration\Plugins\ProbePlugin\Intermediate\Build\Win64\x64\UnrealEditor\Development\ProbePlugin\UnrealEditor-ProbePlugin.lib
+Building Phase3AIntegrationEditor...
+===== Toolchain Information =====
+Using ISPC compiler (C:\Program Files\Epic Games\UE_5.8\Engine\Source\ThirdParty\Intel\ISPC\bin\Windows\ispc.exe)
+  Intel(r) Implicit SPMD Program Compiler (Intel(r) ISPC), 1.24.0 (build commit  @ 20250404, LLVM 18.1.2) 
+Using Visual Studio 14.50.35739 toolchain (C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.50.35717) and Windows 10.0.22621.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from ProbePlugin unity file: ProbePlugin.cpp
+===== End Toolchain Information =====
+Using Unreal Build Accelerator local executor to run 18 action(s)
+  CPU 20 physical cores, 28 logical cores
+  Memory 15.73 GB physical, 32.5 GB/47.18 GB committed
+  UBA Storage capacity 40 GB
+  UBA RootDir C:\ProgramData\Epic\UnrealBuildAccelerator
+Cache bucket 471278110 used. Action: Compile [x64] PerModuleInline.gen.cpp ()
+Cache bucket 416513229 used. Action: Link [x64] UnrealEditor-ProbeRuntime.lib ()
+Cache bucket 502586203 used. Action: Compile [x64] Module.Phase3AIntegration.gen.cpp ()
+All processes queued
+[1/18] Compile [x64] PerModuleInline.gen.cpp
+[2/18] Compile [x64] ProbeRuntime.cpp
+[3/18] Compile [x64] Module.Phase3AIntegration.gen.cpp
+[4/18] Link [x64] UnrealEditor-ProbeRuntime.lib
+[5/18] Link [x64] UnrealEditor-ProbeRuntime.dll
+[6/18] Compile [x64] PerModuleInline.gen.cpp
+[7/18] Compile [x64] ProbeActor.cpp
+[8/18] Compile [x64] Phase3AIntegration.cpp
+[9/18] Compile [x64] ProbeComponent.cpp
+[10/18] Compile [x64] ProbeSubsystem.cpp
+[11/18] Compile [x64] ProbeObject.cpp
+[12/18] Link [x64] UnrealEditor-Phase3AIntegration.lib
+[13/18] Link [x64] UnrealEditor-Phase3AIntegration.dll
+[14/18] Compile [x64] ProbePlugin.cpp
+[15/18] Compile [x64] Module.ProbePlugin.cpp
+[16/18] Link [x64] UnrealEditor-ProbePlugin.lib
+[17/18] Link [x64] UnrealEditor-ProbePlugin.dll
+[18/18] WriteMetadata Phase3AIntegrationEditor.target [NoUba]
+
+Total time in Unreal Build Accelerator local executor: 18.82 seconds
+Output binary: C:\Program Files\Epic Games\UE_5.8\Engine\Binaries\Win64\UnrealEditor.exe
+UbaStorageServer - Database saved in 1ms (0 file entries, 0 cas entries. deleted 0 dropped cas files)
+WriteFileIfChanged() wrote 0 changed files of 1 requested writes.
+
+Timeline:
+[  0.000]  +0.319 Main
+   0.021          [  0.021]  +0.093 Apply XmlConfig
+   0.116          [  0.116]  +0.060 AddTelemetry
+   0.204          [  0.203]  +0.115 RegisterPlatforms
+[  0.357]  +0.027 ParseCommandLine
+[  0.428]  +0.093 LoadMakefile
+   0.440          [  0.012]  +0.031 EngineRulesPlugins
+   0.474          [  0.046]  +0.012 EngineRulesFetchDirs
+   0.494          [  0.065]  +0.008 EngineRulesAssembly
+   0.502          [  0.074]  +0.001 ProgramRulesAssembly
+   0.507          [  0.079]  +0.002 ProjectRulesAssembly
+   0.510          [  0.082]  +0.204 CreateTargetRules
+[  0.521]  +0.235 <unknown>
+[  0.757]  +0.004 CppDependencyCache
+[  0.774]  +1.785 Phase3AIntegrationEditor Win64 Development
+   0.774          [  0.000]  +0.517 <unknown>
+   1.291          [  0.517]  +0.046 UHTModules
+   1.438          [  0.664]  +0.137 UHTManifest
+   1.576          [  0.802]  +1.576 UHT
+   1.576             0.802          [  0.000]  +0.968 <unknown>
+   2.544             1.770          [  0.968]  +0.000 WaitOnWrites
+   2.559             1.785          [  0.983]  +0.070 SavingMakefile
+   2.630             1.856          [  1.053]  +0.522 <unknown>
+[  2.559]  +0.594 <unknown>
+[  3.153]  +0.014 UHTTimestamps
+[  3.179]  +0.004 CppDependencyCache
+[  3.184]  +0.066 Preparing ActionGraph
+   3.195          [  0.011]  +0.004 LinkActions
+   3.199             0.015          [  0.004]  +0.000 DetectActionGraphCycles
+   3.200          [  0.016]  +0.000 GatherPrerequisiteActions
+   3.202          [  0.018]  +0.000 CppDependencyCacheWait
+   3.202          [  0.018]  +0.035 GatherOutdatedActions
+   3.241          [  0.056]  +0.002 LinkActions
+   3.241             0.056          [  0.000]  +0.000 DetectActionGraphCycles
+   3.244          [  0.060]  +0.001 DeleteOutdatedProducedItems
+   3.246          [  0.062]  +0.003 SaveActionHistory
+   3.249          [  0.065]  +0.000 CreateDirectoriesForProducedItems
+[  3.261]  +0.241 GarbageCollect
+[  3.503] +18.575 <unknown>
+[ 22.078]  +0.000 Deploying targets
+[ 22.079]  +0.000 DisconnectCache
+[ 22.083]  +0.009 SaveCasTable
+[ 22.095]  +0.010 Saving caches
+[ 22.106]  +0.001 TelemetryService.FlushEvents
+[ 22.108]
+
+Result: Succeeded
+Total execution time: 22.11 seconds

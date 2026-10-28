@@ -1,0 +1,123 @@
+{
+  "inspection": "Read-only internal-module compatibility review, not a VS Code host activation or build",
+  "root": "C:\\Dev\\Unreal\\RPGX",
+  "protectedFiles": {
+    "RPGX.uproject": "183e2756fdf3eab4d6ac6e4962bf3bee582c74ed182db556d2033c2dda0f57c0",
+    ".vscode/settings.json": "833ff1cd96b352a2aca25b594de2d3ca253b8a599582b2eee12b4e16bcf6c58f",
+    ".vscode/tasks.json": "9059c5fe1fc89d590069950ee0f9c4a3b75f854dcc945b3c6f9648e9fbe5f657",
+    ".vscode/c_cpp_properties.json": "c47b1cbbb8911dc483bd7fc903c9aafa1cda3ad200ece0be390e10ed7281598f",
+    ".clang-format": "ebbf991f77ac35c0a302838a584e34cd05d62b7479925e123a3ed1ac5a007e4a"
+  },
+  "rules": {
+    "C:\\Dev\\Unreal\\RPGX\\Source\\RPGX\\RPGX.Build.cs": "a2133e8900eddbf6c34a449e8df6247e1c204c21d31b0b4bc9b602f77e5b6857",
+    "C:\\Dev\\Unreal\\RPGX\\Plugins\\VisualStudioTools\\Source\\VisualStudioBlueprintDebuggerHelper\\VisualStudioBlueprintDebuggerHelper.Build.cs": "dc4194e22da7e61c8ae0d5cffb6b98610af47e0f79c4c8577aaf8363f0ac73d2",
+    "C:\\Dev\\Unreal\\RPGX\\Plugins\\VisualStudioTools\\Source\\VisualStudioTools\\VisualStudioTools.Build.cs": "10314624e7e7a4088f9053d566c81855f8b2157dd067e6793403f6d14fcfe6f7"
+  },
+  "descriptor": {
+    "FileVersion": 3,
+    "EngineAssociation": "5.8",
+    "Category": "",
+    "Description": "",
+    "Modules": [
+      {
+        "Name": "RPGX",
+        "Type": "Runtime",
+        "LoadingPhase": "Default",
+        "AdditionalDependencies": [
+          "Engine"
+        ]
+      }
+    ],
+    "Plugins": [
+      {
+        "Name": "ModelingToolsEditorMode",
+        "Enabled": true
+      },
+      {
+        "Name": "GameplayStateTree",
+        "Enabled": true
+      },
+      {
+        "Name": "VisualStudioTools",
+        "Enabled": false,
+        "SupportedTargetPlatforms": [
+          "Win64"
+        ]
+      },
+      {
+        "Name": "CommonUI",
+        "Enabled": true
+      }
+    ]
+  },
+  "targets": [
+    {
+      "name": "RPGX",
+      "file": "RPGX.Target.cs",
+      "type": "Game"
+    },
+    {
+      "name": "RPGXEditor",
+      "file": "RPGXEditor.Target.cs",
+      "type": "Editor"
+    }
+  ],
+  "engine": {
+    "path": "C:\\Program Files\\Epic Games\\UE_5.8",
+    "build": true,
+    "editor": true,
+    "compatible": true,
+    "version": {
+      "MajorVersion": 5,
+      "MinorVersion": 8,
+      "PatchVersion": 4,
+      "Changelist": 58902052,
+      "CompatibleChangelist": 55116800,
+      "IsLicenseeVersion": 0,
+      "IsPromotedBuild": 1,
+      "BranchName": "++UE5+Release-5.8"
+    }
+  },
+  "moduleList": [
+    {
+      "name": "RPGX",
+      "root": "C:\\Dev\\Unreal\\RPGX\\Source\\RPGX",
+      "buildFile": "C:\\Dev\\Unreal\\RPGX\\Source\\RPGX\\RPGX.Build.cs",
+      "origin": "project",
+      "api": "RPGX_API",
+      "layout": "Flat"
+    },
+    {
+      "name": "VisualStudioBlueprintDebuggerHelper",
+      "root": "C:\\Dev\\Unreal\\RPGX\\Plugins\\VisualStudioTools\\Source\\VisualStudioBlueprintDebuggerHelper",
+      "buildFile": "C:\\Dev\\Unreal\\RPGX\\Plugins\\VisualStudioTools\\Source\\VisualStudioBlueprintDebuggerHelper\\VisualStudioBlueprintDebuggerHelper.Build.cs",
+      "privatePath": "C:\\Dev\\Unreal\\RPGX\\Plugins\\VisualStudioTools\\Source\\VisualStudioBlueprintDebuggerHelper\\Private",
+      "origin": "plugin",
+      "plugin": "VisualStudioTools.uplugin",
+      "api": "VISUALSTUDIOBLUEPRINTDEBUGGERHELPER_API",
+      "layout": "Private only",
+      "type": "Editor"
+    },
+    {
+      "name": "VisualStudioTools",
+      "root": "C:\\Dev\\Unreal\\RPGX\\Plugins\\VisualStudioTools\\Source\\VisualStudioTools",
+      "buildFile": "C:\\Dev\\Unreal\\RPGX\\Plugins\\VisualStudioTools\\Source\\VisualStudioTools\\VisualStudioTools.Build.cs",
+      "publicPath": "C:\\Dev\\Unreal\\RPGX\\Plugins\\VisualStudioTools\\Source\\VisualStudioTools\\Public",
+      "privatePath": "C:\\Dev\\Unreal\\RPGX\\Plugins\\VisualStudioTools\\Source\\VisualStudioTools\\Private",
+      "origin": "plugin",
+      "plugin": "VisualStudioTools.uplugin",
+      "api": "VISUALSTUDIOTOOLS_API",
+      "layout": "Public / Private",
+      "type": "Editor"
+    }
+  ],
+  "plugins": [
+    {
+      "name": "VisualStudioTools",
+      "filename": "C:\\Dev\\Unreal\\RPGX\\Plugins\\VisualStudioTools\\VisualStudioTools.uplugin"
+    }
+  ],
+  "taskArgumentsRecognized": true,
+  "missingDefaultKeys": [],
+  "mergePreservesExistingValues": true
+}

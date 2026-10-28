@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "operationId": "7594f32b-094a-4ad4-ac88-7d6818ceb152",
+  "project": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\Phase3AIntegration.uproject",
+  "engine": "C:\\Program Files\\Epic Games\\UE_5.8",
+  "created": "2026-10-27T22:57:30.769Z",
+  "policy": "observe-and-recover; never overwrite protected paths",
+  "limits": {
+    "entries": 512,
+    "fileBytes": 8388608,
+    "transactionBytes": 33554432,
+    "transactions": 32,
+    "documents": 64
+  }
+}

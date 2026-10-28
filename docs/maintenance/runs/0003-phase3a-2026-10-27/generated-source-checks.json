@@ -1,0 +1,145 @@
+{
+  "checks": [
+    {
+      "filename": "ProbeObject",
+      "name": "UProbeObject",
+      "base": "UObject",
+      "valid": true
+    },
+    {
+      "filename": "ProbeActor",
+      "name": "AProbeActor",
+      "base": "AActor",
+      "valid": true
+    },
+    {
+      "filename": "ProbeComponent",
+      "name": "UProbeComponent",
+      "base": "UActorComponent",
+      "valid": true
+    },
+    {
+      "filename": "ProbeSubsystem",
+      "name": "UProbeSubsystem",
+      "base": "UGameInstanceSubsystem",
+      "valid": true
+    }
+  ],
+  "manifest": [
+    {
+      "file": "Source\\Phase3AIntegration\\Phase3AIntegration.Build.cs",
+      "bytes": 839,
+      "sha256": "156249ee3388bb94d5c2d6df01433f0d46a19506a0dadeaec4b03316820d6fb9"
+    },
+    {
+      "file": "Source\\Phase3AIntegration\\Phase3AIntegration.cpp",
+      "bytes": 225,
+      "sha256": "aa4b04daa5932bb186f41bd691ca00c385b695c5a9daa671cb488da772ccd09d"
+    },
+    {
+      "file": "Source\\Phase3AIntegration\\Phase3AIntegration.h",
+      "bytes": 98,
+      "sha256": "4694b655856b269fc41b195971214f8e629857c7e5d6f34002a066cd4af3037c"
+    },
+    {
+      "file": "Source\\Phase3AIntegration\\ProbeActor.cpp",
+      "bytes": 97,
+      "sha256": "b59cabb0229f8ad64b1a03477376fa9db58ed4681dd171c452e7e58520710372"
+    },
+    {
+      "file": "Source\\Phase3AIntegration\\ProbeActor.h",
+      "bytes": 223,
+      "sha256": "82666e60ce8e960e41f0bc16744f666ba464f51839c48f2da4cd99b096bfd9ec"
+    },
+    {
+      "file": "Source\\Phase3AIntegration\\ProbeComponent.cpp",
+      "bytes": 113,
+      "sha256": "57fa9595b5f7a343a09bb503e7582a0c2138e05bb3c7edbe7de082119959be37"
+    },
+    {
+      "file": "Source\\Phase3AIntegration\\ProbeComponent.h",
+      "bytes": 250,
+      "sha256": "57b8f86edf8e9120c7ad6744c090d60ab68861193165314b1d36b0ba7c3864a9"
+    },
+    {
+      "file": "Source\\Phase3AIntegration\\ProbeObject.cpp",
+      "bytes": 25,
+      "sha256": "c7a581cdab65f83403d6b3132fb74c222c75ae09aa628332c6b8baf0e567b294"
+    },
+    {
+      "file": "Source\\Phase3AIntegration\\ProbeObject.h",
+      "bytes": 195,
+      "sha256": "8ff791b698d591fefcd6814c6974dae5ff31464ff310aed93a3f77ca5f1f1288"
+    },
+    {
+      "file": "Source\\Phase3AIntegration\\ProbeSubsystem.cpp",
+      "bytes": 28,
+      "sha256": "e62581d94a83576f1c09dee269e1a60b1cb7ac63a64d91a4b71c768a7049b651"
+    },
+    {
+      "file": "Source\\Phase3AIntegration\\ProbeSubsystem.h",
+      "bytes": 234,
+      "sha256": "78e30d45a73861ea92992f12184bd6a943a7f58819572dac0f6abe49e77cc891"
+    },
+    {
+      "file": "Source\\Phase3AIntegration.Target.cs",
+      "bytes": 437,
+      "sha256": "361792b15e283c4256833bbc21acebfe85323b597d2c87873b40377b862638df"
+    },
+    {
+      "file": "Source\\Phase3AIntegrationEditor.Target.cs",
+      "bytes": 452,
+      "sha256": "247d583a948ea11660e95912817aa124e115e3cc61708d0fb69068988f33df5c"
+    },
+    {
+      "file": "Source\\ProbeRuntime\\Private\\ProbeRuntime.cpp",
+      "bytes": 114,
+      "sha256": "6dbbc56834cb579098f3470b81668c00259dce7b6268cbe505c75570c3f45e04"
+    },
+    {
+      "file": "Source\\ProbeRuntime\\ProbeRuntime.Build.cs",
+      "bytes": 286,
+      "sha256": "6f829000b8f3e5360d3be17e9a792dc20027818f6eab501fb9fbf3ed57b35745"
+    },
+    {
+      "file": "Source\\ProbeRuntime\\Public\\ProbeRuntime.h",
+      "bytes": 126,
+      "sha256": "337a83dfd09fb4aec73529bb648a1c1cb78145a47df0e1b67361020a80963ef2"
+    },
+    {
+      "file": "Config\\DefaultEngine.ini",
+      "bytes": 503,
+      "sha256": "51b76d026d1d5c672a82fbb5ef6770f6436ff2d25f0e6d19871d228616466339"
+    },
+    {
+      "file": "Config\\DefaultGame.ini",
+      "bytes": 79,
+      "sha256": "47a505e54672bd471ec1b2dd0d0f2d0de2e39b3a56df8e20cd30522965bf94ea"
+    },
+    {
+      "file": "Config\\DefaultInput.ini",
+      "bytes": 9574,
+      "sha256": "61e3fb622f7ba0121c8036ac599acc7122bb3987a97b02b25ad13c56d5ce8e3a"
+    },
+    {
+      "file": "Plugins\\ProbePlugin\\ProbePlugin.uplugin",
+      "bytes": 316,
+      "sha256": "fecf351a8434df348915a0c9a00b44bfb4954c744f6c00bb0ebb271e0e35f1b0"
+    },
+    {
+      "file": "Plugins\\ProbePlugin\\Source\\ProbePlugin\\Private\\ProbePlugin.cpp",
+      "bytes": 111,
+      "sha256": "2983870d4a28bb3c75186f9791892ace906075e4e27f6e051265748af99cc6a5"
+    },
+    {
+      "file": "Plugins\\ProbePlugin\\Source\\ProbePlugin\\ProbePlugin.Build.cs",
+      "bytes": 284,
+      "sha256": "37c7cd35c15a5c6a98cf90c8fca1d40164331d9f34298da373bfe0ee281f0709"
+    },
+    {
+      "file": "Plugins\\ProbePlugin\\Source\\ProbePlugin\\Public\\ProbePlugin.h",
+      "bytes": 124,
+      "sha256": "985b1ee6e35b5c57a551a60d1bc8f63028f625027d9d08c6e5ba2ce895193d9e"
+    }
+  ]
+}

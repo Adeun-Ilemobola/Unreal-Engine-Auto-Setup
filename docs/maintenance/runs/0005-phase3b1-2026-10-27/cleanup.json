@@ -1,0 +1,22 @@
+{
+  "fixture": "retained",
+  "termination": "No process was force-terminated; host windows closed through VS Code command",
+  "ownedHosts": [
+    {
+      "exitCode": 0,
+      "pid": 50144
+    },
+    {
+      "exitCode": 0,
+      "pid": 15732
+    },
+    {
+      "exitCode": 0,
+      "pid": 61032
+    }
+  ],
+  "remaining": [],
+  "duplicateMetadataCleanup": "Only task-created duplicate transaction-4 JSON copies removed after operationId equality check; original recovery transactions retained",
+  "query": "Get-CimInstance Win32_Process; filter UnrealEditor/UnrealBuildTool/dotnet/cl/Code.exe",
+  "finalRelevantProcessQueryAfterFinalSuite": []
+}

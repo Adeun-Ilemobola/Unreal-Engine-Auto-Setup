@@ -1,0 +1,27 @@
+{
+  "vscode": "1.143.1",
+  "node": "v24.21.0",
+  "pid": 69748,
+  "trusted": true,
+  "workspace": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration",
+  "extensions": [
+    {
+      "id": "local-tools.unreal-project-tools",
+      "path": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\unreal-auto-setup",
+      "version": "0.8.0",
+      "active": false
+    },
+    {
+      "id": "ms-vscode.cpptools",
+      "path": "C:\\Users\\Owner\\.vscode\\extensions\\ms-vscode.cpptools-1.35.4-win32-x64",
+      "version": "1.35.4",
+      "active": true
+    },
+    {
+      "id": "skyboxlabs.unrealengine-tools",
+      "path": "C:\\Users\\Owner\\.vscode\\extensions\\skyboxlabs.unrealengine-tools-0.1.2",
+      "version": "0.1.2",
+      "active": true
+    }
+  ]
+}

@@ -27,7 +27,7 @@ function fakeVSCode(root) {
       createStatusBarItem:()=>{const item={show(){this.visible=true;},hide(){this.visible=false;},dispose(){}};buttons.push(item);return item;},
       createTerminal:options=>{const terminal={options,output:'',show(){if(options.pty && !this.started){this.started=true;options.pty.onDidWrite(text=>{this.output+=text;});options.pty.open();}},dispose(){options.pty?.close();}};terminals.push(terminal);return terminal;}}
   };
-  const state=new Map();const context={subscriptions:[],workspaceState:{get:key=>state.get(key),update:async(key,value)=>state.set(key,value)}};
+  const state=new Map();const context={subscriptions:[],globalStorageUri:{fsPath:path.join(root,'.test-extension-storage')},workspaceState:{get:key=>state.get(key),update:async(key,value)=>state.set(key,value)}};
   return {vscode,context,commands,terminals,buttons,errors,infos,warnings,picks,diagnostics,events,values,saves:()=>saves};
 }
 async function fixture() {

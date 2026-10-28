@@ -1,0 +1,118 @@
+{
+  "generations": [
+    {
+      "id": "3b1-ordinary-1",
+      "execution": {
+        "startTime": "2026-10-27T22:57:30.978Z",
+        "completionTime": "2026-10-27T22:57:36.410Z",
+        "status": "Succeeded",
+        "success": true,
+        "exitCode": 0
+      },
+      "preservation": "Conflict",
+      "commandMs": 6345.234,
+      "pipelineMs": 6310.898299999997,
+      "managedExecutionMs": 5432,
+      "observedOutsideManagedExecutionMs": 878.8982999999971,
+      "recoveryBytesBeforeFinalManifest": 2265386,
+      "conflicts": 22,
+      "recoveryLocation": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\host-data\\User\\globalStorage\\local-tools.unreal-project-tools\\regeneration-v1\\transaction-0"
+    },
+    {
+      "id": "3b1-real-saved-conflict",
+      "execution": {
+        "startTime": "2026-10-27T22:59:00.727Z",
+        "completionTime": "2026-10-27T22:59:05.124Z",
+        "status": "Succeeded",
+        "success": true,
+        "exitCode": 0
+      },
+      "preservation": "Conflict",
+      "commandMs": 5136.358,
+      "pipelineMs": 5079.850900000001,
+      "managedExecutionMs": 4397,
+      "observedOutsideManagedExecutionMs": 682.8509000000013,
+      "recoveryBytesBeforeFinalManifest": 2840928,
+      "conflicts": 27,
+      "recoveryLocation": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\host-data\\User\\globalStorage\\local-tools.unreal-project-tools\\regeneration-v1\\transaction-1",
+      "savedEditSurvives": false
+    },
+    {
+      "id": "3b1-saved-conflict-rerun",
+      "execution": {
+        "startTime": "2026-10-27T23:00:34.622Z",
+        "completionTime": "2026-10-27T23:00:39.583Z",
+        "status": "Succeeded",
+        "success": true,
+        "exitCode": 0
+      },
+      "preservation": "Conflict",
+      "commandMs": 5897.7559,
+      "pipelineMs": 5838.0358,
+      "managedExecutionMs": 4961,
+      "observedOutsideManagedExecutionMs": 877.0357999999997,
+      "recoveryBytesBeforeFinalManifest": 3129642,
+      "conflicts": 27,
+      "recoveryLocation": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\host-data\\User\\globalStorage\\local-tools.unreal-project-tools\\regeneration-v1\\transaction-2",
+      "savedEditSurvives": true,
+      "savedTextMatchesDisk": true
+    },
+    {
+      "id": "3b1-subsequent-ordinary",
+      "execution": {
+        "startTime": "2026-10-27T23:01:12.522Z",
+        "completionTime": "2026-10-27T23:01:16.221Z",
+        "status": "Succeeded",
+        "success": true,
+        "exitCode": 0
+      },
+      "preservation": "Conflict",
+      "commandMs": 4407.25,
+      "pipelineMs": 4374.993299999995,
+      "managedExecutionMs": 3699,
+      "observedOutsideManagedExecutionMs": 675.9932999999946,
+      "recoveryBytesBeforeFinalManifest": 3271810,
+      "conflicts": 20,
+      "recoveryLocation": "c:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\host-data\\User\\globalStorage\\local-tools.unreal-project-tools\\regeneration-v1\\transaction-3"
+    }
+  ],
+  "build": {
+    "time": "2026-10-27T23:02:17.681Z",
+    "phase": "complete",
+    "id": "3b1-build-after-regeneration",
+    "elapsedMs": 43024.9654,
+    "result": {
+      "target": "Phase3AIntegrationEditor",
+      "platform": "Win64",
+      "configuration": "Development",
+      "startTime": "2026-10-27T23:01:35.194Z",
+      "completionTime": "2026-10-27T23:02:17.680Z",
+      "status": "Succeeded",
+      "success": true,
+      "exitCode": 0
+    }
+  },
+  "recoveryBlobsVerified": 412,
+  "originalProtectedFiles": 39,
+  "originalProtectedFilesWithChangedBytes": [
+    "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Default.json",
+    "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\compileCommands_Phase3AIntegration.json",
+    "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.vscode\\c_cpp_properties.json",
+    "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.clang-format",
+    "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration\\.ignore",
+    "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Default.json",
+    "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\compileCommands_Phase3AIntegration.json",
+    "C:\\Program Files\\Epic Games\\UE_5.8\\.vscode\\c_cpp_properties.json"
+  ],
+  "currentProtectedFiles": 59,
+  "fixtureRetained": "C:\\Dev\\VSCodeTools\\unreal-auto-setup\\.local-test-projects\\Phase3AIntegration",
+  "controlledEdit": "Two saved comment insertions retained in .clang-format; first test comparison corrected for CRLF",
+  "harnessErrors": [
+    {
+      "time": "2026-10-27T23:02:23.702Z",
+      "phase": "error",
+      "id": "3b1-doctor",
+      "error": "Error: command 'unrealSetup.doctor' not found\n    at XDt._tryExecuteCommand (vscode-file://vscode-app/c:/Users/Owner/AppData/Local/Programs/Microsoft%20VS%20Code/e646868227/resources/app/out/vs/workbench/workbench.desktop.main.js:1732:4832)\n    at XDt.executeCommand (vscode-file://vscode-app/c:/Users/Owner/AppData/Local/Programs/Microsoft%20VS%20Code/e646868227/resources/app/out/vs/workbench/workbench.desktop.main.js:1732:4732)"
+    }
+  ]
+}
