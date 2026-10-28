@@ -1,0 +1,13 @@
+# Admission concurrency
+
+The prior implementation counted existing entries before exclusive project-directory creation. Distinct projects could all see 255 and each create a new entry. Exclusive per-project mkdir cannot protect that shared capacity decision.
+
+The new `.admission-lock` is an exclusive filesystem directory. Only its owner counts entries, creates the canonical project directory and writes intent. This is a short shared transaction, never held while building or waiting for job completion. The lock itself is excluded from capacity counting; all other entries count, including unknown files, partial claims and retired cleanup residue. Counting stops at 256, fails closed at/above capacity, and does not delete any existing evidence. An above-bound legacy store stays blocked until independently verified cleanup.
+
+Contenders retry up to 100 times at 10 ms intervals. This is a bounded wait, not a lock expiry. A crashed admission transaction leaves a store-wide blocked lock. No timestamps, PID guessing, lease theft or automatic force-unlock are used. Same-project exclusion remains exclusive mkdir. Verified completion releases through the existing per-claim release lock and retirement rename. Concurrent release can reduce capacity; it cannot increase it or let simultaneous admissions exceed 256.
+
+Six new tests cover empty stores, eight distinct concurrent admissions, 255/256/257 existing entries, one winner at the boundary, interrupted reservation, corrupt/partial intent retention, cleanup and reacquisition. Existing tests cover same-project contention, pre-spawn abandonment, unresolved root-only records and verified native completion/release. The lifecycle test injects an interrupted release lock, verifies Unknown and blocked reacquisition, and removes only its own known test fault before verified release.
+
+[targeted.txt](targeted.txt): 22 passed. Final suite includes all new cases. Two actual VS Code hosts use a deliberately shared store: same-project overlap refused, another project succeeded, original project retried after release. [cross-window.jsonl](cross-window.jsonl) and [windows.txt](windows.txt) record execution and cleanup. The 256-entry boundary is tested using synthetic metadata, not hundreds of UBT launches.
+
+Guarantee: participants using this implementation and the same local store. Older writers that ignore the lock, different profiles/stores/users/machines and external builders are outside coordination. Upgrade all cooperating hosts together. Malicious same-user filesystem mutation is not a supported threat model. Manual recovery requires proving the transaction owner stopped and inspecting partial claims before removing an interrupted lock; do not automate that decision.

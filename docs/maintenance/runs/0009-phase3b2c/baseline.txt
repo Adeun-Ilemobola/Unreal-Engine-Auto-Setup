@@ -1,0 +1,31 @@
+Test scratch: C:\Dev\Scratch\UnrealAutoSetupTests\suite-z0cyw1
+✔ cancellation during asynchronous supervisor launch waits for verified completion (11.9845ms)
+✔ managed build streams output, publishes Problems, records failure and clears old diagnostics on retry (3.1358ms)
+✔ cancelled and failed-to-start builds complete with an explicit result (0.3542ms)
+✔ Skybox and direct builds use the same target/platform/configuration specification (0.563ms)
+✔ real managed PowerShell build streams a source error and returns its exit code (443.3033ms)
+✔ reload before spawn retains intent and blocks a second window (25.3137ms)
+✔ only the original owner can release positively unspawned work (15.1677ms)
+✔ wrapper exit, cancellation and old age never certify tree completion (14.0355ms)
+✔ corrupt, missing and partial intent fail closed; unrelated projects remain clear (15.9712ms)
+✔ concurrent claim acquisition has one winner without sleeps (9.7366ms)
+✔ identity requires all evidence and never treats absence as completion (0.2789ms)
+✔ bounded repeated unspawned operations clean up without accumulating history (133.8459ms)
+✔ active identity is observation only; recovered process is never granted termination authority (8.9321ms)
+✔ oversized records and inaccessible identity do not unblock operations (8.6578ms)
+✔ managed adapter persists intent before spawn and retains quarantine after root close (72.4603ms)
+Compiled test fixture: C:\Dev\Scratch\UnrealAutoSetupTests\suite-z0cyw1\node-36372-8MXPzp\supervision-NBFmUa\TreeFixture.exe
+✔ native job retains a root-exited descendant until release; repeated operations clean claims (5354.6921ms)
+✔ native cancellation uses private job and permits a subsequent operation (3341.5008ms)
+✔ completion proof binds operation, descriptor, helper and exact launch (1581.3018ms)
+✔ legacy root-exit record remains quarantined and is never promoted to tree completion (16.1977ms)
+✔ native job refuses explicit breakaway (1070.0797ms)
+✔ supervisor loss closes the private job but never fabricates durable completion (2123.9343ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13648.7297

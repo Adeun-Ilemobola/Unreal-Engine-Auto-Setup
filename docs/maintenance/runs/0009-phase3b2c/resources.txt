@@ -1,0 +1,30 @@
+Test scratch: C:\Dev\Scratch\UnrealAutoSetupTests\suite-tsWk9I
+✖ bounded native lifecycle measurements and interrupted release (5497.6787ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5781.2719
+
+✖ failing tests:
+
+test at tests\lifecycle-qualification.test.js:6:1
+✖ bounded native lifecycle measurements and interrupted release (5497.6787ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (C:\Dev\VSCodeTools\unreal-auto-setup\unreal-auto-setup\tests\lifecycle-qualification.test.js:18:54)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

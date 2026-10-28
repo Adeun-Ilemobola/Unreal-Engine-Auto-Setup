@@ -1,0 +1,32 @@
+Test scratch: C:\Dev\Scratch\UnrealAutoSetupTests\suite-Zo3JSi
+✔ atomic admission at capacity 0 (113.0157ms)
+✔ atomic admission at capacity 255 (197.5973ms)
+✔ atomic admission at capacity 256 (205.6075ms)
+✔ atomic admission at capacity 257 (212.2533ms)
+✔ interrupted reservation blocks all admission without expiry or deletion (1049.9373ms)
+✔ partial metadata consumes capacity and survives other admission and cleanup (134.3363ms)
+✔ reload before spawn retains intent and blocks a second window (25.1035ms)
+✔ only the original owner can release positively unspawned work (13.3505ms)
+✔ wrapper exit, cancellation and old age never certify tree completion (13.45ms)
+✔ corrupt, missing and partial intent fail closed; unrelated projects remain clear (12.6634ms)
+✔ concurrent claim acquisition has one winner without sleeps (81.882ms)
+✔ identity requires all evidence and never treats absence as completion (0.2314ms)
+✔ bounded repeated unspawned operations clean up without accumulating history (107.9412ms)
+✔ active identity is observation only; recovered process is never granted termination authority (8.4321ms)
+✔ oversized records and inaccessible identity do not unblock operations (8.846ms)
+✔ managed adapter persists intent before spawn and retains quarantine after root close (60.3949ms)
+Compiled test fixture: C:\Dev\Scratch\UnrealAutoSetupTests\suite-Zo3JSi\node-81172-1XL66s\supervision-u1QDDc\TreeFixture.exe
+✔ native job retains a root-exited descendant until release; repeated operations clean claims (5381.887ms)
+✔ native cancellation uses private job and permits a subsequent operation (2265.3896ms)
+✔ completion proof binds operation, descriptor, helper and exact launch (1184.7271ms)
+✔ legacy root-exit record remains quarantined and is never promoted to tree completion (13.0223ms)
+✔ native job refuses explicit breakaway (2170.656ms)
+✔ supervisor loss closes the private job but never fabricates durable completion (3911.3279ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15062.0904

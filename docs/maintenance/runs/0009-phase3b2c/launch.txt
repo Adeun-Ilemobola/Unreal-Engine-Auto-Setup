@@ -1,0 +1,4 @@
+C:\Dev\Scratch\UnrealAutoSetupTests\qualification-Maq3hF\unreal-project-tools-0.8.0.vsix
+(node:75232) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `Code --trace-deprecation ...` to show where the warning was created)
+Unfinished run retained: C:\Dev\Scratch\UnrealAutoSetupTests\qualification-Maq3hF

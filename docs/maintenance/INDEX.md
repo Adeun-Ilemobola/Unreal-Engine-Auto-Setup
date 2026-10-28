@@ -1,5 +1,7 @@
 # Maintenance index
 
+- [0009 Phase 3B.2c, 2026-10-28](runs/0009-phase3b2c/RESULT.md) — Fresh installed VSIX, public Build-and-Run with UI-assisted Editor closure, admission transaction and bounded resource qualification complete. Node 448 pass / one unchanged P1.1 failure; Python four pass. [Prompt](prompts/0009-phase3b2c-v1.md), [validation](runs/0009-phase3b2c/VALIDATION.md), [concurrency](runs/0009-phase3b2c/ADMISSION_CONCURRENCY.md).
+
 - [0008 Phase 3B.2b, 2026-10-28](runs/0008-phase3b2b/RESULT.md) — Native job supervision restores repeated real managed builds and verified cross-reload release. Broader release qualification remains partial; test scratch relocation complete. Node 441 passed / one unchanged P1.1 failure; Python four passed. [Prompt](prompts/0008-phase3b2b-v1.md), [scratch steering](prompts/0008-phase3b2b-scratch-v1.md), [changes](runs/0008-phase3b2b/CHANGES.md), [validation](runs/0008-phase3b2b/VALIDATION.md), [safety contract](runs/0008-phase3b2b/SAFETY_CONTRACT.md).
 
 - [0001 Phase 1, 2026-10-27](runs/0001-phase1-2026-10-27/RESULT.md) — execution finished after interruption/resumption; P1.1 Blocked, P1.2 Partially complete, P1.3 Complete, P1.4 Complete for reproduced scenarios. [Changes](runs/0001-phase1-2026-10-27/CHANGES.md), [validation](runs/0001-phase1-2026-10-27/VALIDATION.md), [immutable prompt](prompts/0001-phase1-critical-fixes-v1.md).

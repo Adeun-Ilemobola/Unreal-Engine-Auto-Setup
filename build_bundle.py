@@ -1,7 +1,17 @@
 from pathlib import Path
-import json, zipfile, xml.etree.ElementTree as ET
+import json, zipfile, xml.etree.ElementTree as ET, argparse
 from bundle_sources import validate
 root = Path(__file__).resolve().parent
+parser = argparse.ArgumentParser()
+parser.add_argument('--validation-dir', type=Path)
+args = parser.parse_args()
+output = root
+if args.validation_dir:
+    output = args.validation_dir.resolve()
+    approved = Path(r'C:\Dev\Scratch\UnrealAutoSetupTests').resolve()
+    if not output.is_relative_to(approved) or output == approved:
+        raise ValueError('Validation output must be an isolated development scratch directory')
+    output.mkdir(parents=True, exist_ok=True)
 source = root / 'unreal-auto-setup'
 inputs = validate(root)
 p = json.loads((source/'package.json').read_text(encoding='utf-8'))
@@ -12,16 +22,22 @@ manifest = f'''<?xml version="1.0" encoding="utf-8"?>
 <Installation><InstallationTarget Id="Microsoft.VisualStudio.Code"/></Installation><Dependencies/>
 <Assets><Asset Type="Microsoft.VisualStudio.Code.Manifest" Path="extension/package.json" Addressable="true"/><Asset Type="Microsoft.VisualStudio.Services.Content.Details" Path="extension/README.md" Addressable="true"/><Asset Type="Microsoft.VisualStudio.Services.Content.License" Path="extension/LICENSE" Addressable="true"/></Assets></PackageManifest>'''
 content_types='''<?xml version="1.0" encoding="utf-8"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="exe" ContentType="application/octet-stream"/><Default Extension="cs" ContentType="text/plain"/><Default Extension="json" ContentType="application/json"/><Default Extension="js" ContentType="application/javascript"/><Default Extension="svg" ContentType="image/svg+xml"/><Default Extension="md" ContentType="text/markdown"/><Default Extension="vsixmanifest" ContentType="text/xml"/><Default Extension="xml" ContentType="text/xml"/><Override PartName="/extension/LICENSE" ContentType="text/plain"/></Types>'''
-with zipfile.ZipFile(root/name,'w',zipfile.ZIP_DEFLATED) as z:
+with zipfile.ZipFile(output/name,'x' if args.validation_dir else 'w',zipfile.ZIP_DEFLATED) as z:
     z.writestr('extension.vsixmanifest',manifest)
     z.writestr('[Content_Types].xml',content_types)
     for file in inputs:
         z.write(file, 'extension/'+file.relative_to(source).as_posix())
-with zipfile.ZipFile(root/name) as z:
+with zipfile.ZipFile(output/name) as z:
     assert z.testzip() is None
     ET.fromstring(z.read('extension.vsixmanifest'))
     ET.fromstring(z.read('[Content_Types].xml'))
     assert json.loads(z.read('extension/package.json'))['main']=='./extension.js'
+    assert set(z.namelist()) == {'extension.vsixmanifest','[Content_Types].xml'} | {'extension/'+f.relative_to(source).as_posix() for f in inputs}
+    for file in inputs:
+        assert z.read('extension/'+file.relative_to(source).as_posix()) == file.read_bytes()
+if args.validation_dir:
+    print(output/name)
+    raise SystemExit(0)
 bundle=root/'Unreal-Engine-Auto-Setup.zip'
 with zipfile.ZipFile(bundle,'w',zipfile.ZIP_DEFLATED) as z:
     z.write(root/name,name)

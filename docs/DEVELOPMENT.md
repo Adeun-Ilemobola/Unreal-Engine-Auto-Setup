@@ -1,5 +1,9 @@
 # Maintaining Unreal Engine Auto Setup
 
+Phase 3B.2c adds a short exclusive `.admission-lock` transaction around the 256-entry capacity check and claim creation. Do not remove an interrupted lock by age or PID inference; verify its owner stopped and inspect partial claims first. All cooperating hosts must use the updated protocol. Operation execution stays outside this shared transaction. See [qualification and recovery limits](maintenance/runs/0009-phase3b2c/RESULT.md).
+
+For isolated package qualification, use `python -B build_bundle.py --validation-dir C:\Dev\Scratch\UnrealAutoSetupTests\<unique-run>`; this writes only a fresh test VSIX and refuses to overwrite it. Production helper binaries stay in the repository. The standing scratch convention applies to future harnesses and tasks too; never fall back to Windows Temp for test executables. The user's standing authorization covers necessary repository, VS Code and Unreal test work, but excludes personal profile changes, publishing, commits, engine/toolchain upgrades and system/antivirus configuration.
+
 The extension is flat CommonJS, uses native VS Code UI, and targets one trusted local Windows/Win64 project. There are no runtime npm dependencies. Keep public commands/settings and compatibility exports stable; engine minimum-policy acceptance is separate from tested compatibility.
 
 ## Source responsibilities

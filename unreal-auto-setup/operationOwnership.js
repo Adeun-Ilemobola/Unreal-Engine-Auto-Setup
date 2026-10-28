@@ -91,16 +91,29 @@ function create(root, {queryProcess=query}={}) {
     if(!['build','generation'].includes(kind)) throw new Error('Unsupported operation kind');
     await safeRoot();
     const location=await directory(project);
+    // Serialize only admission, never the operation lifetime. An interrupted
+    // transaction stays locked; elapsed time is not ownership evidence.
+    const admission=path.join(root,'.admission-lock');
+    let acquired=false;
+    for(let attempt=0;attempt<100;attempt++) {
+      try {await fs.mkdir(admission);acquired=true;break;}
+      catch(error) {if(error.code!=='EEXIST')throw error;}
+      await new Promise(resolve=>setTimeout(resolve,10));
+    }
+    if(!acquired)throw new Error('Recovery admission is busy or interrupted; retain the lock for review.');
+    let operationId;
+    try {
     let count=0;
     const entries=await fs.opendir(root);
-    for await(const entry of entries) { if(++count>=LIMIT) throw new Error('Recovery claim quota reached; retain unresolved records for review.'); }
+    for await(const entry of entries) { if(entry.name!=='.admission-lock' && ++count>=LIMIT) throw new Error('Recovery claim quota reached; retain unresolved records for review.'); }
     try { await fs.mkdir(location); } catch(error) {
       if(error.code==='EEXIST') throw new Error((await inspect(project)).reason || 'Recovery claim exists');
       throw error;
     }
-    const operationId=randomUUID();
+    operationId=randomUUID();
     // Failure after mkdir deliberately leaves a blocking partial claim.
     await write(path.join(location,'intent.json'),{schema:1,operationId,project:await canonical(project),kind,created:new Date().toISOString()});
+    } finally {await fs.rmdir(admission);}
     let attempted=false;
     return {operationId,directory:location,
       async complete() {return release(location,await regular(path.join(location,'intent.json')));},

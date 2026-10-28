@@ -1,0 +1,2 @@
+Cross-window scratch: C:\Dev\Scratch\UnrealAutoSetupTests\windows-ySEm8P
+Cleaned cross-window scratch: C:\Dev\Scratch\UnrealAutoSetupTests\windows-ySEm8P
